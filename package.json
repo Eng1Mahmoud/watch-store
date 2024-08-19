@@ -12,7 +12,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "prettier --write"
+      "prettier --write",
+      "next lint --dir app --dir components --dir middleware --dir redux --dir axios -- actions "
     ]
   },
   "dependencies": {
@@ -20,6 +21,7 @@
     "axios": "^1.7.4",
     "cookies-next": "^4.2.1",
     "jsonwebtoken": "^9.0.2",
+    "lint": "^0.8.19",
     "lint-staged": "^15.2.9",
     "next": "14.2.5",
     "react": "^18",
