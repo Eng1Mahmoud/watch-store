@@ -4,9 +4,9 @@
 
 /*custom components styles*/
 @layer components {
-    .chat-bubble-primary {
-        @apply bg-main text-second dark:bg-second dark:text-main;
-    }
+  .chat-bubble-primary {
+    @apply bg-main text-second dark:bg-second dark:text-main;
+  }
 }
 
 /*custom utilities styles*/

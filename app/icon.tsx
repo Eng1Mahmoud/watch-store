@@ -31,10 +31,9 @@ export default function Icon() {
         Z
       </div>
     ),
-
     // ImageResponse options
     {
       ...size,
-    }
+    },
   );
 }
