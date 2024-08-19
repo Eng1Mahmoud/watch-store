@@ -13,7 +13,7 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "prettier --write",
-      "next lint --dir app --dir components --dir middleware --dir redux --dir axios -- actions "
+      "next lint . --fix "
     ]
   },
   "dependencies": {
