@@ -4,13 +4,19 @@
 
 /*custom components styles*/
 @layer components {
-  .chat-bubble-primary {
-    @apply bg-main text-second dark:bg-second dark:text-main;
+  .btn-primary {
+    @apply bg-main-main text-text-secondary border-0 hover:bg-main-hover hover:border-0;
+
   }
+  .box-shadow {
+    @apply shadow-2xl p-5 rounded-lg border border-gray-200
+  }
+
 }
 
 /*custom utilities styles*/
 @layer utilities {
+ 
 }
 
 /*fonts*/

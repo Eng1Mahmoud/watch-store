@@ -11,11 +11,6 @@ const config: Config = {
     fontFamily: {
       main: ["main", "sans-serif"],
     },
-    colors: {
-      main: "#f55",
-      second: "#1fff",
-    },
-
     container: {
       center: true,
       padding: {
@@ -26,7 +21,21 @@ const config: Config = {
         "2xl": "5rem",
       },
     },
-    extend: {},
+    extend: {
+      colors: {
+        main: {
+          main: "#406939",
+          hover: "#4e7d4e",
+        },
+        text: {
+          main: "#333333",
+          secondary: "#ffffff",
+        },
+        error: {
+          main: "#ff0000",
+        },
+      },
+    },
   },
   plugins: [require("daisyui")],
 };
