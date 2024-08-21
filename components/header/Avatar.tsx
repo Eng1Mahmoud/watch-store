@@ -9,8 +9,8 @@ const Avatar = () => {
         role="button"
         className="btn btn-ghost btn-circle avatar"
       >
-        <div className="w-10 rounded-full">
-          <Image alt="Tailwind CSS Navbar component" src={avatar} />
+        <div className="w-10 h-10 rounded-full">
+          <Image alt="avatar" src={avatar} className="w-auto h-auto" />
         </div>
       </div>
       <ul

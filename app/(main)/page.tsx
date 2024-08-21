@@ -1,7 +1,12 @@
 import React from "react";
+import { Slider } from "./ui/Slider";
 
 const page = () => {
-  return <div>Home page</div>;
+  return (
+    <div>
+      <Slider />
+    </div>
+  );
 };
 
 export default page;

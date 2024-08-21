@@ -31,7 +31,7 @@ const Header = () => {
       </div>
 
       {/* Mobile */}
-      <div className=" mt-3">
+      <div className=" mt-3 pb-2">
         <div className="flex justify-center items-center gap-2 ">
           <NavLinks />
           <div className="flex-1 md:hidden">
