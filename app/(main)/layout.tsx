@@ -4,7 +4,7 @@ import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./globals.css";
+import "./../globals.css";
 export const metadata: Metadata = {
   title: "Zon",
   description: "ZON COFFEE",
@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <StoreProvider>
       <html lang="en">
-        <body className={`dark`} suppressHydrationWarning={true}>
+        <body suppressHydrationWarning={true}>
           <Header />
           <div className="">{children}</div>
           <Footer />
