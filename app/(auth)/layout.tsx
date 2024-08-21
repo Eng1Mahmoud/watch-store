@@ -4,10 +4,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./../globals.css";
 export const metadata: Metadata = {
-  title: "Zon",
-  description: "ZON COFFEE",
+  title: "Watch Store",
+  description: "Watch Store is a demo e-commerce website",
 };
-
 export default function AuthLayout({
   children,
 }: Readonly<{
