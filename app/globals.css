@@ -5,7 +5,7 @@
 /*custom components styles*/
 @layer components {
   .btn-primary {
-    @apply bg-main-main text-text-secondary border-0 hover:bg-main-hover hover:border-0;
+    @apply bg-main-main text-text-third border-0 hover:bg-main-hover hover:border-0;
 
   }
   .box-shadow {

@@ -29,7 +29,8 @@ const config: Config = {
         },
         text: {
           main: "#333333",
-          secondary: "#ffffff",
+          secondary: "#6b7280",
+          third: "#ffffff",
         },
         error: {
           main: "#ff0000",
