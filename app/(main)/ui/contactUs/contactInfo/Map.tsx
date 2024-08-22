@@ -20,7 +20,7 @@ const Map: React.FC = () => {
 
   return (
     <motion.div
-      animate={{ x: "-100%" }}
+      initial={{ x: "-100%" }}
       whileInView={{
         x: 0,
       }}
@@ -28,7 +28,7 @@ const Map: React.FC = () => {
       <MapContainer
         center={storeLocation}
         zoom={13}
-        style={{ height: "100%", width: "100%" }}
+        className="h-[280px] w-full"
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
