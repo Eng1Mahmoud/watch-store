@@ -9,8 +9,14 @@ const Avatar = () => {
         role="button"
         className="btn btn-ghost btn-circle avatar"
       >
-        <div className="w-10 h-10 rounded-full">
-          <Image alt="avatar" src={avatar} className="w-auto h-auto" />
+        <div className="rounded-full w-12 h-12 overflow-hidden">
+          <Image
+            alt="avatar"
+            src={avatar}
+            width={50}
+            height={50}
+            className="object-cover w-full h-full"
+          />
         </div>
       </div>
       <ul

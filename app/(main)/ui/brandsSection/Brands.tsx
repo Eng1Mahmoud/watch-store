@@ -28,7 +28,13 @@ export const Brands = () => {
       <div className="grid grid-cols-2  md:grid-cols-8  mt-10">
         {brands.map((brand, index) => (
           <div key={index} className="flex justify-center items-center">
-            <Image src={brand.src} alt={brand.alt} width={100} height={100} />
+            <Image
+              src={brand.src}
+              alt={brand.alt}
+              width={100}
+              height={100}
+              className="w-full h-full"
+            />
           </div>
         ))}
       </div>
