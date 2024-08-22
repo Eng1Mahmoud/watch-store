@@ -11,7 +11,7 @@ const About = () => {
           <Image src={aboutItem} alt="about-item" />
         </div>
         <div className="pb-[100px]">
-          <h1 className="text-2xl font-bold">About Us</h1>
+          <h1 className="text-2xl font-bold text-main-main">About Us</h1>
           <p className="text-text-secondary leading-[30px] pt-5">
             We, dummy company situated at area, city, state, are engaged in
             providing customers a commendable range of quality watches. Our
