@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /*body styles*/
-body {
+body,html {
   overflow-x: hidden;
 }
 /*custom components styles*/
