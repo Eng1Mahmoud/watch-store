@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/*body styles*/
+body {
+  overflow-x: hidden;
+}
 /*custom components styles*/
 @layer components {
   .btn-primary {

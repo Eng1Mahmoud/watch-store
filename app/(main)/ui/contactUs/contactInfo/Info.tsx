@@ -1,9 +1,10 @@
+"use client";
 import React from "react";
 import { GrMapLocation } from "react-icons/gr";
 import { CiMail } from "react-icons/ci";
 import { FiPhoneCall } from "react-icons/fi";
 import { IoMdTime } from "react-icons/io";
-
+import { motion } from "framer-motion";
 const info = [
   {
     id: 1,
@@ -35,7 +36,11 @@ const info = [
 
 const Info = () => {
   return (
-    <div className="flex flex-col gap-5">
+    <motion.div
+      initial={{ x: "100%" }}
+      whileInView={{ x: 0 }}
+      className="flex flex-col gap-5"
+    >
       {info.map((item) => (
         <div key={item.id} className="flex gap-4">
           <div className="text-main-main">{item.icon}</div>
@@ -51,7 +56,7 @@ const Info = () => {
           </div>
         </div>
       ))}
-    </div>
+    </motion.div>
   );
 };
 

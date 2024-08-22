@@ -3,7 +3,7 @@ import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-
+import { motion } from "framer-motion";
 // Fix the default icon path issue with Leaflet
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 
@@ -19,19 +19,26 @@ const Map: React.FC = () => {
   const storeLocation: [number, number] = [26.556, 31.6948];
 
   return (
-    <MapContainer
-      center={storeLocation}
-      zoom={13}
-      style={{ height: "100%", width: "100%" }}
+    <motion.div
+      animate={{ x: "-100%" }}
+      whileInView={{
+        x: 0,
+      }}
     >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      />
-      <Marker position={storeLocation}>
-        <Popup>Watch Store</Popup>
-      </Marker>
-    </MapContainer>
+      <MapContainer
+        center={storeLocation}
+        zoom={13}
+        style={{ height: "100%", width: "100%" }}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        <Marker position={storeLocation}>
+          <Popup>Watch Store</Popup>
+        </Marker>
+      </MapContainer>
+    </motion.div>
   );
 };
 
