@@ -1,15 +1,12 @@
 import React from "react";
-import LoadingScreen from "@/components/LoadingScreen";
+import ShowDialog from "@/components/ShowDialog";
 import LoadingScreenContent from "../ui/LoadingScreenContent";
 import ResetPasswordForm from "../ui/ResetPasswordForm";
 const page = () => {
   return (
     <div>
       <ResetPasswordForm />
-      <LoadingScreen
-        LoadingScreenContent={LoadingScreenContent}
-        hiddenDialog={false}
-      />
+      <ShowDialog Content={LoadingScreenContent} hiddenDialog={false} />
     </div>
   );
 };
