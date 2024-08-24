@@ -22,6 +22,9 @@ const config: Config = {
       },
     },
     extend: {
+      backgroundImage: {
+        hero: "url('/assets/about/bg-about.jpeg')",
+      },
       colors: {
         main: {
           main: "#406939",

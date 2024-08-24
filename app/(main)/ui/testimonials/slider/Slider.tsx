@@ -1,0 +1,85 @@
+"use client";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import type { Swiper as SwiperType } from "swiper";
+import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
+import { FaQuoteLeft } from "react-icons/fa6";
+// Import Swiper styles
+import { Autoplay } from "swiper/modules";
+
+// impoert slide data
+import { Slides } from "./data";
+
+export const Slider: React.FC = () => {
+  const swiperRef = React.useRef<SwiperType | null>(null);
+
+  const handleNext = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slideNext();
+    }
+  };
+
+  const handlePrev = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slidePrev();
+    }
+  };
+
+  return (
+    <div className="py-2">
+      <Swiper
+        modules={[Autoplay]}
+        autoplay={{ delay: 2500, disableOnInteraction: true }}
+        spaceBetween={200}
+        slidesPerView={1}
+        loop={true}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
+        breakpoints={{
+          // when window width is >= 640px
+
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+        }}
+        className="position-relative h-auto  w-full"
+      >
+        {Slides.map((slide) => (
+          <SwiperSlide key={slide.id}>
+            <div className="bg-white p-5 rounded-lg shadow-xl">
+              <div className="flex items-center justify-center">
+                <FaQuoteLeft className="text-[50px] text-main-main" />
+              </div>
+              <h1 className="text-text-secondary text-2xl font-bold text-center pt-5">
+                {slide.title}
+              </h1>
+              <p className="text-text-secondary text-center pt-5">
+                {slide.description}
+              </p>
+            </div>
+          </SwiperSlide>
+        ))}
+        {/** creat next and prev button position top center slide  */}
+        <div className=" hidden md:flex absolute inset-y-1/2 transform -translate-y-1/2 left-5 right-5  justify-between items-center z-50">
+          <button
+            onClick={handlePrev}
+            className="bg-white text-white p-2 rounded-full"
+          >
+            <IoIosArrowBack className="text-[25px] text-zinc-400" />
+          </button>
+
+          <button
+            onClick={handleNext}
+            className="bg-white text-white p-2 rounded-full"
+          >
+            <IoIosArrowForward className="text-[25px]  text-zinc-400" />
+          </button>
+        </div>
+      </Swiper>
+    </div>
+  );
+};

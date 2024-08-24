@@ -4,6 +4,7 @@ import About from "./ui/AboutSection/About";
 import { Brands } from "./ui/brandsSection/Brands";
 import ContactUs from "./ui/contactUs/ContactUs";
 import { Gallery } from "./ui/Gallery/Gallery";
+import Testimonials from "./ui/testimonials/Testimonials";
 
 const page = () => {
   return (
@@ -12,6 +13,7 @@ const page = () => {
       <About />
       <Brands />
       <Gallery />
+      <Testimonials />
       <ContactUs />
     </div>
   );

@@ -3,9 +3,7 @@ import aboutItem from "@/public/assets/about/about-item.webp";
 import Image from "next/image";
 const About = () => {
   return (
-    <div
-      className={`bg-[url('/assets/about/bg-about.jpeg')] bg-cover bg-no-repeat `}
-    >
+    <div className={`bg-hero bg-cover bg-no-repeat `}>
       <div className="container grid grid-cols-1 md:grid-cols-2   items-center">
         <div className="pb-12">
           <Image src={aboutItem} alt="about-item" />
