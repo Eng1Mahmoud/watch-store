@@ -33,7 +33,7 @@ const GalleryDialog = ({
     <div className="h-screen ">
       <dialog
         id="my_modal_1"
-        className="modal backdrop-blur-lg relative h-screen w-full flex items-center"
+        className="modal backdrop-blur-lg  h-screen w-full flex items-center"
         ref={modalRef}
       >
         <div className="flex justify-end absolute top-10 right-10 z-50 ">
