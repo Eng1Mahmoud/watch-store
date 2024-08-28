@@ -15,7 +15,7 @@ import slid2 from "@/public/assets/slider/slide2.webp";
 import Image from "next/image";
 import { Autoplay, Pagination } from "swiper/modules";
 
-const images = [slid1, slid2];
+const images = [slid1, slid2, slid1, slid2];
 export const Slider: React.FC = () => {
   const swiperRef = React.useRef<SwiperType | null>(null);
 

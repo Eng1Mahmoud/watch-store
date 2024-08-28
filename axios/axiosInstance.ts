@@ -2,7 +2,7 @@ import axios from "axios";
 import { getCookie } from "cookies-next";
 import { redirect } from "next/navigation";
 const axiosInstance = axios.create({
-  baseURL: "https://api.example.com",
+  baseURL: "http://localhost:3000/api",
 });
 
 axiosInstance.defaults.headers.post["Content-Type"] = "application/json";

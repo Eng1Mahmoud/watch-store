@@ -1,5 +1,6 @@
 import axiosInstance from "@/axios/axiosInstance";
 import { toast } from "react-toastify";
+import { revalidateTag } from "next/cache";
 export const useLogin = () => {
   interface LoginFormValues {
     email: string;
@@ -10,12 +11,20 @@ export const useLogin = () => {
     values: LoginFormValues,
     { resetForm }: { resetForm?: () => void },
   ) => {
-    console.log(values);
-    toast.success("Login Success");
-    if (resetForm) {
-      resetForm();
-    }
-    // Handle other props if needed
+    axiosInstance
+      .post("/auth/login", values)
+      .then((res) => {
+        console.log(res);
+        toast.success("Login successful");
+        revalidateTag("user");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Login failed");
+      })
+      .finally(() => {
+        resetForm && resetForm();
+      });
   };
 
   return { onSubmit };
