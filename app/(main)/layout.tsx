@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./../globals.css";
 import Script from "next/script";
+import ScrollToTop from "@/components/ScrollToTop";
 export const metadata: Metadata = {
   title: "Watch Store",
   description: "Watch Store is a demo e-commerce website",
@@ -38,6 +39,7 @@ export default function RootLayout({
           <div className="">{children}</div>
           <Footer />
           <ToastContainer position="top-right" autoClose={5000} />
+          <ScrollToTop />
         </body>
       </html>
     </StoreProvider>
