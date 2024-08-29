@@ -6,6 +6,10 @@
 body,html {
   overflow-x: hidden;
 }
+
+/* custom class for react crop shap*/
+
+/*end custom class for react crop shap*/
 /*custom components styles*/
 @layer components {
   .btn-primary {
