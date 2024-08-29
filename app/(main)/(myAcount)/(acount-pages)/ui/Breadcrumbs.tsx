@@ -9,13 +9,15 @@ const Breadcrumbs = () => {
     "/Addresses": "My Addresses",
     "/profile": "My profile",
     "/change-password": "Change Password",
-    "/watchList": "My Wishlist",
+    "/Wishlist": "My Wishlist",
   };
   return (
     <div className="breadcrumbs text-sm">
       <ul>
         <li>
-          <Link href="/my-acount">My Account</Link>
+          <Link href="/my-acount" className="hover:line-through no-underline">
+            My Account
+          </Link>
         </li>
         <li className="capitalize">{pathMap[pathname]}</li>
       </ul>
