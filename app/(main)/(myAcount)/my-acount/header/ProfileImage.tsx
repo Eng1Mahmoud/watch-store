@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import UploadImage from "../uploadImages/imageUpload";
 import avatar from "/public/assets/avatar.jpg";

@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import UploadImage from "../uploadImages/imageUpload";
 export const ProfileCover = () => {
