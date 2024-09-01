@@ -1,25 +1,40 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+
 const Breadcrumbs = () => {
   const pathname = usePathname();
-  console.log(pathname);
-  const pathMap: { [key: string]: string } = {
-    "/orders": "My Orders",
-    "/Addresses": "My Addresses",
-    "/profile": "My profile",
-    "/change-password": "Change Password",
-    "/Wishlist": "My Wishlist",
+  const formatPath = (pathSegment: string) => {
+    return pathSegment.replace(/-/g, " ");
   };
+
+  const getBreadcrumbs = (pathname: string) => {
+    const pathSegments = pathname.split("/").filter((segment) => segment);
+    return pathSegments.map((segment, index) => {
+      const path = `/${pathSegments.slice(0, index + 1).join("/")}`;
+      return (
+        <li key={path} className="capitalize">
+          {index < pathSegments.length - 1 ? (
+            <Link href={path} className="hover:line-through no-underline">
+              {formatPath(segment)}
+            </Link>
+          ) : (
+            formatPath(segment)
+          )}
+        </li>
+      );
+    });
+  };
+
   return (
     <div className="breadcrumbs text-sm">
-      <ul>
+      <ul className="flex space-x-2">
         <li>
-          <Link href="/my-acount" className="hover:line-through no-underline">
+          <Link href="/my-account" className="hover:line-through no-underline">
             My Account
           </Link>
         </li>
-        <li className="capitalize">{pathMap[pathname]}</li>
+        {getBreadcrumbs(pathname)}
       </ul>
     </div>
   );
