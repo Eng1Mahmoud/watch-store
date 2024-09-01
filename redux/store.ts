@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterSlice from "./features/counterSlice";
+import ShowDialogCropImage from "./features/ShowDialogCropImage";
 export const Store = () => {
   return configureStore({
     reducer: {
       counter: counterSlice,
+      showDialogCropImage: ShowDialogCropImage,
     },
   });
 };
