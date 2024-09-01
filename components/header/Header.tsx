@@ -7,6 +7,7 @@ import Cart from "./Cart";
 import NavLinks from "./NavLinks";
 import { CiMenuFries } from "react-icons/ci";
 import Avatar from "./Avatar";
+import Aside from "./Aside";
 const Header = () => {
   return (
     <div className="header container">
@@ -37,7 +38,7 @@ const Header = () => {
           <div className="flex-1 md:hidden">
             <Search />
           </div>
-          <CiMenuFries className="md:hidden text-[30px] font-extrabold cursor-pointer" />
+          <Aside />
         </div>
       </div>
     </div>

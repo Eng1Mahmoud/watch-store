@@ -1,34 +1,25 @@
 import Link from "next/link";
-import React from "react";
+// Array of link data
+export const navLinks = [
+  { href: "/", label: "Home", id: 1 },
+  { href: "/", label: "About", id: 2 },
+  { href: "/", label: "Categories", id: 3 },
+  { href: "/", label: "Products", id: 4 },
+  { href: "/", label: "Brands", id: 5 },
+  { href: "/", label: "GALLERY", id: 6 },
+  { href: "/", label: "TESTIMONIALS", id: 7 },
+  { href: "/", label: "CONTACT US", id: 8 },
+];
 
 const NavLinks = () => {
   return (
     <div className="hidden md:flex">
       <ul className="menu menu-horizontal px-1 mx-1">
-        <li>
-          <Link href="/">Home</Link>
-        </li>
-        <li>
-          <Link href="/">About</Link>
-        </li>
-        <li>
-          <Link href="/">Categories</Link>
-        </li>
-        <li>
-          <Link href="/">Products</Link>
-        </li>
-        <li>
-          <Link href="/">Brands</Link>
-        </li>
-        <li>
-          <Link href="/">GALLERY</Link>
-        </li>
-        <li>
-          <Link href="/">TESTIMONIALS</Link>
-        </li>
-        <li>
-          <Link href="/">CONTACT US</Link>
-        </li>
+        {navLinks.map((link) => (
+          <li key={link.id}>
+            <Link href={link.href}>{link.label}</Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
