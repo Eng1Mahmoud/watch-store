@@ -1,10 +1,12 @@
 "use client";
-import { IoIosArrowUp } from "react-icons/io";
-import { useRef, useEffect } from "react";
+import { useEffect, useRef } from "react";
+import whatsapp from "@/public/assets/whatsapp.svg";
+import Image from "next/image";
+import Link from "next/link";
 
-const ScrollToTop = () => {
+const ContactWithWhatsapp = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const PositionHidden = 200;
+  const PositionHidden = 160;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,28 +21,23 @@ const ScrollToTop = () => {
         }
       }
     };
-
     window.addEventListener("scroll", handleScroll);
-
-    // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []); // Empty dependency array to run the effect once on mount
-
-  const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, []);
 
   return (
     <div
-      className="fixed bottom-8 right-5 z-[1000000000000] cursor-pointer bg-main-main p-2 rounded-full translate-x-[150%] transition-transform duration-300"
+      className="fixed bottom-24 right-5 translate-x-[150%] transition-transform duration-300"
+      id="whatsapp-button"
       ref={scrollRef}
-      onClick={handleClick}
     >
-      <IoIosArrowUp size={30} className="text-text-third" />
+      <Link href="https://wa.me/201201453941" target="_self">
+        <Image src={whatsapp} alt="whatsapp" width={50} height={50} />
+      </Link>
     </div>
   );
 };
 
-export default ScrollToTop;
+export default ContactWithWhatsapp;
