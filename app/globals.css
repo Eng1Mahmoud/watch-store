@@ -7,6 +7,12 @@ body,
 html {
   overflow-x: hidden;
 }
+*{
+  
+  content-visibility: auto;
+  contain-intrinsic-size: 100px; /* A guess at the height of it */
+
+} 
 /* a */
 a {
   text-decoration: none !important;
