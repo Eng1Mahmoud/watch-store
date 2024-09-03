@@ -29,7 +29,7 @@ const ContactWithWhatsapp = () => {
 
   return (
     <div
-      className="fixed bottom-24 right-5 translate-x-[150%] transition-transform duration-300"
+      className="fixed bottom-24 right-5 translate-x-[150%] transition-transform duration-300 z-[200000000000000000000]"
       id="whatsapp-button"
       ref={scrollRef}
     >
