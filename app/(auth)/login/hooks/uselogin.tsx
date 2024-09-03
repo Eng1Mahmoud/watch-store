@@ -1,6 +1,6 @@
 import axiosInstance from "@/axios/axiosInstance";
 import { toast } from "react-toastify";
-import { revalidateTag } from "next/cache";
+import { setCookie } from "cookies-next";
 export const useLogin = () => {
   interface LoginFormValues {
     email: string;
@@ -16,11 +16,11 @@ export const useLogin = () => {
       .then((res) => {
         console.log(res);
         toast.success("Login successful");
-        revalidateTag("user");
       })
       .catch((error) => {
         console.log(error);
         toast.error("Login failed");
+        setCookie("token", "hello");
       })
       .finally(() => {
         resetForm && resetForm();

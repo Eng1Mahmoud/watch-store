@@ -50,16 +50,20 @@ export const Slider: React.FC = () => {
       >
         {Slides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div className="bg-white p-5 rounded-lg shadow-xl">
-              <div className="flex items-center justify-center">
+            {" "}
+            {/* Set a fixed height */}
+            <div className="bg-white p-5 rounded-lg shadow-xl h-[250px] flex flex-col">
+              <div className="flex items-center justify-center flex-shrink-0">
                 <FaQuoteLeft className="text-[50px] text-main-main" />
               </div>
-              <h1 className="text-text-secondary text-2xl font-bold text-center pt-5">
-                {slide.title}
-              </h1>
-              <p className="text-text-secondary text-center pt-5">
-                {slide.description}
-              </p>
+              <div className="flex flex-col flex-grow justify-center">
+                <h1 className="text-text-secondary text-2xl font-bold text-center pt-5">
+                  {slide.title}
+                </h1>
+                <p className="text-text-secondary text-center pt-5 overflow-y-auto">
+                  {slide.description}
+                </p>
+              </div>
             </div>
           </SwiperSlide>
         ))}

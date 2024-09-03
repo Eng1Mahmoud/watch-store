@@ -13,13 +13,13 @@ export default function AuthLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <StoreProvider>
-      <html lang="en">
-        <body suppressHydrationWarning={true}>
+    <html lang="en">
+      <body suppressHydrationWarning={true}>
+        <StoreProvider>
           <div className="pt-10">{children}</div>
           <ToastContainer position="top-right" autoClose={5000} />
-        </body>
-      </html>
-    </StoreProvider>
+        </StoreProvider>
+      </body>
+    </html>
   );
 }
