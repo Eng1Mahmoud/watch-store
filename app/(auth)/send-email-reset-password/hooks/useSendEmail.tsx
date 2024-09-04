@@ -10,7 +10,6 @@ export const useSendEmail = () => {
     values: sendEmailProps,
     { resetForm }: { resetForm?: () => void },
   ) => {
-    console.log(values);
     // toast.success("Login Success");
     if (resetForm) {
       resetForm();

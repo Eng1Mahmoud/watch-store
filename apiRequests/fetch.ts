@@ -1,9 +1,4 @@
-import { cookies } from "next/headers";
-import { revalidateTag } from "next/cache";
-import "server-only";
-
-const BASE_URL = process.env.API_BASE_URL || "https://fakestoreapi.com";
-
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
 
 interface RequestOptions {
@@ -14,6 +9,7 @@ interface RequestOptions {
   cache?: RequestCache;
   revalidate?: number | false;
   tags?: string[];
+  token?: string;
 }
 
 export async function apiRequest<T>({
@@ -24,6 +20,7 @@ export async function apiRequest<T>({
   cache = "no-store",
   revalidate,
   tags,
+  token,
 }: RequestOptions): Promise<T> {
   const url = new URL(`${BASE_URL}${endpoint}`);
 
@@ -33,15 +30,12 @@ export async function apiRequest<T>({
     });
   }
 
-  const token = cookies().get("token");
-  console.log(token);
-
   const headers: HeadersInit = {
     "Content-Type": "application/json",
   };
 
   if (token) {
-    headers["Authorization"] = `Bearer ${token}`;
+    headers.Authorization = `Bearer ${token}`;
   }
 
   const options: RequestInit = {
@@ -60,13 +54,5 @@ export async function apiRequest<T>({
 
   const response = await fetch(url, options);
 
-  if (!response.ok) {
-    throw new Error(`API request failed: ${response.statusText}`);
-  }
-
   return response.json();
-}
-
-export function revalidateApiData(tags: string[]) {
-  tags.forEach((tag) => revalidateTag(tag));
 }

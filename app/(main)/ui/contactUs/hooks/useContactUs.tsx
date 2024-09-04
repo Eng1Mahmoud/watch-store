@@ -10,7 +10,6 @@ export const useContactUs = () => {
     values: ContactUsProps,
     { resetForm }: { resetForm?: () => void },
   ) => {
-    console.log(values);
     if (resetForm) {
       resetForm();
     }

@@ -30,7 +30,6 @@ export const useCropAndUpload = () => {
                 const base64data = reader.result as string;
                 uploadProfilImages(base64data)
                   .then((res) => {
-                    console.log(res);
                     toast.success("Image uploaded successfully");
                     setSaveLoading(false);
                     dispatch(closeDialogCropImage());

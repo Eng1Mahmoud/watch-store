@@ -7,7 +7,6 @@ import { Gallery } from "./ui/Gallery/Gallery";
 import Testimonials from "./ui/testimonials/Testimonials";
 import Categories from "./ui/categories/categories";
 import Products from "./ui/Products/Products";
-import Product from "./ui/product/product";
 
 const page = () => {
   return (
@@ -20,7 +19,6 @@ const page = () => {
       <Gallery />
       <Testimonials />
       <ContactUs />
-      <Product />
     </div>
   );
 };

@@ -8,7 +8,6 @@ export const UploadImage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
   const image = useAppSelector((state) => state.showDialogCropImage.image);
-  console.log(image);
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLoading(true);
     const file = event.target.files?.[0];
@@ -30,7 +29,6 @@ export const UploadImage: React.FC = () => {
       ) as HTMLInputElement;
       if (fileInput) {
         fileInput.value = "";
-        console.log(fileInput.value);
       }
     }
   }, [image]);

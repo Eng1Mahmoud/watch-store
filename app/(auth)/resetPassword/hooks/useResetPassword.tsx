@@ -8,7 +8,6 @@ export const useResetPassword = () => {
     values: ResetPasswordValues,
     { resetForm }: { resetForm?: () => void },
   ) => {
-    console.log(values);
     // toast.success("Login Success");
     if (resetForm) {
       resetForm();

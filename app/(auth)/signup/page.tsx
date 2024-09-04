@@ -3,16 +3,29 @@ import BaseForm from "@/components/formik/BaseForm";
 import { registerSchema } from "@/formsValidation/validation";
 import { useSignUp } from "./hooks/useSignUp";
 import FormInputs from "./ui/FormInputs";
+import SubmitButton from "./ui/SubmitButton";
+import SuccessSignUp from "./ui/SuccessSignUp";
 const SignUp = () => {
-  const { onSubmit } = useSignUp();
+  const { onSubmit, loading, success } = useSignUp();
   return (
-    <BaseForm
-      initialValues={{ username: "", email: "", password: "" }}
-      validationSchema={registerSchema}
-      onSubmit={onSubmit}
-    >
-      <FormInputs />
-    </BaseForm>
+    <>
+      {success ? (
+        <SuccessSignUp />
+      ) : (
+        <BaseForm
+          initialValues={{ username: "", email: "", password: "" }}
+          validationSchema={registerSchema}
+          onSubmit={onSubmit}
+        >
+          <div className="container max-w-[600px] my-[100px]  ">
+            <div className="box-shadow">
+              <FormInputs />
+              <SubmitButton loading={loading} />
+            </div>
+          </div>
+        </BaseForm>
+      )}
+    </>
   );
 };
 

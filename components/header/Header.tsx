@@ -6,7 +6,7 @@ import Search from "./Search";
 import Cart from "./Cart";
 import NavLinks from "./NavLinks";
 import { CiMenuFries } from "react-icons/ci";
-import Avatar from "./Avatar";
+import Avatar from "./avatar/Avatar";
 import Aside from "./Aside";
 const Header = () => {
   return (

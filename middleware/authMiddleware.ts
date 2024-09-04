@@ -13,7 +13,6 @@ export function authMiddleware(request: NextRequest) {
       const decodedToken = jwt.decode(token.value) as { role: Role };
       userRole = decodedToken.role;
     } catch (error) {
-      console.log("Invalid token:", error);
       return NextResponse.redirect(new URL("/login", request.url)); // Redirect to login if token is invalid
     }
   }
