@@ -3,11 +3,11 @@ import React from "react";
 import logo from "@/public/assets/logo.webp";
 import Link from "next/link";
 import Search from "./Search";
-import Cart from "./Cart";
+import Cart from "./cart/Cart";
 import NavLinks from "./NavLinks";
-import { CiMenuFries } from "react-icons/ci";
 import Avatar from "./avatar/Avatar";
 import Aside from "./Aside";
+import AuthLinks from "./AuthLinks";
 const Header = () => {
   return (
     <div className="header container">
@@ -28,6 +28,7 @@ const Header = () => {
           </div>
           <Cart />
           <Avatar />
+          <AuthLinks />
         </div>
       </div>
 

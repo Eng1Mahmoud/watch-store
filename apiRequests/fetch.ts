@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
 
@@ -53,6 +55,15 @@ export async function apiRequest<T>({
   }
 
   const response = await fetch(url, options);
-
+  if (response.status === 401 || response.status === 403) {
+    if (typeof window === "undefined") {
+      // Server-side: use Next.js redirect
+      redirect("/login");
+    } else {
+      // Client-side: use window.location
+      window.location.href = "/login";
+    }
+    throw new Error("Authentication required");
+  }
   return response.json();
 }
