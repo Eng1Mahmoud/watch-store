@@ -8,7 +8,7 @@ const Avatar = async () => {
     // to prevent fetching data if token is not present
     user = await getUser();
   }
-  console.log("user", user);
+
   return <AvatarUI user={user} />;
 };
 

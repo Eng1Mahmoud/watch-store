@@ -1,17 +1,18 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import jwt from "jsonwebtoken";
+import { decodeToken } from "@/utils/decodeToken";
 import { routes } from "./helper/RolesAndRoutes";
 import type { Role } from "./helper/RolesAndRoutes";
 export function authMiddleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const token = request.cookies.get("your_auth_token"); // Replace with your actual token name
+  const token = request.cookies.get("token")?.value; // Replace with your actual token name
   let userRole: Role = "guest"; // Default role is guest
-
+  console.log("token", token);
   if (token) {
     try {
-      const decodedToken = jwt.decode(token.value) as { role: Role };
-      userRole = decodedToken.role;
+      const decodedToken: any = decodeToken(token);
+      userRole = decodedToken;
+      console.log("userRole", userRole);
     } catch (error) {
       return NextResponse.redirect(new URL("/login", request.url)); // Redirect to login if token is invalid
     }

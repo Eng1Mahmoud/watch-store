@@ -21,8 +21,6 @@ export const useSignUp = () => {
         method: "POST",
         data: values,
       });
-      console.log(response);
-
       if (response.success) {
         toast.success(response.message);
         setSuccess(true);
