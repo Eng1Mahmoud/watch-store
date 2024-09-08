@@ -13,7 +13,7 @@ const FormInputs = () => {
         <Input name="email" placeholder="Email" type="email" />
         <PasswordInput name="password" placeholder="Password" />
         <div className="flex justify-start">
-          <Link href="/" className="text-main-main font-bold">
+          <Link href="/forgotPassword" className="text-main-main font-bold">
             Forgot password?
           </Link>
         </div>

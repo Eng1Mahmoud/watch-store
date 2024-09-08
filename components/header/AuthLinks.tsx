@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
-import { useTokenExpiration } from "@/hooks/useTokenExpiration";
+import { useAppSelector } from "@/redux/hooks";
 
 const AuthLinks = () => {
-  const isExpired = useTokenExpiration();
-  return isExpired ? (
+  const isLoging = useAppSelector((state) => state.user.login);
+  return !isLoging ? (
     <div className="flex gap-4 pl-4">
       {/*create amizing ui for links login & signup */}
       <Link href="/login">Login</Link>

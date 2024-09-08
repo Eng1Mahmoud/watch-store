@@ -1,18 +1,18 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { getCookie } from "cookies-next";
 import { decodeToken } from "@/utils/decodeToken";
 import { toast } from "react-toastify";
+import { setUser } from "@/redux/features/user";
+import { useAppDispatch } from "@/redux/hooks";
 
 export const useTokenExpiration = () => {
-  const [isExpired, setIsExpired] = useState(true);
-
+  const dispatch = useAppDispatch();
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
-
     const checkTokenExpiration = () => {
       const token = getCookie("token");
       if (!token) {
-        setIsExpired(true);
+        dispatch(setUser(false));
         return;
       }
 
@@ -20,14 +20,11 @@ export const useTokenExpiration = () => {
       const currentTime = Date.now() / 1000; // Convert to seconds
 
       if (exp <= currentTime) {
-        if (!isExpired) {
-          setIsExpired(true);
-          toast.error("Your session has expired", {
-            toastId: "session-expired",
-          });
-        }
+        dispatch(setUser(false));
+        toast.error("Your session has expired", {
+          toastId: "session-expired",
+        });
       } else {
-        setIsExpired(false);
         const timeUntilExpiration = (exp - currentTime) * 1000; // Convert to milliseconds
         timeoutId = setTimeout(checkTokenExpiration, timeUntilExpiration);
       }
@@ -36,9 +33,7 @@ export const useTokenExpiration = () => {
     checkTokenExpiration();
 
     return () => {
-      clearTimeout(timeoutId);
+      if (timeoutId) clearTimeout(timeoutId);
     };
-  }, [isExpired]);
-
-  return isExpired;
+  }, [dispatch]);
 };

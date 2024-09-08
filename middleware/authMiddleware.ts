@@ -7,12 +7,11 @@ export function authMiddleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const token = request.cookies.get("token")?.value; // Replace with your actual token name
   let userRole: Role = "guest"; // Default role is guest
-  console.log("token", token);
+
   if (token) {
     try {
       const decodedToken: any = decodeToken(token);
-      userRole = decodedToken;
-      console.log("userRole", userRole);
+      userRole = decodedToken?.role;
     } catch (error) {
       return NextResponse.redirect(new URL("/login", request.url)); // Redirect to login if token is invalid
     }

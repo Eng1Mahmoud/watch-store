@@ -12,7 +12,7 @@ const Login = () => {
       validationSchema={loginSchema}
       onSubmit={onSubmit}
     >
-      <div className="container max-w-[600px] my-[100px]  ">
+      <div className="container max-w-[600px]   ">
         <div className="box-shadow">
           <FormInputs />
           <SubmitButton loading={loading} />

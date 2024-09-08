@@ -1,9 +1,10 @@
 "use client";
+import { useAppSelector } from "@/redux/hooks";
 import CartBody from "./CartBody";
-import { useTokenExpiration } from "@/hooks/useTokenExpiration";
+
 const CartUI = () => {
-  const isExpired = useTokenExpiration();
-  return !isExpired ? (
+  const isLoging = useAppSelector((state) => state.user.login);
+  return isLoging ? (
     <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
         <div className="indicator">

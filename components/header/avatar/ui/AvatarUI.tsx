@@ -2,12 +2,11 @@
 import Image from "next/image";
 import avatar from "@/public/assets/avatar.jpg";
 import AvatarMenu from "./AvatarMenu";
-
-import { useTokenExpiration } from "@/hooks/useTokenExpiration";
+import { useAppSelector } from "@/redux/hooks";
 const AvatarUI = ({ user }: { user: any }) => {
-  const isExpired = useTokenExpiration();
+  const isLoging = useAppSelector((state) => state.user.login);
 
-  return !isExpired ? (
+  return isLoging ? (
     <div className="dropdown dropdown-end">
       <div
         tabIndex={0}

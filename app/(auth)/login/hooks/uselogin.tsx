@@ -4,7 +4,10 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { decodeToken } from "@/utils/decodeToken";
 import { setCookie } from "cookies-next";
+import { setUser } from "@/redux/features/user";
+import { useAppDispatch } from "@/redux/hooks";
 export const useLogin = () => {
+  const dispatch = useAppDispatch();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   interface LoginFormValues {
@@ -24,6 +27,8 @@ export const useLogin = () => {
         data: values,
       });
       if (response.success) {
+        // set user state
+        dispatch(setUser(true));
         toast.success(response?.message);
         if (resetForm) {
           resetForm();
@@ -31,13 +36,13 @@ export const useLogin = () => {
         // set token in cookies
         const decodedToken = decodeToken(response?.data?.token);
         if (decodedToken && typeof decodedToken !== "string") {
-          const { exp, id } = decodedToken;
+          const { exp } = decodedToken;
           if (exp) {
             const expDate = new Date(exp * 1000);
             setCookie("token", response?.data?.token, { expires: expDate });
-            setCookie("userId", id, { expires: expDate });
           }
         }
+
         // redirect to home page
         router.push("/");
       } else {

@@ -1,4 +1,4 @@
-export type Role = "guest" | "user" | "admin" | "superAdmin";
+export type Role = "guest" | "user" | "admin";
 
 interface RouteConfig {
   path: string;
@@ -8,13 +8,13 @@ interface RouteConfig {
 export const routes: RouteConfig[] = [
   { path: "/login", roles: ["guest"] },
   { path: "/signup", roles: ["guest"] },
+  { path: "/verify-email", roles: ["guest"] },
+  { path: "/reset-password", roles: ["guest"] },
   { path: "/forgot-password", roles: ["guest"] },
-  { path: "/home", roles: ["guest", "user", "admin", "superAdmin"] },
-  { path: "/about", roles: ["guest", "user", "admin", "superAdmin"] },
-  { path: "/profile", roles: ["user", "admin", "superAdmin"] },
-  { path: "/settings", roles: ["user", "admin", "superAdmin"] },
-  { path: "/admin/dashboard", roles: ["admin", "superAdmin"] },
-  { path: "/admin/settings", roles: ["admin", "superAdmin"] },
-  { path: "/superadmin/controls", roles: ["superAdmin"] },
-  { path: "/superadmin/users", roles: ["superAdmin"] },
+  { path: "/my-acount", roles: ["user", "admin"] },
+  { path: "/change-password", roles: ["user", "admin"] },
+  { path: "/my-Addresses", roles: ["user", "admin"] },
+  { path: "/my-orders", roles: ["user", "admin"] },
+  { path: "/my-Wishlist", roles: ["user", "admin"] },
+  { path: "/my-profile", roles: ["user", "admin"] },
 ];

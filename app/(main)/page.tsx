@@ -12,7 +12,7 @@ const page = () => {
     <div>
       <Slider />
       <Categories />
-      <Products />
+      {/*  <Products /> */}
       <About />
       <Brands />
       <Gallery />

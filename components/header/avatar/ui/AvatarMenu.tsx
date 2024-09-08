@@ -1,4 +1,5 @@
 import React from "react";
+import Logout from "./Logout";
 
 const AvatarMenu = () => {
   return (
@@ -16,7 +17,7 @@ const AvatarMenu = () => {
         <a>Settings</a>
       </li>
       <li>
-        <a>Logout</a>
+        <Logout />
       </li>
     </ul>
   );
