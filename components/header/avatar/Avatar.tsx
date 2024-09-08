@@ -1,6 +1,6 @@
-import { getUser } from "./getUser";
+import { getUser } from "../../../actions/getUser";
 import AvatarUI from "./ui/AvatarUI";
-import { getTokenServer } from "@/utils/getToken";
+import { getTokenServer } from "@/utils/getTokenServer";
 const Avatar = async () => {
   const token = getTokenServer();
   let user: any = null;
@@ -9,7 +9,7 @@ const Avatar = async () => {
     user = await getUser();
   }
 
-  return <AvatarUI user={user} />;
+  return <AvatarUI avatarUrl={user?.data?.userData?.avatar_url} />;
 };
 
 export default Avatar;

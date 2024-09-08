@@ -4,14 +4,15 @@ import storage from "redux-persist/lib/storage";
 import userSlice from "./features/user";
 import ShowDialogCropImage from "./features/ShowDialogCropImage";
 
+// Configure Redux Persist
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["user"], // only user will be persisted
 };
 
 const persistedUserReducer = persistReducer(persistConfig, userSlice);
 
+// Create a store function
 export const Store = () => {
   const store = configureStore({
     reducer: {
@@ -21,7 +22,7 @@ export const Store = () => {
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: {
-          ignoredActions: ["persist/PERSIST"],
+          ignoredActions: ["persist/PERSIST", "persist/REHYDRATE"],
         },
       }),
   });
@@ -31,6 +32,7 @@ export const Store = () => {
   return { store, persistor };
 };
 
+// Define TypeScript types
 export type AppStore = ReturnType<typeof Store>["store"];
 export type RootState = ReturnType<AppStore["getState"]>;
 export type AppDispatch = AppStore["dispatch"];

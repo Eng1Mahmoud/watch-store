@@ -4,7 +4,6 @@ import { AuthResetPassword } from "../actions/AuthResetPassword";
 import { notFound } from "next/navigation";
 const page = async ({ params }: { params: { token: string } }) => {
   const response: any = await AuthResetPassword({ token: params.token });
-  console.log(response);
   if (!response.success) return notFound();
   return (
     <div>

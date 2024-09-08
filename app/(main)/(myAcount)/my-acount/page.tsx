@@ -1,6 +1,4 @@
-import React from "react";
 import Header from "./header/header";
-import CropImageDialog from "./CropDialog";
 import { ActionList } from "./action-list/ActionList";
 
 const page = () => {
@@ -10,7 +8,6 @@ const page = () => {
         <div className="shadow-custom rounded-xl">
           <Header />
           <ActionList />
-          <CropImageDialog />
         </div>
       </div>
     </div>

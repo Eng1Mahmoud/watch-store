@@ -2,7 +2,7 @@ import Link from "next/link";
 // Array of link data
 export const navLinks = [
   { href: "/", label: "Home", id: 1 },
-  { href: "/", label: "About", id: 2 },
+  { href: "/about", label: "About", id: 2 },
   { href: "/", label: "Categories", id: 3 },
   { href: "/", label: "Products", id: 4 },
   { href: "/", label: "Brands", id: 5 },

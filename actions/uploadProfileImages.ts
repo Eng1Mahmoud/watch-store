@@ -7,7 +7,10 @@ cloudinary.config({
   api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET,
 });
 
-export const uploadProfilImages = async (image: string) => {
+export const uploadImage = async (formData: FormData) => {
+  const file = formData.get("file") as File;
+  const arrayBuffer = await file.arrayBuffer();
+  const buffer = Buffer.from(arrayBuffer);
   const results: any = await new Promise((resolve, reject) => {
     cloudinary.uploader
       .upload_stream(
@@ -20,7 +23,7 @@ export const uploadProfilImages = async (image: string) => {
           resolve(result);
         },
       )
-      .end(image);
+      .end(buffer);
   });
 
   return { imageUrl: results.secure_url };

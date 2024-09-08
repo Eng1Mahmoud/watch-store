@@ -49,7 +49,7 @@ export const ActionList = () => {
         {actionList.map((action) => (
           <div
             key={action.id}
-            className="  py-3 px-4 border-b border-gray-200 rounded-md shadow-lg hover:shadow-custom relative"
+            className="  py-3 px-4 border-[1px]  rounded-md shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300 relative border-b-8 border-b-main-main"
           >
             <div className="flex ">
               <div className="mr-2">{action.icon}</div>

@@ -4,9 +4,10 @@ import { decodeToken } from "@/utils/decodeToken";
 import { toast } from "react-toastify";
 import { setUser } from "@/redux/features/user";
 import { useAppDispatch } from "@/redux/hooks";
-
+import { useRouter } from "next/navigation";
 export const useTokenExpiration = () => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
     const checkTokenExpiration = () => {
@@ -21,6 +22,7 @@ export const useTokenExpiration = () => {
 
       if (exp <= currentTime) {
         dispatch(setUser(false));
+        router.push("/login");
         toast.error("Your session has expired", {
           toastId: "session-expired",
         });

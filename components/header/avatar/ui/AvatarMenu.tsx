@@ -1,5 +1,6 @@
 import React from "react";
 import Logout from "./Logout";
+import Link from "next/link";
 
 const AvatarMenu = () => {
   return (
@@ -8,10 +9,9 @@ const AvatarMenu = () => {
       className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[3000000000000000000] mt-3 w-52 p-2 shadow"
     >
       <li>
-        <a className="justify-between">
-          Profile
-          <span className="badge">New</span>
-        </a>
+        <Link href="/my-acount" className="justify-between">
+          My Acount
+        </Link>
       </li>
       <li>
         <a>Settings</a>

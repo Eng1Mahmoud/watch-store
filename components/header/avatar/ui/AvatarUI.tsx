@@ -3,9 +3,8 @@ import Image from "next/image";
 import avatar from "@/public/assets/avatar.jpg";
 import AvatarMenu from "./AvatarMenu";
 import { useAppSelector } from "@/redux/hooks";
-const AvatarUI = ({ user }: { user: any }) => {
+const AvatarUI = ({ avatarUrl }: { avatarUrl: string }) => {
   const isLoging = useAppSelector((state) => state.user.login);
-
   return isLoging ? (
     <div className="dropdown dropdown-end">
       <div
@@ -16,7 +15,7 @@ const AvatarUI = ({ user }: { user: any }) => {
         <div className="rounded-full w-12 h-12 overflow-hidden">
           <Image
             alt="avatar"
-            src={avatar}
+            src={avatarUrl || avatar}
             width={50}
             height={50}
             className="object-cover w-full h-full"
