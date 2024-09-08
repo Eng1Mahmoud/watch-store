@@ -1,6 +1,6 @@
 import { getUser } from "./getUser";
 import AvatarUI from "./ui/AvatarUI";
-import { getTokenServer } from "@/utils/getToken";
+import { getTokenServer } from "@/utils/getTokenServer";
 const Avatar = async () => {
   const token = getTokenServer();
   let user: any = null;

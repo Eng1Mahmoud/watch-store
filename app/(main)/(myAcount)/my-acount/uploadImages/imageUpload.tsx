@@ -1,37 +1,21 @@
 "use client";
 import "cropperjs/dist/cropper.css";
 import { MdPhotoCamera } from "react-icons/md";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { showDialog } from "@/redux/features/ShowDialogCropImage";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 export const UploadImage: React.FC = () => {
   const [loading, setLoading] = useState(false);
-  const dispatch = useAppDispatch();
-  const image = useAppSelector((state) => state.showDialogCropImage.image);
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLoading(true);
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        dispatch(showDialog({ show: true, image: reader.result as string }));
         setLoading(false);
       };
       reader.readAsDataURL(file);
     }
   };
 
-  // clear image value when dialog is closed or canceled
-  useEffect(() => {
-    if (!image) {
-      const fileInput = document.getElementById(
-        "file-input",
-      ) as HTMLInputElement;
-      if (fileInput) {
-        fileInput.value = "";
-      }
-    }
-  }, [image]);
   return (
     <div className="relative">
       <input

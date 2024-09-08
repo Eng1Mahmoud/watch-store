@@ -1,11 +1,9 @@
 import { ReactCropperElement } from "react-cropper";
 import { uploadProfilImages } from "@/actions/uploadProfileImages";
 import { toast } from "react-toastify";
-import { useAppDispatch } from "@/redux/hooks";
 import { closeDialogCropImage } from "@/redux/features/ShowDialogCropImage";
 // Function to handle image cropping and uploading
 export const useCropAndUpload = () => {
-  const dispatch = useAppDispatch();
   const handleCropAndUpload = async (
     cropperRef: React.RefObject<ReactCropperElement>,
     setSaveLoading: React.Dispatch<React.SetStateAction<boolean>>,

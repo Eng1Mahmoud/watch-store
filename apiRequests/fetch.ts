@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
-type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
+type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 
 interface RequestOptions {
   endpoint: string;
@@ -49,7 +49,7 @@ export async function apiRequest<T>({
     },
   };
 
-  if (data && (method === "POST" || method === "PUT")) {
+  if (data && (method === "POST" || method === "PUT" || method === "PATCH")) {
     options.body = JSON.stringify(data);
   }
 
