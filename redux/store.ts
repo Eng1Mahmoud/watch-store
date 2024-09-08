@@ -2,7 +2,6 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import userSlice from "./features/user";
-import ShowDialogCropImage from "./features/ShowDialogCropImage";
 
 // Configure Redux Persist
 const persistConfig = {
@@ -17,7 +16,6 @@ export const Store = () => {
   const store = configureStore({
     reducer: {
       user: persistedUserReducer,
-      showDialogCropImage: ShowDialogCropImage,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
