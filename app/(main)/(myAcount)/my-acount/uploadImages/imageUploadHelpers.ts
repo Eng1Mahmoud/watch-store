@@ -1,11 +1,12 @@
 import { ReactCropperElement } from "react-cropper";
 import { uploadProfilImages } from "@/actions/uploadProfileImages";
 import { toast } from "react-toastify";
-import { useAppDispatch } from "@/redux/hooks";
-import { closeDialogCropImage } from "@/redux/features/ShowDialogCropImage";
+import { getTokenClient } from "@/utils/getTokenClient";
+import { sendImageToServer } from "./sendImageToServer";
+import { useState } from "react";
 // Function to handle image cropping and uploading
 export const useCropAndUpload = () => {
-  const dispatch = useAppDispatch();
+  const token = getTokenClient();
   const handleCropAndUpload = async (
     cropperRef: React.RefObject<ReactCropperElement>,
     setSaveLoading: React.Dispatch<React.SetStateAction<boolean>>,
@@ -29,11 +30,12 @@ export const useCropAndUpload = () => {
               reader.onloadend = async () => {
                 const base64data = reader.result as string;
                 uploadProfilImages(base64data)
-                  .then((res) => {
+                  .then(async (res) => {
                     toast.success("Image uploaded successfully");
                     setSaveLoading(false);
-                    dispatch(closeDialogCropImage());
+
                     // here we will update the image into server
+                    sendImageToServer(res.imageUrl, token as string);
                   })
                   .catch(() => {
                     toast.error("Something went wrong while uploading image");
