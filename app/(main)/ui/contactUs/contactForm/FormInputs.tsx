@@ -12,7 +12,7 @@ const FormInputs = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pb-4">
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-5">
           <Input name="name" placeholder="Name" type="text" />
           <Input name="email" placeholder="Email" type="email" />
           <Input name="phoneNumber" placeholder="Phone" type="text" />

@@ -1,7 +1,10 @@
-import React from "react";
-
+import ChangePassword from "./ui/ChangePassword";
 const page = () => {
-  return <div>change password</div>;
+  return (
+    <div>
+      <ChangePassword />
+    </div>
+  );
 };
 
 export default page;

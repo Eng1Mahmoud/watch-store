@@ -4,7 +4,7 @@ import testimonialImage from "@/public/assets/testimonials/t1.png";
 import { Slider } from "./slider/Slider";
 const Testimonials = () => {
   return (
-    <div className="mt-8">
+    <div className="mt-8" id="testimonials">
       <h1 className="text-center text-[30px] font-bold text-main-main my-10 ">
         Testimonials
       </h1>

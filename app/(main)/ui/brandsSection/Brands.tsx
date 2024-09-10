@@ -2,7 +2,7 @@ import { BrandItems } from "./BrandItems";
 
 export const Brands = () => {
   return (
-    <div className="container">
+    <div className="container" id="brands">
       <h2 className="text-center text-3xl font-bold mt-10 text-main-main">
         Brands
       </h2>

@@ -1,15 +1,18 @@
 import StoreProvider from "@/redux/StoreProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./globals.css";
 import ScrollToTop from "@/components/ScrollToTop";
+// import fonts
+import { mainFont } from "./fonts/fonts";
+import "./globals.css";
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${mainFont.variable}`}>
       <body suppressHydrationWarning={true}>
         <StoreProvider>
           {children}

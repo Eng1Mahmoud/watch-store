@@ -9,7 +9,7 @@ const config: Config = {
 
   theme: {
     fontFamily: {
-      main: ["main", "sans-serif"],
+      main: ["var(--main-font)", "sans-serif"],
     },
     container: {
       center: true,

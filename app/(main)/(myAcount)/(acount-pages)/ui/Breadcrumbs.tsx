@@ -30,7 +30,7 @@ const Breadcrumbs = () => {
     <div className="breadcrumbs text-sm">
       <ul className="flex space-x-2">
         <li>
-          <Link href="/my-account" className="hover:line-through no-underline">
+          <Link href="/my-acount" className="hover:line-through no-underline">
             My Account
           </Link>
         </li>

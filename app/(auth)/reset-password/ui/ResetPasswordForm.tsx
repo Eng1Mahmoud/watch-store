@@ -4,8 +4,8 @@ import React from "react";
 import { forgotPasswordSchema } from "@/formsValidation/validation";
 import { useResetPassword } from "../hooks/useResetPassword";
 import PasswordInput from "@/components/formik/PasswordInput";
-const ResetPasswordForm = () => {
-  const { onSubmit } = useResetPassword();
+const ResetPasswordForm = ({ token }: { token: string }) => {
+  const { onSubmit, loading } = useResetPassword(token);
   return (
     <BaseForm
       initialValues={{ password: "", confirmPassword: "" }}
@@ -25,7 +25,7 @@ const ResetPasswordForm = () => {
             />
             <div className="flex justify-center">
               <button type="submit" className="btn btn-primary w-fit px-10">
-                Reset Password
+                {loading ? "Loading..." : "Reset Password"}
               </button>
             </div>
           </div>

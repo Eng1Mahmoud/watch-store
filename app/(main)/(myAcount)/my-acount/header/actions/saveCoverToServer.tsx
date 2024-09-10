@@ -1,6 +1,5 @@
-"use server";
+import { revalidate } from "@/actions/revalidatTage";
 import { apiRequest } from "@/apiRequests/fetch";
-import { revalidateTag } from "next/cache";
 export const saveCoverToServer = async (coverUrl: string, token: string) => {
   const response: any = await apiRequest({
     endpoint: "/users/current",
@@ -9,7 +8,7 @@ export const saveCoverToServer = async (coverUrl: string, token: string) => {
     token: token,
   });
   if (response.success) {
-    revalidateTag("get-user");
+    revalidate(["get-user"]);
   }
   return response;
 };

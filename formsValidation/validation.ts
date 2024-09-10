@@ -56,3 +56,26 @@ export const contactUsSchema = yup.object().shape({
   email: yup.string().email().required("Email is required"),
   message: yup.string().required("Message is required"),
 });
+
+// profile details schema validation
+export const profileDetailsSchema = yup.object().shape({
+  username: yup.string().required("Username is required"),
+  email: yup.string().email().required("Email is required"),
+});
+
+// change password schema validation
+export const changePasswordSchema = yup.object().shape({
+  oldPassword: yup.string().required("Old password is required"),
+  newPassword: yup
+    .string()
+    .required()
+    .min(8)
+    .max(20)
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/,
+    ),
+  confirmPassword: yup
+    .string()
+    .required("Confirm password is required")
+    .oneOf([yup.ref("newPassword")], "Passwords must match"),
+});

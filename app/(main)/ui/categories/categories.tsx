@@ -2,7 +2,7 @@ import Items from "./Items";
 
 const Categories = () => {
   return (
-    <div className="container py-10">
+    <div className="container py-10" id="categories">
       <h2 className="text-2xl text-center my-10 text-main-main font-extrabold">
         Shop by Category
       </h2>

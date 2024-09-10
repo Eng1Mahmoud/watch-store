@@ -1,6 +1,5 @@
-"use server";
+import { revalidate } from "@/actions/revalidatTage";
 import { apiRequest } from "@/apiRequests/fetch";
-import { revalidateTag } from "next/cache";
 export const saveAvatarIntoserver = async (
   avatarUrl: string,
   token: string,
@@ -12,7 +11,7 @@ export const saveAvatarIntoserver = async (
     token: token,
   });
   if (response.success) {
-    revalidateTag("get-user");
+    revalidate(["get-user"]); //revalidate the get-user tag
   }
   return response;
 };

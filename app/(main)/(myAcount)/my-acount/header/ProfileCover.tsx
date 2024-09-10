@@ -5,7 +5,9 @@ import { MdPhotoCamera } from "react-icons/md";
 import { saveCoverToServer } from "./actions/saveCoverToServer";
 import { getTokenClient } from "@/utils/getTokenClient";
 import { toast } from "react-toastify";
-export const ProfileCover = () => {
+import Image from "next/image";
+export const ProfileCover = ({ cover_url }: { cover_url: string }) => {
+  console.log(cover_url);
   const [loading, setLoading] = useState(false);
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -29,9 +31,18 @@ export const ProfileCover = () => {
     }
   };
   return (
-    <div className="h-[200px] w-full bg-slate-600 relative flex justify-center items-center rounded-tr-xl rounded-tl-xl">
+    <div className="h-[200px] w-full bg-slate-600 relative flex justify-center items-center rounded-tr-xl rounded-tl-xl overflow-hidden">
+      {cover_url && (
+        <Image
+          width={100}
+          height={100}
+          src={cover_url}
+          alt="Profile cover"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      )}
       <div className="absolute bottom-3 right-1 md:right-5">
-        <div className="flex items-center justify-center bg-white rounded-full  cursor-pointer">
+        <div className="flex items-center justify-center bg-white rounded-full cursor-pointer">
           <div className="relative">
             <input
               type="file"

@@ -1,12 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/*body styles*/
-body,
-html {
+html, body {
+  scroll-behavior: smooth;
   overflow-x: hidden;
 }
+
+/*font styles*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,a {
+  font-family: var(--main-font);
+}
+/*end font styles*
+/*style input caret*/
+input[type="text"] {
+  caret-color: green;
+}
+/* end style input caret*/
 
 /* a */
 a {
@@ -24,10 +38,12 @@ a {
   .box-shadow {
     @apply shadow-2xl p-5 rounded-lg border border-gray-200;
   }
+  
 }
 
 /*custom utilities styles*/
 @layer utilities {
+  
 }
 
 /*fonts*/
