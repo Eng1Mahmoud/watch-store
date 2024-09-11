@@ -19,7 +19,7 @@ const NavLinks = () => {
           <li key={link.id}>
             <Link
               href={link.href}
-              className="font-main text-[16px] transition-all duration-300 hover:scale-110 hover:text-main-main"
+              className="font-main font-medium text-[15px] transition-all duration-300 hover:scale-110 hover:text-main-main px-3"
             >
               {link.label}
             </Link>

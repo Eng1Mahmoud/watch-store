@@ -3,41 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    --sb-track-color: #232e33;
-    --sb-thumb-color: #6baf8d;
-    --sb-size: 14px;
-    overflow-x: hidden;
-  }
-
-  body::-webkit-scrollbar {
-    width: var(--sb-size) !important;
-  }
-
-  body::-webkit-scrollbar-track {
-    background: var(--sb-track-color) !important;
-    border-radius: 3px !important;
-    -webkit-border-radius: 3px !important;
-    -moz-border-radius: 3px !important;
-    -ms-border-radius: 3px !important;
-    -o-border-radius: 3px !important;
-  }
-
-  body::-webkit-scrollbar-thumb {
-    background: var(--sb-thumb-color) !important;
-    border-radius: 3px !important;
-    -webkit-border-radius: 3px !important;
-    -moz-border-radius: 3px !important;
-    -ms-border-radius: 3px !important;
-    -o-border-radius: 3px !important;
-  }
-
-  @supports not selector(::-webkit-scrollbar) {
-    body {
-      scrollbar-color: var(--sb-thumb-color) var(--sb-track-color) !important;
-    }
-  }
-
+  
   html,
   body {
     scroll-behavior: smooth;
@@ -66,6 +32,7 @@
     text-decoration: none !important;
     color: inherit;
   }
+ 
 }
 
 /*custom components styles*/

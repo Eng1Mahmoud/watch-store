@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export const AboutContent = () => {
   return (
     <motion.div
-      className="pb-[100px]"
+      className="py[100px]"
       initial={{ x: "100%" }}
       whileInView={{ x: 0 }}
     >
