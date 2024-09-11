@@ -26,9 +26,12 @@ export const useResetPassword = (token: string) => {
             resetForm();
           }
           router.push("/login");
+        } else {
+          toast.error(res.message);
         }
-        console.log(res);
-        toast.error(res.message);
+      })
+      .catch((err) => {
+        toast.error(err.message);
       })
       .finally(() => {
         setLoading(false);

@@ -65,8 +65,8 @@ export const profileDetailsSchema = yup.object().shape({
 
 // change password schema validation
 export const changePasswordSchema = yup.object().shape({
-  oldPassword: yup.string().required("Old password is required"),
-  newPassword: yup
+  old_password: yup.string().required("Old password is required"),
+  new_password: yup
     .string()
     .required()
     .min(8)
@@ -74,8 +74,4 @@ export const changePasswordSchema = yup.object().shape({
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/,
     ),
-  confirmPassword: yup
-    .string()
-    .required("Confirm password is required")
-    .oneOf([yup.ref("newPassword")], "Passwords must match"),
 });

@@ -1,35 +1,73 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-html, body {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+
+@layer base {
+  body {
+    --sb-track-color: #232e33;
+    --sb-thumb-color: #6baf8d;
+    --sb-size: 14px;
+    overflow-x: hidden;
+  }
+
+  body::-webkit-scrollbar {
+    width: var(--sb-size) !important;
+  }
+
+  body::-webkit-scrollbar-track {
+    background: var(--sb-track-color) !important;
+    border-radius: 3px !important;
+    -webkit-border-radius: 3px !important;
+    -moz-border-radius: 3px !important;
+    -ms-border-radius: 3px !important;
+    -o-border-radius: 3px !important;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color) !important;
+    border-radius: 3px !important;
+    -webkit-border-radius: 3px !important;
+    -moz-border-radius: 3px !important;
+    -ms-border-radius: 3px !important;
+    -o-border-radius: 3px !important;
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    body {
+      scrollbar-color: var(--sb-thumb-color) var(--sb-track-color) !important;
+    }
+  }
+
+  html,
+  body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  /*font styles*/
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  a {
+    font-family: var(--main-font);
+  }
+  /*end font styles*
+  /*style input caret*/
+  input[type="text"] {
+    caret-color: green;
+  }
+  /* end style input caret*/
+
+  /* a */
+  a {
+    text-decoration: none !important;
+    color: inherit;
+  }
 }
 
-/*font styles*/
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,a {
-  font-family: var(--main-font);
-}
-/*end font styles*
-/*style input caret*/
-input[type="text"] {
-  caret-color: green;
-}
-/* end style input caret*/
-
-/* a */
-a {
-  text-decoration: none !important;
-  color: inherit;
-}
-/* custom class for react crop shap*/
-
-/*end custom class for react crop shap*/
 /*custom components styles*/
 @layer components {
   .btn-primary {
@@ -38,17 +76,8 @@ a {
   .box-shadow {
     @apply shadow-2xl p-5 rounded-lg border border-gray-200;
   }
-  
 }
 
 /*custom utilities styles*/
 @layer utilities {
-  
-}
-
-/*fonts*/
-
-@font-face {
-  font-family: "main";
-  src: url("../public/fonts/main.ttf");
 }

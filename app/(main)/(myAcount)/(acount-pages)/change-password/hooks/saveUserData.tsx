@@ -15,7 +15,7 @@ export const useSaveUserData = () => {
     setLoading(true);
 
     await apiRequest<any>({
-      endpoint: "/users/current",
+      endpoint: "/users/current/password",
       method: "PATCH",
       data: values,
       token,

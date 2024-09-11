@@ -5,14 +5,15 @@ import ScrollToTop from "@/components/ScrollToTop";
 // import fonts
 import { mainFont } from "./fonts/fonts";
 import "./globals.css";
-
+import "./style.css";
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${mainFont.variable}`}>
+    <html lang="en" className={`${mainFont.variable} `}>
+      <head></head>
       <body suppressHydrationWarning={true}>
         <StoreProvider>
           {children}

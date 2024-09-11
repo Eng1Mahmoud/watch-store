@@ -1,13 +1,12 @@
 "use client";
 import BaseForm from "@/components/formik/BaseForm";
-import Input from "@/components/formik/Input";
 import { changePasswordSchema } from "@/formsValidation/validation";
 import { useSaveUserData } from "../hooks/saveUserData";
+import PasswordInput from "@/components/formik/PasswordInput";
 const ChangePassword = () => {
   const initialValues = {
-    oldPassword: "",
-    newPassword: "",
-    confirmPassword: "",
+    old_password: "",
+    new_password: "",
   };
   const { onSubmit, loading } = useSaveUserData();
   return (
@@ -21,13 +20,8 @@ const ChangePassword = () => {
         onSubmit={onSubmit}
       >
         <div className="flex flex-col gap-7">
-          <Input name="oldPassword" placeholder="old password" type="text" />
-          <Input name="newPassword" placeholder="new password" type="text" />
-          <Input
-            name="confirmPassword"
-            placeholder="confirm password"
-            type="text"
-          />
+          <PasswordInput name="old_password" placeholder="old password" />
+          <PasswordInput name="new_password" placeholder="new password" />
           <button
             type="submit"
             className="btn btn-primary w-fit mx-auto capitalize"
