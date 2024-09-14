@@ -34,9 +34,10 @@ export const ProfileCover = ({ cover_url }: { cover_url: string }) => {
     <div className="h-[200px] w-full bg-slate-600 relative flex justify-center items-center rounded-tr-xl rounded-tl-xl overflow-hidden">
       {cover_url && (
         <Image
-          width={100}
-          height={100}
+          width={1000}
+          height={1000}
           src={cover_url}
+          quality={100}
           alt="Profile cover"
           className="absolute inset-0 w-full h-full object-cover"
         />

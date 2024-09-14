@@ -12,7 +12,6 @@ export function authMiddleware(request: NextRequest) {
     try {
       const decodedToken: any = decodeToken(token);
       userRole = decodedToken?.role;
-      console.log(userRole);
     } catch (error) {
       return NextResponse.redirect(new URL("/login", request.url)); // Redirect to login if token is invalid
     }

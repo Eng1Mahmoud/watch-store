@@ -1,14 +1,14 @@
 "use client";
 import BaseForm from "@/components/formik/BaseForm";
 import { changePasswordSchema } from "@/formsValidation/validation";
-import { useSaveUserData } from "../hooks/saveUserData";
+import { useSavePassword } from "../hooks/SavePassword";
 import PasswordInput from "@/components/formik/PasswordInput";
 const ChangePassword = () => {
   const initialValues = {
     old_password: "",
     new_password: "",
   };
-  const { onSubmit, loading } = useSaveUserData();
+  const { onSubmit, loading } = useSavePassword();
   return (
     <div className="shadow-custom p-4 rounded-md my-5 max-w-5xl mx-auto">
       <h1 className="text-2xl font-bold my-4 text-center text-main-main">

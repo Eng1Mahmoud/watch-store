@@ -19,16 +19,21 @@ const PasswordInput = ({ name, placeholder, disabled }: InputProps) => {
 
   return (
     <div className="relative">
-      <Field
-        id={name}
-        name={name}
-        type={type}
-        disabled={disabled}
-        className="input input-bordered w-full pt-3 pb-2 px-3 peer"
-        placeholder=" "
-        onFocus={() => setIsActive(true)}
-        onBlur={() => setIsActive(field.value !== "")}
-      />
+      <div className="relative">
+        <Field
+          id={name}
+          name={name}
+          type={type}
+          disabled={disabled}
+          className="input input-bordered w-full pt-3 pb-2 px-3 peer pr-10"
+          placeholder=" "
+          onFocus={() => setIsActive(true)}
+          onBlur={() => setIsActive(field.value !== "")}
+        />
+        <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+          <SwapLockPassword setType={setType} />
+        </div>
+      </div>
       <label
         htmlFor={name}
         className={`absolute text-sm duration-300 transform font-bold capitalize
@@ -40,7 +45,6 @@ const PasswordInput = ({ name, placeholder, disabled }: InputProps) => {
       >
         {placeholder}
       </label>
-      <SwapLockPassword setType={setType} />
       <ErrorMessage
         name={name}
         component="div"

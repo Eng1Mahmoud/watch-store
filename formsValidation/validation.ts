@@ -44,6 +44,7 @@ export const forgotPasswordSchema = yup.object().shape({
     .max(20)
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/,
+      "Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special case character",
     ),
   confirmPassword: yup
     .string()
@@ -68,10 +69,20 @@ export const changePasswordSchema = yup.object().shape({
   old_password: yup.string().required("Old password is required"),
   new_password: yup
     .string()
-    .required()
+    .required("New password is required")
     .min(8)
     .max(20)
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/,
+      "Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special case character",
     ),
+});
+
+// add address schema validation
+export const addAddressSchema = yup.object().shape({
+  country: yup.string().required("Country is required"),
+  city: yup.string().required("City is required"),
+  state: yup.string().required("State is required"),
+  street: yup.string().required("Street is required"),
+  zipcode: yup.string().required("Zipcode is required"),
 });

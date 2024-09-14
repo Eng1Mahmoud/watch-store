@@ -3,21 +3,25 @@ import { apiRequest } from "@/apiRequests/fetch";
 import { getTokenClient } from "@/utils/getTokenClient";
 import { useState } from "react";
 import { revalidate } from "@/actions/revalidatTage";
-interface SaveInfoData {
-  username: string;
-  email: string;
-  phone: string;
+interface SaveAddresses {
+  country: string;
+  city: string;
+  state: string;
+  street: string;
+  zipcode: string;
 }
-export const useSaveUserData = () => {
+export const useSaveAddresses = () => {
   const [loading, setLoading] = useState(false);
   const token = getTokenClient();
-  const onSubmit = async (values: SaveInfoData) => {
+  const onSubmit = async (values: SaveAddresses) => {
     setLoading(true);
-
+    const data = {
+      addresses: [values],
+    };
     await apiRequest<any>({
-      endpoint: "/users/current/password",
+      endpoint: "/users/current",
       method: "PATCH",
-      data: values,
+      data,
       token,
     })
       .then((res) => {
