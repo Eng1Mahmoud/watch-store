@@ -8,6 +8,7 @@ export const ImageSection = () => {
       className="pb-12"
       initial={{ x: "-100%" }}
       whileInView={{ x: 0 }}
+      viewport={{ once: true }}
     >
       <Image src={aboutItem} alt="about-item" />
     </motion.div>

@@ -13,6 +13,7 @@ export const BrandItems = () => {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.2, duration: 0.3 }}
+          viewport={{ once: true }}
         >
           <Image
             src={brand.src}

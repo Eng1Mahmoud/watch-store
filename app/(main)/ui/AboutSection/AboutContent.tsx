@@ -6,6 +6,7 @@ export const AboutContent = () => {
       className="py[100px]"
       initial={{ x: "100%" }}
       whileInView={{ x: 0 }}
+      viewport={{ once: true }}
     >
       <h1 className="text-2xl font-bold text-main-main">About Us</h1>
       <p className="text-text-secondary leading-[30px] pt-5">

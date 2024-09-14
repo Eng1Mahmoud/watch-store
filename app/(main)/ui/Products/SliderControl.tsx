@@ -8,18 +8,19 @@ const SliderControl = ({
   handleNext: () => void;
 }) => {
   return (
-    <div className="relative pt-5">
-      {/**control slider */}
-      <div className="flex items-center z-50 justify-start gap-8 mb-5">
-        <div className="flex gap-4">
-          <button onClick={handlePrev} className="btn btn-primary">
-            <IoIosArrowBack className="text-[25px]" />
-          </button>
-          <button onClick={handleNext} className="btn btn-primary">
-            <IoIosArrowForward className="text-[25px]" />
-          </button>
-        </div>
-      </div>
+    <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between z-50 pointer-events-none">
+      <button
+        onClick={handlePrev}
+        className="bg-main-main p-2 rounded-full pointer-events-auto"
+      >
+        <IoIosArrowBack className="text-[25px] text-white" />
+      </button>
+      <button
+        onClick={handleNext}
+        className="bg-main-main p-2 rounded-full pointer-events-auto"
+      >
+        <IoIosArrowForward className="text-[25px] text-white" />
+      </button>
     </div>
   );
 };

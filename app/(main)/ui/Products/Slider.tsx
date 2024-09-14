@@ -62,44 +62,42 @@ const Slider = () => {
     }
   };
   return (
-    <>
+    <Swiper
+      modules={[Autoplay, Pagination]}
+      autoplay={{ delay: 2500, disableOnInteraction: true }}
+      onSwiper={(swiper) => (swiperRef.current = swiper)}
+      slidesPerView={4}
+      breakpoints={{
+        320: { slidesPerView: 1, spaceBetween: 10 },
+        640: { slidesPerView: 2, spaceBetween: 10 },
+        768: { slidesPerView: 3, spaceBetween: 10 },
+        1024: { slidesPerView: 4, spaceBetween: 10 },
+      }}
+      style={{ padding: "5px !important" }}
+      className="w-full relative "
+    >
       <SliderControl handlePrev={handlePrev} handleNext={handleNext} />
-      <Swiper
-        modules={[Autoplay, Pagination]}
-        autoplay={{ delay: 2500, disableOnInteraction: true }}
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
-        slidesPerView={4}
-        breakpoints={{
-          320: { slidesPerView: 1, spaceBetween: 10 },
-          640: { slidesPerView: 2, spaceBetween: 10 },
-          768: { slidesPerView: 3, spaceBetween: 10 },
-          1024: { slidesPerView: 4, spaceBetween: 10 },
-        }}
-        style={{ padding: "5px !important" }}
-        className="w-full "
-      >
-        {products.map((product) => (
-          <SwiperSlide
-            key={product.id}
-            className="shadow-custom my-3 overflow-hidden "
-          >
-            <div className="hover:scale-105 duration-300 transition-transform ">
-              <Image
-                src={product.image}
-                alt={product.name}
-                width={100}
-                height={100}
-                className="mx-auto"
-              />
-              <div className="p-3">
-                <h3 className="mt-2 font-semibold">{product.name}</h3>
-                <p className="text-gray-500">${product.price}</p>
-              </div>
+      {products.map((product) => (
+        <SwiperSlide
+          key={product.id}
+          className="shadow-custom my-3 overflow-hidden "
+        >
+          <div className="hover:scale-105 duration-300 transition-transform ">
+            <Image
+              src={product.image}
+              alt={product.name}
+              width={100}
+              height={100}
+              className="mx-auto"
+            />
+            <div className="p-3">
+              <h3 className="mt-2 font-semibold">{product.name}</h3>
+              <p className="text-gray-500">${product.price}</p>
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 };
 

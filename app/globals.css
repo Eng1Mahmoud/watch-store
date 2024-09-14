@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @layer base {
-  
   html,
   body {
     scroll-behavior: smooth;
@@ -12,7 +13,6 @@
     scrollbar-color: #888 #f1f1f1;
   }
 
-  /*font styles*/
   h1,
   h2,
   h3,
@@ -22,25 +22,20 @@
   a {
     font-family: var(--main-font);
   }
-  /*end font styles*
-  /*style input caret*/
+ 
   input[type="text"] {
     caret-color: green;
   }
-  /* end style input caret*/
 
-  /* a */
   a {
     text-decoration: none !important;
     color: inherit;
   }
 
-  /*scroll bar */
   .styled-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: #888 #f1f1f1;
-}
- 
+  }
 }
 
 /*custom components styles*/

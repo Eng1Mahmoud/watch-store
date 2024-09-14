@@ -10,6 +10,7 @@ const FormInputs = () => {
       initial={{ y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pb-4">
         <div className="flex flex-col gap-5">

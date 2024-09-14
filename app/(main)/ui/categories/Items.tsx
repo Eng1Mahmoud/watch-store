@@ -41,6 +41,7 @@ const Items = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.2, duration: 0.3 }}
             whileHover={{ scale: 1.02 }} // Add hover animation
+            viewport={{ once: true }}
           >
             <div className="relative">
               <Image

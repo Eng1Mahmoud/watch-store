@@ -39,6 +39,7 @@ const Info = () => {
     <motion.div
       initial={{ x: "100%" }}
       whileInView={{ x: 0 }}
+      viewport={{ once: true }}
       className="flex flex-col gap-5"
     >
       {info.map((item) => (

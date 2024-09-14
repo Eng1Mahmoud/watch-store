@@ -24,6 +24,7 @@ const Map: React.FC = () => {
       whileInView={{
         x: 0,
       }}
+      viewport={{ once: true }}
     >
       <MapContainer
         center={storeLocation}

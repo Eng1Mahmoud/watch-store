@@ -13,10 +13,10 @@ const Search = () => {
         initial={{ borderColor: "#e5e7eb" }}
         whileFocus={{
           scale: 1.005,
-          skewX: -10,
+
           borderColor: "#406939",
           boxShadow: "0 0 1px #406939",
-          borderBottomWidth: "4px",
+          borderBottomWidth: "2px",
         }}
         transition={{ duration: 0.3 }}
       />

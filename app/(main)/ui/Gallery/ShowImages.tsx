@@ -30,6 +30,7 @@ const ShowImages = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             whileHover={{ scale: 1.09 }} // Adds a slight scale-up effect on hover
+            viewport={{ once: true }}
             transition={{ delay: index * 0.1, duration: 0.5 }}
           >
             <Image
