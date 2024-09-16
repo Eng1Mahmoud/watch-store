@@ -17,14 +17,12 @@ const MyComponent: React.FC = () => {
     {
       label: "Edit",
       onClick: (item: any) => {
-        console.log("Edit item:", item);
         // Add your edit logic here
       },
     },
     {
       label: "Delete",
       onClick: (item: any) => {
-        console.log("Delete item:", item);
         // Add your delete logic here
       },
     },

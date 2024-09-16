@@ -4,7 +4,6 @@ import { getUser } from "@/actions/getUser";
 
 const Header = async () => {
   const user: any = await getUser();
-  console.log(user?.data?.userData?.cover_url);
   return (
     <div className="relative flex flex-col items-center  ">
       <div className="relative w-full">

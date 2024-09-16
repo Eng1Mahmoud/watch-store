@@ -3,6 +3,7 @@ import { ErrorMessage, useField } from "formik";
 import Image from "next/image";
 import React, { useState } from "react";
 import { FiUpload } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 interface FileInputProps {
   name: string;
@@ -26,7 +27,7 @@ const FileInput: React.FC<FileInputProps> = ({ name, label, folder }) => {
         const { imageUrl } = await uploadImage(formData, folder);
         helpers.setValue(imageUrl);
       } catch (error) {
-        console.error("Error uploading image:", error);
+        toast.error("Error uploading image");
       } finally {
         setUploading(false);
       }

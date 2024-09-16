@@ -7,7 +7,6 @@ import { getTokenClient } from "@/utils/getTokenClient";
 import { toast } from "react-toastify";
 import Image from "next/image";
 export const ProfileCover = ({ cover_url }: { cover_url: string }) => {
-  console.log(cover_url);
   const [loading, setLoading] = useState(false);
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -34,12 +33,11 @@ export const ProfileCover = ({ cover_url }: { cover_url: string }) => {
     <div className="h-[200px] w-full bg-slate-600 relative flex justify-center items-center rounded-tr-xl rounded-tl-xl overflow-hidden">
       {cover_url && (
         <Image
-          width={1000}
-          height={1000}
           src={cover_url}
           quality={100}
+          fill
           alt="Profile cover"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover block"
         />
       )}
       <div className="absolute bottom-3 right-1 md:right-5">

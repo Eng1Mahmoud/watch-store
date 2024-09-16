@@ -4,7 +4,6 @@ import Input from "@/components/formik/Input";
 import { profileDetailsSchema } from "@/formsValidation/validation";
 import { useSaveUserData } from "../hooks/saveUserData";
 const ProfileDetails = ({ user }: { user: any }) => {
-  console.log(user);
   const initialValues = {
     username: user?.username,
     email: user?.email,

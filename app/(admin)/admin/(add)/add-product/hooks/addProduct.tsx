@@ -9,7 +9,6 @@ export const useAddProduct = () => {
     values: IProduct,
     { resetForm }: { resetForm?: () => void },
   ) => {
-    console.log(values);
     setLoading(true);
 
     await apiRequest<any>({

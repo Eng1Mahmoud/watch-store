@@ -69,9 +69,7 @@ const BaseTable: React.FC<BaseTableProps> = ({
             setHasMore(false);
           }
         })
-        .catch((err) => {
-          console.log(err);
-        })
+        .catch((err) => {})
         .finally(() => {
           setIsLoading(false);
         });
