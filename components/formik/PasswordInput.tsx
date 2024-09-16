@@ -1,5 +1,5 @@
-import { Field, ErrorMessage, useField } from "formik";
-import { useState, useEffect } from "react";
+import { Field, ErrorMessage } from "formik";
+import { useState } from "react";
 import SwapLockPassword from "./SwapLockPassword";
 
 interface InputProps {
@@ -9,16 +9,10 @@ interface InputProps {
 }
 
 const PasswordInput = ({ name, placeholder, disabled }: InputProps) => {
-  const [field] = useField(name);
-  const [isActive, setIsActive] = useState(false);
   const [type, setType] = useState<"password" | "text">("password");
 
-  useEffect(() => {
-    setIsActive(field.value !== "");
-  }, [field.value]);
-
   return (
-    <div className="relative">
+    <div>
       <div className="relative">
         <Field
           id={name}
@@ -27,21 +21,24 @@ const PasswordInput = ({ name, placeholder, disabled }: InputProps) => {
           disabled={disabled}
           className="input input-bordered w-full pt-3 pb-2 px-3 peer pr-10"
           placeholder=" "
-          onFocus={() => setIsActive(true)}
-          onBlur={() => setIsActive(field.value !== "")}
         />
         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
           <SwapLockPassword setType={setType} />
         </div>
+        <label
+          htmlFor={name}
+          className={`absolute text-sm duration-300  font-bold capitalize
+          z-10 origin-[0] bg-white text-gray-500 px-1 top-3 left-3
+          peer-focus:-top-3 peer-focus:scale-75 peer-focus:text-main-main 
+          peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:text-main-main
+          peer-autofill:-top-3 peer-autofill:scale-75 peer-autofill:text-main-main
+          peer-read-only:-top-3 peer-read-only:bg-transparent peer-read-only:scale-75
+        `}
+        >
+          {placeholder}
+        </label>
       </div>
-      <label
-        htmlFor={name}
-        className={`absolute text-sm duration-300 transform font-bold capitalize
-        ${isActive ? " scale-75 text-main-main  -top-3 " : "scale-100 text-gray-500 "}
-          z-10 origin-[0] bg-white px-1 left-3 top-3`}
-      >
-        {placeholder}
-      </label>
+
       <ErrorMessage
         name={name}
         component="div"

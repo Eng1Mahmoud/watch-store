@@ -1,6 +1,4 @@
-import { Field, ErrorMessage, useField } from "formik";
-import { useState, useEffect } from "react";
-
+import { Field, ErrorMessage } from "formik";
 interface InputProps {
   name: string;
   placeholder: string;
@@ -8,13 +6,6 @@ interface InputProps {
 }
 
 const TextArea = ({ name, placeholder, disabled }: InputProps) => {
-  const [field] = useField(name);
-  const [isActive, setIsActive] = useState(false);
-
-  useEffect(() => {
-    setIsActive(field.value !== "");
-  }, [field.value]);
-
   return (
     <div className="relative h-full">
       <Field
@@ -24,14 +15,16 @@ const TextArea = ({ name, placeholder, disabled }: InputProps) => {
         disabled={disabled}
         className="textarea textarea-bordered textarea-lg w-full h-full pt-5 pb-2 px-3 peer"
         placeholder=" "
-        onFocus={() => setIsActive(true)}
-        onBlur={() => setIsActive(field.value !== "")}
       />
       <label
         htmlFor={name}
-        className={`absolute text-sm duration-300 transform font-bold capitalize
-          ${isActive ? "-top-3 scale-75 text-main-main" : "scale-100 text-gray-500"}
-          z-10 origin-[0] bg-white px-1  top-3 left-3`}
+        className={`absolute text-sm duration-300  font-bold capitalize
+          z-10 origin-[0] bg-white text-gray-500 px-1 top-3 left-3
+          peer-focus:-top-3 peer-focus:scale-75peer-focus:text-main-main 
+          peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:text-main-main
+          peer-autofill:-top-3 peer-autofill:scale-75 peer-autofill:text-main-main
+          peer-read-only:-top-3 peer-read-only:bg-transparent peer-read-only:scale-75
+        `}
       >
         {placeholder}
       </label>
