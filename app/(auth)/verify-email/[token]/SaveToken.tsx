@@ -13,12 +13,11 @@ const SaveToken = ({ token }: { token: string }) => {
     if (token) {
       const decodedToken = decodeToken(token);
       if (decodedToken && typeof decodedToken !== "string") {
-        const { exp, id } = decodedToken;
+        const { exp } = decodedToken;
         if (exp) {
           // Convert the ISO string to a Date object
           const expDate = new Date(exp * 1000);
           setCookie("token", token, { expires: expDate });
-          setCookie("userId", id, { expires: expDate });
           // set user state
           dispatch(setUser(true));
           // redirect to home page
