@@ -7,14 +7,14 @@ cloudinary.config({
   api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET,
 });
 
-export const uploadImage = async (formData: FormData) => {
+export const uploadImage = async (formData: FormData, folder: string) => {
   const file = formData.get("file") as File;
   const arrayBuffer = await file.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
   const results: any = await new Promise((resolve, reject) => {
     cloudinary.uploader
       .upload_stream(
-        { tags: ["watch-store"], folder: "watch-store" },
+        { tags: ["watch-store"], folder: `watch-store/${folder}` },
         function (error, result) {
           if (error) {
             reject(error);

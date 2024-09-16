@@ -9,11 +9,5 @@ export default function CustomErrorPageLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body suppressHydrationWarning={true}>
-        <div className="pt-10">{children}</div>
-      </body>
-    </html>
-  );
+  return <div className="pt-10">{children}</div>;
 }

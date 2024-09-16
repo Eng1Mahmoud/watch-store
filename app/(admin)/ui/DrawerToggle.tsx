@@ -44,15 +44,15 @@ const DrawerToggle: React.FC<DrawerToggleProps> = ({ children }) => {
         {/* Page content */}
         <main className="flex-grow p-4">{children}</main>
       </div>
-      <div className="drawer-side h-full">
+      <div className="drawer-side h-auto min-h-screen shadow-custom">
         <label htmlFor="my-drawer" className="drawer-overlay"></label>
         <aside
-          className={`bg-white h-full ${open ? "w-64" : "w-20"}`}
+          className={`bg-white h-full  ${open ? "w-64" : "w-20"}`}
           style={{
             transition: "width .3s ease-in-out",
           }}
         >
-          <div className="flex justify-end p-4">
+          <div className="flex justify-end p-2 border-b-2 border-gray-200">
             <button
               onClick={handleDrawerToggle}
               className="btn btn-square btn-ghost"

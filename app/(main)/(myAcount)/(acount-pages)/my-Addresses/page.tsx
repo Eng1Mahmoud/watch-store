@@ -8,10 +8,7 @@ const Page = () => {
           <AddAddressForm />
         </section>
 
-        <section className="scroll-y-auto overflow-y-auto overscroll-contain h-[460px] shadow-custom p-4 rounded-md styled-scrollbar">
-          <h2 className="text-xl font-semibold mb-4 text-main-main">
-            My Addresses
-          </h2>
+        <section className="scroll-y-auto overflow-y-auto overscroll-contain h-[460px] px-4 rounded-md styled-scrollbar">
           <AddressList />
         </section>
       </div>

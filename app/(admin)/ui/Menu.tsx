@@ -40,13 +40,13 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
   return (
     <ul className="menu p-4 w-full text-base-content">
       <MenuItem
-        href="/"
+        href="/admin"
         icon={<FiHome className="h-6 w-6 text-main-main" onClick={onToggle} />}
         text="Home"
         open={open}
       />
       <MenuItem
-        href="/admin"
+        href="/admin/users"
         icon={<FiUsers className="h-6 w-6 text-main-main" onClick={onToggle} />}
         text="Users"
         open={open}
@@ -55,7 +55,7 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
         {open ? (
           <details>
             <summary className="flex items-center p-2 justify-start">
-              <FiShoppingBag className="h-6 w-6" />
+              <FiShoppingBag className="h-6 w-6 text-main-main" />
               <span className="ml-3">Products</span>
             </summary>
             <ul>
@@ -100,24 +100,30 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
         text="Orders"
         open={open}
       />
+      <MenuItem
+        href="/admin/categories"
+        icon={<FiFolder className="h-5 w-5 text-main-main" />}
+        text="Categories"
+        open={open}
+      />
       <li>
         {open ? (
           <details>
             <summary className="flex items-center p-2 justify-start">
-              <FiFolder className="h-6 w-6 text-main-main" />
-              <span className="ml-3">Categories</span>
+              <FiPlus className="h-6 w-6 text-main-main" />
+              <span className="ml-3">Add </span>
             </summary>
             <ul>
               <MenuItem
-                href="/admin/add-categories"
-                icon={<FiPlus className="h-5 w-5 text-main-main" />}
-                text="Add New Category"
+                href="/admin/add-product"
+                icon={<FiShoppingBag className="h-5 w-5 text-main-main" />}
+                text="Product"
                 open={open}
               />
               <MenuItem
-                href="/admin/categories"
+                href="/admin/add-category"
                 icon={<FiFolder className="h-5 w-5 text-main-main" />}
-                text="View Categories"
+                text="Category"
                 open={open}
               />
             </ul>
@@ -127,16 +133,10 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
             onClick={onToggle}
             className="flex items-center p-2 justify-center w-full"
           >
-            <FiFolder className="h-6 w-6 text-main-main" />
+            <FiPlus className="h-6 w-6 text-main-main" />
           </button>
         )}
       </li>
-      <MenuItem
-        href="/admin/add-product"
-        icon={<FiPlus className="h-6 w-6 text-main-main" onClick={onToggle} />}
-        text="Add Product"
-        open={open}
-      />
     </ul>
   );
 };

@@ -12,8 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${mainFont.variable} `}>
-      <head></head>
+    <html lang="en" className={`${mainFont.variable}`}>
       <body suppressHydrationWarning={true}>
         <StoreProvider>
           {children}

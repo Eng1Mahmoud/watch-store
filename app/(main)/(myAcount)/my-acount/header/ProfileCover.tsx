@@ -1,5 +1,5 @@
 "use client";
-import { uploadImage } from "@/actions/uploadProfileImages";
+import { uploadImage } from "@/actions/uploadImages";
 import React, { useState } from "react";
 import { MdPhotoCamera } from "react-icons/md";
 import { saveCoverToServer } from "./actions/saveCoverToServer";
@@ -17,7 +17,7 @@ export const ProfileCover = ({ cover_url }: { cover_url: string }) => {
     if (file) {
       const formData = new FormData();
       formData.append("file", file);
-      const { imageUrl } = await uploadImage(formData);
+      const { imageUrl } = await uploadImage(formData, "users");
       const token = getTokenClient();
       await saveCoverToServer(imageUrl, token as string).then((res) => {
         if (res.success) {

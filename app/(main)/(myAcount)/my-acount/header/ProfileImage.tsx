@@ -2,7 +2,7 @@
 import Image from "next/image";
 import defaultAvatar from "/public/assets/avatar.jpg";
 import { MdPhotoCamera } from "react-icons/md";
-import { uploadImage } from "@/actions/uploadProfileImages";
+import { uploadImage } from "@/actions/uploadImages";
 import { saveAvatarIntoserver } from "./actions/saveAvatarIntoserver";
 import { getTokenClient } from "@/utils/getTokenClient";
 import { useState } from "react";
@@ -17,7 +17,7 @@ const ProfileImage = ({ avatar }: { avatar: string }) => {
     if (file) {
       const formData = new FormData();
       formData.append("file", file);
-      const { imageUrl } = await uploadImage(formData);
+      const { imageUrl } = await uploadImage(formData, "users");
       const token = getTokenClient();
       await saveAvatarIntoserver(imageUrl, token as string)
         .then(() => {

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import SessionExpired from "@/components/SessionExpired";
-import DrawerToggle from "./admin/ui/DrawerToggle";
+import DrawerToggle from "../ui/DrawerToggle";
 
 export const metadata: Metadata = {
   title: "Watch Store",
@@ -15,7 +15,9 @@ export default function MainLayout({
   return (
     <>
       <SessionExpired />
-      <DrawerToggle>{children}</DrawerToggle>
+      <DrawerToggle>
+        <div className="container py-2">{children}</div>
+      </DrawerToggle>
     </>
   );
 }

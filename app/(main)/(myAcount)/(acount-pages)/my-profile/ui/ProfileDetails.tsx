@@ -8,7 +8,7 @@ const ProfileDetails = ({ user }: { user: any }) => {
   const initialValues = {
     username: user?.username,
     email: user?.email,
-    phone: user?.phone,
+    phone: user?.phone || "",
   };
   const { onSubmit, loading } = useSaveUserData();
   return (

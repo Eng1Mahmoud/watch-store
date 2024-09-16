@@ -86,3 +86,26 @@ export const addAddressSchema = yup.object().shape({
   street: yup.string().required("Street is required"),
   zipcode: yup.string().required("Zipcode is required"),
 });
+
+// category schema validation
+
+export const categorySchema = yup.object().shape({
+  name: yup.string().required("Name is required"),
+  cover_url: yup.string().required("image is required"),
+});
+
+// product schema validation
+export const productSchema = yup.object().shape({
+  name: yup.string().required("Name is required"),
+  price: yup
+    .number()
+    .required("Price is required")
+    .min(0, "Price must be at least 0"),
+  description: yup.string().required("Description is required"),
+  category: yup.string().required("Category is required"),
+  image: yup.string().required("Image is required"),
+  quantity: yup
+    .number()
+    .required("Quantity is required")
+    .min(1, "Quantity must be at least 1"),
+});
