@@ -1,4 +1,3 @@
-import axiosInstance from "@/axios/axiosInstance";
 interface ContactUsProps {
   name: string;
   phoneNumber: string;
