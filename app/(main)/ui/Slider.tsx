@@ -65,7 +65,8 @@ export const Slider: React.FC = () => {
               src={img}
               alt="slider"
               className="h-full w-full object-fill"
-              loading="eager"
+              loading={index === 0 ? "eager" : "lazy"}
+              priority={index === 0}
             />
           </SwiperSlide>
         ))}
