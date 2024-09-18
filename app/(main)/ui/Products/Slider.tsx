@@ -83,13 +83,15 @@ const Slider = () => {
           className="shadow-custom my-3 overflow-hidden "
         >
           <div className="hover:scale-105 duration-300 transition-transform ">
-            <Image
-              src={product.image}
-              alt={product.name}
-              width={100}
-              height={100}
-              className="mx-auto"
-            />
+            <div className="relative h-[200px] ">
+              <Image
+                src={product.image}
+                alt={product.name}
+                className="mx-auto"
+                loading="lazy"
+                fill
+              />
+            </div>
             <div className="p-3">
               <h3 className="mt-2 font-semibold">{product.name}</h3>
               <p className="text-gray-500">${product.price}</p>
