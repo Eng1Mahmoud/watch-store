@@ -109,3 +109,10 @@ export const productSchema = yup.object().shape({
     .required("Quantity is required")
     .min(1, "Quantity must be at least 1"),
 });
+
+// edit user schema validation
+export const editUserSchema = yup.object().shape({
+  username: yup.string().required("Username is required"),
+  email: yup.string().email().required("Email is required"),
+  role: yup.string().required("Role is required"),
+});

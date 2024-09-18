@@ -13,3 +13,21 @@ export interface IProduct {
   image: string;
   quantity: number;
 }
+
+// user interface
+export interface IUser {
+  id?: string;
+  username: string;
+  email: string;
+  role: string;
+  avatar_url?: string | null;
+  cover_url?: string | null;
+  phone?: string | null;
+  addresses?: {
+    country: string;
+    city: string;
+    state: string;
+    street: string;
+    zipcode: string;
+  } | null;
+}

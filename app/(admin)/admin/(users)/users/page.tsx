@@ -1,24 +1,20 @@
 "use client";
 import BaseTable from "@/components/tables/BaseTable";
 import { columns, useGetActions } from "./helper";
+import Search from "@/app/(admin)/ui/Search";
 import { useState } from "react";
-import Search from "../../../ui/Search";
-const Categories = () => {
+const Users = () => {
   const actions = useGetActions();
   const [searchTerm, setSearchTerm] = useState<string | undefined>("");
-
   return (
     <>
-      <Search
-        setSearchTerm={setSearchTerm}
-        placeholder="Search categories..."
-      />
+      <Search setSearchTerm={setSearchTerm} placeholder="search users..." />
       <BaseTable
         columns={columns}
-        endpoint={`/categories`}
+        endpoint={`/users`}
         itemsPerPage={10}
-        dataName="categories"
-        tags={["get-categories"]}
+        dataName="users"
+        tags={["get-all-users"]}
         actions={actions}
         query={searchTerm}
       />
@@ -26,4 +22,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default Users;

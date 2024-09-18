@@ -29,7 +29,8 @@ export const useSignUp = () => {
         }
         // You might want to store the token or redirect the user here
       } else {
-        toast.error(response.message);
+        console.log(response.message);
+        toast.error(response.message[1]);
       }
     } catch (error) {
       if (error instanceof Error) {

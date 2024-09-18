@@ -3,6 +3,8 @@ import { ErrorMessage, useField } from "formik";
 import Image from "next/image";
 import React, { useState } from "react";
 import { FiUpload } from "react-icons/fi";
+import { MdDelete } from "react-icons/md";
+
 import { toast } from "react-toastify";
 
 interface FileInputProps {
@@ -34,6 +36,11 @@ const FileInput: React.FC<FileInputProps> = ({ name, label, folder }) => {
     }
   };
 
+  const handleDelete = () => {
+    console.log("delete");
+    helpers.setValue("");
+  };
+
   return (
     <div className="relative">
       <div>
@@ -48,28 +55,39 @@ const FileInput: React.FC<FileInputProps> = ({ name, label, folder }) => {
         <label
           htmlFor={name}
           className="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg 
-          cursor-pointer bg-gray-50 hover:bg-gray-100"
+          cursor-pointer bg-gray-50 hover:bg-gray-100 relative"
         >
           {uploading ? (
             <p>Uploading...</p>
           ) : field.value ? (
-            <Image
-              src={field.value}
-              width={1000}
-              height={1000}
-              quality={100}
-              alt={label || "Uploaded Image"}
-              className="w-full h-full object-cover rounded-lg"
-            />
+            <>
+              <Image
+                src={field.value}
+                width={1000}
+                height={1000}
+                quality={100}
+                alt={label || "Uploaded Image"}
+                className="w-full h-full object-cover rounded-lg"
+              />
+            </>
           ) : (
             <>
               <FiUpload className="w-12 h-12 text-gray-400" />
               <p className="mt-2 text-sm text-gray-500">
-                Click to select or drag and drop an image
+                Click to select or drag and drop an image {label}
               </p>
             </>
           )}
         </label>
+        {field.value && (
+          <div className="absolute top-2 right-2 z-[1000]">
+            <MdDelete
+              size={40}
+              className="text-red-500 cursor-pointer"
+              onClick={handleDelete}
+            />
+          </div>
+        )}
       </div>
       <ErrorMessage name={name} component="div" className="text-red-500" />
     </div>

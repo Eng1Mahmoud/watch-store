@@ -26,20 +26,19 @@ export const useGetActions = () => {
     {
       label: "Delete",
       onClick: async (item: any) => {
-        try {
-          const token = getTokenClient();
-          await apiRequest({
-            endpoint: `/categories/${item.name}?type=name`,
-            method: "DELETE",
-            token,
-          });
-
-          toast.success("Category deleted successfully");
-          revalidate(["get-categories"]);
-        } catch (error: any) {
-          console.error("Error deleting category:", error);
-          toast.error(error.message);
-        }
+        const token = getTokenClient();
+        await apiRequest({
+          endpoint: `/categories/${item.name}?type=name`,
+          method: "DELETE",
+          token,
+        }).then((res: any) => {
+          if (res.success) {
+            toast.success("Category deleted successfully");
+            revalidate(["get-categories"]);
+          } else {
+            toast.error(res.message);
+          }
+        });
       },
     },
   ];

@@ -4,6 +4,8 @@ import StoreProvider from "@/redux/StoreProvider";
 // import fonts
 import { mainFont } from "./fonts/fonts";
 import "./globals.css";
+// import toastify css
+import "react-toastify/dist/ReactToastify.css";
 
 const ToastContainer = dynamic(
   () => import("react-toastify").then((mod) => mod.ToastContainer),

@@ -21,6 +21,7 @@ interface BaseTableProps {
   itemsPerPage?: number;
   dataName?: string;
   tags?: string[];
+  query?: string;
 }
 
 const BaseTable: React.FC<BaseTableProps> = ({
@@ -30,6 +31,7 @@ const BaseTable: React.FC<BaseTableProps> = ({
   itemsPerPage = 10,
   dataName = "data",
   tags,
+  query = "",
 }) => {
   const [data, setData] = useState<any[]>([]);
   const [page, setPage] = useState(1);
@@ -60,11 +62,13 @@ const BaseTable: React.FC<BaseTableProps> = ({
         params: {
           page: page.toString(),
           limit: itemsPerPage.toString(),
+          query: query.toString(),
         },
         tags,
         token: getTokenClient(),
       })
         .then((res: any) => {
+          console.log(res);
           setData((prevData) => {
             // Only append new data if it's not the first page
             return page === 1
@@ -82,7 +86,7 @@ const BaseTable: React.FC<BaseTableProps> = ({
     };
 
     fetchData();
-  }, [endpoint, page, itemsPerPage, dataName, tags]);
+  }, [endpoint, page, itemsPerPage, dataName, tags, query]);
 
   return (
     <div className="overflow-x-auto">
@@ -133,7 +137,7 @@ const BaseTable: React.FC<BaseTableProps> = ({
                         />
                       </div>
                     ) : (
-                      item[column.key]
+                      item[column.key] || "__"
                     )}
                   </td>
                 ))}
@@ -156,9 +160,15 @@ const BaseTable: React.FC<BaseTableProps> = ({
         </tbody>
       </table>
       {isLoading && <div className="text-center py-4">Loading more...</div>}
-      {!hasMore && (
+      {!hasMore && data.length > 0 && (
         <div className="text-center py-4 text-gray-500">
           No more data to load
+        </div>
+      )}
+
+      {data.length === 0 && (
+        <div className="text-center py-4 text-gray-500">
+          there is no data to display until now
         </div>
       )}
     </div>
