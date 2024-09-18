@@ -7,7 +7,7 @@ interface RequestOptions {
   method?: HttpMethod;
   data?: any;
   params?: Record<string, string>;
-  cache?: RequestCache;
+  cache?: boolean;
   revalidate?: number | false;
   tags?: string[];
   token?: string;
@@ -18,7 +18,7 @@ export async function apiRequest<T>({
   method = "GET",
   data,
   params,
-  cache = "no-store",
+  cache = false,
   revalidate,
   tags,
   token,
@@ -42,9 +42,9 @@ export async function apiRequest<T>({
   const options: RequestInit = {
     method,
     headers,
-    cache,
+    cache: cache ? "force-cache" : "no-store",
     next: {
-      revalidate: revalidate === false ? 0 : revalidate,
+      revalidate: revalidate ? revalidate : false,
       tags,
     },
   };

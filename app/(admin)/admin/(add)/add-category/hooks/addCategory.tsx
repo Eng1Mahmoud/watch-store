@@ -3,7 +3,9 @@ import { getTokenClient } from "@/utils/getTokenClient";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { ICategory } from "@/types/types";
+import { useRouter } from "next/navigation";
 export const useAddCategory = () => {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const onSubmit = async (
     values: ICategory,
@@ -20,6 +22,7 @@ export const useAddCategory = () => {
       .then((res) => {
         if (res.success) {
           toast.success(res.message);
+          router.push("/admin/categories");
           if (resetForm) {
             resetForm();
           }

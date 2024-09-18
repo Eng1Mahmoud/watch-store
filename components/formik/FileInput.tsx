@@ -47,7 +47,8 @@ const FileInput: React.FC<FileInputProps> = ({ name, label, folder }) => {
         />
         <label
           htmlFor={name}
-          className="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
+          className="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg 
+          cursor-pointer bg-gray-50 hover:bg-gray-100"
         >
           {uploading ? (
             <p>Uploading...</p>

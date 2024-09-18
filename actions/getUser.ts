@@ -6,7 +6,7 @@ export const getUser = async () => {
   const response = await apiRequest({
     endpoint: `/users/current`,
     method: "GET",
-    cache: "force-cache",
+    cache: true,
     tags: ["get-user"],
     token: token,
   });

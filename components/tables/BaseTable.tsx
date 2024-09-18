@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { apiRequest } from "@/apiRequests/fetch";
 import { getTokenClient } from "@/utils/getTokenClient";
+import Image from "next/image";
 
 interface Column {
   key: string;
@@ -58,13 +59,18 @@ const BaseTable: React.FC<BaseTableProps> = ({
         method: "GET",
         params: {
           page: page.toString(),
-          itemsPerPage: itemsPerPage.toString(),
+          limit: itemsPerPage.toString(),
         },
         tags,
         token: getTokenClient(),
       })
         .then((res: any) => {
-          setData(res.data[dataName]);
+          setData((prevData) => {
+            // Only append new data if it's not the first page
+            return page === 1
+              ? res.data[dataName]
+              : [...prevData, ...res.data[dataName]];
+          });
           if (res.data[dataName].length < itemsPerPage) {
             setHasMore(false);
           }
@@ -97,7 +103,7 @@ const BaseTable: React.FC<BaseTableProps> = ({
                 <th
                   key={actionIndex}
                   scope="col"
-                  className=" px-6 py-3  text-gray-500 capitalize font-medium whitespace-nowrap"
+                  className=" px-6 py-3  text-gray-500 capitalize font-medium whitespace-nowrap text-center"
                 >
                   <span className="">{action.label}</span>
                 </th>
@@ -112,23 +118,39 @@ const BaseTable: React.FC<BaseTableProps> = ({
                 ref={index === data.length - 1 ? lastItemRef : null}
               >
                 {columns.map((column) => (
-                  <td key={column.key} className="px-6 py-4 whitespace-nowrap">
-                    {item[column.key]}
+                  <td
+                    key={column.key}
+                    className="px-6 text-center  py-4 whitespace-nowrap"
+                  >
+                    {column.key === "cover_url" ? (
+                      <div className="flex justify-center">
+                        <Image
+                          src={item[column.key]}
+                          alt={item.name}
+                          width={50}
+                          height={50}
+                          className="w-10 h-10 object-cover rounded-full"
+                        />
+                      </div>
+                    ) : (
+                      item[column.key]
+                    )}
                   </td>
                 ))}
-                {actions && (
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    {actions.map((action, actionIndex) => (
+                {actions &&
+                  actions.map((action, actionIndex) => (
+                    <td
+                      key={actionIndex}
+                      className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center"
+                    >
                       <button
-                        key={actionIndex}
                         onClick={() => action.onClick(item)}
-                        className="text-indigo-600 hover:text-indigo-900 ml-4"
+                        className="text-main-main hover:text-indigo-900 ml-4"
                       >
                         {action.label}
                       </button>
-                    ))}
-                  </td>
-                )}
+                    </td>
+                  ))}
               </tr>
             ))}
         </tbody>
