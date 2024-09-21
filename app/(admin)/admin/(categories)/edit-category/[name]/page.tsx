@@ -6,7 +6,6 @@ const page = async ({ params }: { params: { name: string } }) => {
   const {
     data: { category },
   } = (await getCategory(params.name)) as { data: { category: ICategory } };
-  console.log(category);
   return (
     <div>
       <EditcategoryForm category={category} />

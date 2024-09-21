@@ -5,11 +5,8 @@ import { useEditUser } from "../hooks/EditUser";
 import Input from "@/components/formik/Input";
 import FileInput from "@/components/formik/FileInput";
 import { IUser } from "@/types/types";
-import { FiDelete } from "react-icons/fi";
-
 const EditUserForm = ({ user }: { user: IUser }) => {
   const { onSubmit, loading } = useEditUser({ id: user.id });
-  console.log(loading);
   const initialValues: IUser = {
     username: user.username,
     email: user.email,
@@ -18,7 +15,6 @@ const EditUserForm = ({ user }: { user: IUser }) => {
     cover_url: user.cover_url || "",
     phone: user.phone || "",
   };
-  console.log(initialValues);
   return (
     <BaseForm
       initialValues={initialValues}

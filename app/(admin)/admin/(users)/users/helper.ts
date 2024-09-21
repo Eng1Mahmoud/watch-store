@@ -28,7 +28,6 @@ export const useGetActions = () => {
     {
       label: "Edit",
       onClick: (user: any) => {
-        console.log(user);
         router.push(`/admin/edit-user/${user.id}`);
       },
     },
@@ -42,8 +41,6 @@ export const useGetActions = () => {
           token,
         })
           .then((response: any) => {
-            console.log(response);
-
             if (response.success) {
               revalidate(["get-all-users"]);
               toast.success("User deleted successfully");

@@ -37,7 +37,6 @@ const FileInput: React.FC<FileInputProps> = ({ name, label, folder }) => {
   };
 
   const handleDelete = () => {
-    console.log("delete");
     helpers.setValue("");
   };
 
