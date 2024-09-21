@@ -36,15 +36,18 @@ export const useLogin = () => {
         // set token in cookies
         const decodedToken = decodeToken(response?.data?.token);
         if (decodedToken && typeof decodedToken !== "string") {
-          const { exp } = decodedToken;
+          const { exp, role } = decodedToken;
+
           if (exp) {
             const expDate = new Date(exp * 1000);
             setCookie("token", response?.data?.token, { expires: expDate });
+            if (role === "admin") {
+              router.push("/admin");
+            } else {
+              router.push("/");
+            }
           }
         }
-
-        // redirect to home page
-        router.push("/");
       } else {
         toast.error(response.message);
       }
