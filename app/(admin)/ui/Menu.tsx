@@ -55,7 +55,10 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
         {open ? (
           <details>
             <summary className="flex items-center p-2 justify-start">
-              <FiShoppingBag className="h-6 w-6 text-main-main" />
+              <FiShoppingBag
+                className="h-6 w-6 text-main-main"
+                onClick={onToggle}
+              />
               <span className="ml-3">Products</span>
             </summary>
             <ul>
@@ -96,13 +99,17 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
       </li>
       <MenuItem
         href="/admin/orders"
-        icon={<FiClipboard className="h-6 w-6 text-main-main" />}
+        icon={
+          <FiClipboard className="h-6 w-6 text-main-main" onClick={onToggle} />
+        }
         text="Orders"
         open={open}
       />
       <MenuItem
         href="/admin/categories"
-        icon={<FiFolder className="h-5 w-5 text-main-main" />}
+        icon={
+          <FiFolder className="h-5 w-5 text-main-main" onClick={onToggle} />
+        }
         text="Categories"
         open={open}
       />
@@ -110,7 +117,7 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
         {open ? (
           <details>
             <summary className="flex items-center p-2 justify-start">
-              <FiPlus className="h-6 w-6 text-main-main" />
+              <FiPlus className="h-6 w-6 text-main-main" onClick={onToggle} />
               <span className="ml-3">Add </span>
             </summary>
             <ul>

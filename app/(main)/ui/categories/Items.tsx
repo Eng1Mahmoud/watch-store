@@ -1,39 +1,13 @@
 "use client";
+import { ICategory } from "@/types/types";
 import { motion } from "framer-motion"; // Import motion from framer-motion
-import cat1 from "@/public/assets/categories/cat1.webp";
-import cat2 from "@/public/assets/categories/cat2.webp";
-import cat3 from "@/public/assets/categories/cat3.webp";
-import cat4 from "@/public/assets/categories/cat4.jpeg";
 import Image from "next/image";
 import Link from "next/link";
 
-const categorieItems = [
-  {
-    id: 1,
-    name: "men's",
-    image: cat1,
-  },
-  {
-    id: 2,
-    name: "women's",
-    image: cat2,
-  },
-  {
-    id: 3,
-    name: "kids",
-    image: cat3,
-  },
-  {
-    id: 4,
-    name: "unisex",
-    image: cat4,
-  },
-];
-
-const Items = () => {
+const Items = ({ categories }: { categories: ICategory[] }) => {
   return (
     <>
-      {categorieItems.map((item, index) => (
+      {categories.map((item, index) => (
         <Link href={`/categories/${item.name}`} key={item.id}>
           <motion.div
             className="relative overflow-hidden rounded-lg transition-all duration-100 cursor-pointer"
@@ -45,7 +19,7 @@ const Items = () => {
           >
             <div className="relative">
               <Image
-                src={item.image}
+                src={item.cover_url}
                 alt={item.name}
                 width={300}
                 height={200}
