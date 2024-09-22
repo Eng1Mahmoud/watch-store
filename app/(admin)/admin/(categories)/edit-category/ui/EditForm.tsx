@@ -7,7 +7,9 @@ import FileInput from "@/components/formik/FileInput";
 import { ICategory } from "@/types/types";
 
 const EditcategoryForm = ({ category }: { category: ICategory }) => {
-  const { onSubmit, loading } = useEditCategory();
+  const { onSubmit, loading } = useEditCategory({
+    oldCategoryName: category.name,
+  });
   const initialValues: ICategory = {
     name: category.name,
     cover_url: category.cover_url,

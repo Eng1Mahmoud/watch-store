@@ -4,7 +4,11 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { ICategory } from "@/types/types";
 import { useRouter } from "next/navigation";
-export const useEditCategory = () => {
+export const useEditCategory = ({
+  oldCategoryName,
+}: {
+  oldCategoryName: string;
+}) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const onSubmit = async (
@@ -14,7 +18,7 @@ export const useEditCategory = () => {
     setLoading(true);
 
     await apiRequest<any>({
-      endpoint: `/categories/${values.name}?type=name`,
+      endpoint: `/categories/${oldCategoryName}?type=name`,
       method: "PATCH",
       data: values,
       token: getTokenClient(),
