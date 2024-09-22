@@ -1,6 +1,4 @@
 import { ErrorMessage, useField } from "formik";
-import React from "react";
-
 const SelectInput = ({
   name,
   placeholder,

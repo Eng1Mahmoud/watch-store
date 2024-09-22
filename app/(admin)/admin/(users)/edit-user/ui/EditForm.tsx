@@ -5,6 +5,7 @@ import { useEditUser } from "../hooks/EditUser";
 import Input from "@/components/formik/Input";
 import FileInput from "@/components/formik/FileInput";
 import { IUser } from "@/types/types";
+import SelectInput from "@/components/formik/SelectInput";
 const EditUserForm = ({ user }: { user: IUser }) => {
   const { onSubmit, loading } = useEditUser({ id: user.id });
   const initialValues: IUser = {
@@ -26,7 +27,11 @@ const EditUserForm = ({ user }: { user: IUser }) => {
           <div className="flex flex-col gap-5">
             <Input name="username" placeholder="Username" type="text" />
             <Input name="email" placeholder="Email" type="email" />
-            <Input name="role" placeholder="Role" type="text" />
+            <SelectInput
+              name="role"
+              placeholder="Role"
+              options={["admin", "user"]}
+            />
             <Input name="phone" placeholder="Phone" type="text" />
           </div>
           <div className="flex flex-col gap-2">
@@ -59,7 +64,7 @@ const EditUserForm = ({ user }: { user: IUser }) => {
             type="submit"
             className="btn btn-primary w-fit px-10 py-2 mx-auto"
           >
-            {loading ? "Loading..." : "Edit Category"}
+            {loading ? "Loading..." : "Edit User"}
           </button>
         </div>
       </div>

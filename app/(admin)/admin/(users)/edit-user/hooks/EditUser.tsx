@@ -11,6 +11,7 @@ export const useEditUser = ({ id }: { id: string | undefined }) => {
     values: IUser,
     { resetForm }: { resetForm?: () => void },
   ) => {
+    console.log(values);
     setLoading(true);
     await apiRequest<any>({
       endpoint: `/users/${id}`,
