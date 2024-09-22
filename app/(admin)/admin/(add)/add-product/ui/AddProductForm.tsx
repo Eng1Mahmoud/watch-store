@@ -5,6 +5,7 @@ import { productSchema } from "@/formsValidation/validation";
 import { IProduct } from "@/types/types";
 import { useAddProduct } from "../hooks/addProduct";
 import FileInput from "@/components/formik/FileInput";
+import SelectInput from "@/components/formik/SelectInput";
 const initialValues: IProduct = {
   name: "",
   price: 0,
@@ -33,14 +34,18 @@ const AddProductForm = () => {
               placeholder="Product Description"
               type="text"
             />
-            <Input name="category" placeholder="Product Category" type="text" />
             <Input
               name="quantity"
               placeholder="Product Quantity"
               type="number"
             />
+            <SelectInput
+              name="category"
+              placeholder="Category"
+              options={["Category 1", "Category 2", "Category 3"]}
+            />
           </div>
-          <div className="">
+          <div>
             <FileInput name="image" folder="products" />
           </div>
         </div>

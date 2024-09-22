@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Items = ({ categories }: { categories: ICategory[] }) => {
+  console.log(categories);
   return (
     <>
       {categories.map((item, index) => (

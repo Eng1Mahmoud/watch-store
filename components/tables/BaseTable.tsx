@@ -68,6 +68,7 @@ const BaseTable: React.FC<BaseTableProps> = ({
         token: getTokenClient(),
       })
         .then((res: any) => {
+          console.log(res.data[dataName]);
           setData((prevData) => {
             // Only append new data if it's not the first page
             return page === 1
