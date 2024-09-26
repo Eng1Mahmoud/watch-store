@@ -1,8 +1,8 @@
 import { useRouter } from "next/navigation";
 import { apiRequest } from "@/apiRequests/fetch";
 import { getTokenClient } from "@/utils/getTokenClient";
-import { revalidate } from "@/actions/revalidatTage";
 import { toast } from "react-toastify";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 export const columns = [
   {
     key: "username",
@@ -23,6 +23,25 @@ export const columns = [
 ];
 
 export const useGetActions = () => {
+  const queryClient = useQueryClient();
+  const deleteMutation = useMutation({
+    mutationFn: async (userId: string) => {
+      const token = getTokenClient();
+      return apiRequest({
+        endpoint: `/users/${userId}`,
+        method: "DELETE",
+        token,
+      });
+    },
+    onSuccess: (data: any) => {
+      if (data.success) {
+        toast.success("User deleted successfully");
+        queryClient.invalidateQueries({ queryKey: ["users"] });
+      } else {
+        toast.error(data.message);
+      }
+    },
+  });
   const router = useRouter();
   return [
     {
@@ -34,23 +53,7 @@ export const useGetActions = () => {
     {
       label: "Delete",
       onClick: async (user: any) => {
-        const token = getTokenClient();
-        await apiRequest({
-          endpoint: `/users/${user.id}`,
-          method: "DELETE",
-          token,
-        })
-          .then((response: any) => {
-            if (response.success) {
-              revalidate(["get-all-users"]);
-              toast.success("User deleted successfully");
-            } else {
-              toast.error(response.message);
-            }
-          })
-          .catch((error) => {
-            toast.error(error.message);
-          });
+        deleteMutation.mutate(user.id);
       },
     },
   ];

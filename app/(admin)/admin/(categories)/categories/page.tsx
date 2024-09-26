@@ -18,7 +18,6 @@ const Categories = () => {
         endpoint={`/categories`}
         itemsPerPage={10}
         dataName="categories"
-        tags={["get-categories"]}
         actions={actions}
         query={searchTerm}
       />

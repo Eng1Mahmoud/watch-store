@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import StoreProvider from "@/redux/StoreProvider";
+import { Providers } from "@/QueryProvider/QueryProvider";
 // import fonts
 import { mainFont } from "./fonts/fonts";
 import "./globals.css";
@@ -24,11 +25,13 @@ export default function RootLayout({
     <html lang="en" className={`${mainFont.variable}`}>
       <body suppressHydrationWarning={true}>
         <StoreProvider>
-          {children}
-          <Suspense fallback={null}>
-            <ToastContainer position="top-right" autoClose={5000} />
-            <ScrollToTop />
-          </Suspense>
+          <Providers>
+            {children}
+            <Suspense fallback={null}>
+              <ToastContainer position="top-right" autoClose={5000} />
+              <ScrollToTop />
+            </Suspense>
+          </Providers>
         </StoreProvider>
       </body>
     </html>

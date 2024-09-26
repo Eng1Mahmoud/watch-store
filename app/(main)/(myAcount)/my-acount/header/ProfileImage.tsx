@@ -7,7 +7,17 @@ import { saveAvatarIntoserver } from "./actions/saveAvatarIntoserver";
 import { getTokenClient } from "@/utils/getTokenClient";
 import { useState } from "react";
 import { toast } from "react-toastify";
-const ProfileImage = ({ avatar }: { avatar: string }) => {
+import { useQuery } from "@tanstack/react-query";
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
+const ProfileImage = () => {
+  const { data } = useQuery({
+    queryKey: ["user"],
+    queryFn: async () => {
+      const response = await axiosClientInstance.get("/users/current");
+      return response.data;
+    },
+  });
+  const avatar = data?.data?.userData?.avatar_url;
   const [loading, setLoading] = useState(false);
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>,

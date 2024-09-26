@@ -6,7 +6,17 @@ import { saveCoverToServer } from "./actions/saveCoverToServer";
 import { getTokenClient } from "@/utils/getTokenClient";
 import { toast } from "react-toastify";
 import Image from "next/image";
-export const ProfileCover = ({ cover_url }: { cover_url: string }) => {
+import { useQuery } from "@tanstack/react-query";
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
+export const ProfileCover = () => {
+  const { data } = useQuery({
+    queryKey: ["user"],
+    queryFn: async () => {
+      const response = await axiosClientInstance.get("/users/current");
+      return response.data;
+    },
+  });
+  const cover_url = data?.data?.userData?.cover_url;
   const [loading, setLoading] = useState(false);
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>,

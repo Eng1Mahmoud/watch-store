@@ -4,7 +4,9 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { ICategory } from "@/types/types";
 import { useRouter } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
 export const useAddCategory = () => {
+  const queryClient = useQueryClient();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const onSubmit = async (
@@ -22,7 +24,9 @@ export const useAddCategory = () => {
       .then((res) => {
         if (res.success) {
           toast.success(res.message);
-          router.push("/admin/categories");
+          queryClient.invalidateQueries({ queryKey: ["categories"] }); // revalidate categories in table
+          queryClient.invalidateQueries({ queryKey: ["categories-home"] }); // revalidate categories in home
+          router.push("/admin/categories"); // redirect to categories page
           if (resetForm) {
             resetForm();
           }
