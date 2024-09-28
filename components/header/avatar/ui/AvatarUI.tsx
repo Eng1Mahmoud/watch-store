@@ -14,7 +14,6 @@ const AvatarUI = () => {
     },
   });
   const avatarUrl = data?.data?.userData?.avatar_url;
-  console.log(data);
   const isLoging = useAppSelector((state) => state.user.login);
   return isLoging ? (
     <div className="dropdown dropdown-end">

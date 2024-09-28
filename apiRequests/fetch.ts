@@ -54,7 +54,6 @@ export async function apiRequest<T>({
   }
 
   const response = await fetch(url, options);
-
   // if the response is 401 or 403, redirect to the login page
   if (response.status === 401 || response.status === 403) {
     if (typeof window === "undefined") {

@@ -3,11 +3,21 @@ import BaseForm from "@/components/formik/BaseForm";
 import Input from "@/components/formik/Input";
 import { profileDetailsSchema } from "@/formsValidation/validation";
 import { useSaveUserData } from "../hooks/saveUserData";
-const ProfileDetails = ({ user }: { user: any }) => {
+import { useQuery } from "@tanstack/react-query";
+import { axiosClientInstance } from "@/axios/axiosInstance";
+const ProfileDetails = () => {
+  const { data } = useQuery({
+    queryKey: ["user"],
+    queryFn: async () => {
+      const response = await axiosClientInstance.get("/users/current");
+      return response.data;
+    },
+  });
+  const userData = data?.data?.userData;
   const initialValues = {
-    username: user?.username,
-    email: user?.email,
-    phone: user?.phone || "",
+    username: userData?.username || "",
+    email: userData?.email || "",
+    phone: userData?.phone || "",
   };
   const { onSubmit, loading } = useSaveUserData();
   return (

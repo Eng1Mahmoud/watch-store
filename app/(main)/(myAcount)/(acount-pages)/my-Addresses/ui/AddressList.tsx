@@ -1,16 +1,26 @@
-import { getUser } from "@/actions/getUser";
-const AddressList = async () => {
-  const { data }: any = await getUser();
+"use client";
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
+import { useQuery } from "@tanstack/react-query";
+
+const AddressList = () => {
+  const { data } = useQuery({
+    queryKey: ["user"],
+    queryFn: async () => {
+      const response = await axiosClientInstance.get("/users/current");
+      return response.data;
+    },
+  });
+  const userData = data?.data?.userData;
   return (
     <div>
-      {data?.userData?.addresses?.length > 0 ? (
+      {userData?.addresses?.length > 0 ? (
         <>
           <h2 className="text-xl font-semibold mb-4 text-main-main">
             My Addresses
           </h2>
           <div className="flex flex-col gap-4  py-4">
-            {data?.userData?.addresses?.map((address: any, index: number) => (
-              <div key={address?._id} className="shadow-custom p-4 rounded-md">
+            {userData?.addresses?.map((address: any, index: number) => (
+              <div key={address?.id} className="shadow-custom p-4 rounded-md">
                 {/*add number address */}
                 <p className="text-sm text-gray-500">Address {index + 1}</p>
                 <div className="divider"></div>

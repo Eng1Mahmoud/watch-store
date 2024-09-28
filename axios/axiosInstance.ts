@@ -1,3 +1,4 @@
+"use server";
 import axios from "axios";
 import { getTokenClient } from "@/utils/getTokenClient";
 import { getTokenServer } from "@/utils/getTokenServer";
@@ -43,7 +44,6 @@ const responseInterceptor = (error: any) => {
     error.response &&
     (error.response.status === 401 || error.response.status === 403)
   ) {
-    console.log(error.response);
     if (typeof window === "undefined") {
       // Server-side: use Next.js redirect
       redirect("/login");

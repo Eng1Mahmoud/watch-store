@@ -1,8 +1,7 @@
 import { toast } from "react-toastify";
-import { apiRequest } from "@/apiRequests/fetch";
-import { getTokenClient } from "@/utils/getTokenClient";
-import { useState } from "react";
-import { revalidate } from "@/actions/revalidatTage";
+import { useMutation } from "@tanstack/react-query";
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
+import { getQueryClient } from "@/QueryProvider/QueryProvider";
 interface SaveAddresses {
   country: string;
   city: string;
@@ -11,33 +10,29 @@ interface SaveAddresses {
   zipcode: string;
 }
 export const useSaveAddresses = () => {
-  const [loading, setLoading] = useState(false);
-  const token = getTokenClient();
+  const queryClient = getQueryClient();
+  const { mutate, isPending } = useMutation({
+    mutationFn: async (values: SaveAddresses) => {
+      const data = {
+        addresses: [values],
+      };
+      const response = await axiosClientInstance.patch("/users/current", data);
+      return response.data;
+    },
+    onSuccess: (data) => {
+      if (data.success) {
+        toast.success(data.message);
+        queryClient.invalidateQueries({ queryKey: ["user"] });
+      } else {
+        toast.error(data.message);
+      }
+    },
+    onError: (error: any) => {
+      toast.error(error.message);
+    },
+  });
   const onSubmit = async (values: SaveAddresses) => {
-    setLoading(true);
-    const data = {
-      addresses: [values],
-    };
-    await apiRequest<any>({
-      endpoint: "/users/current",
-      method: "PATCH",
-      data,
-      token,
-    })
-      .then((res) => {
-        if (res.success) {
-          toast.success(res.message);
-          revalidate(["get-user"]);
-        } else {
-          toast.error(res.message);
-        }
-      })
-      .catch(() => {
-        toast.error("Error saving user data");
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    mutate(values);
   };
-  return { onSubmit, loading };
+  return { onSubmit, loading: isPending };
 };

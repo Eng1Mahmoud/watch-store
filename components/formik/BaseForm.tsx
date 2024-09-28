@@ -18,6 +18,7 @@ const BaseForm = ({
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
+      enableReinitialize
     >
       <Form>{children}</Form>
     </Formik>

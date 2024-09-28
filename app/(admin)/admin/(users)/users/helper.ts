@@ -2,7 +2,8 @@ import { useRouter } from "next/navigation";
 import { apiRequest } from "@/apiRequests/fetch";
 import { getTokenClient } from "@/utils/getTokenClient";
 import { toast } from "react-toastify";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
+import { getQueryClient } from "@/QueryProvider/QueryProvider";
 export const columns = [
   {
     key: "username",
@@ -23,7 +24,7 @@ export const columns = [
 ];
 
 export const useGetActions = () => {
-  const queryClient = useQueryClient();
+  const queryClient = getQueryClient();
   const deleteMutation = useMutation({
     mutationFn: async (userId: string) => {
       const token = getTokenClient();

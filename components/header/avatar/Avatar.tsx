@@ -11,7 +11,6 @@ const Avatar = async () => {
       queryFn: getUser,
     });
   }
-  console.log(queryClient.getQueryData(["user"]));
   return <AvatarUI />;
 };
 

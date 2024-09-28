@@ -4,9 +4,9 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { ICategory } from "@/types/types";
 import { useRouter } from "next/navigation";
-import { useQueryClient } from "@tanstack/react-query";
+import { getQueryClient } from "@/QueryProvider/QueryProvider";
 export const useAddCategory = () => {
-  const queryClient = useQueryClient();
+  const queryClient = getQueryClient();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const onSubmit = async (

@@ -56,7 +56,6 @@ const BaseTable: React.FC<BaseTableProps> = ({
         lastPage.length === itemsPerPage ? allPages.length + 1 : undefined,
       initialPageParam: 1,
     });
-  console.log(data);
   const lastItemRef = useCallback(
     (node: HTMLTableRowElement) => {
       if (isLoading || isFetchingNextPage) return;

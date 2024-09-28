@@ -18,8 +18,6 @@ const Items = () => {
   });
 
   const categories = data?.data.categories;
-  console.log(categories);
-
   return (
     <>
       {categories?.map((item: ICategory, index: number) => (

@@ -1,46 +1,36 @@
-import { apiRequest } from "@/apiRequests/fetch";
+import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { decodeToken } from "@/utils/decodeToken";
 import { setCookie } from "cookies-next";
 import { setUser } from "@/redux/features/user";
 import { useAppDispatch } from "@/redux/hooks";
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
+interface LoginFormValues {
+  email: string;
+  password: string;
+}
 export const useLogin = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
-  interface LoginFormValues {
-    email: string;
-    password: string;
-  }
 
-  const onSubmit = async (
-    values: LoginFormValues,
-    { resetForm }: { resetForm?: () => void },
-  ) => {
-    setLoading(true);
-    try {
-      const response = await apiRequest<any>({
-        endpoint: "/auth/signin",
-        method: "POST",
-        data: values,
-      });
-      if (response.success) {
-        // set user state
+  const { mutate, isPending } = useMutation({
+    mutationFn: (values: LoginFormValues) =>
+      axiosClientInstance.post("/auth/signin", values),
+    onSuccess: ({ data }) => {
+      const {
+        data: { token },
+      } = data;
+      if (data.success) {
         dispatch(setUser(true));
-        toast.success(response?.message);
-        if (resetForm) {
-          resetForm();
-        }
+        toast.success(data.message);
         // set token in cookies
-        const decodedToken = decodeToken(response?.data?.token);
+        const decodedToken = decodeToken(token);
         if (decodedToken && typeof decodedToken !== "string") {
           const { exp, role } = decodedToken;
-
           if (exp) {
             const expDate = new Date(exp * 1000);
-            setCookie("token", response?.data?.token, { expires: expDate });
+            setCookie("token", token, { expires: expDate });
             if (role === "admin") {
               router.push("/admin");
             } else {
@@ -49,16 +39,19 @@ export const useLogin = () => {
           }
         }
       } else {
-        toast.error(response.message);
+        toast.error(data.message);
       }
-    } catch (error) {
+    },
+    onError: (error) => {
       if (error instanceof Error) {
         toast.error(error.message);
       }
-    } finally {
-      setLoading(false);
-    }
+    },
+  });
+
+  const onSubmit = async (values: LoginFormValues) => {
+    mutate(values);
   };
 
-  return { onSubmit, loading };
+  return { onSubmit, loading: isPending };
 };
