@@ -1,41 +1,32 @@
-import { apiRequest } from "@/apiRequests/fetch";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
 interface ResetPasswordValues {
   password: string;
   confirmPassword: string;
 }
 export const useResetPassword = (token: string) => {
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const onSubmit = async (
-    values: ResetPasswordValues,
-    { resetForm }: { resetForm?: () => void },
-  ) => {
-    setLoading(true);
-    apiRequest({
-      endpoint: `/auth/reset-password/${token}`,
-      method: "POST",
-      data: values,
-    })
-      .then((res: any) => {
-        if (res.success) {
-          toast.success("Password reset successfully");
-          if (resetForm) {
-            resetForm();
-          }
-          router.push("/login");
-        } else {
-          toast.error(res.message);
-        }
-      })
-      .catch((err) => {
-        toast.error(err.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+  const { mutate, isPending } = useMutation({
+    mutationFn: (values: ResetPasswordValues) => {
+      return axiosClientInstance.post(`/auth/reset-password/${token}`, values);
+    },
+    onSuccess: ({ data }) => {
+      if (data.success) {
+        toast.success(data.message);
+        router.push("/login");
+      } else {
+        toast.error(data.message[0]);
+      }
+    },
+    onError: (error: any) => {
+      toast.error(error.response.data.message[0]);
+    },
+  });
+
+  const onSubmit = async (values: ResetPasswordValues) => {
+    mutate(values);
   };
-  return { onSubmit, loading };
+  return { onSubmit, loading: isPending };
 };

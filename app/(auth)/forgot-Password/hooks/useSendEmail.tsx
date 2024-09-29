@@ -1,39 +1,27 @@
-import { useState } from "react";
-import { apiRequest } from "@/apiRequests/fetch";
+import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
 interface sendEmailProps {
   email: string;
 }
-
 export const useSendEmail = () => {
-  const [successSend, setsuccessSend] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const onSubmit = async (
-    values: sendEmailProps,
-    { resetForm }: { resetForm?: () => void },
-  ) => {
-    setLoading(true);
-    try {
-      const response = await apiRequest<any>({
-        endpoint: "/auth/forget-password",
-        method: "POST",
-        data: values,
-      });
-      if (response.success) {
-        toast.success(response?.message);
-        setsuccessSend(true);
+  const { mutate, isPending, isSuccess } = useMutation({
+    mutationFn: (values: sendEmailProps) => {
+      return axiosClientInstance.post("/auth/forget-password", values);
+    },
+    onSuccess: ({ data }) => {
+      if (data.success) {
+        toast.success(data.message);
       } else {
-        toast.error(response?.message);
+        toast.error(data.message);
       }
-    } catch (error) {
-      // show error message
-      toast.error((error as Error)?.message || "An error occurred");
-    } finally {
-      if (resetForm) {
-        resetForm();
-      }
-      setLoading(false);
-    }
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+  const onSubmit = async (values: sendEmailProps) => {
+    mutate(values);
   };
-  return { onSubmit, successSend, loading };
+  return { onSubmit, successSend: isSuccess, loading: isPending };
 };
