@@ -6,15 +6,28 @@ import Input from "@/components/formik/Input";
 import FileInput from "@/components/formik/FileInput";
 import { IUser } from "@/types/types";
 import SelectInput from "@/components/formik/SelectInput";
-const EditUserForm = ({ user }: { user: IUser }) => {
-  const { onSubmit, loading } = useEditUser({ id: user.id });
+import { useQuery } from "@tanstack/react-query";
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
+const EditUserForm = ({ id }: { id: string }) => {
+  console.log(id);
+  const { data } = useQuery({
+    queryKey: ["userDetails"],
+    queryFn: async () => {
+      const response = await axiosClientInstance.get(`/users/${id}`);
+      return response.data;
+    },
+  });
+  console.log(data);
+  const user = data?.data.userData;
+  console.log(user);
+  const { onSubmit, loading } = useEditUser({ id: user?.id });
   const initialValues: IUser = {
-    username: user.username,
-    email: user.email,
-    role: user.role || "",
-    avatar_url: user.avatar_url || "",
-    cover_url: user.cover_url || "",
-    phone: user.phone || "",
+    username: user?.username || "",
+    email: user?.email || "",
+    role: user?.role || "",
+    avatar_url: user?.avatar_url || "",
+    cover_url: user?.cover_url || "",
+    phone: user?.phone || "",
   };
   return (
     <BaseForm

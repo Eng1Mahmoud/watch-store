@@ -1,9 +1,8 @@
 import { useRouter } from "next/navigation";
-import { apiRequest } from "@/apiRequests/fetch";
-import { getTokenClient } from "@/utils/getTokenClient";
 import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 import { getQueryClient } from "@/QueryProvider/QueryProvider";
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
 export const columns = [
   {
     key: "username",
@@ -27,12 +26,8 @@ export const useGetActions = () => {
   const queryClient = getQueryClient();
   const deleteMutation = useMutation({
     mutationFn: async (userId: string) => {
-      const token = getTokenClient();
-      return apiRequest({
-        endpoint: `/users/${userId}`,
-        method: "DELETE",
-        token,
-      });
+      const response = await axiosClientInstance.delete(`/users/${userId}`);
+      return response.data;
     },
     onSuccess: (data: any) => {
       if (data.success) {

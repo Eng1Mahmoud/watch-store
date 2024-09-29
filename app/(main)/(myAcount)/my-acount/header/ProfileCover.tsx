@@ -3,12 +3,16 @@ import { uploadImage } from "@/actions/uploadImages";
 import React, { useState } from "react";
 import { MdPhotoCamera } from "react-icons/md";
 import { saveCoverToServer } from "./actions/saveCoverToServer";
-import { getTokenClient } from "@/utils/getTokenClient";
 import { toast } from "react-toastify";
 import Image from "next/image";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
+import { getQueryClient } from "@/QueryProvider/QueryProvider";
+
 export const ProfileCover = () => {
+  const queryClient = getQueryClient();
+  const [loading, setLoading] = useState(false);
+  //get user data from server
   const { data } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
@@ -16,8 +20,28 @@ export const ProfileCover = () => {
       return response.data;
     },
   });
+  // save cover to server
+  const { mutate } = useMutation({
+    mutationFn: async (coverUrl: string) => {
+      const response = await saveCoverToServer(coverUrl);
+      return response;
+    },
+    onSuccess: ({ data }) => {
+      if (data.success) {
+        toast.success("Cover updated successfully");
+        setLoading(false);
+        queryClient.invalidateQueries({ queryKey: ["user"] }); // invalidate user query to get new cover
+      } else {
+        toast.error("Failed to update cover");
+        setLoading(false);
+      }
+    },
+    onError: (error: any) => {
+      toast.error(error?.response?.data?.message);
+      setLoading(false);
+    },
+  });
   const cover_url = data?.data?.userData?.cover_url;
-  const [loading, setLoading] = useState(false);
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
@@ -27,16 +51,7 @@ export const ProfileCover = () => {
       const formData = new FormData();
       formData.append("file", file);
       const { imageUrl } = await uploadImage(formData, "users");
-      const token = getTokenClient();
-      await saveCoverToServer(imageUrl, token as string).then((res) => {
-        if (res.success) {
-          toast.success("Cover updated successfully");
-          setLoading(false);
-        } else {
-          toast.error("Failed to update cover");
-          setLoading(false);
-        }
-      });
+      mutate(imageUrl);
     }
   };
   return (

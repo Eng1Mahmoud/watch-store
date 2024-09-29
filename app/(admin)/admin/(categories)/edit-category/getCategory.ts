@@ -1,12 +1,8 @@
 "use server";
-import { apiRequest } from "@/apiRequests/fetch";
-import { getTokenServer } from "@/utils/getTokenServer";
+import { axiosServerInstance } from "@/axios/axiosServerInstance";
 export const getCategory = async (name: string) => {
-  const token = getTokenServer();
-  const response = await apiRequest({
-    endpoint: `/categories/${name}?type=name`,
-    method: "GET",
-    token: token,
-  });
+  const response = await axiosServerInstance.get(
+    `/categories/${name}?type=name`,
+  );
   return response;
 };

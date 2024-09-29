@@ -1,39 +1,28 @@
-import { apiRequest } from "@/apiRequests/fetch";
-import { getTokenClient } from "@/utils/getTokenClient";
-import { useState } from "react";
 import { toast } from "react-toastify";
 import { IProduct } from "@/types/types";
-export const useAddProduct = () => {
-  const [loading, setLoading] = useState(false);
-  const onSubmit = async (
-    values: IProduct,
-    { resetForm }: { resetForm?: () => void },
-  ) => {
-    setLoading(true);
+import { useMutation } from "@tanstack/react-query";
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
 
-    await apiRequest<any>({
-      endpoint: "/products",
-      method: "POST",
-      data: values,
-      token: getTokenClient(),
-    })
-      .then((res) => {
-        if (res.success) {
-          toast.success(res.message);
-          if (resetForm) {
-            resetForm();
-          }
-        } else {
-          toast.error(res.message);
-        }
-      })
-      .catch((err) => {
-        toast.error(err.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+export const useAddProduct = () => {
+  const { mutate, isPending } = useMutation({
+    mutationFn: (values: IProduct) => {
+      return axiosClientInstance.post("/products", values);
+    },
+    onSuccess: ({ data }) => {
+      console.log(data);
+      if (data.success) {
+        toast.success(data.message);
+      } else {
+        toast.error(data.message);
+      }
+    },
+    onError: (err: any) => {
+      toast.error(err.response?.data?.message);
+    },
+  });
+  const onSubmit = async (values: IProduct) => {
+    mutate(values);
   };
 
-  return { onSubmit, loading };
+  return { onSubmit, loading: isPending };
 };

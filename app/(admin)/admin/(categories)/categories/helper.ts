@@ -1,9 +1,8 @@
 import { useRouter } from "next/navigation";
-import { apiRequest } from "@/apiRequests/fetch";
-import { getTokenClient } from "@/utils/getTokenClient";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { getQueryClient } from "@/QueryProvider/QueryProvider";
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
 export const columns = [
   {
     key: "name",
@@ -21,26 +20,23 @@ export const useGetActions = () => {
 
   const deleteMutation = useMutation({
     mutationFn: async (itemName: string) => {
-      const token = getTokenClient();
-      return apiRequest({
-        endpoint: `/categories/${itemName}?type=name`,
-        method: "DELETE",
-        token,
-      });
+      const response = await axiosClientInstance.delete(
+        `/categories/${itemName}?type=name`,
+      );
+      return response.data;
     },
     onSuccess: (data: any) => {
       if (data.success) {
+        console.log(data);
         toast.success("Category deleted successfully");
-        queryClient.invalidateQueries({
-          queryKey: ["categories", "categories-home"],
-        }); // revalidate categories in table
+        queryClient.invalidateQueries({ queryKey: ["categories"] }); // revalidate categories in table
         queryClient.invalidateQueries({ queryKey: ["categories-home"] }); // revalidate categories in home
       } else {
         toast.error(data.message);
       }
     },
-    onError: (error) => {
-      toast.error("An error occurred while deleting the category");
+    onError: (error: any) => {
+      toast.error(error.response.data.message);
     },
   });
 

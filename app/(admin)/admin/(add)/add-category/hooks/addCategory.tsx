@@ -1,46 +1,34 @@
-import { apiRequest } from "@/apiRequests/fetch";
-import { getTokenClient } from "@/utils/getTokenClient";
-import { useState } from "react";
 import { toast } from "react-toastify";
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
 import { ICategory } from "@/types/types";
 import { useRouter } from "next/navigation";
 import { getQueryClient } from "@/QueryProvider/QueryProvider";
+import { useMutation } from "@tanstack/react-query";
 export const useAddCategory = () => {
   const queryClient = getQueryClient();
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
-  const onSubmit = async (
-    values: ICategory,
-    { resetForm }: { resetForm?: () => void },
-  ) => {
-    setLoading(true);
-
-    await apiRequest<any>({
-      endpoint: "/categories",
-      method: "POST",
-      data: values,
-      token: getTokenClient(),
-    })
-      .then((res) => {
-        if (res.success) {
-          toast.success(res.message);
-          queryClient.invalidateQueries({ queryKey: ["categories"] }); // revalidate categories in table
-          queryClient.invalidateQueries({ queryKey: ["categories-home"] }); // revalidate categories in home
-          router.push("/admin/categories"); // redirect to categories page
-          if (resetForm) {
-            resetForm();
-          }
-        } else {
-          toast.error(res.message);
-        }
-      })
-      .catch((err) => {
-        toast.error(err.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+  const { mutate, isPending } = useMutation({
+    mutationFn: (values: ICategory) => {
+      return axiosClientInstance.post("/categories", values);
+    },
+    onSuccess: ({ data }) => {
+      console.log(data);
+      if (data.success) {
+        toast.success(data.message);
+        queryClient.invalidateQueries({ queryKey: ["categories"] }); // revalidate categories in table
+        queryClient.invalidateQueries({ queryKey: ["categories-home"] }); // revalidate categories in home
+        router.push("/admin/categories"); // redirect to categories page
+      } else {
+        toast.error(data.message);
+      }
+    },
+    onError: (err: any) => {
+      toast.error(err.response?.data?.message);
+    },
+  });
+  const onSubmit = async (values: ICategory) => {
+    mutate(values);
   };
 
-  return { onSubmit, loading };
+  return { onSubmit, loading: isPending };
 };

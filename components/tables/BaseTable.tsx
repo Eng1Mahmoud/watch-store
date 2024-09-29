@@ -1,10 +1,8 @@
 "use client";
 import React, { useCallback, useRef } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { apiRequest } from "@/apiRequests/fetch";
-import { getTokenClient } from "@/utils/getTokenClient";
 import Image from "next/image";
-
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
 interface Column {
   key: string;
   label: string;
@@ -14,7 +12,6 @@ interface Action {
   label: string;
   onClick: (item: any) => void;
 }
-
 interface BaseTableProps {
   columns: Column[];
   endpoint: string;
@@ -35,17 +32,14 @@ const BaseTable: React.FC<BaseTableProps> = ({
 }) => {
   const observer = useRef<IntersectionObserver | null>(null);
   const fetchTableData = async ({ pageParam = 1 }: any) => {
-    const res: any = await apiRequest({
-      endpoint,
-      method: "GET",
+    const response = await axiosClientInstance.get(endpoint, {
       params: {
         page: pageParam.toString(),
         limit: itemsPerPage.toString(),
         query: query.toString(),
       },
-      token: getTokenClient(),
     });
-    return res.data[dataName];
+    return response.data?.data?.[dataName];
   };
 
   const { data, isLoading, hasNextPage, fetchNextPage, isFetchingNextPage } =
