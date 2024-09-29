@@ -1,44 +1,31 @@
 import { toast } from "react-toastify";
-import { useState } from "react";
-import { apiRequest } from "@/apiRequests/fetch";
+import { useMutation } from "@tanstack/react-query";
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
 export const useSignUp = () => {
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
   interface SignUpFormValues {
     username: string;
     email: string;
     password: string;
   }
-
-  const onSubmit = async (
-    values: SignUpFormValues,
-    { resetForm }: { resetForm?: () => void },
-  ) => {
-    setLoading(true);
-    try {
-      const response = await apiRequest<any>({
-        endpoint: "/auth/signup",
-        method: "POST",
-        data: values,
-      });
+  const { mutate, isPending, isSuccess } = useMutation({
+    mutationFn: async (values: SignUpFormValues) => {
+      const response = await axiosClientInstance.post("/auth/signup", values);
+      return response.data;
+    },
+    onSuccess: (response) => {
       if (response.success) {
         toast.success(response.message);
-        setSuccess(true);
-        if (resetForm) {
-          resetForm();
-        }
-        // You might want to store the token or redirect the user here
       } else {
         toast.error(response.message[1]);
       }
-    } catch (error) {
-      if (error instanceof Error) {
-        toast.error(error.message);
-      }
-    } finally {
-      setLoading(false);
-    }
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+  const onSubmit = async (values: SignUpFormValues) => {
+    mutate(values);
   };
 
-  return { onSubmit, loading, success };
+  return { onSubmit, loading: isPending, success: isSuccess };
 };

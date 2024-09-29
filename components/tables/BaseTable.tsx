@@ -1,9 +1,8 @@
 "use client";
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { apiRequest } from "@/apiRequests/fetch";
-import { getTokenClient } from "@/utils/getTokenClient";
+import React, { useCallback, useRef } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import Image from "next/image";
-
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
 interface Column {
   key: string;
   label: string;
@@ -13,14 +12,13 @@ interface Action {
   label: string;
   onClick: (item: any) => void;
 }
-
 interface BaseTableProps {
   columns: Column[];
   endpoint: string;
   actions?: Action[];
   itemsPerPage?: number;
   dataName?: string;
-  tags?: string[];
+  key?: string;
   query?: string;
 }
 
@@ -30,63 +28,41 @@ const BaseTable: React.FC<BaseTableProps> = ({
   actions,
   itemsPerPage = 10,
   dataName = "data",
-  tags,
   query = "",
 }) => {
-  const [data, setData] = useState<any[]>([]);
-  const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
   const observer = useRef<IntersectionObserver | null>(null);
+  const fetchTableData = async ({ pageParam = 1 }: any) => {
+    const response = await axiosClientInstance.get(endpoint, {
+      params: {
+        page: pageParam.toString(),
+        limit: itemsPerPage.toString(),
+        query: query.toString(),
+      },
+    });
+    return response.data?.data?.[dataName];
+  };
 
+  const { data, isLoading, hasNextPage, fetchNextPage, isFetchingNextPage } =
+    useInfiniteQuery({
+      queryKey: [dataName],
+      queryFn: fetchTableData,
+      getNextPageParam: (lastPage, allPages) =>
+        lastPage.length === itemsPerPage ? allPages.length + 1 : undefined,
+      initialPageParam: 1,
+    });
   const lastItemRef = useCallback(
     (node: HTMLTableRowElement) => {
-      if (isLoading) return;
+      if (isLoading || isFetchingNextPage) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && hasMore) {
-          setPage((prevPage) => prevPage + 1);
+        if (entries[0].isIntersecting && hasNextPage) {
+          fetchNextPage();
         }
       });
       if (node) observer.current.observe(node);
     },
-    [isLoading, hasMore],
+    [isLoading, isFetchingNextPage, hasNextPage, fetchNextPage],
   );
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      await apiRequest({
-        endpoint,
-        method: "GET",
-        params: {
-          page: page.toString(),
-          limit: itemsPerPage.toString(),
-          query: query.toString(),
-        },
-        tags,
-        token: getTokenClient(),
-      })
-        .then((res: any) => {
-          console.log(res.data[dataName]);
-          setData((prevData) => {
-            // Only append new data if it's not the first page
-            return page === 1
-              ? res.data[dataName]
-              : [...prevData, ...res.data[dataName]];
-          });
-          if (res.data[dataName].length < itemsPerPage) {
-            setHasMore(false);
-          }
-        })
-        .catch((err) => {})
-        .finally(() => {
-          setIsLoading(false);
-        });
-    };
-
-    fetchData();
-  }, [endpoint, page, itemsPerPage, dataName, tags, query]);
 
   return (
     <div className="overflow-x-auto">
@@ -97,7 +73,7 @@ const BaseTable: React.FC<BaseTableProps> = ({
               <th
                 key={column.key}
                 scope="col"
-                className="px-6 py-3 text-center font-medium  text-gray-500 capitalize w-fit  whitespace-nowrap"
+                className="px-6 py-3 text-center font-medium text-gray-500 capitalize w-fit whitespace-nowrap"
               >
                 {column.label}
               </th>
@@ -107,24 +83,29 @@ const BaseTable: React.FC<BaseTableProps> = ({
                 <th
                   key={actionIndex}
                   scope="col"
-                  className=" px-6 py-3  text-gray-500 capitalize font-medium whitespace-nowrap text-center"
+                  className=" px-6 py-3 text-gray-500 capitalize font-medium whitespace-nowrap text-center"
                 >
-                  <span className="">{action.label}</span>
+                  <span>{action.label}</span>
                 </th>
               ))}
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {data?.length > 0 &&
-            data.map((item: any, index: number) => (
+          {data?.pages.map((page, pageIndex) =>
+            page.map((item: any, index: number) => (
               <tr
                 key={index}
-                ref={index === data.length - 1 ? lastItemRef : null}
+                ref={
+                  pageIndex === data.pages.length - 1 &&
+                  index === page.length - 1
+                    ? lastItemRef
+                    : null
+                }
               >
                 {columns.map((column) => (
                   <td
                     key={column.key}
-                    className="px-6 text-center  py-4 whitespace-nowrap"
+                    className="px-6 text-center py-4 whitespace-nowrap"
                   >
                     {column.key === "cover_url" ? (
                       <div className="flex justify-center">
@@ -156,19 +137,21 @@ const BaseTable: React.FC<BaseTableProps> = ({
                     </td>
                   ))}
               </tr>
-            ))}
+            )),
+          )}
         </tbody>
       </table>
-      {isLoading && <div className="text-center py-4">Loading more...</div>}
-      {!hasMore && data.length > 0 && (
+      {isFetchingNextPage && (
+        <div className="text-center py-4">Loading more...</div>
+      )}
+      {!hasNextPage && data?.pages?.[0]?.length > 0 && (
         <div className="text-center py-4 text-gray-500">
           No more data to load
         </div>
       )}
-
-      {data.length === 0 && (
+      {data?.pages?.[0]?.length === 0 && (
         <div className="text-center py-4 text-gray-500">
-          there is no data to display until now
+          There is no data to display until now
         </div>
       )}
     </div>

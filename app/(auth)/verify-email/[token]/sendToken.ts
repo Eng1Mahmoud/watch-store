@@ -1,10 +1,8 @@
 "use server";
-import { apiRequest } from "@/apiRequests/fetch";
+import { axiosServerInstance } from "@/axios/axiosServerInstance";
 export async function sendToken(token: string) {
-  const response: any = await apiRequest({
-    endpoint: `/auth/verify-email/${token}`,
-    method: "POST",
-  });
-
+  const response = await axiosServerInstance.post(
+    `/auth/verify-email/${token}`,
+  );
   return response;
 }

@@ -9,7 +9,7 @@ export const loginSchema = yup.object().shape({
     .min(8)
     .max(20)
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/,
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,20}$/,
       "Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special case character",
     ),
 });
@@ -24,7 +24,7 @@ export const registerSchema = yup.object().shape({
     .min(8)
     .max(20)
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/,
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,20}$/,
       "Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special case character",
     ),
 });
@@ -43,7 +43,7 @@ export const forgotPasswordSchema = yup.object().shape({
     .min(8)
     .max(20)
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/,
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,20}$/,
       "Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special case character",
     ),
   confirmPassword: yup
@@ -73,7 +73,7 @@ export const changePasswordSchema = yup.object().shape({
     .min(8)
     .max(20)
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/,
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,20}$/,
       "Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special case character",
     ),
 });

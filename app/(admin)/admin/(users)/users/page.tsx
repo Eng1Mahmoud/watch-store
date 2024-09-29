@@ -14,7 +14,6 @@ const Users = () => {
         endpoint={`/users`}
         itemsPerPage={10}
         dataName="users"
-        tags={["get-all-users"]}
         actions={actions}
         query={searchTerm}
       />

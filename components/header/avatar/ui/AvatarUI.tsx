@@ -3,7 +3,17 @@ import Image from "next/image";
 import avatar from "@/public/assets/avatar.jpg";
 import AvatarMenu from "./AvatarMenu";
 import { useAppSelector } from "@/redux/hooks";
-const AvatarUI = ({ avatarUrl }: { avatarUrl: string }) => {
+import { useQuery } from "@tanstack/react-query";
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
+const AvatarUI = () => {
+  const { data } = useQuery({
+    queryKey: ["user"],
+    queryFn: async () => {
+      const response = await axiosClientInstance.get("/users/current");
+      return response.data;
+    },
+  });
+  const avatarUrl = data?.data?.userData?.avatar_url;
   const isLoging = useAppSelector((state) => state.user.login);
   return isLoging ? (
     <div className="dropdown dropdown-end">

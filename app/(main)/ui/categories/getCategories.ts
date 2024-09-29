@@ -1,12 +1,8 @@
-import { apiRequest } from "@/apiRequests/fetch";
-import { getTokenServer } from "@/utils/getTokenServer";
-
+"use server";
+import { axiosServerInstance } from "@/axios/axiosServerInstance";
 export const getCategories = async (page: number, limit: number) => {
-  const token = getTokenServer();
-  const response = await apiRequest({
-    endpoint: `/categories?page=${page}&limit=${limit}`,
-    method: "GET",
-    token,
-  });
-  return response;
+  const response = await axiosServerInstance(
+    `/categories?page=${page}&limit=${limit}`,
+  );
+  return response.data;
 };

@@ -4,11 +4,43 @@ import defaultAvatar from "/public/assets/avatar.jpg";
 import { MdPhotoCamera } from "react-icons/md";
 import { uploadImage } from "@/actions/uploadImages";
 import { saveAvatarIntoserver } from "./actions/saveAvatarIntoserver";
-import { getTokenClient } from "@/utils/getTokenClient";
 import { useState } from "react";
 import { toast } from "react-toastify";
-const ProfileImage = ({ avatar }: { avatar: string }) => {
+import { useQuery } from "@tanstack/react-query";
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
+import { useMutation } from "@tanstack/react-query";
+import { getQueryClient } from "@/QueryProvider/QueryProvider";
+const ProfileImage = () => {
   const [loading, setLoading] = useState(false);
+  const queryClient = getQueryClient();
+  // get user data from server
+  const { data } = useQuery({
+    queryKey: ["user"],
+    queryFn: async () => {
+      const response = await axiosClientInstance.get("/users/current");
+      return response.data;
+    },
+  });
+  // update user avatar into server
+  const { mutate } = useMutation({
+    mutationFn: async (imageUrl: string) => {
+      return await saveAvatarIntoserver(imageUrl);
+    },
+    onSuccess: ({ data }) => {
+      if (data.success) {
+        toast.success("Avatar updated successfully");
+        setLoading(false);
+        queryClient.invalidateQueries({ queryKey: ["user"] }); // invalidate the user query
+      } else {
+        toast.error(data.message);
+        setLoading(false);
+      }
+    },
+    onError: (error: any) => {
+      toast.error(error.message);
+    },
+  });
+  const avatar = data?.data?.userData?.avatar_url;
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
@@ -18,16 +50,7 @@ const ProfileImage = ({ avatar }: { avatar: string }) => {
       const formData = new FormData();
       formData.append("file", file);
       const { imageUrl } = await uploadImage(formData, "users");
-      const token = getTokenClient();
-      await saveAvatarIntoserver(imageUrl, token as string)
-        .then(() => {
-          setLoading(false);
-          toast.success("Avatar updated successfully");
-        })
-        .catch((error) => {
-          toast.error(error.message);
-          setLoading(false);
-        });
+      mutate(imageUrl);
     }
   };
 

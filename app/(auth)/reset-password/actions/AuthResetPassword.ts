@@ -1,8 +1,8 @@
-import { apiRequest } from "@/apiRequests/fetch";
+"use server";
+import { axiosServerInstance } from "@/axios/axiosServerInstance";
 export const AuthResetPassword = async ({ token }: { token: string }) => {
-  const response = await apiRequest({
-    endpoint: `/auth/validate-reset/${token}`,
-    method: "GET",
-  });
+  const response = await axiosServerInstance.get(
+    `/auth/validate-reset/${token}`,
+  );
   return response;
 };

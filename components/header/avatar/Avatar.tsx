@@ -1,15 +1,17 @@
-import { getUser } from "../../../actions/getUser";
+import { getUser } from "@/actions/getUser";
 import AvatarUI from "./ui/AvatarUI";
+import { QueryClient } from "@tanstack/react-query";
 import { getTokenServer } from "@/utils/getTokenServer";
 const Avatar = async () => {
+  const queryClient = new QueryClient();
   const token = getTokenServer();
-  let user: any = null;
   if (token) {
-    // to prevent fetching data if token is not present
-    user = await getUser();
+    await queryClient.fetchQuery({
+      queryKey: ["user"],
+      queryFn: getUser,
+    });
   }
-
-  return <AvatarUI avatarUrl={user?.data?.userData?.avatar_url} />;
+  return <AvatarUI />;
 };
 
 export default Avatar;

@@ -40,7 +40,7 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
   return (
     <ul className="menu p-4 w-full text-base-content">
       <MenuItem
-        href="/admin"
+        href="/"
         icon={<FiHome className="h-6 w-6 text-main-main" onClick={onToggle} />}
         text="Home"
         open={open}

@@ -1,14 +1,15 @@
-import React from "react";
 import EditcategoryForm from "../ui/EditForm";
 import { getCategory } from "../getCategory";
-import { ICategory } from "@/types/types";
+import { QueryClient } from "@tanstack/react-query";
 const page = async ({ params }: { params: { name: string } }) => {
-  const {
-    data: { category },
-  } = (await getCategory(params.name)) as { data: { category: ICategory } };
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ["categoryDetails"],
+    queryFn: () => getCategory(params.name),
+  });
   return (
     <div>
-      <EditcategoryForm category={category} />
+      <EditcategoryForm name={params.name} />
     </div>
   );
 };

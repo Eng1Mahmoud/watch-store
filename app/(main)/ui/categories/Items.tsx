@@ -3,12 +3,24 @@ import { ICategory } from "@/types/types";
 import { motion } from "framer-motion"; // Import motion from framer-motion
 import Image from "next/image";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
 
-const Items = ({ categories }: { categories: ICategory[] }) => {
-  console.log(categories);
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
+const Items = () => {
+  const { data } = useQuery({
+    queryKey: ["categories-home"],
+    queryFn: async () => {
+      const response = await axiosClientInstance(
+        `/categories?page=${1}&limit=${20}`,
+      );
+      return response.data;
+    },
+  });
+
+  const categories = data?.data.categories;
   return (
     <>
-      {categories.map((item, index) => (
+      {categories?.map((item: ICategory, index: number) => (
         <Link href={`/categories/${item.name}`} key={item.id}>
           <motion.div
             className="relative overflow-hidden rounded-lg transition-all duration-100 cursor-pointer"
