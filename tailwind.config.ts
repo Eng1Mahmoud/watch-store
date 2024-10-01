@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import plugin from "tailwindcss/plugin";
 const config: Config = {
   content: [
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -37,6 +36,7 @@ const config: Config = {
           main: "#333333",
           secondary: "#6b7280",
           third: "#ffffff",
+          fourth: "#f3f3f3",
         },
         error: {
           main: "#ff0000",
