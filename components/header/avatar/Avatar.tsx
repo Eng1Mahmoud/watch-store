@@ -11,7 +11,7 @@ const Avatar = async () => {
       queryFn: getUser,
     });
   }
-  return <AvatarUI />;
+  return token ? <AvatarUI /> : null;
 };
 
 export default Avatar;

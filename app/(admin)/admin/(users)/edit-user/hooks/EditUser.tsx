@@ -13,7 +13,6 @@ export const useEditUser = ({ id }: { id: string | undefined }) => {
       return response.data;
     },
     onSuccess: (res) => {
-      console.log(res);
       if (res.success) {
         toast.success(res.message);
         router.push("/admin/users");

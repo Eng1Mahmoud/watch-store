@@ -12,7 +12,6 @@ export const useAddCategory = () => {
       return axiosClientInstance.post("/categories", values);
     },
     onSuccess: ({ data }) => {
-      console.log(data);
       if (data.success) {
         toast.success(data.message);
         queryClient.invalidateQueries({ queryKey: ["categories"] }); // revalidate categories in table

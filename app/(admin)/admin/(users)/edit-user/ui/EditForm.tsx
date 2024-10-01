@@ -9,7 +9,6 @@ import SelectInput from "@/components/formik/SelectInput";
 import { useQuery } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
 const EditUserForm = ({ id }: { id: string }) => {
-  console.log(id);
   const { data } = useQuery({
     queryKey: ["userDetails"],
     queryFn: async () => {
@@ -17,9 +16,7 @@ const EditUserForm = ({ id }: { id: string }) => {
       return response.data;
     },
   });
-  console.log(data);
   const user = data?.data.userData;
-  console.log(user);
   const { onSubmit, loading } = useEditUser({ id: user?.id });
   const initialValues: IUser = {
     username: user?.username || "",

@@ -27,7 +27,6 @@ export const useGetActions = () => {
     },
     onSuccess: (data: any) => {
       if (data.success) {
-        console.log(data);
         toast.success("Category deleted successfully");
         queryClient.invalidateQueries({ queryKey: ["categories"] }); // revalidate categories in table
         queryClient.invalidateQueries({ queryKey: ["categories-home"] }); // revalidate categories in home

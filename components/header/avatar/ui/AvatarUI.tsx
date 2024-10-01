@@ -5,6 +5,7 @@ import AvatarMenu from "./AvatarMenu";
 import { useAppSelector } from "@/redux/hooks";
 import { useQuery } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
+
 const AvatarUI = () => {
   const { data } = useQuery({
     queryKey: ["user"],

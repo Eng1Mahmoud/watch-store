@@ -37,5 +37,5 @@ export const useTokenExpiration = () => {
     return () => {
       if (timeoutId) clearTimeout(timeoutId);
     };
-  }, [dispatch]);
+  }, [dispatch, router]);
 };

@@ -7,6 +7,7 @@ export interface ICategory {
 
 // product interface
 export interface IProduct {
+  id?: string;
   name: string;
   price: number;
   description: string;
@@ -31,4 +32,11 @@ export interface IUser {
     street: string;
     zipcode: string;
   } | null;
+}
+
+// order interface
+export interface ICart {
+  product: IProduct;
+  quantity: number;
+  total_price: number;
 }

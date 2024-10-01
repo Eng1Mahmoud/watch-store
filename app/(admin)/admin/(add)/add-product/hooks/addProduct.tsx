@@ -9,7 +9,6 @@ export const useAddProduct = () => {
       return axiosClientInstance.post("/products", values);
     },
     onSuccess: ({ data }) => {
-      console.log(data);
       if (data.success) {
         toast.success(data.message);
       } else {
