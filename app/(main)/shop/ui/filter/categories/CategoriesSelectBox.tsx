@@ -8,7 +8,6 @@ import { setCategory } from "@/redux/features/filter";
 const CategoriesSelectBox = () => {
   const dispatch = useAppDispatch();
   const category = useAppSelector((state) => state.filter.filter.category); // get category from redux
-  console.log(category);
 
   const { data } = useQuery({
     queryKey: ["categories-home"],

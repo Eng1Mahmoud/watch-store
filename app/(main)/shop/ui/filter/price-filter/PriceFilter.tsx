@@ -9,7 +9,6 @@ const PriceFilter: React.FC = () => {
 
   const dispatch = useAppDispatch();
   const values = [MIN_PRICE, MAX_PRICE]; // set values to min and max price
-  console.log(values);
   const STEP = 1;
   const MIN = 0;
   const MAX = 100000;
