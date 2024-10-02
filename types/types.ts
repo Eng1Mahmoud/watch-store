@@ -40,3 +40,14 @@ export interface ICart {
   quantity: number;
   total_price: number;
 }
+
+// filter interface
+export interface IFilter {
+  category: {
+    id: string;
+    name: string;
+  };
+  minPrice: number;
+  maxPrice: number;
+  search: string;
+}

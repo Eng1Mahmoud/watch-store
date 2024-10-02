@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html,
 body {
   scroll-behavior: smooth;
@@ -36,7 +35,9 @@ a {
   .box-shadow {
     @apply shadow-2xl p-5 rounded-lg border border-gray-200;
   }
-
+  .btn-error-outline {
+    @apply bg-transparent border-2 border-error-main text-error-main hover:text-white hover:bg-error-main hover:border-error-main;
+  }
 }
 
 /*custom utilities styles*/

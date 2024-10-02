@@ -4,7 +4,6 @@ import { motion } from "framer-motion"; // Import motion from framer-motion
 import Image from "next/image";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
 const Items = () => {
   const { data } = useQuery({
