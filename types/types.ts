@@ -43,10 +43,7 @@ export interface ICart {
 
 // filter interface
 export interface IFilter {
-  category: {
-    id: string;
-    name: string;
-  };
+  category: string;
   minPrice: number;
   maxPrice: number;
   search: string;

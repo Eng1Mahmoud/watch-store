@@ -7,12 +7,9 @@ interface FilterState {
 
 const initialState: FilterState = {
   filter: {
-    category: {
-      id: "",
-      name: "",
-    },
+    category: "",
     minPrice: 0,
-    maxPrice: 100000,
+    maxPrice: 0,
     search: "",
   },
 };
@@ -21,10 +18,7 @@ const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
-    setCategory: (
-      state,
-      action: PayloadAction<{ id: string; name: string }>,
-    ) => {
+    setCategory: (state, action: PayloadAction<string>) => {
       state.filter.category = action.payload;
     },
     setPrice: (state, action: PayloadAction<{ min: number; max: number }>) => {

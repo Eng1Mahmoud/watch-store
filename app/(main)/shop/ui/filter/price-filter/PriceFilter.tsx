@@ -8,7 +8,7 @@ const PriceFilter: React.FC = () => {
   const MAX_PRICE = useAppSelector((state) => state.filter.filter.maxPrice); // get max price from redux
 
   const dispatch = useAppDispatch();
-  const values = [MIN_PRICE, MAX_PRICE]; // set values to min and max price
+  const values = [MIN_PRICE || 0, MAX_PRICE || 0]; // set values to min and max price
   const STEP = 1;
   const MIN = 0;
   const MAX = 100000;
@@ -68,7 +68,7 @@ const PriceFilter: React.FC = () => {
             );
           }}
         />
-        <output className="mt-3">
+        <output className="mt-3 text-sm">
           Price: ${values[0].toFixed(0)} - ${values[1].toFixed(0)}
         </output>
       </div>

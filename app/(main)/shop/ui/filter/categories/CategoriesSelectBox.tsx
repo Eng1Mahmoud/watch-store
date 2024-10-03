@@ -24,14 +24,7 @@ const CategoriesSelectBox = () => {
   const handleCategoryChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    const selectedCategory = categories.find(
-      (category: ICategory) => category.id === event.target.value,
-    );
-    if (selectedCategory) {
-      dispatch(
-        setCategory({ id: selectedCategory.id, name: selectedCategory.name }),
-      );
-    }
+    dispatch(setCategory(event.target.value));
   };
 
   return (
@@ -39,12 +32,12 @@ const CategoriesSelectBox = () => {
       <h1 className="text-lg pb-2">Categories</h1>
       <select
         className="select select-bordered w-full"
-        value={category.id}
+        value={category}
         onChange={handleCategoryChange}
       >
         <option value="">All</option>
         {categories.map((category: ICategory) => (
-          <option key={category.id} value={category.id}>
+          <option key={category.id} value={category.name}>
             {category.name}
           </option>
         ))}
