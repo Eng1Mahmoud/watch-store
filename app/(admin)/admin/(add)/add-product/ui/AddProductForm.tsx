@@ -2,22 +2,27 @@
 import BaseForm from "@/components/formik/BaseForm";
 import Input from "@/components/formik/Input";
 import { productSchema } from "@/formsValidation/validation";
-import { IProduct } from "@/types/types";
+import { ICategory, IProduct } from "@/types/types";
 import { useAddProduct } from "../hooks/addProduct";
 import FileInput from "@/components/formik/FileInput";
 import SelectInput from "@/components/formik/SelectInput";
+import { useGetCategoriesSelectBox } from "@/hooks/getCategoriesSelectBox";
 const initialValues: IProduct = {
   name: "",
   price: 0,
   description: "",
   category: "",
-  image: "",
+  image_url: "",
   quantity: 0,
 };
 
 const AddProductForm = () => {
   const { onSubmit, loading } = useAddProduct();
-
+  const { categories } = useGetCategoriesSelectBox();
+  const categoriesArray: any = categories?.map((category: ICategory) => ({
+    label: category.name,
+    value: category.name,
+  }));
   return (
     <BaseForm
       initialValues={initialValues}
@@ -42,7 +47,7 @@ const AddProductForm = () => {
             <SelectInput
               name="category"
               placeholder="Category"
-              options={["Category 1", "Category 2", "Category 3"]}
+              options={categoriesArray}
             />
           </div>
           <div>

@@ -5,7 +5,6 @@ import { MdClose } from "react-icons/md";
 const SelectedFilterLabels = () => {
   const dispatch = useAppDispatch();
   const selectedFilters = useAppSelector((state) => state.filter.filter);
-  console.log(selectedFilters);
   const { category, minPrice, maxPrice, search } = selectedFilters;
 
   const labels = [

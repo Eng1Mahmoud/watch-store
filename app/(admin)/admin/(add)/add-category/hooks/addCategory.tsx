@@ -16,6 +16,7 @@ export const useAddCategory = () => {
         toast.success(data.message);
         queryClient.invalidateQueries({ queryKey: ["categories"] }); // revalidate categories in table
         queryClient.invalidateQueries({ queryKey: ["categories-home"] }); // revalidate categories in home
+        queryClient.invalidateQueries({ queryKey: ["categories-selectBox"] }); // revalidate categories in admin
         router.push("/admin/categories"); // redirect to categories page
       } else {
         toast.error(data.message);

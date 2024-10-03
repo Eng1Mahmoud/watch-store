@@ -6,7 +6,12 @@ const SelectInput = ({
 }: {
   name: string;
   placeholder: string;
-  options: string[];
+  options: [
+    {
+      label: string;
+      value: string;
+    },
+  ];
   disabled?: boolean;
 }) => {
   const [field, meta] = useField(name);
@@ -19,9 +24,9 @@ const SelectInput = ({
         id={name}
       >
         <option value="" disabled></option>
-        {options.map((option, index) => (
-          <option key={index} value={option}>
-            {option}
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
           </option>
         ))}
       </select>

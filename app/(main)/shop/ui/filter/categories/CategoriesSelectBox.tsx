@@ -1,26 +1,12 @@
 "use client";
-import { axiosClientInstance } from "@/axios/axiosClientInstance";
 import { ICategory } from "@/types/types";
-import { useQuery } from "@tanstack/react-query";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-
+import { useGetCategoriesSelectBox } from "@/hooks/getCategoriesSelectBox";
 import { setCategory } from "@/redux/features/filter";
 const CategoriesSelectBox = () => {
   const dispatch = useAppDispatch();
   const category = useAppSelector((state) => state.filter.filter.category); // get category from redux
-
-  const { data } = useQuery({
-    queryKey: ["categories-home"],
-    queryFn: async () => {
-      const response = await axiosClientInstance(
-        `/categories?page=${1}&limit=${20}`,
-      );
-      return response.data;
-    },
-  });
-
-  const categories = data?.data.categories || []; // get categories from api
-
+  const { categories } = useGetCategoriesSelectBox();
   const handleCategoryChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
