@@ -1,8 +1,12 @@
 import { ErrorMessage, useField } from "formik";
+import React from "react";
+
 const SelectInput = ({
   name,
   placeholder,
   options,
+  isMulti,
+  ...props
 }: {
   name: string;
   placeholder: string;
@@ -10,18 +14,30 @@ const SelectInput = ({
     label: string;
     value: string;
   }>;
+  isMulti?: boolean;
   disabled?: boolean;
 }) => {
-  const [field, meta] = useField(name);
+  const [field, meta, helpers] = useField(name);
+
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedOptions = Array.from(
+      event.target.selectedOptions,
+      (option) => option.value,
+    );
+    helpers.setValue(isMulti ? selectedOptions : selectedOptions[0]);
+  };
 
   return (
     <div className="relative">
       <select
         {...field}
-        className={`select select-bordered w-full  ${meta.touched && meta.error ? "select-error" : ""}`}
+        onChange={handleChange}
+        multiple={isMulti}
+        className={`select select-bordered w-full ${meta.touched && meta.error ? "select-error" : ""}`}
         id={name}
+        {...props}
       >
-        <option value="" disabled></option>
+        {!isMulti && <option value="" disabled></option>}
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}

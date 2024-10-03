@@ -5,7 +5,7 @@ import { useEditUser } from "../hooks/EditUser";
 import Input from "@/components/formik/Input";
 import FileInput from "@/components/formik/FileInput";
 import { IUser } from "@/types/types";
-import SelectInput from "@/components/formik/SelectInput";
+import SelectInput from "@/components/formik/MultySelectInput";
 import { useQuery } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
 const EditUserForm = ({ id }: { id: string }) => {

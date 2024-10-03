@@ -5,13 +5,13 @@ import { productSchema } from "@/formsValidation/validation";
 import { ICategory, IProduct } from "@/types/types";
 import { useAddProduct } from "../hooks/addProduct";
 import FileInput from "@/components/formik/FileInput";
-import SelectInput from "@/components/formik/SelectInput";
+import MultiCheckboxInput from "@/components/formik/MultySelectInput";
 import { useGetCategoriesSelectBox } from "@/hooks/getCategoriesSelectBox";
 const initialValues: IProduct = {
   name: "",
   price: 0,
   description: "",
-  category: "",
+  category_ids: [],
   image_url: "",
   quantity: 0,
 };
@@ -21,7 +21,7 @@ const AddProductForm = () => {
   const { categories } = useGetCategoriesSelectBox();
   const categoriesArray: any = categories?.map((category: ICategory) => ({
     label: category.name,
-    value: category.name,
+    value: category.id,
   }));
   return (
     <BaseForm
@@ -44,14 +44,14 @@ const AddProductForm = () => {
               placeholder="Product Quantity"
               type="number"
             />
-            <SelectInput
-              name="category"
+            <MultiCheckboxInput
+              name="category_ids"
               placeholder="Category"
               options={categoriesArray}
             />
           </div>
           <div>
-            <FileInput name="image" folder="products" />
+            <FileInput name="image_url" folder="products" />
           </div>
         </div>
         <div className="flex justify-center">
