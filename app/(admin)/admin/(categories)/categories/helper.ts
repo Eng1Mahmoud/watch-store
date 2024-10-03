@@ -30,6 +30,7 @@ export const useGetActions = () => {
         toast.success("Category deleted successfully");
         queryClient.invalidateQueries({ queryKey: ["categories"] }); // revalidate categories in table
         queryClient.invalidateQueries({ queryKey: ["categories-home"] }); // revalidate categories in home
+        queryClient.invalidateQueries({ queryKey: ["categories-selectBox"] }); // revalidate categories for select box
       } else {
         toast.error(data.message);
       }

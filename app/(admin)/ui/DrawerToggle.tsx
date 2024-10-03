@@ -11,10 +11,11 @@ interface DrawerToggleProps {
 const DrawerToggle: React.FC<DrawerToggleProps> = ({ children }) => {
   const [open, setOpen] = useState(false);
 
+  // toggle drawer
   const handleDrawerToggle = () => {
     setOpen(!open);
+    console.log("open", open);
   };
-
   return (
     <div className="drawer lg:drawer-open">
       <input
@@ -65,7 +66,7 @@ const DrawerToggle: React.FC<DrawerToggleProps> = ({ children }) => {
             </button>
           </div>
           {/* Pass open state and onToggle function to Menu component */}
-          <Menu open={open} onToggle={() => setOpen(true)} />
+          <Menu open={open} onToggle={handleDrawerToggle} />
         </aside>
       </div>
     </div>

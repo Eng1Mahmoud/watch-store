@@ -6,12 +6,10 @@ const SelectInput = ({
 }: {
   name: string;
   placeholder: string;
-  options: [
-    {
-      label: string;
-      value: string;
-    },
-  ];
+  options: Array<{
+    label: string;
+    value: string;
+  }>;
   disabled?: boolean;
 }) => {
   const [field, meta] = useField(name);

@@ -12,7 +12,7 @@ const initialState: OrderState = {
         price: 100,
         description: "Description 1",
         category: "Category 1",
-        image: "Image 1",
+        image_url: "Image 1",
         quantity: 1,
       },
       quantity: 1,

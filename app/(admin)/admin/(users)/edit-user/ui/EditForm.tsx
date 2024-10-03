@@ -40,7 +40,10 @@ const EditUserForm = ({ id }: { id: string }) => {
             <SelectInput
               name="role"
               placeholder="Role"
-              options={["admin", "user"]}
+              options={[
+                { label: "Admin", value: "admin" },
+                { label: "User", value: "user" },
+              ]}
             />
             <Input name="phone" placeholder="Phone" type="text" />
           </div>
