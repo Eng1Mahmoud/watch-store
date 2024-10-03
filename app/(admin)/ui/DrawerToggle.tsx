@@ -14,7 +14,6 @@ const DrawerToggle: React.FC<DrawerToggleProps> = ({ children }) => {
   // toggle drawer
   const handleDrawerToggle = () => {
     setOpen(!open);
-    console.log("open", open);
   };
   return (
     <div className="drawer lg:drawer-open">

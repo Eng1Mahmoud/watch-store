@@ -1,8 +1,8 @@
 "use client";
 import React, { useCallback, useRef } from "react";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { InfiniteData } from "@tanstack/react-query";
 import Image from "next/image";
-import { axiosClientInstance } from "@/axios/axiosClientInstance";
+
 interface Column {
   key: string;
   label: string;
@@ -12,47 +12,29 @@ interface Action {
   label: string;
   onClick: (item: any) => void;
 }
-interface BaseTableProps {
+
+interface ITableProps {
+  data: InfiniteData<any[]> | undefined;
+  hasNextPage: boolean | undefined;
+  isFetchingNextPage: boolean;
+  fetchNextPage: () => void;
   columns: Column[];
-  endpoint: string;
   actions?: Action[];
-  itemsPerPage?: number;
-  dataName?: string;
-  key?: string;
-  query?: string;
 }
 
-const BaseTable: React.FC<BaseTableProps> = ({
+const BaseTable: React.FC<ITableProps> = ({
+  data,
+  hasNextPage,
+  isFetchingNextPage,
+  fetchNextPage,
   columns,
-  endpoint,
   actions,
-  itemsPerPage = 10,
-  dataName = "data",
-  query = "",
 }) => {
   const observer = useRef<IntersectionObserver | null>(null);
-  const fetchTableData = async ({ pageParam = 1 }: any) => {
-    const response = await axiosClientInstance.get(endpoint, {
-      params: {
-        page: pageParam.toString(),
-        limit: itemsPerPage.toString(),
-        query: query.toString(),
-      },
-    });
-    return response.data?.data?.[dataName];
-  };
 
-  const { data, isLoading, hasNextPage, fetchNextPage, isFetchingNextPage } =
-    useInfiniteQuery({
-      queryKey: [dataName],
-      queryFn: fetchTableData,
-      getNextPageParam: (lastPage, allPages) =>
-        lastPage.length === itemsPerPage ? allPages.length + 1 : undefined,
-      initialPageParam: 1,
-    });
   const lastItemRef = useCallback(
     (node: HTMLTableRowElement) => {
-      if (isLoading || isFetchingNextPage) return;
+      if (isFetchingNextPage) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasNextPage) {
@@ -61,7 +43,7 @@ const BaseTable: React.FC<BaseTableProps> = ({
       });
       if (node) observer.current.observe(node);
     },
-    [isLoading, isFetchingNextPage, hasNextPage, fetchNextPage],
+    [isFetchingNextPage, hasNextPage, fetchNextPage],
   );
 
   return (
@@ -141,19 +123,6 @@ const BaseTable: React.FC<BaseTableProps> = ({
           )}
         </tbody>
       </table>
-      {isFetchingNextPage && (
-        <div className="text-center py-4">Loading more...</div>
-      )}
-      {!hasNextPage && data?.pages?.[0]?.length > 0 && (
-        <div className="text-center py-4 text-gray-500">
-          No more data to load
-        </div>
-      )}
-      {data?.pages?.[0]?.length === 0 && (
-        <div className="text-center py-4 text-gray-500">
-          There is no data to display until now
-        </div>
-      )}
     </div>
   );
 };

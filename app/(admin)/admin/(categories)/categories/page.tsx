@@ -3,6 +3,8 @@ import BaseTable from "@/components/tables/BaseTable";
 import { columns, useGetActions } from "./helper";
 import { useState } from "react";
 import Search from "../../../ui/Search";
+import InfiniteScroll from "@/components/Infinity-scroll/InfinityScroll";
+import LoadingUI from "./LoadingUI";
 const Categories = () => {
   const actions = useGetActions();
   const [searchTerm, setSearchTerm] = useState<string | undefined>("");
@@ -13,13 +15,18 @@ const Categories = () => {
         setSearchTerm={setSearchTerm}
         placeholder="Search categories..."
       />
-      <BaseTable
-        columns={columns}
-        endpoint={`/categories`}
-        itemsPerPage={10}
-        dataName="categories"
-        actions={actions}
-        query={searchTerm}
+
+      <InfiniteScroll
+        DisplayComponent={(props) => (
+          <BaseTable {...props} actions={actions} columns={columns} />
+        )}
+        endpoint={"/categories"}
+        itemsPerPage={20}
+        params={{
+          query: searchTerm,
+        }}
+        dataKey="categories"
+        LoadingComponent={LoadingUI}
       />
     </>
   );

@@ -3,19 +3,26 @@ import BaseTable from "@/components/tables/BaseTable";
 import { columns, useGetActions } from "./helper";
 import Search from "@/app/(admin)/ui/Search";
 import { useState } from "react";
+import InfiniteScroll from "@/components/Infinity-scroll/InfinityScroll";
+import LoadingUI from "./LoadingUI";
 const Users = () => {
   const actions = useGetActions();
   const [searchTerm, setSearchTerm] = useState<string | undefined>("");
   return (
     <>
       <Search setSearchTerm={setSearchTerm} placeholder="search users..." />
-      <BaseTable
-        columns={columns}
-        endpoint={`/users`}
-        itemsPerPage={10}
-        dataName="users"
-        actions={actions}
-        query={searchTerm}
+
+      <InfiniteScroll
+        DisplayComponent={(props) => (
+          <BaseTable {...props} actions={actions} columns={columns} />
+        )}
+        endpoint={"/users"}
+        itemsPerPage={20}
+        params={{
+          query: searchTerm,
+        }}
+        dataKey="users"
+        LoadingComponent={LoadingUI}
       />
     </>
   );

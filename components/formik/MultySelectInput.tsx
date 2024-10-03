@@ -29,7 +29,7 @@ const MultiSelectInput = ({
   };
 
   return (
-    <div className="relative w-full max-w-xl">
+    <div className="relative w-full max-w-xl z-[1000]">
       <div className="form-control">
         <label className="label">
           <span className="label-text">{placeholder}</span>

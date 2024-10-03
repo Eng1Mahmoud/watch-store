@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import FilterSidebar from "./filter/FilterSidebar";
-import ProductsList from "./products/ProductsList";
 import SelectedFilterLabels from "./selected-filters/SelectedFilterLabels";
+import ProductContainer from "./products/ProductContainer";
 
 const ShopContainer = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -23,7 +23,10 @@ const ShopContainer = () => {
         >
           <FilterSidebar />
         </div>
-        <div className="w-full md:w-[75%]">{/*  <ProductsList /> */}</div>
+        <div className="w-full md:w-[75%]">
+          {" "}
+          <ProductContainer />
+        </div>
       </div>
     </div>
   );

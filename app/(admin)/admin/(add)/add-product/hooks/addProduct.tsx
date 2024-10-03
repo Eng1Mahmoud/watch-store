@@ -6,7 +6,6 @@ import { axiosClientInstance } from "@/axios/axiosClientInstance";
 export const useAddProduct = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: (values: IProduct) => {
-      console.log(values);
       return axiosClientInstance.post("/products", values);
     },
     onSuccess: ({ data }) => {
