@@ -23,9 +23,7 @@ const ShopContainer = () => {
         >
           <FilterSidebar />
         </div>
-        <div className="w-full md:w-[75%]">
-          <ProductsList />
-        </div>
+        <div className="w-full md:w-[75%]">{/*  <ProductsList /> */}</div>
       </div>
     </div>
   );
