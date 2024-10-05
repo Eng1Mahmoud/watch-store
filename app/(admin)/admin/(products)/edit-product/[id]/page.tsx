@@ -1,6 +1,6 @@
 import EditcategoryForm from "../ui/EditProductForm";
 import { QueryClient } from "@tanstack/react-query";
-import { getProduct } from "../getProduct";
+import { getProduct } from "@/actions/getProduct";
 const page = async ({ params }: { params: { id: string } }) => {
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({

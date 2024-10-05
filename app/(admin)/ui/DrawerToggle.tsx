@@ -16,7 +16,7 @@ const DrawerToggle: React.FC<DrawerToggleProps> = ({ children }) => {
     setOpen(!open);
   };
   return (
-    <div className="drawer lg:drawer-open">
+    <div className="drawer lg:drawer-open ">
       <input
         id="my-drawer"
         type="checkbox"
@@ -24,7 +24,7 @@ const DrawerToggle: React.FC<DrawerToggleProps> = ({ children }) => {
         checked={open}
         onChange={handleDrawerToggle}
       />
-      <div className="drawer-content flex flex-col">
+      <div className="drawer-content flex flex-col ">
         {/* Navbar */}
         <div className="navbar bg-base-100 shadow-md">
           <div className="flex-none">
@@ -44,7 +44,7 @@ const DrawerToggle: React.FC<DrawerToggleProps> = ({ children }) => {
         {/* Page content */}
         <main className="flex-grow p-4">{children}</main>
       </div>
-      <div className="drawer-side h-auto min-h-screen shadow-custom">
+      <div className="drawer-side h-auto min-h-screen shadow-custom z-[1000000]">
         <label htmlFor="my-drawer" className="drawer-overlay"></label>
         <aside
           className={`bg-white h-full  ${open ? "w-64" : "w-20"}`}

@@ -89,7 +89,8 @@ const BaseTable: React.FC<ITableProps> = ({
                     key={column.key}
                     className="px-6 text-center py-4 whitespace-nowrap"
                   >
-                    {column.key === "cover_url" ? (
+                    {column.key === "cover_url" ||
+                    column.key === "image_url" ? (
                       <div className="flex justify-center">
                         <Image
                           src={item[column.key]}

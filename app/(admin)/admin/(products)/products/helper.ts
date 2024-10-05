@@ -9,6 +9,10 @@ export const columns = [
     label: "Name",
   },
   {
+    key: "image_url",
+    label: "Image",
+  },
+  {
     key: "price",
     label: "Price",
   },

@@ -9,6 +9,7 @@ import { axiosClientInstance } from "@/axios/axiosClientInstance";
 import { IProduct } from "@/types/types";
 import MultiSelectInput from "@/components/formik/MultySelectInput";
 import { useGetCategoriesSelectBox } from "@/hooks/getCategoriesSelectBox";
+import TextArea from "@/components/formik/TextArea";
 const EditcategoryForm = ({ id }: { id: string }) => {
   const { categories } = useGetCategoriesSelectBox();
   const { onSubmit, loading } = useEditProduct({ id });
@@ -40,11 +41,7 @@ const EditcategoryForm = ({ id }: { id: string }) => {
         <div className="grid grid-cols-1 md:grid-cols-2  gap-2">
           <div className="flex flex-col gap-5">
             <Input name="name" placeholder="Product Name" type="text" />
-            <Input
-              name="description"
-              placeholder="Product Description"
-              type="text"
-            />
+            <TextArea name="description" placeholder="Product Description" />
             <Input name="price" placeholder="Product Price" type="number" />
             <Input
               name="quantity"

@@ -4,9 +4,10 @@ interface InputProps {
   placeholder: string;
   type: string;
   disabled?: boolean;
+  props?: any;
 }
 
-const Input = ({ name, placeholder, type, disabled }: InputProps) => {
+const Input = ({ name, placeholder, type, disabled, ...props }: InputProps) => {
   return (
     <div className="relative">
       <Field
@@ -16,6 +17,7 @@ const Input = ({ name, placeholder, type, disabled }: InputProps) => {
         disabled={disabled}
         className="input input-bordered w-full pt-3 pb-2 px-3 peer"
         placeholder=" "
+        {...props}
       />
       <label
         htmlFor={name}

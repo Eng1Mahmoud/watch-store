@@ -7,6 +7,7 @@ import { useAddProduct } from "../hooks/addProduct";
 import FileInput from "@/components/formik/FileInput";
 import MultiCheckboxInput from "@/components/formik/MultySelectInput";
 import { useGetCategoriesSelectBox } from "@/hooks/getCategoriesSelectBox";
+import TextArea from "@/components/formik/TextArea";
 const initialValues: IProduct = {
   name: "",
   price: 0,
@@ -34,11 +35,7 @@ const AddProductForm = () => {
           <div className="flex flex-col gap-5">
             <Input name="name" placeholder="Product Name" type="text" />
             <Input name="price" placeholder="Product Price" type="number" />
-            <Input
-              name="description"
-              placeholder="Product Description"
-              type="text"
-            />
+            <TextArea name="description" placeholder="Product Description" />
             <Input
               name="quantity"
               placeholder="Product Quantity"

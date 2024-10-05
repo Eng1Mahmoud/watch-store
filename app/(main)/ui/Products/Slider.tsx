@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -8,47 +7,22 @@ import type { Swiper as SwiperType } from "swiper";
 import { Autoplay, Pagination } from "swiper/modules";
 import { useRef } from "react";
 import SliderControl from "./SliderControl";
-
-const products = [
-  {
-    id: 1,
-    name: "Product 1",
-    price: 100,
-    image: "/assets/products/product1.jpg",
-  },
-  {
-    id: 2,
-    name: "Product 2",
-    price: 200,
-    image: "/assets/products/product2.jpg",
-  },
-  {
-    id: 3,
-    name: "Product 3",
-    price: 300,
-    image: "/assets/products/product3.jpg",
-  },
-  {
-    id: 4,
-    name: "Product 4",
-    price: 400,
-    image: "/assets/products/product4.jpg",
-  },
-  {
-    id: 5,
-    name: "Product 5",
-    price: 500,
-    image: "/assets/products/product5.jpg",
-  },
-  {
-    id: 6,
-    name: "Product 6",
-    price: 600,
-    image: "/assets/products/product6.jpg",
-  },
-];
-
+import ProductCard from "@/components/ProductCard";
+import { IProduct } from "@/types/types";
+import { useQuery } from "@tanstack/react-query";
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
 const Slider = () => {
+  const { data } = useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
+      const response = await axiosClientInstance.get(
+        `/products?page=1&limit=20`,
+      );
+      return response.data;
+    },
+  });
+  const products = data?.data?.products;
+  console.log(products);
   const swiperRef = useRef<SwiperType | null>(null);
   const handleNext = () => {
     if (swiperRef.current) {
@@ -77,26 +51,12 @@ const Slider = () => {
       className="w-full relative "
     >
       <SliderControl handlePrev={handlePrev} handleNext={handleNext} />
-      {products.map((product) => (
+      {products?.map((product: IProduct) => (
         <SwiperSlide
           key={product.id}
           className="shadow-custom my-3 overflow-hidden "
         >
-          <div className="hover:scale-105 duration-300 transition-transform ">
-            <div className="relative h-[200px] ">
-              <Image
-                src={product.image}
-                alt={product.name}
-                className="mx-auto"
-                loading="lazy"
-                fill
-              />
-            </div>
-            <div className="p-3">
-              <h3 className="mt-2 font-semibold">{product.name}</h3>
-              <p className="text-gray-500">${product.price}</p>
-            </div>
-          </div>
+          <ProductCard product={product} />
         </SwiperSlide>
       ))}
     </Swiper>
