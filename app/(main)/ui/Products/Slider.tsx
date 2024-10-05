@@ -52,10 +52,7 @@ const Slider = () => {
     >
       <SliderControl handlePrev={handlePrev} handleNext={handleNext} />
       {products?.map((product: IProduct) => (
-        <SwiperSlide
-          key={product.id}
-          className="shadow-custom my-3 overflow-hidden "
-        >
+        <SwiperSlide key={product.id} className="overflow-hidden">
           <ProductCard product={product} />
         </SwiperSlide>
       ))}
