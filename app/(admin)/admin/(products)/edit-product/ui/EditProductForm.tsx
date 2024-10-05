@@ -21,7 +21,6 @@ const EditcategoryForm = ({ id }: { id: string }) => {
     },
   });
   const product = data?.data.product;
-  console.log(product);
   const initialValues: IProduct = {
     name: product?.name || "",
     description: product?.description || "",
@@ -30,7 +29,6 @@ const EditcategoryForm = ({ id }: { id: string }) => {
     category_ids: product?.categories || [],
     image_url: product?.image_url || "",
   };
-  console.log(initialValues);
   return (
     <BaseForm
       initialValues={initialValues}

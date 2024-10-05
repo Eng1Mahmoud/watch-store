@@ -20,7 +20,7 @@ const Search = ({ setSearchTerm, placeholder }: SearchProps) => {
   };
 
   return (
-    <div className="mb-4">
+    <div className="mb-4 shadow-md">
       <input
         type="text"
         placeholder={placeholder}

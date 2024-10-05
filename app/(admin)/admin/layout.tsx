@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import SessionExpired from "@/components/SessionExpired";
 import DrawerToggle from "../ui/DrawerToggle";
 
 export const metadata: Metadata = {
@@ -14,7 +13,6 @@ export default function MainLayout({
 }>) {
   return (
     <>
-      <SessionExpired />
       <DrawerToggle>
         <div className="container py-2">{children}</div>
       </DrawerToggle>

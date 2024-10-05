@@ -22,7 +22,6 @@ const Slider = () => {
     },
   });
   const products = data?.data?.products;
-  console.log(products);
   const swiperRef = useRef<SwiperType | null>(null);
   const handleNext = () => {
     if (swiperRef.current) {
