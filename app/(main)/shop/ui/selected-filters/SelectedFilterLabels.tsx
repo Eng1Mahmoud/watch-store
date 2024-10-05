@@ -28,7 +28,7 @@ const SelectedFilterLabels = () => {
   ];
 
   return (
-    <div className="container py-8">
+    <div className="container max-w-screen-sm py-8">
       <div className="flex flex-wrap gap-2">
         {labels
           .filter((label) => label.value)

@@ -46,7 +46,7 @@ const ProductList: React.FC<ProductListProps> = ({
                 : undefined
             }
           >
-            <figure className="h-48">
+            <figure className="h-32">
               <Image
                 width={500}
                 height={500}

@@ -4,7 +4,7 @@ import { columns, useGetActions } from "./helper";
 import Search from "@/app/(admin)/ui/Search";
 import { useState } from "react";
 import InfiniteScroll from "@/components/Infinity-scroll/InfinityScroll";
-import LoadingUI from "./LoadingUI";
+import TableUI from "@/components/loading-ui/TableUI";
 const Users = () => {
   const actions = useGetActions();
   const [searchTerm, setSearchTerm] = useState<string | undefined>("");
@@ -22,7 +22,7 @@ const Users = () => {
           query: searchTerm,
         }}
         dataKey="users"
-        LoadingComponent={LoadingUI}
+        LoadingComponent={TableUI}
       />
     </>
   );

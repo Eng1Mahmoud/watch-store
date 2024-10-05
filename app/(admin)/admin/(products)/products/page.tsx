@@ -1,35 +1,31 @@
 "use client";
-import BaseTable from "@/components/tables/BaseTable";
-import { columns, useGetActions } from "./helper";
-import { useState } from "react";
-import Search from "../../../ui/Search";
 import InfiniteScroll from "@/components/Infinity-scroll/InfinityScroll";
 import TableUI from "@/components/loading-ui/TableUI";
-const Categories = () => {
+import BaseTable from "@/components/tables/BaseTable";
+import Search from "../../../ui/Search";
+import { useState } from "react";
+import { columns } from "./helper";
+import { useGetActions } from "./helper";
+const Products = () => {
   const actions = useGetActions();
   const [searchTerm, setSearchTerm] = useState<string | undefined>("");
-
   return (
-    <>
-      <Search
-        setSearchTerm={setSearchTerm}
-        placeholder="Search categories..."
-      />
-
+    <div>
+      <Search setSearchTerm={setSearchTerm} placeholder="search products..." />
       <InfiniteScroll
         DisplayComponent={(props) => (
           <BaseTable {...props} actions={actions} columns={columns} />
         )}
-        endpoint={"/categories"}
+        endpoint={"/products"}
         itemsPerPage={20}
         params={{
           query: searchTerm,
         }}
-        dataKey="categories"
+        dataKey="products"
         LoadingComponent={TableUI}
       />
-    </>
+    </div>
   );
 };
 
-export default Categories;
+export default Products;

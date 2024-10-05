@@ -5,20 +5,20 @@ import { getQueryClient } from "@/QueryProvider/QueryProvider";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
 export const columns = [
   {
-    key: "username",
-    label: "Username",
+    key: "name",
+    label: "Name",
   },
   {
-    key: "email",
-    label: "Email",
+    key: "price",
+    label: "Price",
   },
   {
-    key: "phone",
-    label: "Phone",
+    key: "quantity",
+    label: "Quantity",
   },
   {
-    key: "role",
-    label: "Role",
+    key: "categories",
+    label: "Category",
   },
 ];
 
@@ -26,13 +26,13 @@ export const useGetActions = () => {
   const queryClient = getQueryClient();
   const deleteMutation = useMutation({
     mutationFn: async (userId: string) => {
-      const response = await axiosClientInstance.delete(`/users/${userId}`);
+      const response = await axiosClientInstance.delete(`/products/${userId}`);
       return response.data;
     },
     onSuccess: (data: any) => {
       if (data.success) {
-        toast.success("User deleted successfully");
-        queryClient.invalidateQueries({ queryKey: ["users"] });
+        toast.success("Product deleted successfully");
+        queryClient.invalidateQueries({ queryKey: ["products"] });
       } else {
         toast.error(data.message);
       }
@@ -45,14 +45,14 @@ export const useGetActions = () => {
   return [
     {
       label: "Edit",
-      onClick: (user: any) => {
-        router.push(`/admin/edit-user/${user.id}`);
+      onClick: (product: any) => {
+        router.push(`/admin/edit-product/${product.id}`);
       },
     },
     {
       label: "Delete",
-      onClick: async (user: any) => {
-        deleteMutation.mutate(user.id);
+      onClick: async (product: any) => {
+        deleteMutation.mutate(product.id);
       },
     },
   ];

@@ -7,7 +7,7 @@ interface InfiniteScrollProps {
   DisplayComponent: React.ComponentType<any>;
   endpoint: string;
   params?: Record<string, string | undefined>;
-  LoadingComponent?: React.ComponentType<any>;
+  LoadingComponent: React.ComponentType<any>; // Remove optional
   itemsPerPage?: number;
   dataKey: string;
 }
@@ -16,7 +16,7 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   DisplayComponent,
   endpoint,
   params = {},
-  LoadingComponent = () => <div className="text-center py-4">Loading...</div>,
+  LoadingComponent,
   itemsPerPage = 20,
   dataKey,
 }) => {
@@ -41,7 +41,7 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
     });
 
   if (isLoading) {
-    return <LoadingComponent />;
+    return <LoadingComponent count={itemsPerPage} />;
   }
 
   return (
@@ -52,7 +52,7 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
         isFetchingNextPage={isFetchingNextPage}
         fetchNextPage={fetchNextPage}
       />
-      {isFetchingNextPage && <LoadingComponent />}
+      {isFetchingNextPage && <LoadingComponent count={itemsPerPage} />}
       {!hasNextPage && data?.pages[0]?.length > 0 && (
         <div className="text-center py-4 text-gray-500">
           No more items to load

@@ -99,7 +99,18 @@ const BaseTable: React.FC<ITableProps> = ({
                           className="w-10 h-10 object-cover rounded-full"
                         />
                       </div>
+                    ) : Array.isArray(item[column.key]) ? (
+                      // If the value is an array, loop through it and display each item
+                      <div>
+                        {item[column.key].map((value: any, index: number) => (
+                          <span key={index} className="mr-1">
+                            {value}
+                            {index < item[column.key].length - 1 && " - "}
+                          </span>
+                        ))}
+                      </div>
                     ) : (
+                      // If it's not an array, display it normally
                       item[column.key] || "__"
                     )}
                   </td>
