@@ -7,7 +7,7 @@ import type { Swiper as SwiperType } from "swiper";
 import { Autoplay, Pagination } from "swiper/modules";
 import { useRef } from "react";
 import SliderControl from "./SliderControl";
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/product-card/ProductCard";
 import { IProduct } from "@/types/types";
 import { useQuery } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";

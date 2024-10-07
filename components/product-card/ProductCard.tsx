@@ -2,10 +2,19 @@ import { IProduct } from "@/types/types";
 import Image from "next/image";
 import { MdFavoriteBorder } from "react-icons/md";
 import { BsCart4 } from "react-icons/bs";
+import { useProductCardActions } from "./hooks/actions";
+import ShareButtons from "../ShareButtons";
 const ProductCard = ({ product }: { product: IProduct }) => {
+  const { goToProductPage } = useProductCardActions();
   return (
     <div className="card bg-base-100  w-full  boder border-gray-200 border-[1px]">
-      <figure className="h-32">
+      <div className="absolute top-1 right-1">
+        <ShareButtons title={product.name} />
+      </div>
+      <figure
+        className="h-32 cursor-pointer"
+        onClick={() => goToProductPage(product?.id)}
+      >
         <Image
           width={500}
           height={500}

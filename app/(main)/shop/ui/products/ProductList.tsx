@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from "react";
 import { IProduct } from "@/types/types";
 import { InfiniteData } from "@tanstack/react-query";
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/product-card/ProductCard";
 interface ProductListProps {
   data: InfiniteData<IProduct[]> | undefined;
   hasNextPage: boolean | undefined;
