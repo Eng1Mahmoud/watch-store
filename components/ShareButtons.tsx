@@ -19,7 +19,7 @@ const ShareButtons: React.FC<ShareButtonsProps> = ({ title }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative p-2 bg-white rounded-full">
+    <div className="relative p-2 bg-white rounded-full z-[1000]">
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 text-[18px] text-main-main"

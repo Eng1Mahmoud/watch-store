@@ -5,8 +5,9 @@ import Image from "next/image";
 import { BsCart4 } from "react-icons/bs";
 import { MdFavoriteBorder } from "react-icons/md";
 import ShareButtons from "@/components/ShareButtons";
-
+import { useProductActions } from "@/hooks/productActions";
 const ProductDetails = ({ id }: { id: string }) => {
+  const { addProductToCart } = useProductActions();
   const { data } = useQuery({
     queryKey: ["productDetails", id],
     queryFn: async () => {
@@ -19,7 +20,7 @@ const ProductDetails = ({ id }: { id: string }) => {
 
   return (
     <div className="container shadow-custom rounded-xl p-4 my-4 bg-text-fourth relative">
-      <div className="absolute top-0 right-0">
+      <div className="absolute top-1 right-1">
         <ShareButtons title={title} />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2  gap-5">
@@ -32,7 +33,7 @@ const ProductDetails = ({ id }: { id: string }) => {
             className="w-full h-full object-cover rounded-md "
           />
           {/**product favorite button */}
-          <button className="absolute top-1 right-1 p-2 bg-white rounded-full">
+          <button className="absolute  top-1 left-1 p-2 bg-white rounded-full">
             <MdFavoriteBorder />
           </button>
         </div>
@@ -60,7 +61,10 @@ const ProductDetails = ({ id }: { id: string }) => {
 
             {/** add to cart or buy now button */}
             <div className="flex items-center gap-4">
-              <button className="btn btn-primary px-8 rounded-full">
+              <button
+                className="btn btn-primary px-8 rounded-full"
+                onClick={() => addProductToCart(product)}
+              >
                 {" "}
                 <BsCart4 /> Add to cart
               </button>

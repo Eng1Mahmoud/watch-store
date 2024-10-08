@@ -58,6 +58,21 @@ export const CartSlice = createSlice({
     },
   },
 });
+// Selector to get orders length
+export const getOrdersLength = (state: { cart: OrderState }) => {
+  return state.cart.orders.length;
+};
+// get total price for all orders
+export const getTotalPrice = (state: { cart: OrderState }) => {
+  return state.cart.orders.reduce(
+    (total, order) => total + order.total_price,
+    0,
+  );
+};
+// get all orders
+export const getAllOrders = (state: { cart: OrderState }) => {
+  return state.cart.orders;
+};
 
 export const {
   addToCart,

@@ -7,7 +7,7 @@ export interface ICategory {
 
 // product interface
 export interface IProduct {
-  id?: string;
+  id?: string | undefined;
   name: string;
   price: number;
   description: string;

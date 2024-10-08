@@ -3,8 +3,10 @@ import Image from "next/image";
 import { MdFavoriteBorder } from "react-icons/md";
 import { BsCart4 } from "react-icons/bs";
 import { useProductCardActions } from "./hooks/actions";
+import { useProductActions } from "@/hooks/productActions";
 import ShareButtons from "../ShareButtons";
 const ProductCard = ({ product }: { product: IProduct }) => {
+  const { addProductToCart } = useProductActions();
   const { goToProductPage } = useProductCardActions();
   return (
     <div className="card bg-base-100  w-full  boder border-gray-200 border-[1px]">
@@ -38,7 +40,11 @@ const ProductCard = ({ product }: { product: IProduct }) => {
               className=" text-main-main cursor-pointer "
               size={25}
             />
-            <BsCart4 className=" text- cursor-pointer" size={25} />
+            <BsCart4
+              className=" text- cursor-pointer"
+              size={25}
+              onClick={() => addProductToCart(product)}
+            />
           </div>
         </div>
       </div>
