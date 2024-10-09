@@ -1,6 +1,7 @@
 import Items from "./Items";
-import { getCategories } from "./getCategories";
+import { getCategories } from "@/actions/getCategories";
 import { QueryClient } from "@tanstack/react-query";
+import Link from "next/link";
 const Categories = async () => {
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
@@ -14,6 +15,11 @@ const Categories = async () => {
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <Items />
+      </div>
+      <div className="flex justify-center mt-10">
+        <Link className="btn btn-primary px-16" href="/categories">
+          View All
+        </Link>
       </div>
     </div>
   );
