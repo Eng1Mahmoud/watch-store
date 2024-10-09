@@ -1,7 +1,8 @@
 "use client";
-import CartItem from "@/components/CartItem";
+import CartItem from "./CartItem";
 import { useAppSelector } from "@/redux/hooks";
 import { getAllOrders } from "@/redux/features/cart";
+import CheckOut from "./Checkout";
 
 const CartUI = () => {
   const orders = useAppSelector(getAllOrders);
@@ -16,9 +17,7 @@ const CartUI = () => {
           ))}
         </div>
         <div className="flex flex-col gap-4 w-full md:w-[30%]  ">
-          <div className="shadow-custom p-4 rounded-lg h-[300px]">
-            <button className="btn btn-primary">checkout</button>
-          </div>
+          <CheckOut />
         </div>
       </div>
     </div>

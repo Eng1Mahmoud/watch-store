@@ -11,7 +11,6 @@ const CartItem = ({ order }: { order: ICart }) => {
     decrementProductQuantity,
   } = useProductActions();
   const { product, quantity } = order;
-
   return (
     <div className="bg-white rounded-lg shadow-md p-4 w-full relative">
       <div
