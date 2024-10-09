@@ -9,6 +9,7 @@ export const navLinks = [
   { href: "/#gallery", label: "Gallery", id: 6 },
   { href: "/#testimonials", label: "Testimonials", id: 7 },
   { href: "/#contact", label: "Contact Us", id: 8 },
+  { href: "/faqs", label: "FAQs", id: 9 },
 ];
 
 const NavLinks = () => {

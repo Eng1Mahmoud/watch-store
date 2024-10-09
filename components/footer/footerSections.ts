@@ -6,6 +6,7 @@ export const footerSections = [
       { href: "/", label: "Home" },
       { href: "/shop", label: "Shop" },
       { href: "/categories", label: "Categories" },
+      { href: "/faqs", label: "FAQs" },
     ],
   },
   {
