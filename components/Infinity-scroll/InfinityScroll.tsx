@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
 
@@ -20,23 +19,21 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   itemsPerPage = 20,
   dataKey,
 }) => {
-  const fetchData = async ({ pageParam = 1 }: { pageParam?: number }) => {
-    const response = await axiosClientInstance.get(endpoint, {
-      params: {
-        ...params,
-        page: pageParam,
-        limit: itemsPerPage,
-      },
-    });
-    return response?.data?.data?.[dataKey] || []; // Use dataKey here
-  };
-
   const { data, isLoading, hasNextPage, fetchNextPage, isFetchingNextPage } =
     useInfiniteQuery({
-      queryKey: [dataKey],
-      queryFn: fetchData,
+      queryKey: [dataKey, endpoint, params],
+      queryFn: async ({ pageParam = 1 }) => {
+        const response = await axiosClientInstance.get(endpoint, {
+          params: {
+            ...params,
+            page: pageParam,
+            limit: itemsPerPage,
+          },
+        });
+        return response.data; // Return the whole response data
+      },
       getNextPageParam: (lastPage, allPages) =>
-        lastPage && lastPage.length === itemsPerPage
+        lastPage && lastPage[dataKey]?.length === itemsPerPage
           ? allPages.length + 1
           : undefined,
       initialPageParam: 1,
@@ -55,14 +52,6 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
         fetchNextPage={fetchNextPage}
       />
       {isFetchingNextPage && <LoadingComponent count={itemsPerPage} />}
-      {!hasNextPage && data?.pages[0]?.length > 0 && (
-        <div className="text-center py-4 text-gray-500">
-          No more items to load
-        </div>
-      )}
-      {data?.pages[0]?.length === 0 && (
-        <div className="text-center py-4 text-gray-500">No items available</div>
-      )}
     </div>
   );
 };

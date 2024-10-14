@@ -20,6 +20,7 @@ interface ITableProps {
   fetchNextPage: () => void;
   columns: Column[];
   actions?: Action[];
+  dataKey: string;
 }
 
 const BaseTable: React.FC<ITableProps> = ({
@@ -29,6 +30,7 @@ const BaseTable: React.FC<ITableProps> = ({
   fetchNextPage,
   columns,
   actions,
+  dataKey,
 }) => {
   const observer = useRef<IntersectionObserver | null>(null);
 
@@ -73,8 +75,8 @@ const BaseTable: React.FC<ITableProps> = ({
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {data?.pages.map((page, pageIndex) =>
-            page.map((item: any, index: number) => (
+          {data?.pages.map((page: any, pageIndex: number) =>
+            page.data?.[dataKey].map((item: any, index: number) => (
               <tr
                 key={index}
                 ref={

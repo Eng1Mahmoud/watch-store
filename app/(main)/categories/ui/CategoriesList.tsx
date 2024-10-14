@@ -15,9 +15,10 @@ const CategoriesList: React.FC<CategoriesListProps> = ({
   isFetchingNextPage,
   fetchNextPage,
 }) => {
+  console.log(data);
   const observer = useRef<IntersectionObserver | null>(null);
 
-  const lastProductRef = useCallback(
+  const lastCategoryRef = useCallback(
     (node: HTMLDivElement) => {
       if (isFetchingNextPage) return;
       if (observer.current) observer.current.disconnect();
@@ -33,20 +34,22 @@ const CategoriesList: React.FC<CategoriesListProps> = ({
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {data?.pages.map((page, pageIndex) =>
-        page.map((category: ICategory, productIndex: number) => (
-          <div
-            key={category.id}
-            ref={
-              pageIndex === data.pages.length - 1 &&
-              productIndex === page.length - 1
-                ? lastProductRef
-                : undefined
-            }
-          >
-            <CategoryCard item={category} index={productIndex} />
-          </div>
-        )),
+      {data?.pages.map((page: any, pageIndex: number) =>
+        page?.data?.categories.map(
+          (category: ICategory, categoryIndex: number) => (
+            <div
+              key={category.id}
+              ref={
+                pageIndex === data.pages.length - 1 &&
+                categoryIndex === page.length - 1
+                  ? lastCategoryRef
+                  : undefined
+              }
+            >
+              <CategoryCard item={category} index={categoryIndex} />
+            </div>
+          ),
+        ),
       )}
     </div>
   );

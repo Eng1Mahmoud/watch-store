@@ -2,8 +2,9 @@ import React, { useCallback, useRef } from "react";
 import { IProduct } from "@/types/types";
 import { InfiniteData } from "@tanstack/react-query";
 import ProductCard from "@/components/product-card/ProductCard";
+
 interface ProductListProps {
-  data: InfiniteData<IProduct[]> | undefined;
+  data: InfiniteData<{ products: IProduct[] }> | undefined;
   hasNextPage: boolean | undefined;
   isFetchingNextPage: boolean;
   fetchNextPage: () => void;
@@ -15,6 +16,7 @@ const ProductList: React.FC<ProductListProps> = ({
   isFetchingNextPage,
   fetchNextPage,
 }) => {
+  console.log(data);
   const observer = useRef<IntersectionObserver | null>(null);
 
   const lastProductRef = useCallback(
@@ -22,7 +24,7 @@ const ProductList: React.FC<ProductListProps> = ({
       if (isFetchingNextPage) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        if (entries?.[0]?.isIntersecting && hasNextPage) {
+        if (entries[0].isIntersecting && hasNextPage) {
           fetchNextPage();
         }
       });
@@ -33,13 +35,13 @@ const ProductList: React.FC<ProductListProps> = ({
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {data?.pages?.map((page, pageIndex) =>
-        page?.map((product: IProduct, productIndex: number) => (
+      {data?.pages.map((page: any, pageIndex) =>
+        page.data.products.map((product: IProduct, productIndex: number) => (
           <div
             key={product.id}
             ref={
-              pageIndex === data?.pages?.length - 1 &&
-              productIndex === page?.length - 1
+              pageIndex === data.pages.length - 1 &&
+              productIndex === page.data.products.length - 1
                 ? lastProductRef
                 : undefined
             }

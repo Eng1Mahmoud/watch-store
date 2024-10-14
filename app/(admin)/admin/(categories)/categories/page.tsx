@@ -18,7 +18,12 @@ const Categories = () => {
 
       <InfiniteScroll
         DisplayComponent={(props) => (
-          <BaseTable {...props} actions={actions} columns={columns} />
+          <BaseTable
+            {...props}
+            actions={actions}
+            columns={columns}
+            dataKey="categories"
+          />
         )}
         endpoint={"/categories"}
         itemsPerPage={20}

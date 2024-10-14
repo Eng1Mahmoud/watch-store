@@ -14,7 +14,12 @@ const Users = () => {
 
       <InfiniteScroll
         DisplayComponent={(props) => (
-          <BaseTable {...props} actions={actions} columns={columns} />
+          <BaseTable
+            {...props}
+            actions={actions}
+            columns={columns}
+            dataKey="users"
+          />
         )}
         endpoint={"/users"}
         itemsPerPage={20}

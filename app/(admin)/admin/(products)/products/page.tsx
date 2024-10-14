@@ -15,7 +15,12 @@ const Products = () => {
       <Search setSearchTerm={setSearchTerm} placeholder="search products..." />
       <InfiniteScroll
         DisplayComponent={(props) => (
-          <BaseTable {...props} actions={actions} columns={columns} />
+          <BaseTable
+            {...props}
+            actions={actions}
+            columns={columns}
+            dataKey="products"
+          />
         )}
         endpoint={"/products"}
         itemsPerPage={20}
