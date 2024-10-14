@@ -11,7 +11,7 @@ const initialState: OrderState = {
         name: "Product 1",
         price: 100,
         description: "Description 1",
-        category_ids: ["Category 1"],
+        categories: ["Category 1"],
         image_url: "Image 1",
         quantity: 1,
       },

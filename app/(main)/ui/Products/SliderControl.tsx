@@ -8,7 +8,7 @@ const SliderControl = ({
   handleNext: () => void;
 }) => {
   return (
-    <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between z-50 pointer-events-none">
+    <div className="hidden sm:flex absolute inset-y-0 left-0 right-0  items-center justify-between z-50 pointer-events-none">
       <button
         onClick={handlePrev}
         className="bg-main-main p-2 rounded-full pointer-events-auto"

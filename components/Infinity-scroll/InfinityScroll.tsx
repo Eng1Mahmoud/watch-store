@@ -28,7 +28,7 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
         limit: itemsPerPage,
       },
     });
-    return response.data?.data?.[dataKey]; // Use dataKey here
+    return response?.data?.data?.[dataKey] || []; // Use dataKey here
   };
 
   const { data, isLoading, hasNextPage, fetchNextPage, isFetchingNextPage } =
@@ -36,7 +36,9 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
       queryKey: [dataKey],
       queryFn: fetchData,
       getNextPageParam: (lastPage, allPages) =>
-        lastPage.length === itemsPerPage ? allPages.length + 1 : undefined,
+        lastPage && lastPage.length === itemsPerPage
+          ? allPages.length + 1
+          : undefined,
       initialPageParam: 1,
     });
 

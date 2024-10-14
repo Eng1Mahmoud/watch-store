@@ -15,13 +15,17 @@ const Slider = () => {
   const { data } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
-      const response = await axiosClientInstance.get(
-        `/products?page=1&limit=20`,
-      );
+      const response = await axiosClientInstance.get(`/products`, {
+        params: {
+          page: 1,
+          limit: 20,
+        },
+      });
       return response.data;
     },
   });
   const products = data?.data?.products;
+  console.log(data);
   const swiperRef = useRef<SwiperType | null>(null);
   const handleNext = () => {
     if (swiperRef.current) {

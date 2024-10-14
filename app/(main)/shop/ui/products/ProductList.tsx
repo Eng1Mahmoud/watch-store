@@ -22,7 +22,7 @@ const ProductList: React.FC<ProductListProps> = ({
       if (isFetchingNextPage) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && hasNextPage) {
+        if (entries?.[0]?.isIntersecting && hasNextPage) {
           fetchNextPage();
         }
       });
@@ -33,13 +33,13 @@ const ProductList: React.FC<ProductListProps> = ({
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {data?.pages.map((page, pageIndex) =>
-        page.map((product: IProduct, productIndex: number) => (
+      {data?.pages?.map((page, pageIndex) =>
+        page?.map((product: IProduct, productIndex: number) => (
           <div
             key={product.id}
             ref={
-              pageIndex === data.pages.length - 1 &&
-              productIndex === page.length - 1
+              pageIndex === data?.pages?.length - 1 &&
+              productIndex === page?.length - 1
                 ? lastProductRef
                 : undefined
             }
