@@ -34,7 +34,7 @@ const ShareButtons: React.FC<ShareButtonsProps> = ({ title }) => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 mt-2 bg-white shadow-md rounded-md p-2 flex gap-2"
+            className="absolute top-full left-[-30px] mt-2 bg-white shadow-md rounded-md p-2 flex gap-2"
           >
             <ul className="flex flex-col gap-2">
               {[

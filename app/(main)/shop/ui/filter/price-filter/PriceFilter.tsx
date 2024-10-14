@@ -4,16 +4,24 @@ import { Range, getTrackBackground } from "react-range";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setPrice } from "@/redux/features/filter";
 import { CiFilter } from "react-icons/ci";
+
 const PriceFilter: React.FC = () => {
-  const MIN_PRICE = useAppSelector((state) => state.filter.filter.minPrice); // get min price from redux
-  const MAX_PRICE = useAppSelector((state) => state.filter.filter.maxPrice); // get max price from redux
+  const filter = useAppSelector((state) => state.filter.filter);
+  const { minPrice, maxPrice } = filter;
+
   const dispatch = useAppDispatch();
-  const values = [MIN_PRICE || 0, MAX_PRICE || 0]; // set values to min and max price
   const STEP = 1;
   const MIN = 0;
   const MAX = 100000;
+  const [localValues, setLocalValues] = React.useState([
+    minPrice || 0,
+    maxPrice || 0,
+  ]);
 
-  const [localValues, setLocalValues] = React.useState(values); // set local values to min and max price
+  React.useEffect(() => {
+    setLocalValues([minPrice || 0, maxPrice || 0]);
+  }, [minPrice, maxPrice]);
+
   const handlePriceChange = (newValues: number[]) => {
     setLocalValues(newValues);
   };

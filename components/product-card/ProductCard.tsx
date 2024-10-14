@@ -21,7 +21,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           width={500}
           height={500}
           src={product.image_url}
-          alt={product.name}
+          alt={product.name + " image"}
           className="w-full h-full object-cover block"
         />
       </figure>

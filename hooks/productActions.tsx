@@ -21,7 +21,6 @@ export const useProductActions = () => {
     };
 
     try {
-      console.log(product);
       // check if product is already in cart
       if (product?.id) {
         const productInCart = cart.find(
