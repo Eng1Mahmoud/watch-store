@@ -14,7 +14,7 @@ const EditcategoryForm = ({ id }: { id: string }) => {
   const { categories } = useGetCategoriesSelectBox();
   const { onSubmit, loading } = useEditProduct({ id });
   const { data } = useQuery({
-    queryKey: ["productDetails"],
+    queryKey: ["productDetails", id],
     queryFn: async () => {
       const response = await axiosClientInstance.get(`/products/${id}`);
       return response.data;
@@ -26,7 +26,7 @@ const EditcategoryForm = ({ id }: { id: string }) => {
     description: product?.description || "",
     price: product?.price || "",
     quantity: product?.quantity || "",
-    category_ids: product?.categories || [],
+    categories: product?.categories || [],
     image_url: product?.image_url || "",
   };
   return (
@@ -47,11 +47,11 @@ const EditcategoryForm = ({ id }: { id: string }) => {
               type="number"
             />
             <MultiSelectInput
-              name="category_ids"
+              name="categories"
               placeholder="Product Categories"
               options={categories.map((category) => ({
                 label: category.name,
-                value: category.id,
+                value: category.name,
               }))}
             />
           </div>

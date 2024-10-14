@@ -12,7 +12,7 @@ const initialValues: IProduct = {
   name: "",
   price: 0,
   description: "",
-  category_ids: [],
+  categories: [],
   image_url: "",
   quantity: 0,
 };
@@ -22,7 +22,7 @@ const AddProductForm = () => {
   const { categories } = useGetCategoriesSelectBox();
   const categoriesArray: any = categories?.map((category: ICategory) => ({
     label: category.name,
-    value: category.id,
+    value: category.name,
   }));
   return (
     <BaseForm
@@ -42,8 +42,8 @@ const AddProductForm = () => {
               type="number"
             />
             <MultiCheckboxInput
-              name="category_ids"
-              placeholder="Category"
+              name="categories"
+              placeholder="categories"
               options={categoriesArray}
             />
           </div>

@@ -102,7 +102,7 @@ export const productSchema = yup.object().shape({
     .required("Price is required")
     .min(0, "Price must be at least 0"),
   description: yup.string().required("Description is required"),
-  category_ids: yup
+  categories: yup
     .array()
     .of(yup.string())
     .min(1, "At least one category is required")

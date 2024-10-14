@@ -33,7 +33,7 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
 
   const { data, isLoading, hasNextPage, fetchNextPage, isFetchingNextPage } =
     useInfiniteQuery({
-      queryKey: [endpoint, params, itemsPerPage],
+      queryKey: [dataKey],
       queryFn: fetchData,
       getNextPageParam: (lastPage, allPages) =>
         lastPage.length === itemsPerPage ? allPages.length + 1 : undefined,

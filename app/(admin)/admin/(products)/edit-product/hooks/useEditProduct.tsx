@@ -9,9 +9,11 @@ export const useEditProduct = ({ id }: { id: string }) => {
   const queryClient = getQueryClient();
   const { mutate, isPending } = useMutation({
     mutationFn: async (values: IProduct) => {
+      // add category type to the values object
+      let finalValues = { ...values, category_type: "name" };
       const response = await axiosClientInstance.patch(
         `/products/${id}`,
-        values,
+        finalValues,
       );
       return response.data;
     },

@@ -2,15 +2,22 @@ import { toast } from "react-toastify";
 import { IProduct } from "@/types/types";
 import { useMutation } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
-
+import { useRouter } from "next/navigation";
+import { getQueryClient } from "@/QueryProvider/QueryProvider";
 export const useAddProduct = () => {
+  const router = useRouter();
+  const queryClient = getQueryClient();
   const { mutate, isPending } = useMutation({
     mutationFn: (values: IProduct) => {
-      return axiosClientInstance.post("/products", values);
+      // add category type to the values object
+      let finalValues = { ...values, category_type: "name" };
+      return axiosClientInstance.post("/products", finalValues);
     },
     onSuccess: ({ data }) => {
       if (data.success) {
         toast.success(data.message);
+        router.push("/admin/products");
+        queryClient.invalidateQueries({ queryKey: ["products"] });
       } else {
         toast.error(data.message);
       }
