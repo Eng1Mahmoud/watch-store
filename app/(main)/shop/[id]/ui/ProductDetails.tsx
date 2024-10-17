@@ -5,9 +5,9 @@ import Image from "next/image";
 import { BsCart4 } from "react-icons/bs";
 import { MdFavoriteBorder } from "react-icons/md";
 import ShareButtons from "@/components/ShareButtons";
-import { useProductActions } from "@/hooks/productActions";
+import { useCart } from "@/utils/cart";
 const ProductDetails = ({ id }: { id: string }) => {
-  const { addProductToCart } = useProductActions();
+  const { addProductToCart } = useCart();
   const { data } = useQuery({
     queryKey: ["productDetails", id],
     queryFn: async () => {

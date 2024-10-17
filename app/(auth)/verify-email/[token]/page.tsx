@@ -2,7 +2,7 @@ import React from "react";
 import ShowDialog from "@/components/ShowDialog";
 import LoadingScreenContent from "../ui/LoadingScreenContent";
 import { sendToken } from "./sendToken";
-import SaveToken from "./SaveToken";
+import PreperAcount from "./PreperAcount";
 import { notFound } from "next/navigation";
 import { QueryClient } from "@tanstack/react-query";
 
@@ -18,7 +18,7 @@ const page = async ({ params }: { params: { token: string } }) => {
 
     return (
       <div>
-        <SaveToken token={token} />
+        <PreperAcount token={token} />
         <ShowDialog Content={LoadingScreenContent} hiddenDialog={false} />
       </div>
     );

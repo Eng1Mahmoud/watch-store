@@ -1,15 +1,15 @@
 import { ICart } from "@/types/types";
 import Image from "next/image";
 import { IoIosRemoveCircleOutline } from "react-icons/io";
-import { useProductActions } from "@/hooks/productActions";
 import { FaPlus } from "react-icons/fa6";
 import { RiSubtractFill } from "react-icons/ri";
+import { useCart } from "@/utils/cart";
 const CartItem = ({ order }: { order: ICart }) => {
   const {
     removeProductFromCart,
     incrementProductQuantity,
     decrementProductQuantity,
-  } = useProductActions();
+  } = useCart();
   const { product, quantity } = order;
   return (
     <div className="bg-white rounded-lg shadow-md p-4 w-full relative">

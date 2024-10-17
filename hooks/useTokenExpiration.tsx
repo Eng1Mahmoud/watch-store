@@ -2,18 +2,19 @@ import { useEffect } from "react";
 import { getCookie } from "cookies-next";
 import { decodeToken } from "@/utils/decodeToken";
 import { toast } from "react-toastify";
-import { setUser } from "@/redux/features/user";
 import { useAppDispatch } from "@/redux/hooks";
 import { useRouter } from "next/navigation";
+import { useLogout } from "@/utils/logout";
 export const useTokenExpiration = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const { logout } = useLogout();
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
     const checkTokenExpiration = () => {
       const token = getCookie("token");
       if (!token) {
-        dispatch(setUser(false));
+        logout();
         return;
       }
 
@@ -21,7 +22,7 @@ export const useTokenExpiration = () => {
       const currentTime = Date.now() / 1000; // Convert to seconds
 
       if (exp <= currentTime) {
-        dispatch(setUser(false));
+        logout();
         router.push("/login");
         toast.error("Your session has expired", {
           toastId: "session-expired",
@@ -37,5 +38,5 @@ export const useTokenExpiration = () => {
     return () => {
       if (timeoutId) clearTimeout(timeoutId);
     };
-  }, [dispatch, router]);
+  }, [dispatch, router, logout]);
 };
