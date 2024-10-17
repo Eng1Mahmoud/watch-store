@@ -13,7 +13,8 @@ import { toast } from "react-toastify";
 
 export const useCart = () => {
   const dispatch = useAppDispatch();
-  const cart = useAppSelector(getAllOrders);
+  const cart = useAppSelector(getAllOrders); // get the cart
+  const user = useAppSelector((state) => state.user.login); // check if user is logged in
 
   // Save the current cart to localStorage with a specific ID
   const saveCartToLocalStorage = ({ id }: { id: string }) => {
@@ -32,6 +33,12 @@ export const useCart = () => {
 
   // Add a product to the cart
   const addProductToCart = (product: IProduct) => {
+    // first check if user is logged in
+    if (!user) {
+      toast.error("Please login to add product to cart");
+      return;
+    }
+
     const cartItem: ICart = {
       product,
       quantity: 1,
