@@ -11,7 +11,7 @@ const FormInputs = () => {
         <Input name="username" placeholder="Username" type="text" />
         <Input name="email" placeholder="Email" type="email" />
         <PasswordInput name="password" placeholder="Password" />
-        <div className="flex justify-start">
+        <div className="flex justify-start capitalize text-main-main">
           do you have an account?
           <Link href="/login" className="text-main-main font-bold pl-1">
             Login

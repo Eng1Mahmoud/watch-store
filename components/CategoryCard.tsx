@@ -16,7 +16,12 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item, index }) => {
     dispatch(setCategory(item.name));
   };
   return (
-    <Link href={`/shop/`} key={item.id} onClick={handleCategory}>
+    <Link
+      href={`/shop/`}
+      key={item.id}
+      onClick={handleCategory}
+      className="shadow-lg"
+    >
       <motion.div
         className="relative overflow-hidden rounded-lg transition-all duration-100 cursor-pointer"
         initial={{ opacity: 0, y: 50 }}
