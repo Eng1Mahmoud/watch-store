@@ -10,7 +10,7 @@ const CheckOut = () => {
   const totalPrice = useAppSelector(getTotalPrice);
 
   return (
-    <div className="shadow-custom p-4 rounded-lg h-[300px]">
+    <div className="shadow-custom p-4 rounded-lg h-[370px]">
       <div className="flex flex-col gap-4 w-full">
         <select
           className="select select-bordered w-full "
@@ -26,8 +26,10 @@ const CheckOut = () => {
             </option>
           ))}
         </select>
-        <p className="text-ms ">Total Price: ${totalPrice}</p>
+        <p className="text-ms ">subTotal Price: ${totalPrice}</p>
+        <p className="text-ms ">taxes: ${15}</p>
         <p className="text-sm ">Total Items: {orders.length}</p>
+        <p className="text-ms ">total Price: ${totalPrice + 15}</p>
         <div className="flex rounded-lg shadow-custom ">
           {/*add coupon */}
           <input

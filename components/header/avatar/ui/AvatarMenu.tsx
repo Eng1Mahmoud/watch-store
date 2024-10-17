@@ -13,9 +13,7 @@ const AvatarMenu = () => {
           My Acount
         </Link>
       </li>
-      <li>
-        <a>Settings</a>
-      </li>
+
       <li>
         <Logout />
       </li>
