@@ -3,10 +3,10 @@ import Image from "next/image";
 import { MdFavoriteBorder } from "react-icons/md";
 import { BsCart4 } from "react-icons/bs";
 import { useProductCardActions } from "./hooks/actions";
-import { useProductActions } from "@/hooks/productActions";
 import ShareButtons from "../ShareButtons";
+import { useCart } from "@/utils/cart";
 const ProductCard = ({ product }: { product: IProduct }) => {
-  const { addProductToCart } = useProductActions();
+  const { addProductToCart } = useCart();
   const { goToProductPage } = useProductCardActions();
   return (
     <div className="card bg-base-100  w-full  boder border-gray-200 border-[1px]">

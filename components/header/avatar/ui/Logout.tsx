@@ -1,16 +1,10 @@
 "use client";
-import { useAppDispatch } from "@/redux/hooks";
-import { setUser } from "@/redux/features/user";
-import { deleteCookie } from "cookies-next";
+import { useLogout } from "@/utils/logout";
 const Logout = () => {
-  const dispatch = useAppDispatch();
-  const handleLogout = () => {
-    dispatch(setUser(false));
-    deleteCookie("token");
-  };
+  const { logout } = useLogout();
 
   return (
-    <button onClick={handleLogout} className="btn btn-error text-white mt-2">
+    <button onClick={logout} className="btn btn-error text-white mt-2">
       Logout
     </button>
   );

@@ -38,7 +38,6 @@ export interface IUser {
 export interface ICart {
   product: IProduct;
   quantity: number;
-  total_price: number;
 }
 
 // filter interface

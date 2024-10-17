@@ -1,27 +1,44 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import {
+  clearCart,
+  getAllOrders,
+  loadCart,
   addToCart,
-  decrementQuantity,
-  incrementQuantity,
   removeFromCart,
+  incrementQuantity,
+  decrementQuantity,
 } from "@/redux/features/cart";
 import { ICart, IProduct } from "@/types/types";
 import { toast } from "react-toastify";
 
-export const useProductActions = () => {
+export const useCart = () => {
   const dispatch = useAppDispatch();
-  const cart = useAppSelector((state) => state.cart.orders);
+  const cart = useAppSelector(getAllOrders);
 
-  // add product to cart
+  // Save the current cart to localStorage with a specific ID
+  const saveCartToLocalStorage = ({ id }: { id: string }) => {
+    localStorage.setItem(`cart-${id}`, JSON.stringify(cart));
+  };
+
+  // Load the cart from localStorage using a specific ID
+  const loadCartFromLocalStorage = ({ id }: { id: string }) => {
+    const savedCart = localStorage.getItem(`cart-${id}`);
+    if (savedCart) {
+      dispatch(loadCart(JSON.parse(savedCart)));
+    } else {
+      dispatch(clearCart());
+    }
+  };
+
+  // Add a product to the cart
   const addProductToCart = (product: IProduct) => {
     const cartItem: ICart = {
       product,
       quantity: 1,
-      total_price: product.price,
     };
 
     try {
-      // check if product is already in cart
+      // Check if the product is already in the cart
       if (product?.id) {
         const productInCart = cart.find(
           (item) => item.product.id === product.id,
@@ -42,20 +59,24 @@ export const useProductActions = () => {
     }
   };
 
-  // remove product from cart
+  // Remove a product from the cart
   const removeProductFromCart = (productId: string) => {
     dispatch(removeFromCart(productId));
   };
-  // increment product quantity
+
+  // Increment the quantity of a product in the cart
   const incrementProductQuantity = (productId: string) => {
     dispatch(incrementQuantity(productId));
   };
-  // decrement product quantity
+
+  // Decrement the quantity of a product in the cart
   const decrementProductQuantity = (productId: string) => {
     dispatch(decrementQuantity(productId));
   };
 
   return {
+    saveCartToLocalStorage,
+    loadCartFromLocalStorage,
     addProductToCart,
     removeProductFromCart,
     incrementProductQuantity,

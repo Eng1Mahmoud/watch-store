@@ -4,26 +4,16 @@ interface OrderState {
   orders: ICart[];
 }
 const initialState: OrderState = {
-  orders: [
-    {
-      product: {
-        id: "1",
-        name: "Product 1",
-        price: 100,
-        description: "Description 1",
-        categories: ["Category 1"],
-        image_url: "Image 1",
-        quantity: 1,
-      },
-      quantity: 1,
-      total_price: 100,
-    },
-  ],
+  orders: [],
 };
 export const CartSlice = createSlice({
   name: "cart",
   initialState: initialState,
   reducers: {
+    // Load cart from localStorage
+    loadCart: (state, action: PayloadAction<ICart[]>) => {
+      state.orders = action.payload;
+    },
     // add prto cart
     addToCart: (state, action: PayloadAction<ICart>) => {
       state.orders.push(action.payload);
@@ -65,7 +55,7 @@ export const getOrdersLength = (state: { cart: OrderState }) => {
 // get total price for all orders
 export const getTotalPrice = (state: { cart: OrderState }) => {
   return state.cart.orders.reduce(
-    (total, order) => total + order.total_price,
+    (total, order) => total + order.product.price * order.quantity,
     0,
   );
 };
@@ -80,5 +70,6 @@ export const {
   clearCart,
   incrementQuantity,
   decrementQuantity,
+  loadCart,
 } = CartSlice.actions;
 export default CartSlice.reducer;
