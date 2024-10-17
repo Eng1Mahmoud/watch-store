@@ -1,3 +1,4 @@
+"use client";
 import { usePrepareAccountConfig } from "@/utils/prepareAccountConfig";
 import { useEffect } from "react";
 const EmailVerification = ({ token }: { token: string }) => {
