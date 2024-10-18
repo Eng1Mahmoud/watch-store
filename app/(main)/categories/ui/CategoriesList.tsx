@@ -15,7 +15,6 @@ const CategoriesList: React.FC<CategoriesListProps> = ({
   isFetchingNextPage,
   fetchNextPage,
 }) => {
-  console.log(data);
   const observer = useRef<IntersectionObserver | null>(null);
 
   const lastCategoryRef = useCallback(

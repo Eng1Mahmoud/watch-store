@@ -16,7 +16,6 @@ const ProductList: React.FC<ProductListProps> = ({
   isFetchingNextPage,
   fetchNextPage,
 }) => {
-  console.log(data);
   const observer = useRef<IntersectionObserver | null>(null);
 
   const lastProductRef = useCallback(
