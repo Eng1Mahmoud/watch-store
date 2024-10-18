@@ -10,6 +10,10 @@ const nextConfig = {
       protocol: 'https',
       hostname: 'imgs.search.brave.com',
     },
+    {
+      protocol: 'https',
+      hostname: 'cover_url.com',
+    },
   ],
 },
     eslint: {

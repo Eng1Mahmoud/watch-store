@@ -5,6 +5,7 @@ import { FaSearch } from "react-icons/fa";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setSearch } from "@/redux/features/filter";
 import { useRouter, usePathname } from "next/navigation";
+import { FaTimes } from "react-icons/fa";
 const Search = () => {
   const searchTerm = useAppSelector((state) => state.filter.filter.search);
   const router = useRouter();
@@ -13,6 +14,7 @@ const Search = () => {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
+  // handle the search input change
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     // Clear the previous timer if it exists
@@ -29,6 +31,13 @@ const Search = () => {
     }, 300);
   };
 
+  // handle cancel search
+  const handleCancelSearch = () => {
+    dispatch(setSearch(""));
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
+  };
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.value = searchTerm;
@@ -41,7 +50,7 @@ const Search = () => {
         type="text"
         placeholder="Search"
         className="input input-bordered w-full focus:outline-none pl-10 text-main-main
-         placeholder-gray-400 focus:placeholder-main-main"
+         placeholder-gray-400 focus:placeholder-main-main peer"
         initial={{ borderColor: "#e5e7eb" }}
         whileFocus={{
           scale: 1.005,
@@ -51,6 +60,12 @@ const Search = () => {
         }}
         transition={{ duration: 0.3 }}
         onChange={handleSearch}
+      />
+      <FaTimes
+        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400
+         group-focus-within:text-main-main transition-colors duration-300 cursor-pointer hidden peer-[&:not(:placeholder-shown)]:block"
+        size={18}
+        onClick={handleCancelSearch}
       />
       <FaSearch
         className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400
