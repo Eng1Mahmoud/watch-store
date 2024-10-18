@@ -8,7 +8,7 @@ const EmailVerification = ({ token }: { token: string }) => {
     if (token) {
       prepareAccountConfig(token); // Use the same function to handle token saving
     }
-  }, [prepareAccountConfig, token]);
+  }, []);
 
   return null;
 };
