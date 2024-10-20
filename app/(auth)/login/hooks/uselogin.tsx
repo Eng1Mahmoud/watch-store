@@ -28,10 +28,8 @@ export const useLogin = () => {
         toast.error(message);
       }
     },
-    onError: (error) => {
-      if (error instanceof Error) {
-        toast.error(error.message);
-      }
+    onError: (error: any) => {
+      toast.error(error.response.data.message);
     },
   });
 
