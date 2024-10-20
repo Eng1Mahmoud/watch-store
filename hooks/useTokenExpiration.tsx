@@ -9,12 +9,13 @@ export const useTokenExpiration = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const { logout } = useLogout();
+
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
+
     const checkTokenExpiration = () => {
       const token = getCookie("token");
       if (!token) {
-        logout();
         return;
       }
 
@@ -23,7 +24,6 @@ export const useTokenExpiration = () => {
 
       if (exp <= currentTime) {
         logout();
-        router.push("/login");
         toast.error("Your session has expired", {
           toastId: "session-expired",
         });

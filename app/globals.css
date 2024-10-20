@@ -36,7 +36,7 @@ a {
     @apply shadow-2xl p-5 rounded-lg border border-gray-200;
   }
   .btn-error-outline {
-    @apply bg-transparent border-2 border-error-main text-error-main hover:text-white hover:bg-error-main hover:border-error-main;
+    @apply bg-transparent border-[1px] border-error-main text-error-main hover:text-white hover:bg-error-main hover:border-error-main;
   }
   .checkbox-main {
     @apply accent-main-main w-5 h-5 rounded-sm;

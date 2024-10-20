@@ -7,7 +7,12 @@ const ProductContainer = () => {
   const { filter } = useAppSelector((state) => state.filter);
   // loop through the filter object and create a new object with the same keys and values if value "" or 0 or null not add it
   const params = Object.entries(filter).reduce((acc: any, [key, value]) => {
-    if (value !== "" && value !== 0 && value !== null) {
+    if (
+      value !== "" &&
+      value !== 0 &&
+      value !== null &&
+      key !== "searchHistory" // not add the search history to the params
+    ) {
       acc[key] = value;
     }
     return acc;

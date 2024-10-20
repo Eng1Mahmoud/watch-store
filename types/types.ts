@@ -46,4 +46,5 @@ export interface IFilter {
   minPrice: number;
   maxPrice: number;
   search: string;
+  searchHistory: string[];
 }

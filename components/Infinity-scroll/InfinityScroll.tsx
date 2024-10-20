@@ -1,7 +1,6 @@
 "use client";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
-
 interface InfiniteScrollProps {
   DisplayComponent: React.ComponentType<any>;
   endpoint: string;
@@ -51,7 +50,16 @@ const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
         isFetchingNextPage={isFetchingNextPage}
         fetchNextPage={fetchNextPage}
       />
-      {isFetchingNextPage && <LoadingComponent count={itemsPerPage} />}
+      {isFetchingNextPage && (
+        <div className="mt-4">
+          <LoadingComponent count={itemsPerPage} />
+        </div>
+      )}
+      {!hasNextPage && !isFetchingNextPage && (
+        <div className="text-center pt-10 text-main-main font-medium">
+          You have reached the end of the list
+        </div>
+      )}
     </div>
   );
 };
