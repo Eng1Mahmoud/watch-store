@@ -31,7 +31,7 @@ const SearchHistory = () => {
     dispatch(clearSearchHistory());
   };
   return (
-    <div className="dropdown dropdown-end absolute right-3 top-1/2 transform -translate-y-1/2 z-[10000]">
+    <div className="dropdown dropdown-end absolute right-3 top-1/2 transform -translate-y-1/2 z-[100]">
       <div
         tabIndex={0}
         role="button"
@@ -41,7 +41,7 @@ const SearchHistory = () => {
       </div>
       <ul
         tabIndex={0}
-        className="dropdown-content bg-base-100 rounded-box z-[1] w-64 p-2 shadow-2xl border border-gray-200 my-2 max-h-[300px] overflow-y-auto flex flex-col"
+        className="dropdown-content bg-base-100 rounded-box z-[10] w-64 p-2 shadow-2xl border border-gray-200 my-2 max-h-[300px] overflow-y-auto flex flex-col"
       >
         {searchHistory.length === 0 ? (
           <li className="text-center text-gray-500 py-2">No search history</li>

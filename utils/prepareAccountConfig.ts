@@ -5,12 +5,13 @@ import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/redux/hooks";
 import { setUser } from "@/redux/features/user";
 import { useCart } from "@/utils/cart";
-
+import { useFilter } from "./filters";
 // Define the function to handle account configuration
 export const usePrepareAccountConfig = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const { loadCartFromLocalStorage } = useCart();
+  const { loadFilterFromLocalStorage } = useFilter();
 
   const prepareAccountConfig = (token: string) => {
     if (token) {
@@ -27,6 +28,9 @@ export const usePrepareAccountConfig = () => {
 
           // Load the user's cart from localStorage
           loadCartFromLocalStorage({ id });
+
+          // Load the user's filter from localStorage
+          loadFilterFromLocalStorage({ id });
 
           // Navigate based on role
           if (role === "admin") {

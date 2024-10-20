@@ -19,6 +19,10 @@ const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
+    // load filter from localStorage
+    loadFilter: (state, action: PayloadAction<IFilter>) => {
+      state.filter = action.payload;
+    },
     // set the category
     setCategory: (state, action: PayloadAction<string>) => {
       state.filter.category = action.payload;
@@ -69,5 +73,6 @@ export const {
   clearFilter,
   removeItemSearchFromHistory,
   clearSearchHistory,
+  loadFilter,
 } = filterSlice.actions;
 export default filterSlice.reducer;
