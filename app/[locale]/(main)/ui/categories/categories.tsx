@@ -1,7 +1,7 @@
 import Items from "./Items";
 import { getCategories } from "@/actions/getCategories";
 import { QueryClient } from "@tanstack/react-query";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 const Categories = async () => {
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({

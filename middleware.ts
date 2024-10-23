@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { authMiddleware } from "./middleware/authMiddleware";
-import { logMiddleware } from "./middleware/logMiddleware";
+import LocalizationMiddleware from "./middleware/LocalizationMiddleware";
 
 export default function middleware(request: NextRequest) {
-  return runMiddlewares(request, [authMiddleware, logMiddleware]);
+  return runMiddlewares(request, [authMiddleware, LocalizationMiddleware]);
 }
 
 async function runMiddlewares(request: NextRequest, middlewares: Function[]) {

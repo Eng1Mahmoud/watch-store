@@ -1,4 +1,3 @@
-import React from "react";
 import { Slider } from "./ui/Slider";
 import About from "./ui/AboutSection/About";
 import { Brands } from "./ui/brandsSection/Brands";
