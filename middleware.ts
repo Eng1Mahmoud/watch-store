@@ -4,13 +4,14 @@ import { authMiddleware } from "./middleware/authMiddleware";
 import { logMiddleware } from "./middleware/logMiddleware";
 
 export default function middleware(request: NextRequest) {
-  return runMiddlewares(request, [authMiddleware, logMiddleware]);
+  return runMiddlewares(request, [logMiddleware, authMiddleware]);
 }
 
 async function runMiddlewares(request: NextRequest, middlewares: Function[]) {
   for (const middleware of middlewares) {
     const response = await middleware(request);
     if (response) {
+      console.log("response", response);
       return response;
     }
   }
