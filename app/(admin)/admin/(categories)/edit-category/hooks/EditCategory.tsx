@@ -24,7 +24,9 @@ export const useEditCategory = ({
         toast.success(res.message);
         router.push("/admin/categories");
         queryClient.invalidateQueries({ queryKey: ["categories"] });
-        queryClient.invalidateQueries({ queryKey: ["categoryDetails"] });
+        queryClient.invalidateQueries({
+          queryKey: ["categoryDetails", oldCategoryName],
+        });
       } else {
         toast.error(res.message);
       }

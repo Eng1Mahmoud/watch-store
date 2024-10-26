@@ -4,7 +4,7 @@ import { getProduct } from "@/actions/getProduct";
 const page = async ({ params }: { params: { id: string } }) => {
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
-    queryKey: ["productDetails"],
+    queryKey: ["productDetails", params.id],
     queryFn: () => getProduct(params.id),
   });
   return (

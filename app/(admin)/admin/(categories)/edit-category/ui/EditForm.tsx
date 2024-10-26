@@ -9,7 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
 const EditcategoryForm = ({ name }: { name: string }) => {
   const { data } = useQuery({
-    queryKey: ["categoryDetails"],
+    queryKey: ["categoryDetails", name],
     queryFn: async () => {
       const response = await axiosClientInstance.get(
         `/categories/${name}?type=name`,

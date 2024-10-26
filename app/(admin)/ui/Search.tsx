@@ -9,6 +9,7 @@ const Search = ({ setSearchTerm, placeholder }: SearchProps) => {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
+    console.log("value", value);
     // Clear the previous timer if it exists
     if (timerRef.current) {
       clearTimeout(timerRef.current);

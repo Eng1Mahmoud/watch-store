@@ -22,7 +22,7 @@ export const useEditProduct = ({ id }: { id: string }) => {
         toast.success(res.message);
         router.push("/admin/products");
         queryClient.invalidateQueries({ queryKey: ["products"] });
-        queryClient.invalidateQueries({ queryKey: ["productDetails"] });
+        queryClient.invalidateQueries({ queryKey: ["productDetails", id] });
       } else {
         toast.error(res.message);
       }

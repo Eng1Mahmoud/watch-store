@@ -4,7 +4,7 @@ import { QueryClient } from "@tanstack/react-query";
 const page = async ({ params }: { params: { name: string } }) => {
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
-    queryKey: ["categoryDetails"],
+    queryKey: ["categoryDetails", params.name],
     queryFn: () => getCategory(params.name),
   });
   return (

@@ -1,3 +1,4 @@
+import { IconType } from "react-icons";
 // category interface
 export interface ICategory {
   id?: string;
@@ -47,4 +48,23 @@ export interface IFilter {
   maxPrice: number;
   search: string;
   searchHistory: string[];
+}
+// table interfaces
+export interface IColumn {
+  key: string;
+  label: string;
+  labelColor?: string;
+}
+
+export interface IAction {
+  label: string;
+  onClick: (item: any) => void;
+  icon?: IconType;
+  labelColor?: string;
+}
+export interface ITableProps {
+  data: any[]; // Adjusted to accept flat data directly
+  columns: IColumn[];
+  actions?: IAction[];
+  dataKey: string;
 }

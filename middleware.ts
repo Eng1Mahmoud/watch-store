@@ -11,7 +11,6 @@ async function runMiddlewares(request: NextRequest, middlewares: Function[]) {
   for (const middleware of middlewares) {
     const response = await middleware(request);
     if (response) {
-      console.log("response", response);
       return response;
     }
   }

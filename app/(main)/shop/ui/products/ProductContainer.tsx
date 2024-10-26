@@ -17,7 +17,7 @@ const ProductContainer = () => {
     }
     return acc;
   }, {});
-
+  console.log("params", params);
   return (
     <div>
       <InfiniteScroll

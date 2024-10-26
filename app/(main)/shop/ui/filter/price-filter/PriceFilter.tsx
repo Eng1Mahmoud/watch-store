@@ -13,17 +13,23 @@ const PriceFilter: React.FC = () => {
   const STEP = 1;
   const MIN = 0;
   const MAX = 100000;
-  const [localValues, setLocalValues] = React.useState([
-    minPrice || 0,
-    maxPrice || 0,
-  ]);
+
+  // Ensure initial values are sorted
+  const [localValues, setLocalValues] = React.useState(() => {
+    const initialMin = minPrice || MIN;
+    const initialMax = maxPrice || MAX;
+    return [Math.min(initialMin, initialMax), Math.max(initialMin, initialMax)];
+  });
 
   React.useEffect(() => {
-    setLocalValues([minPrice || 0, maxPrice || 0]);
+    const newMin = minPrice || MIN;
+    const newMax = maxPrice || MAX;
+    setLocalValues([Math.min(newMin, newMax), Math.max(newMin, newMax)]);
   }, [minPrice, maxPrice]);
 
   const handlePriceChange = (newValues: number[]) => {
-    setLocalValues(newValues);
+    // Ensure values are always sorted
+    setLocalValues([Math.min(...newValues), Math.max(...newValues)]);
   };
 
   const applyPriceFilter = () => {
