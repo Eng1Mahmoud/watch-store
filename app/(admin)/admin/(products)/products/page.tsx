@@ -9,7 +9,6 @@ import { useGetActions } from "./helper";
 const Products = () => {
   const actions = useGetActions();
   const [searchTerm, setSearchTerm] = useState<string | undefined>("");
-  console.log("searchTerm", searchTerm);
   return (
     <div>
       <Search setSearchTerm={setSearchTerm} placeholder="search products..." />
