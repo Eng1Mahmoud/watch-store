@@ -10,7 +10,7 @@ const CheckOut = () => {
   const [couponCode, setCouponCode] = useState("");
   const orders = useAppSelector(getAllOrders);
   const totalPrice = useAppSelector(getTotalPrice);
-  console.log(orders);
+
   // handle payment method
   const handlePaymentMethodChange = (
     e: React.ChangeEvent<HTMLSelectElement>,

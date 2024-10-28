@@ -1,17 +1,24 @@
 import { IProduct } from "@/types/types";
 import Image from "next/image";
-import { MdFavoriteBorder } from "react-icons/md";
+import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { BsCart4 } from "react-icons/bs";
 import {
   useProductCardActions,
-  useProductCardWishlistActions,
+  useProductWishlistActions,
 } from "./hooks/actions";
 import ShareButtons from "../ShareButtons";
 import { useCart } from "@/utils/cart";
-const ProductCard = ({ product }: { product: IProduct }) => {
+const ProductCard = ({
+  product,
+  forWishlist,
+}: {
+  product: IProduct;
+  forWishlist?: boolean;
+}) => {
   const { addProductToCart } = useCart();
   const { goToProductPage } = useProductCardActions();
-  const { addProductToWishlist } = useProductCardWishlistActions();
+  const { addProductToWishlist, removeProductFromWishlist } =
+    useProductWishlistActions();
   return (
     <div className="card bg-base-100  w-full  boder border-gray-200 border-[1px]">
       <div className="absolute top-1 right-1">
@@ -40,11 +47,19 @@ const ProductCard = ({ product }: { product: IProduct }) => {
         <div className="card-actions ">
           {/** action add favorit and add to cart use icons in top */}
           <div className="flex items-center gap-3">
-            <MdFavoriteBorder
-              className=" text-main-main cursor-pointer "
-              size={25}
-              onClick={() => addProductToWishlist(product.id)}
-            />
+            {product?.is_wishlisted || forWishlist ? (
+              <MdFavorite
+                className=" text-main-main cursor-pointer "
+                size={25}
+                onClick={() => removeProductFromWishlist(product.id)}
+              />
+            ) : (
+              <MdFavoriteBorder
+                className=" text-main-main cursor-pointer "
+                size={25}
+                onClick={() => addProductToWishlist(product.id)}
+              />
+            )}
             <BsCart4
               className=" text- cursor-pointer"
               size={25}

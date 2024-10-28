@@ -15,6 +15,7 @@ export interface IProduct {
   categories: string[];
   image_url: string;
   quantity: number;
+  is_wishlisted?: boolean;
 }
 
 // user interface
@@ -67,4 +68,12 @@ export interface ITableProps {
   columns: IColumn[];
   actions?: IAction[];
   dataKey: string;
+}
+
+// wishlist interface
+export interface IWishlist {
+  product: IProduct;
+  user?: IUser;
+  created_at?: string;
+  updated_at?: string;
 }

@@ -3,10 +3,13 @@ import { axiosClientInstance } from "@/axios/axiosClientInstance";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { BsCart4 } from "react-icons/bs";
-import { MdFavoriteBorder } from "react-icons/md";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import ShareButtons from "@/components/ShareButtons";
+import { useProductWishlistActions } from "@/components/product-card/hooks/actions";
 import { useCart } from "@/utils/cart";
 const ProductDetails = ({ id }: { id: string }) => {
+  const { addProductToWishlist, removeProductFromWishlist } =
+    useProductWishlistActions();
   const { addProductToCart } = useCart();
   const { data } = useQuery({
     queryKey: ["productDetails", id],
@@ -33,9 +36,19 @@ const ProductDetails = ({ id }: { id: string }) => {
             className="w-full h-full object-cover rounded-md "
           />
           {/**product favorite button */}
-          <button className="absolute  top-1 left-1 p-2 bg-white rounded-full">
-            <MdFavoriteBorder />
-          </button>
+          {product?.is_wishlisted ? (
+            <MdFavorite
+              className=" text-main-main cursor-pointer absolute  top-1 left-1 "
+              size={25}
+              onClick={() => removeProductFromWishlist(product.id)}
+            />
+          ) : (
+            <MdFavoriteBorder
+              className=" text-main-main cursor-pointer absolute  top-1 left-1 "
+              size={25}
+              onClick={() => addProductToWishlist(product.id)}
+            />
+          )}
         </div>
         <div className="w-full h-full">
           <div className="flex flex-col gap-4">

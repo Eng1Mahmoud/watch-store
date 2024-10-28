@@ -8,6 +8,7 @@ import NavLinks from "./NavLinks";
 import Avatar from "./avatar/Avatar";
 import Aside from "./Aside";
 import AuthLinks from "./AuthLinks";
+import Wishlists from "./Wishlists";
 const Header = () => {
   return (
     <div className="header container">
@@ -26,9 +27,12 @@ const Header = () => {
           <div className="hidden md:flex-1 md:flex">
             <Search />
           </div>
-          <Cart />
-          <Avatar />
-          <AuthLinks />
+          <div className="flex items-center gap-3">
+            <Wishlists />
+            <Cart />
+            <Avatar />
+            <AuthLinks />
+          </div>
         </div>
       </div>
 
