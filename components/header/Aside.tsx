@@ -2,7 +2,7 @@
 import { CiMenuFries } from "react-icons/ci";
 import { IoClose } from "react-icons/io5"; // Import a close icon
 import { navLinks } from "./NavLinks";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { useRef } from "react";
 
 const Aside = () => {

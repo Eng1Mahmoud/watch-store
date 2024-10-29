@@ -1,6 +1,6 @@
 import Image from "next/image";
 import logo from "@/public/assets/logo.webp";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { footerSections } from "./footerSections";
 // Define a shared link style
 const linkClass = "text-text-secondary font-main hover:text-main-main";

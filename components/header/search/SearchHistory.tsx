@@ -6,7 +6,7 @@ import {
   setSearch,
   clearSearchHistory,
 } from "@/redux/features/filter";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter, usePathname } from "@/i18n/routing";
 const SearchHistory = () => {
   const pathname = usePathname();
   const router = useRouter();

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { usePathname, useParams } from "next/navigation";
-import Link from "next/link";
+import { useParams } from "next/navigation";
+import { Link, usePathname } from "@/i18n/routing";
 const Breadcrumbs = () => {
   const params = useParams();
   const paramsArray = Object.values(params); // convert params to array

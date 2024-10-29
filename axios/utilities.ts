@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import { customRedirect } from "./../i18n/routing";
 
 export const baseConfig = {
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -16,7 +16,7 @@ export const responseInterceptor = (error: any) => {
   ) {
     if (typeof window === "undefined") {
       // Server-side: use Next.js redirect
-      redirect("/login");
+      customRedirect("/login");
     } else {
       // Client-side: use window.location
       window.location.href = "/login";

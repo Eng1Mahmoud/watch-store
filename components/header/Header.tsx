@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import logo from "@/public/assets/logo.webp";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import Search from "./search/Search";
 import Cart from "./cart/Cart";
 import NavLinks from "./NavLinks";

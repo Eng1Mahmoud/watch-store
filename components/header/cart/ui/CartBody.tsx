@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/redux/hooks";
 import { getOrdersLength, getTotalPrice } from "@/redux/features/cart";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 const CartBody = () => {
   const ordersLength = useAppSelector(getOrdersLength);
   const totalPrice = useAppSelector(getTotalPrice);

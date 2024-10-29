@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setSearch } from "@/redux/features/filter";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, usePathname } from "@/i18n/routing";
 // icons
 import { FaSearch } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
@@ -13,6 +13,7 @@ const Search = () => {
   const [inputValue, setInputValue] = useState(searchTerm);
   const router = useRouter();
   const pathname = usePathname(); // get the current pathname
+
   const dispatch = useAppDispatch();
 
   // handle the search input change
