@@ -1,18 +1,16 @@
-import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { authMiddleware } from "./middleware/authMiddleware";
-import { logMiddleware } from "./middleware/logMiddleware";
+import localizationMiddleware from "@/middleware/LocalizationMiddleware";
+import { authMiddleware } from "@/middleware/authMiddleware";
+import runMiddlewares from "@/middleware/runMiddlewares";
 
-export default function middleware(request: NextRequest) {
-  return runMiddlewares(request, [logMiddleware, authMiddleware]);
+export default async function middleware(request: NextRequest) {
+  return await runMiddlewares(request, [
+    localizationMiddleware,
+    authMiddleware,
+  ]);
 }
 
-async function runMiddlewares(request: NextRequest, middlewares: Function[]) {
-  for (const middleware of middlewares) {
-    const response = await middleware(request);
-    if (response) {
-      return response;
-    }
-  }
-  return NextResponse.next();
-}
+// Config to match internationalized pathnames
+export const config = {
+  matcher: ["/", "/(ar|en)/:path*"],
+};

@@ -2,7 +2,7 @@
 import axios from "axios";
 import { getTokenClient } from "@/utils/getTokenClient";
 import { getTokenServer } from "@/utils/getTokenServer";
-import { redirect } from "next/navigation";
+import { customRedirect } from "@/i18n/routing";
 
 const baseConfig = {
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -46,7 +46,7 @@ const responseInterceptor = (error: any) => {
   ) {
     if (typeof window === "undefined") {
       // Server-side: use Next.js redirect
-      redirect("/login");
+      customRedirect("/login");
     } else {
       // Client-side: use window.location
       window.location.href = "/login";

@@ -1,7 +1,7 @@
 "use client";
 import { setCookie } from "cookies-next";
 import { decodeToken } from "@/utils/decodeToken";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
 import { useAppDispatch } from "@/redux/hooks";
 import { setUser } from "@/redux/features/user";
 import { useCart } from "@/utils/cart";

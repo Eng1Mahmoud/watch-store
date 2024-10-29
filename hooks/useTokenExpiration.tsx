@@ -3,7 +3,7 @@ import { getCookie } from "cookies-next";
 import { decodeToken } from "@/utils/decodeToken";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "@/redux/hooks";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
 import { useLogout } from "@/utils/logout";
 export const useTokenExpiration = () => {
   const dispatch = useAppDispatch();

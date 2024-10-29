@@ -4,7 +4,7 @@ import { deleteCookie } from "cookies-next";
 import { useCart } from "./cart";
 import { useFilter } from "./filters";
 import { useCallback } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
 export const useLogout = () => {
   const userId = useAppSelector((state) => state.user.id);
   const { saveCartToLocalStorage } = useCart();
