@@ -8,7 +8,10 @@ import { routing } from "@/i18n/routing";
 // import toastify css
 import "react-toastify/dist/ReactToastify.css";
 import { notFound } from "next/navigation";
-import SwitchLang from "@/components/SwitchLang";
+import MainBar from "@/components/mainBar/MainBar";
+import { mainFont } from "../fonts/fonts";
+import "./globals.css";
+import Script from "next/script";
 const SessionExpired = dynamic(() => import("@/components/SessionExpired"), {
   ssr: false,
 });
@@ -36,19 +39,39 @@ export default async function RootLayout({
   // side is the easiest way to get started
   const messages = await getMessages();
   return (
-    <NextIntlClientProvider messages={messages}>
-      <StoreProvider>
-        <Providers>
-          <SwitchLang locale={locale} />
-
-          {children}
-          <Suspense fallback={null}>
-            <ToastContainer position="top-right" autoClose={5000} />
-            <ScrollToTop />
-          </Suspense>
-          <SessionExpired />
-        </Providers>
-      </StoreProvider>
-    </NextIntlClientProvider>
+    <html
+      lang={locale}
+      dir={locale === "ar" ? "rtl" : "ltr"}
+      className={`${mainFont.variable}`}
+    >
+      <body suppressHydrationWarning={true}>
+        {/* Google tag (gtag.js) */}
+        <Script
+          strategy="lazyOnload"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-V9R9XWK0TD`}
+        />
+        <Script id="google-analytics" strategy="lazyOnload">
+          {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-V9R9XWK0TD');
+      `}
+        </Script>
+        <NextIntlClientProvider messages={messages}>
+          <StoreProvider>
+            <Providers>
+              <MainBar />
+              {children}
+              <Suspense fallback={null}>
+                <ToastContainer position="top-right" autoClose={5000} />
+                <ScrollToTop />
+              </Suspense>
+              <SessionExpired />
+            </Providers>
+          </StoreProvider>
+        </NextIntlClientProvider>
+      </body>
+    </html>
   );
 }

@@ -4,8 +4,9 @@ import { IoClose } from "react-icons/io5"; // Import a close icon
 import { navLinks } from "./NavLinks";
 import { Link } from "@/i18n/routing";
 import { useRef } from "react";
-
+import { useTranslations } from "next-intl";
 const Aside = () => {
+  const t = useTranslations();
   const drawerCheckboxRef = useRef<HTMLInputElement>(null);
   const handleCloseDrawer = () => {
     if (drawerCheckboxRef.current) {
@@ -38,11 +39,11 @@ const Aside = () => {
 
           <div className="bg-base-200 text-base-content min-h-full w-[300px] overflow-y-auto ">
             <div className="p-4">
-              <div className="flex justify-start mb-4">
+              <div className="flex rtl:justify-end ltr:justify-start mb-4 mx-4">
                 <label
                   htmlFor="my-drawer-4"
                   aria-label="close drawer"
-                  className="text-[30px] cursor-pointer"
+                  className="text-[30px] cursor-pointer "
                 >
                   <IoClose />
                 </label>
@@ -56,7 +57,7 @@ const Aside = () => {
                       className=" font-main text-[16px] px-4 py-2 hover:bg-base-300 rounded-lg transition-all duration-300 hover:scale-110 hover:text-main-main"
                       onClick={handleCloseDrawer} // Close drawer on click
                     >
-                      {link.label}
+                      {t(`navLinks.${link.label}`)}
                     </Link>
                   </li>
                 ))}
