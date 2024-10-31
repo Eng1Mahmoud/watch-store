@@ -6,7 +6,7 @@ import {
   setSearch,
   clearSearchHistory,
 } from "@/redux/features/filter";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter, usePathname } from "@/i18n/routing";
 const SearchHistory = () => {
   const pathname = usePathname();
   const router = useRouter();
@@ -31,7 +31,7 @@ const SearchHistory = () => {
     dispatch(clearSearchHistory());
   };
   return (
-    <div className="dropdown dropdown-end absolute right-3 top-1/2 transform -translate-y-1/2 z-[100]">
+    <div className="dropdown dropdown-end absolute rtl:left-3 ltr:right-3 top-1/2 transform -translate-y-1/2 z-[100]">
       <div
         tabIndex={0}
         role="button"

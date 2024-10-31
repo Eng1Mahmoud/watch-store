@@ -1,18 +1,19 @@
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 // Array of link data
 export const navLinks = [
-  { href: "/", label: "Home", id: 1 },
-  { href: "/#about", label: "About", id: 2 },
-  { href: "/#categories", label: "Categories", id: 3 },
-  { href: "/#products", label: "Products", id: 4 },
-  { href: "/#brands", label: "Brands", id: 5 },
-  { href: "/#gallery", label: "Gallery", id: 6 },
-  { href: "/#testimonials", label: "Testimonials", id: 7 },
-  { href: "/#contact", label: "Contact Us", id: 8 },
-  { href: "/faqs", label: "FAQs", id: 9 },
+  { href: "/", label: "home", id: 1 },
+  { href: "/#about", label: "about", id: 2 },
+  { href: "/#categories", label: "categories", id: 3 },
+  { href: "/#products", label: "products", id: 4 },
+  { href: "/#brands", label: "brands", id: 5 },
+  { href: "/#gallery", label: "gallery", id: 6 },
+  { href: "/#testimonials", label: "testimonials", id: 7 },
+  { href: "/#contact", label: "contact", id: 8 },
 ];
 
 const NavLinks = () => {
+  const t = useTranslations();
   return (
     <div className="hidden md:flex">
       <ul className="menu menu-horizontal px-1 mx-1">
@@ -22,7 +23,7 @@ const NavLinks = () => {
               href={link.href}
               className="font-main font-medium text-[15px] transition-all duration-300 hover:scale-110 hover:text-main-main px-3"
             >
-              {link.label}
+              {t(`navLinks.${link.label}`)}
             </Link>
           </li>
         ))}

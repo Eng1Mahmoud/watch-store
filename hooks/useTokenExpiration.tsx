@@ -3,9 +3,11 @@ import { getCookie } from "cookies-next";
 import { decodeToken } from "@/utils/decodeToken";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "@/redux/hooks";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
 import { useLogout } from "@/utils/logout";
+import { useAppSelector } from "@/redux/hooks";
 export const useTokenExpiration = () => {
+  const { login } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const router = useRouter();
   const { logout } = useLogout();
@@ -15,7 +17,7 @@ export const useTokenExpiration = () => {
 
     const checkTokenExpiration = () => {
       const token = getCookie("token");
-      if (!token) {
+      if (!token && !login) {
         return;
       }
 
@@ -38,5 +40,5 @@ export const useTokenExpiration = () => {
     return () => {
       if (timeoutId) clearTimeout(timeoutId);
     };
-  }, [dispatch, router, logout]);
+  }, [dispatch, router, logout, login]);
 };

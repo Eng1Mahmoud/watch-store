@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import logo from "@/public/assets/logo.webp";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import Search from "./search/Search";
 import Cart from "./cart/Cart";
 import NavLinks from "./NavLinks";
@@ -12,15 +12,10 @@ import Wishlists from "./Wishlists";
 const Header = () => {
   return (
     <div className="header container">
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 gap-5">
         <div className="flex-none">
           <Link href="/">
-            <Image
-              width={100}
-              height={100}
-              alt="Tailwind CSS Navbar component"
-              src={logo}
-            />
+            <Image width={100} height={100} alt="watch shop " src={logo} />
           </Link>
         </div>
         <div className="gap-2 flex-1 justify-end">

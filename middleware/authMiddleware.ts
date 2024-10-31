@@ -3,35 +3,43 @@ import type { NextRequest } from "next/server";
 import { decodeToken } from "@/utils/decodeToken";
 import { routes } from "./helper/RolesAndRoutes";
 import type { Role } from "./helper/RolesAndRoutes";
-export function authMiddleware(request: NextRequest) {
+export async function authMiddleware(
+  request: NextRequest,
+  response: NextResponse,
+) {
   const { pathname } = request.nextUrl;
-  const token = request.cookies.get("token")?.value; // Replace with your actual token name
+  const token = request.cookies.get("token")?.value;
+  const currentLang = pathname.split("/")[1];
+  const currentPath = pathname.split("/")[2]
+    ? `/${pathname.split("/")[2]}`
+    : "/";
+
   let userRole: Role = "guest"; // Default role is guest
 
+  // Decode the token to extract user role if available
   if (token) {
     try {
       const decodedToken: any = decodeToken(token);
       userRole = decodedToken?.role;
     } catch (error) {
-      return NextResponse.redirect(new URL("/login", request.url)); // Redirect to login if token is invalid
+      return NextResponse.redirect(
+        new URL(`/${currentLang}/login`, request.url),
+      );
     }
   }
 
-  // Find the matching route
-  const route = routes.find((route) => pathname.startsWith(route.path));
+  // Check route permissions
+  const route = routes.find((route) => currentPath.startsWith(route.path));
+  if (!route) return response || NextResponse.next(); // Allow access if route is not restricted
 
-  if (!route) {
-    return NextResponse.next(); // Allow access if route is not restricted
-  }
-
-  // Check if user role is allowed to access the route
   if (!route.roles.includes(userRole)) {
-    if (userRole === "guest") {
-      return NextResponse.redirect(new URL("/login", request.url)); // Redirect guests to login
-    } else {
-      return NextResponse.redirect(new URL("/403", request.url)); // Redirect unauthorized users to 403 page
-    }
+    return NextResponse.redirect(
+      new URL(
+        `/${currentLang}/${userRole === "guest" ? "login" : "403"}`,
+        request.url,
+      ),
+    );
   }
 
-  return NextResponse.next(); // Allow access if role is authorized
+  return response || NextResponse.next(); // Allow access if route is not restricted
 }

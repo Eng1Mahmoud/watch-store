@@ -1,6 +1,6 @@
 import React from "react";
 import Logout from "./Logout";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 const AvatarMenu = () => {
   return (

@@ -1,0 +1,16 @@
+{
+    "search": "Search",
+    "navLinks": {
+        "home": "Home",
+        "about": "About",
+        "categories": "Categories",
+        "products": "Products",
+        "brands": "Brands",
+        "gallery": "Gallery",
+        "testimonials": "Testimonials",
+        "contact": "Contact Us",
+        "faq": "FAQ",
+        "login": "Login",
+        "signup": "Signup"
+    }
+}

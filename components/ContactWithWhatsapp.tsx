@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 import whatsapp from "@/public/assets/whatsapp.svg";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 const ContactWithWhatsapp = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
