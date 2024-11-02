@@ -9,7 +9,7 @@ import { routing } from "@/i18n/routing";
 import "react-toastify/dist/ReactToastify.css";
 import { notFound } from "next/navigation";
 import MainBar from "@/components/mainBar/MainBar";
-import { mainFont } from "../fonts/fonts";
+import { mainFont_en, mainFont_ar } from "../fonts/fonts";
 import "./globals.css";
 import Script from "next/script";
 const SessionExpired = dynamic(() => import("@/components/SessionExpired"), {
@@ -42,7 +42,7 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={locale === "ar" ? "rtl" : "ltr"}
-      className={`${mainFont.variable}`}
+      className={`${locale === "ar" ? mainFont_ar.variable : mainFont_en.variable}`}
     >
       <body suppressHydrationWarning={true}>
         {/* Google tag (gtag.js) */}

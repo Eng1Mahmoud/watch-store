@@ -1,12 +1,13 @@
 import Image from "next/image";
-import React from "react";
+import { getTranslations } from "next-intl/server";
 import testimonialImage from "@/public/assets/testimonials/t1.png";
 import { Slider } from "./slider/Slider";
-const Testimonials = () => {
+export const Testimonials = async () => {
+  const t = await getTranslations("testimonials");
   return (
     <div className="mt-8" id="testimonials">
       <h1 className="text-center text-[30px] font-bold text-main-main my-10 ">
-        Testimonials
+        {t("title")}
       </h1>
       <div className="bg-hero bg-cover bg-no-repeat py-20 ">
         <div className="container">

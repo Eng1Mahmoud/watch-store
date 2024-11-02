@@ -1,10 +1,13 @@
 import Image from "next/image";
 import logo from "@/public/assets/logo.webp";
 import { Link } from "@/i18n/routing";
-import { footerSections } from "./footerSections";
+import { useFooterSections } from "./footerSections";
+import { useTranslations } from "next-intl";
 // Define a shared link style
 const linkClass = "text-text-secondary font-main hover:text-main-main";
 const Footer = () => {
+  const footerSections = useFooterSections();
+  const t = useTranslations("footer");
   return (
     <section className="bg-text-fourth">
       <footer className="footer  p-10 ">
@@ -12,16 +15,12 @@ const Footer = () => {
           <Image src={logo} alt="logo" width={100} height={100} />
           <div className="flex flex-col gap-2 font-main text-gray-700">
             <span className="font-bold text-main-main text-xl">
-              Watch Store
+              {t("store_name")}
             </span>
+            <p>{t("trusted_since")}</p>
             <p>
-              Your trusted destination for reliable watches since{" "}
-              <span className="font-semibold">2024</span>.
-            </p>
-            <p>
-              Explore our exclusive collection and enjoy the elegance of
-              timepieces.{" "}
-              <span className="italic">Discover timeless beauty today!</span>{" "}
+              {t("explore_text")}
+              <span className="italic px-1">{t("cta")}</span>{" "}
               {/* Added a call to action */}
             </p>
           </div>
@@ -50,11 +49,11 @@ const Footer = () => {
             <span className="font-semibold ">
               &copy; {new Date().getFullYear()}{" "}
             </span>
-            Watch Store. All rights reserved.
+            {t("copyright")}
           </p>{" "}
           {/* Updated font size */}
           <p className="text-sm ">
-            Developed by <span className="font-semibold">Dhruv</span>
+            {t("developed_by")} <span className="font-semibold">Dhruv</span>
           </p>{" "}
           {/* Updated font size */}
         </div>

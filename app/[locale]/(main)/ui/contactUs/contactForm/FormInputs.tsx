@@ -1,10 +1,10 @@
 "use client";
-
 import Input from "@/components/formik/Input";
 import TextArea from "@/components/formik/TextArea";
 import { motion } from "framer-motion";
-
+import { useTranslations } from "next-intl";
 const FormInputs = () => {
+  const t = useTranslations("contact");
   return (
     <motion.div
       initial={{ y: 100 }}
@@ -14,12 +14,20 @@ const FormInputs = () => {
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pb-4">
         <div className="flex flex-col gap-5">
-          <Input name="name" placeholder="Name" type="text" />
-          <Input name="email" placeholder="Email" type="email" />
-          <Input name="phoneNumber" placeholder="Phone" type="text" />
+          <Input name="name" placeholder={t("formLabels.name")} type="text" />
+          <Input
+            name="email"
+            placeholder={t("formLabels.email")}
+            type="email"
+          />
+          <Input
+            name="phoneNumber"
+            placeholder={t("formLabels.phoneNumber")}
+            type="text"
+          />
         </div>
         <div className="flex flex-col gap-3">
-          <TextArea name="message" placeholder="Message" />
+          <TextArea name="message" placeholder={t("formLabels.message")} />
         </div>
       </div>
       <motion.button
@@ -28,7 +36,7 @@ const FormInputs = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        Submit
+        {t("submit")}
       </motion.button>
     </motion.div>
   );

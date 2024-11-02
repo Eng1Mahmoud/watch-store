@@ -8,6 +8,7 @@ import { useLogout } from "@/utils/logout";
 import { useAppSelector } from "@/redux/hooks";
 export const useTokenExpiration = () => {
   const { login } = useAppSelector((state) => state.user);
+  console.log(login);
   const dispatch = useAppDispatch();
   const router = useRouter();
   const { logout } = useLogout();
@@ -17,20 +18,26 @@ export const useTokenExpiration = () => {
 
     const checkTokenExpiration = () => {
       const token = getCookie("token");
+      // If there's no token but user is still logged in, force logout
+      if (!token && login) {
+        logout();
+        return;
+      }
+      // If there's no token and user is not logged in, do nothing
       if (!token && !login) {
         return;
       }
 
-      const { exp }: any = decodeToken(token as string);
+      const decodedToken: any = decodeToken(token as string);
       const currentTime = Date.now() / 1000; // Convert to seconds
 
-      if (exp <= currentTime) {
+      if (decodedToken?.exp <= currentTime) {
         logout();
         toast.error("Your session has expired", {
           toastId: "session-expired",
         });
       } else {
-        const timeUntilExpiration = (exp - currentTime) * 1000; // Convert to milliseconds
+        const timeUntilExpiration = (decodedToken?.exp - currentTime) * 1000; // Convert to milliseconds
         timeoutId = setTimeout(checkTokenExpiration, timeUntilExpiration);
       }
     };

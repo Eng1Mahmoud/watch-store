@@ -23,7 +23,7 @@ export default function SwitchLang() {
         ) : (
           <>
             <Image src={arFlagLang} alt="Arabic" width={20} height={20} />
-            <span className="ml-2">Arabic</span>
+            <span className="ml-2">عربي</span>
           </>
         )}
       </summary>
@@ -40,7 +40,7 @@ export default function SwitchLang() {
           <Link href={`${currentPath}`} locale="ar">
             <button className="flex items-center gap-2">
               <Image src={arFlagLang} alt="Arabic" width={20} height={20} />
-              Arabic
+              عربي
             </button>
           </Link>
         </li>

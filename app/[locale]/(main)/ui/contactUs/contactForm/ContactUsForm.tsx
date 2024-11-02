@@ -1,16 +1,17 @@
 "use client";
 import BaseForm from "@/components/formik/BaseForm";
-import { contactUsSchema } from "@/formsValidation/validation";
+import { useContactUsValidation } from "@/formsValidation/contactUsValidation";
 import { useContactUs } from "../hooks/useContactUs";
 import FormInputs from "./FormInputs";
 const ContactUsForm = () => {
+  const validationSchema = useContactUsValidation();
   const { onSubmit } = useContactUs();
 
   return (
     <div>
       <BaseForm
         initialValues={{ name: "", phoneNumber: "", email: "", message: "" }}
-        validationSchema={contactUsSchema}
+        validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
         <FormInputs />

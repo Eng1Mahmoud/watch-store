@@ -1,40 +1,41 @@
 "use client";
-import React from "react";
 import { GrMapLocation } from "react-icons/gr";
 import { CiMail } from "react-icons/ci";
 import { FiPhoneCall } from "react-icons/fi";
 import { IoMdTime } from "react-icons/io";
 import { motion } from "framer-motion";
-const info = [
-  {
-    id: 1,
-    title: "Location",
-    description: "1234 Main Street, Melbourne, Australia",
-    icon: <GrMapLocation size={30} className="font-extrabold" />,
-  },
-  {
-    id: 2,
-    title: "Email",
-    description: "mahmoudAbbamalik@gmail.com",
-    icon: <CiMail size={30} className="font-extrabold" />,
-    href: "mailto:mahmoudAbbamalik@gmail.com",
-  },
-  {
-    id: 3,
-    title: "Phone",
-    description: "+201201453941",
-    icon: <FiPhoneCall size={30} className="font-extrabold" />,
-    href: "tel:+201201453941",
-  },
-  {
-    id: 4,
-    title: "Working Hours",
-    description: "Mon - Fri: 8:00 - 19:00",
-    icon: <IoMdTime size={30} className="font-extrabold" />,
-  },
-];
+import { useTranslations } from "next-intl";
 
 const Info = () => {
+  const t = useTranslations("contact.info");
+  const info = [
+    {
+      id: 1,
+      title: t("location.title"),
+      description: t("location.description"),
+      icon: <GrMapLocation size={30} className="font-extrabold" />,
+    },
+    {
+      id: 2,
+      title: t("email.title"),
+      description: t("email.description"),
+      icon: <CiMail size={30} className="font-extrabold" />,
+      href: "mailto:mahmoudAbbamalik@gmail.com",
+    },
+    {
+      id: 3,
+      title: t("phone.title"),
+      description: t("phone.description"),
+      icon: <FiPhoneCall size={30} className="font-extrabold" />,
+      href: "tel:+201201453941",
+    },
+    {
+      id: 4,
+      title: t("workingHours.title"),
+      description: t("workingHours.description"),
+      icon: <IoMdTime size={30} className="font-extrabold" />,
+    },
+  ];
   return (
     <motion.div
       initial={{ x: "100%" }}

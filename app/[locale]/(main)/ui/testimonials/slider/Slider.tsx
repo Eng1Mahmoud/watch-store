@@ -8,13 +8,11 @@ import type { Swiper as SwiperType } from "swiper";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { FaQuoteLeft } from "react-icons/fa6";
+import { useTranslations } from "next-intl";
 // Import Swiper styles
 import { Autoplay } from "swiper/modules";
-
-// impoert slide data
-import { Slides } from "./data";
-
 export const Slider: React.FC = () => {
+  const t = useTranslations("testimonials.items");
   const swiperRef = React.useRef<SwiperType | null>(null);
 
   const handleNext = () => {
@@ -48,8 +46,8 @@ export const Slider: React.FC = () => {
         }}
         className="position-relative h-auto  w-full"
       >
-        {Slides.map((slide) => (
-          <SwiperSlide key={slide.id}>
+        {[1, 2, 3].map((slide) => (
+          <SwiperSlide key={slide}>
             {" "}
             {/* Set a fixed height */}
             <div className="bg-white p-5 rounded-lg shadow-xl h-[250px] flex flex-col">
@@ -58,10 +56,10 @@ export const Slider: React.FC = () => {
               </div>
               <div className="flex flex-col flex-grow justify-center">
                 <h1 className="text-text-secondary text-2xl font-bold text-center pt-5">
-                  {slide.title}
+                  {t(`${slide}.title`)}
                 </h1>
                 <p className="text-text-secondary text-center pt-5 overflow-y-auto">
-                  {slide.description}
+                  {t(`${slide}.description`)}
                 </p>
               </div>
             </div>

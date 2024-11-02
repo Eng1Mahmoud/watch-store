@@ -48,7 +48,7 @@ const SelectInput = ({
         htmlFor={name}
         className={`absolute text-sm duration-300 font-[400] capitalize
         z-1 origin-[0] bg-white text-gray-500 px-1 
-        ${field.value ? "-top-3 left-3 scale-75 text-main-main" : "top-3 left-3 "}
+        ${field.value ? "-top-3 ltr:left-3 rtl:right-3 scale-75 text-main-main" : "top-3 ltr:left-3 rtl:right-3 "}
         peer-focus:-top-3 peer-focus:scale-75 peer-focus:text-main-main 
         peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:text-main-main
         peer-autofill:-top-3 peer-autofill:scale-75 peer-autofill:text-main-main
