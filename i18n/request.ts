@@ -17,6 +17,9 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ...(await import(`@/messages/${locale}/resetPassword.json`)).default,
     ...(await import(`@/messages/${locale}/verifyEmail.json`)).default,
     ...(await import(`@/messages/${locale}/forgotPassword.json`)).default,
+    ...(await import(`@/messages/${locale}/not-found.json`)).default,
+    ...(await import(`@/messages/${locale}/error.json`)).default,
+    ...(await import(`@/messages/${locale}/403.json`)).default,
   };
   return {
     locale,
