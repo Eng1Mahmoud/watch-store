@@ -1,0 +1,24 @@
+{
+    "login": {
+        "title": "Login",
+        "submit": "Login",
+        "formLabels": {
+            "email": "Email",
+            "password": "Password"
+        },
+        "links": {
+            "forgot_password": "Forgot Password?",
+            "create_account": "Don't have an account?"
+        },
+        "formValidation": {
+            "email": {
+                "required": "Email is required",
+                "invalid": "Email address is invalid"
+            },
+            "password": {
+                "required": "Password is required",
+                "invalid": "Password is invalid"
+            }
+        }
+    }
+}
