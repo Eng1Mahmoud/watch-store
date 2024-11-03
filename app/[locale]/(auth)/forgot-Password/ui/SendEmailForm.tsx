@@ -1,13 +1,15 @@
 "use client";
 import BaseForm from "@/components/formik/BaseForm";
 import Input from "@/components/formik/Input";
-import React from "react";
-import { sendEmailSchema } from "@/formsValidation/validation";
+import { useForgotPasswordValidation } from "@/formsValidation/forgotPasswordValidation";
 import { useSendEmail } from "../hooks/useSendEmail";
 import SuccessSend from "./SuccessSend";
-
+import { useTranslations } from "next-intl";
+import SubmitButton from "@/components/formik/SubmitButton";
 const SendEmailForm = () => {
+  const t = useTranslations("forgotPassword");
   const { onSubmit, loading, successSend } = useSendEmail();
+  const validationSchema = useForgotPasswordValidation();
   return (
     <div>
       {successSend ? (
@@ -15,20 +17,26 @@ const SendEmailForm = () => {
       ) : (
         <BaseForm
           initialValues={{ email: "" }}
-          validationSchema={sendEmailSchema}
+          validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
           <div className="container max-w-[600px] h-screen content-center">
             <div className="box-shadow">
               <h1 className="text-2xl font-bold text-center text-main-main mb-8">
-                Enter Your Email
+                {t("title")}
               </h1>
               <div className="flex flex-col gap-5">
-                <Input name="email" placeholder="Email" type="email" />
+                <Input
+                  name="email"
+                  placeholder={t("formLabels.email")}
+                  type="email"
+                />
                 <div className="flex justify-center">
-                  <button type="submit" className="btn btn-primary w-fit px-10">
-                    {loading ? "Loading..." : "Send Email"}
-                  </button>
+                  <SubmitButton
+                    loading={loading}
+                    text={t("submit")}
+                    position="center"
+                  />
                 </div>
               </div>
             </div>
