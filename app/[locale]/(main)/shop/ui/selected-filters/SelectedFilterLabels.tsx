@@ -2,40 +2,41 @@
 import { setCategory, setPrice, setSearch } from "@/redux/features/filter";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { MdClose } from "react-icons/md";
-
+import { useTranslations } from "next-intl";
 const SelectedFilterLabels = () => {
+  const t = useTranslations("shop.selected-filters");
   const dispatch = useAppDispatch();
   const { category, minPrice, maxPrice, search } = useAppSelector(
     (state) => state.filter.filter,
   );
   const labels = [
     {
-      label: "Category",
+      label: t("category"),
       value: category,
       clear: () => dispatch(setCategory("")),
     },
     {
-      label: "Min Price",
+      label: t("min-price"),
       value: minPrice,
       clear: () => dispatch(setPrice({ min: 0, max: maxPrice })),
     },
     {
-      label: "Max Price",
+      label: t("max-price"),
       value: maxPrice,
       clear: () => dispatch(setPrice({ min: minPrice, max: 0 })),
     },
-    { label: "Search", value: search, clear: () => dispatch(setSearch("")) },
+    { label: t("search"), value: search, clear: () => dispatch(setSearch("")) },
   ];
 
   return (
-    <div className="container max-w-screen-sm py-8">
+    <div className="container max-w-screen-md py-8">
       <div className="flex flex-wrap gap-2">
         {labels
           .filter((label) => label.value)
           .map(({ label, value, clear }) => (
             <div
               key={label}
-              className="bg-text-secondary text-white px-4 py-2 rounded flex items-center"
+              className="bg-text-secondary text-white px-4 py-2 rounded flex items-center gap-2"
             >
               <span className="text-sm mr-2">
                 {label}: {value}

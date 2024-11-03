@@ -4,8 +4,12 @@ import { Range, getTrackBackground } from "react-range";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setPrice } from "@/redux/features/filter";
 import { CiFilter } from "react-icons/ci";
-
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 const PriceFilter: React.FC = () => {
+  const locale = useLocale();
+  console.log(locale);
+  const t = useTranslations("shop.filters");
   const filter = useAppSelector((state) => state.filter.filter);
   const { minPrice, maxPrice } = filter;
 
@@ -38,19 +42,20 @@ const PriceFilter: React.FC = () => {
 
   return (
     <div className="py-4">
-      <h1 className="text-lg pb-2">Price</h1>
+      <h1 className="text-lg pb-2">{t("price.title")}</h1>
       <div className="flex flex-col items-center mx-1 my-8">
         <Range
           values={localValues}
           step={STEP}
           min={MIN}
           max={MAX}
+          rtl={locale === "ar"}
           onChange={handlePriceChange}
           renderTrack={({ props, children }) => (
             <div
               onMouseDown={props.onMouseDown}
               onTouchStart={props.onTouchStart}
-              className="h-2.5 flex w-full"
+              className="h-2.5 flex w-full px-2 md:px-4 "
             >
               <div
                 ref={props.ref}
@@ -61,6 +66,7 @@ const PriceFilter: React.FC = () => {
                     colors: ["#ccc", "#406939", "#ccc"],
                     min: MIN,
                     max: MAX,
+                    rtl: locale === "ar",
                   }),
                 }}
               >
@@ -76,7 +82,7 @@ const PriceFilter: React.FC = () => {
                 {...restProps}
                 className="h-5 w-5 rounded bg-white flex justify-center items-center shadow-md"
               >
-                <div className="absolute -top-7 text-white font-bold text-sm bg-main-main px-1 py-0.5 rounded">
+                <div className="absolute -top-7  text-white font-bold text-sm bg-main-main px-1 py-0.5 rounded">
                   {localValues[index].toFixed(0)}
                 </div>
                 <div
@@ -90,9 +96,10 @@ const PriceFilter: React.FC = () => {
         />
         <div className="flex justify-between items-center mt-4 gap-2">
           <output className="text-sm">
-            Price: ${localValues[0].toFixed(0)} - ${localValues[1].toFixed(0)}
+            {t("price.from")} : {localValues[0].toFixed(0)} - {t("price.to")} :{" "}
+            {localValues[1].toFixed(0)}
           </output>
-          <div className="lg:tooltip" data-tip="Apply price ">
+          <div className="lg:tooltip" data-tip={t("price.apply")}>
             <CiFilter
               onClick={applyPriceFilter}
               className="text-main-main text-2xl cursor-pointer"

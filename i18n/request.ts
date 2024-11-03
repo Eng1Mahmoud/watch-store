@@ -20,6 +20,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ...(await import(`@/messages/${locale}/not-found.json`)).default,
     ...(await import(`@/messages/${locale}/error.json`)).default,
     ...(await import(`@/messages/${locale}/403.json`)).default,
+    ...(await import(`@/messages/${locale}/shop.json`)).default,
+    ...(await import(`@/messages/${locale}/infinityScroll.json`)).default,
   };
   return {
     locale,

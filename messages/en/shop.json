@@ -1,0 +1,27 @@
+{
+    "shop": {
+        "filters": {
+            "title": "Filters",
+            "categories": {
+                "title": "Categories",
+                "all": "All"
+            },
+            "price": {
+                "title": "Price",
+                "from": "From",
+                "to": "To",
+                "apply": "Apply price"
+            },
+            "clear": "Clear Filters",
+            "show-filters": "Show Filters",
+            "hide-filters": "Hide Filters"
+        },
+        "selected-filters": {
+            "category": "Category",
+            "min-price": "Min Price",
+            "max-price": "Max Price",
+            "search": "Search"
+        }
+    }
+  
+}
