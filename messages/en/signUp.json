@@ -1,0 +1,32 @@
+{
+    "signUp": {
+        "title": "Create Account",
+        "submit": "Create Account",
+        "formLabels": {
+            "username": "Username",
+            "email": "Email",
+            "password": "Password"
+        },
+        "links": {
+          "have_account": "Have an account?"
+        },
+        "formValidation": {
+            "username": {
+                "required": "Username is required"
+            },
+            "email": {
+                "required": "Email is required",
+                "invalid": "Email address is invalid"
+            },
+            "password": {
+                "required": "Password is required",
+                "invalid": "Password is invalid"
+            }
+        },
+        "success": {
+            "title": "Success",
+            "message1": "You have successfully registered",
+            "message2": "Please check your email for verification"
+        }
+    }
+}
