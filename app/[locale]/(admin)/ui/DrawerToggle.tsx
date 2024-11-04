@@ -3,12 +3,14 @@ import React, { useState } from "react";
 import { FiMenu, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import Menu from "./Menu";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { useTranslations } from "next-intl";
 
 interface DrawerToggleProps {
   children: React.ReactNode;
 }
 
 const DrawerToggle: React.FC<DrawerToggleProps> = ({ children }) => {
+  const t = useTranslations("adminLayout");
   const [open, setOpen] = useState(false);
 
   // toggle drawer
@@ -37,7 +39,7 @@ const DrawerToggle: React.FC<DrawerToggleProps> = ({ children }) => {
           </div>
           <div className="flex-1">
             <a className="btn btn-ghost normal-case text-xl text-main-main">
-              Watch Store
+              {t("title")}
             </a>
           </div>
         </div>

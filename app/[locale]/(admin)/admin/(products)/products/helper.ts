@@ -3,6 +3,8 @@ import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 import { getQueryClient } from "@/QueryProvider/QueryProvider";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
+import { CiEdit } from "react-icons/ci";
+import { MdDelete } from "react-icons/md";
 export const columns = [
   {
     key: "name",
@@ -49,12 +51,16 @@ export const useGetActions = () => {
   return [
     {
       label: "Edit",
+      icon: CiEdit,
+      labelColor: "text-main-main",
       onClick: (product: any) => {
         router.push(`/admin/edit-product/${product.id}`);
       },
     },
     {
       label: "Delete",
+      icon: MdDelete,
+      labelColor: "text-error-main",
       onClick: async (product: any) => {
         deleteMutation.mutate(product.id);
       },

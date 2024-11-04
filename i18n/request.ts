@@ -29,6 +29,9 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ...(await import(`@/messages/${locale}/my-address.json`)).default,
     ...(await import(`@/messages/${locale}/change-password.json`)).default,
     ...(await import(`@/messages/${locale}/loading-button.json`)).default,
+    ...(await import(`@/messages/${locale}/admin-layout.json`)).default,
+    ...(await import(`@/messages/${locale}/admin-statistics.json`)).default,
+    ...(await import(`@/messages/${locale}/users.json`)).default,
   };
   return {
     locale,

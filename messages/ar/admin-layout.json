@@ -1,0 +1,17 @@
+{
+    "adminLayout": {
+       "title": "لوحة التحكم",
+       "menu": {
+        "home": "الرئيسية",
+        "users": "المستخدمين",
+        "orders": "الطلبات",
+        "product": "المنتج",
+        "category": "التصنيف",
+        "add": {
+            "add": "إضافة",
+            "product": "منتج",
+            "category": "تصنيف"
+        }
+       }
+    }
+}
