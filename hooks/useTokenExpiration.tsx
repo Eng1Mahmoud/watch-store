@@ -8,7 +8,6 @@ import { useLogout } from "@/utils/logout";
 import { useAppSelector } from "@/redux/hooks";
 export const useTokenExpiration = () => {
   const { login } = useAppSelector((state) => state.user);
-  console.log(login);
   const dispatch = useAppDispatch();
   const router = useRouter();
   const { logout } = useLogout();

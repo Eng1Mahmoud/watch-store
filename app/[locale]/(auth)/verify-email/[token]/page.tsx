@@ -14,7 +14,7 @@ const page = async ({ params }: { params: { token: string } }) => {
       queryKey: ["verifyEmail"],
       queryFn: () => sendToken(params.token),
     });
-    console.log(data);
+
     const token = data?.data?.token;
 
     return (

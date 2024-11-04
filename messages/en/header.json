@@ -13,5 +13,11 @@
         "login": "Login",
         "signup": "Signup",
         "myAccount": "My Account"
+    
+    },
+    "navCart": {
+        "items": "Items",
+        "subtotal": "Subtotal",
+        "viewCart": "View Cart"
     }
 }

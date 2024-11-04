@@ -41,9 +41,9 @@ export const useCheckout = () => {
     const data = {
       cart_items: [...cartItems],
     };
-    if (paymentMethod === "Cash on Delivery") {
+    if (paymentMethod === "cash") {
       createOrderByCashOnDelivery(data);
-    } else if (paymentMethod === "Stripe") {
+    } else if (paymentMethod === "stripe") {
       createOrderByStripe(data);
     }
   };

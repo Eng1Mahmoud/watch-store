@@ -22,6 +22,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ...(await import(`@/messages/${locale}/403.json`)).default,
     ...(await import(`@/messages/${locale}/shop.json`)).default,
     ...(await import(`@/messages/${locale}/infinityScroll.json`)).default,
+    ...(await import(`@/messages/${locale}/wishlists.json`)).default,
+    ...(await import(`@/messages/${locale}/my-cart.json`)).default,
   };
   return {
     locale,

@@ -8,7 +8,6 @@ import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 const PriceFilter: React.FC = () => {
   const locale = useLocale();
-  console.log(locale);
   const t = useTranslations("shop.filters");
   const filter = useAppSelector((state) => state.filter.filter);
   const { minPrice, maxPrice } = filter;

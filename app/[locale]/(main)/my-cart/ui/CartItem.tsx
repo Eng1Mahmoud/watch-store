@@ -12,9 +12,9 @@ const CartItem = ({ order }: { order: ICart }) => {
   } = useCart();
   const { product, quantity } = order;
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 w-full relative">
+    <div className="bg-white rounded-lg shadow-custom p-4 w-full relative">
       <div
-        className="tooltip absolute top-1 right-1 z-[2000]"
+        className="tooltip absolute top-1 ltr:right-1 rtl:left-1 z-[2000]"
         data-tip="remove"
       >
         <button onClick={() => removeProductFromCart(product.id as string)}>
@@ -24,7 +24,7 @@ const CartItem = ({ order }: { order: ICart }) => {
           />
         </button>
       </div>
-      <div className="flex flex-col sm:flex-row items-center w-full">
+      <div className="flex flex-col sm:flex-row items-center w-full gap-2">
         {/* Product Image */}
         <div className="w-full sm:w-[30%] h-40 sm:h-24 relative mb-4 sm:mb-0 sm:mr-4">
           <Image
@@ -36,7 +36,7 @@ const CartItem = ({ order }: { order: ICart }) => {
         </div>
 
         {/* Product Details */}
-        <div className="text-center sm:text-left mb-4 sm:mb-0 w-full ">
+        <div className="rtl:text-right ltr:text-left mb-4 sm:mb-0 w-full px-3">
           <h2 className="text-lg font-semibold mb-1">{product.name}</h2>
           <p className="text-sm text-gray-600 mb-2">{product.description}</p>
           <p className="text-lg font-bold text-main-main">
