@@ -5,12 +5,12 @@
         "home": "الرئيسية",
         "users": "المستخدمين",
         "orders": "الطلبات",
-        "product": "المنتج",
-        "category": "التصنيف",
+        "product": "المنتجات",
+        "category": "الفئات",
         "add": {
             "add": "إضافة",
             "product": "منتج",
-            "category": "تصنيف"
+            "category": "فئة"
         }
        }
     }

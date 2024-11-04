@@ -1,9 +1,9 @@
 {
-    "categories": {
+    "categories-home": {
         "title": "تسوق حسب الفئة",
         "seeAll": "عرض الكل"
     },
-    "products": {
+    "products-home": {
         "title": "المنتجات",
         "showAll": "عرض الكل"
     },

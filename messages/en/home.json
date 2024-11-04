@@ -1,9 +1,9 @@
 {
-    "categories": {
+    "categories-home": {
         "title": "Shop by Category",
         "seeAll": "See All"
     },
-    "products": {
+    "products-home": {
         "title": "Products",
         "showAll": "Show All"
     },

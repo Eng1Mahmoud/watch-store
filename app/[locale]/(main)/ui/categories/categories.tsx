@@ -4,7 +4,7 @@ import { QueryClient } from "@tanstack/react-query";
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 const Categories = async () => {
-  const t = await getTranslations("categories");
+  const t = await getTranslations("categories-home");
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
     queryKey: ["categories-home"],
