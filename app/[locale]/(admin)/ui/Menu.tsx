@@ -28,7 +28,7 @@ const MenuItem = ({
 }) => (
   <li>
     <Link
-      href={href}
+      href={href as any}
       className={`flex items-center p-2 ${open ? "justify-start" : "justify-center"}`}
       onClick={() => {
         onToggle();

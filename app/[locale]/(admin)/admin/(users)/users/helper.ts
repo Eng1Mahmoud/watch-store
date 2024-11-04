@@ -56,7 +56,7 @@ export const useGetActions = () => {
       icon: CiEdit,
       labelColor: "text-main-main",
       onClick: (user: any) => {
-        router.push(`/admin/edit-user/${user.id}`);
+        router.push(`/admin/edit-user/${user.id}` as any);
       },
     },
     {

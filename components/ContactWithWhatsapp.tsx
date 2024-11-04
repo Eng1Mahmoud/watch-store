@@ -33,7 +33,7 @@ const ContactWithWhatsapp = () => {
       id="whatsapp-button"
       ref={scrollRef}
     >
-      <Link href="https://wa.me/201201453941" target="_self">
+      <Link href={"https://wa.me/201201453941" as any} target="_self">
         <Image src={whatsapp} alt="whatsapp" width={50} height={50} />
       </Link>
     </div>

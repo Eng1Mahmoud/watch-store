@@ -21,7 +21,7 @@ const Breadcrumbs = () => {
     } else {
       return (
         <li key={index} className="text-main-main capitalize">
-          <Link href={`/${pathSegments.slice(0, index + 1).join("/")}`}>
+          <Link href={`/${pathSegments.slice(0, index + 1).join("/")}` as any}>
             {segmentName}
           </Link>
         </li>

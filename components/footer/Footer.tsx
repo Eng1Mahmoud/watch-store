@@ -31,7 +31,7 @@ const Footer = () => {
             <ul className="flex flex-col gap-2 ">
               {section.links.map((link) => (
                 <li key={link.href}>
-                  <Link className={linkClass} href={link.href}>
+                  <Link className={linkClass} href={link.href as any}>
                     {link.label}
                   </Link>
                 </li>

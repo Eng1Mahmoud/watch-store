@@ -17,7 +17,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item, index }) => {
   };
   return (
     <Link
-      href={`/shop/`}
+      href={`/shop/` as any}
       key={item.id}
       onClick={handleCategory}
       className="shadow-lg"
