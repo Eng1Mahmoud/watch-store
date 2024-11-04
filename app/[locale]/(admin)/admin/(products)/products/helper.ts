@@ -59,7 +59,7 @@ export const useGetActions = () => {
       icon: CiEdit,
       labelColor: "text-main-main",
       onClick: (product: any) => {
-        router.push(`/admin/edit-product/${product.id}`);
+        router.push(`/admin/edit-product/${product.id}` as any);
       },
     },
     {

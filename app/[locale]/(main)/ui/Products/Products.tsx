@@ -4,7 +4,7 @@ import { getProducts } from "@/actions/getProducts";
 import { QueryClient } from "@tanstack/react-query";
 import { getTranslations } from "next-intl/server";
 const Products = async () => {
-  const t = await getTranslations("products");
+  const t = await getTranslations("products-home");
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
     queryKey: ["products"],

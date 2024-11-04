@@ -5,8 +5,8 @@
         "home": "Home",
         "users": "Users",
         "orders": "Orders",
-        "product": "Product",
-        "category": "Category",
+        "product": "Products",
+        "category": "Categories",
         "add":{
             "add": "Add",
             "product": "Product",

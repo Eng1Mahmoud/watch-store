@@ -7,7 +7,7 @@ import { getQueryClient } from "@/QueryProvider/QueryProvider";
 export const useProductCardActions = () => {
   const router = useRouter();
   const goToProductPage = (productId: string | undefined) => {
-    router.push(`/shop/${productId}`);
+    router.push(`/shop/${productId}` as any);
   };
   return { goToProductPage };
 };
