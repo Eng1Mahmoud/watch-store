@@ -1,0 +1,14 @@
+{
+    "products": {
+       "search": "Search products ...",
+       "tableLabels": {
+        "name": "Name",
+        "image": "Image",
+        "price": "Price",
+        "quantity": "Quantity",
+        "category": "Category",
+        "edit": "Edit",
+        "delete": "Delete"
+       }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "products": {
+       "search": "البحث عن المنتجات ...",
+       "tableLabels": {
+        "name": "الاسم",
+        "image": "الصورة",
+        "price": "السعر",
+        "quantity": "الكمية",
+        "category": "الفئة",
+        "edit": "تعديل",
+        "delete": "حذف"
+       }
+    }
+}

@@ -4,14 +4,16 @@ import TableUI from "@/components/loading-ui/TableUI";
 import BaseTable from "@/components/tables/BaseTable";
 import Search from "../../../ui/Search";
 import { useState } from "react";
-import { columns } from "./helper";
-import { useGetActions } from "./helper";
+import { useColumns, useGetActions } from "./helper";
+import { useTranslations } from "next-intl";
 const Products = () => {
+  const t = useTranslations("products");
   const actions = useGetActions();
+  const columns = useColumns();
   const [searchTerm, setSearchTerm] = useState<string | undefined>("");
   return (
     <div>
-      <Search setSearchTerm={setSearchTerm} placeholder="search products..." />
+      <Search setSearchTerm={setSearchTerm} placeholder={t("search")} />
       <InfiniteScroll
         DisplayComponent={(props) => (
           <BaseTable
