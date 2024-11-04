@@ -9,6 +9,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
   if (!locale || !routing.locales.includes(locale as any)) {
     locale = routing.defaultLocale;
   }
+
   const messages = {
     ...(await import(`@/messages/${locale}/header.json`)).default,
     ...(await import(`@/messages/${locale}/home.json`)).default,
@@ -36,6 +37,9 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ...(await import(`@/messages/${locale}/add-products.json`)).default,
     ...(await import(`@/messages/${locale}/formik.json`)).default,
     ...(await import(`@/messages/${locale}/add-category.json`)).default,
+    ...(await import(`@/messages/${locale}/edit-category.json`)).default,
+    ...(await import(`@/messages/${locale}/edit-product.json`)).default,
+    ...(await import(`@/messages/${locale}/edit-user.json`)).default,
   };
   return {
     locale,

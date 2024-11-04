@@ -1,6 +1,6 @@
 "use client";
 import BaseForm from "@/components/formik/BaseForm";
-import { productSchema } from "@/formsValidation/validation";
+import { useEditProductValidation } from "@/formsValidation/editProductValidation";
 import { useEditProduct } from "../hooks/useEditProduct";
 import Input from "@/components/formik/Input";
 import FileInput from "@/components/formik/FileInput";
@@ -10,8 +10,12 @@ import { IProduct } from "@/types/types";
 import MultiSelectInput from "@/components/formik/MultySelectInput";
 import { useGetCategoriesSelectBox } from "@/hooks/getCategoriesSelectBox";
 import TextArea from "@/components/formik/TextArea";
+import { useTranslations } from "next-intl";
+import SubmitButton from "@/components/formik/SubmitButton";
 const EditcategoryForm = ({ id }: { id: string }) => {
+  const t = useTranslations("editProduct");
   const { categories } = useGetCategoriesSelectBox();
+  const validationSchema = useEditProductValidation();
   const { onSubmit, loading } = useEditProduct({ id });
   const { data } = useQuery({
     queryKey: ["productDetails", id],
@@ -32,23 +36,30 @@ const EditcategoryForm = ({ id }: { id: string }) => {
   return (
     <BaseForm
       initialValues={initialValues}
-      validationSchema={productSchema}
+      validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
       <div className="container  space-y-6 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2  gap-2">
           <div className="flex flex-col gap-5">
-            <Input name="name" placeholder="Product Name" type="text" />
-            <TextArea name="description" placeholder="Product Description" />
-            <Input name="price" placeholder="Product Price" type="number" />
+            <Input name="name" placeholder={t("formLabels.name")} type="text" />
+            <TextArea
+              name="description"
+              placeholder={t("formLabels.description")}
+            />
+            <Input
+              name="price"
+              placeholder={t("formLabels.price")}
+              type="number"
+            />
             <Input
               name="quantity"
-              placeholder="Product Quantity"
+              placeholder={t("formLabels.quantity")}
               type="number"
             />
             <MultiSelectInput
               name="categories"
-              placeholder="Product Categories"
+              placeholder={t("formLabels.categories")}
               options={categories.map((category) => ({
                 label: category.name,
                 value: category.name,
@@ -59,11 +70,11 @@ const EditcategoryForm = ({ id }: { id: string }) => {
             <FileInput name="image_url" folder="products" />
           </div>
         </div>
-        <div className="flex justify-center">
-          <button type="submit" className="btn btn-primary w-[200px]">
-            {loading ? "Loading..." : "Edit Product"}
-          </button>
-        </div>
+        <SubmitButton
+          loading={loading}
+          text={t("submitButton")}
+          position="center"
+        />
       </div>
     </BaseForm>
   );

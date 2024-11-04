@@ -5,7 +5,7 @@ import { QueryClient } from "@tanstack/react-query";
 const page = async ({ params }: { params: { id: string } }) => {
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
-    queryKey: ["userDetails"],
+    queryKey: ["userDetails", params.id],
     queryFn: () => getUser(params.id),
   });
 

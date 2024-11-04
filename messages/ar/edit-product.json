@@ -1,0 +1,36 @@
+{
+    "editProduct": {
+       "formLabels": {
+        "name": "الاسم",
+        "price": "السعر",
+        "description": "الوصف",
+        "categories": "الفئات",
+        "image": "الصورة",
+        "quantity": "الكمية"
+       },
+       "formValidation": {
+         "name":{
+            "required": "الاسم مطلوب"
+         },
+         "price": {
+            "required": "السعر مطلوب",
+            "min": "يجب أن يكون السعر 0 على الأقل"
+         },
+         "description": {
+            "required": "الوصف مطلوب"
+         },
+         "categories": {
+            "required": "الفئة مطلوبة",
+            "min": "مطلوب فئة واحدة على الأقل"
+         },
+         "image": {
+            "required": "الصورة مطلوبة"
+         },
+         "quantity": {
+            "required": "الكمية مطلوبة",
+            "min": "يجب أن تكون الكمية 1 على الأقل"
+         }
+       },
+       "submitButton": "تحديث المنتج"
+    }
+}

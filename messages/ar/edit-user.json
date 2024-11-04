@@ -1,0 +1,25 @@
+{
+    "editUser": {
+        "formLabels": {
+            "username": "الاسم",
+            "email": "البريد الإلكتروني",
+            "role": "الدور",
+            "phone": "رقم الهاتف",
+            "avatar": "الصورة الشخصية",
+            "cover": "صورة الغلاف"
+        },
+        "formValidation": {
+            "username": {
+                "required": "الاسم مطلوب"
+            },
+            "email": {
+                "required": "البريد الإلكتروني مطلوب",
+                "email": "عنوان البريد الإلكتروني غير صالح"
+            },
+            "role": {
+                "required": "الدور مطلوب"
+            }
+        },
+        "submitButton": "تحديث المستخدم"
+    }
+}
