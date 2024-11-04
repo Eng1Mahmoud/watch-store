@@ -1,13 +1,15 @@
 "use client";
 import BaseForm from "@/components/formik/BaseForm";
 import Input from "@/components/formik/Input";
-import { productSchema } from "@/formsValidation/validation";
+import { useAddProductValidation } from "@/formsValidation/addProductValidation";
 import { ICategory, IProduct } from "@/types/types";
 import { useAddProduct } from "../hooks/addProduct";
 import FileInput from "@/components/formik/FileInput";
 import MultiCheckboxInput from "@/components/formik/MultySelectInput";
 import { useGetCategoriesSelectBox } from "@/hooks/getCategoriesSelectBox";
 import TextArea from "@/components/formik/TextArea";
+import { useTranslations } from "next-intl";
+import SubmitButton from "@/components/formik/SubmitButton";
 const initialValues: IProduct = {
   name: "",
   price: 0,
@@ -18,6 +20,8 @@ const initialValues: IProduct = {
 };
 
 const AddProductForm = () => {
+  const validationSchema = useAddProductValidation();
+  const t = useTranslations("add-products");
   const { onSubmit, loading } = useAddProduct();
   const { categories } = useGetCategoriesSelectBox();
   const categoriesArray: any = categories?.map((category: ICategory) => ({
@@ -27,23 +31,30 @@ const AddProductForm = () => {
   return (
     <BaseForm
       initialValues={initialValues}
-      validationSchema={productSchema}
+      validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
       <div className="container  space-y-6 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2  gap-4">
           <div className="flex flex-col gap-5">
-            <Input name="name" placeholder="Product Name" type="text" />
-            <Input name="price" placeholder="Product Price" type="number" />
-            <TextArea name="description" placeholder="Product Description" />
+            <Input name="name" placeholder={t("formLabels.name")} type="text" />
+            <Input
+              name="price"
+              placeholder={t("formLabels.price")}
+              type="number"
+            />
+            <TextArea
+              name="description"
+              placeholder={t("formLabels.description")}
+            />
             <Input
               name="quantity"
-              placeholder="Product Quantity"
+              placeholder={t("formLabels.quantity")}
               type="number"
             />
             <MultiCheckboxInput
               name="categories"
-              placeholder="categories"
+              placeholder={t("formLabels.categories")}
               options={categoriesArray}
             />
           </div>
@@ -51,11 +62,11 @@ const AddProductForm = () => {
             <FileInput name="image_url" folder="products" />
           </div>
         </div>
-        <div className="flex justify-center">
-          <button type="submit" className="btn btn-primary w-fit px-10 ">
-            {loading ? "Loading..." : "Add Product"}
-          </button>
-        </div>
+        <SubmitButton
+          loading={loading}
+          text={t("submitButton")}
+          position="center"
+        />
       </div>
     </BaseForm>
   );

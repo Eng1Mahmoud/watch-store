@@ -1,11 +1,14 @@
 "use client";
 import BaseForm from "@/components/formik/BaseForm";
-import { registerSchema } from "@/formsValidation/validation";
+import { useSignUpValidation } from "@/formsValidation/signUpValidation";
 import { useSignUp } from "./hooks/useSignUp";
 import FormInputs from "./ui/FormInputs";
-import SubmitButton from "./ui/SubmitButton";
+import SubmitButton from "@/components/formik/SubmitButton";
 import SuccessSignUp from "./ui/SuccessSignUp";
+import { useTranslations } from "next-intl";
 const SignUp = () => {
+  const t = useTranslations("signUp");
+  const validationSchema = useSignUpValidation();
   const { onSubmit, loading, success } = useSignUp();
   return (
     <>
@@ -14,13 +17,17 @@ const SignUp = () => {
       ) : (
         <BaseForm
           initialValues={{ username: "", email: "", password: "" }}
-          validationSchema={registerSchema}
+          validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
           <div className="container max-w-[600px] ">
             <div className="box-shadow">
               <FormInputs />
-              <SubmitButton loading={loading} />
+              <SubmitButton
+                loading={loading}
+                text={t("submit")}
+                position="center"
+              />
             </div>
           </div>
         </BaseForm>

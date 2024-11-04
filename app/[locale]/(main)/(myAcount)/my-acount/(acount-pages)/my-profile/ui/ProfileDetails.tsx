@@ -1,13 +1,17 @@
 "use client";
 import BaseForm from "@/components/formik/BaseForm";
 import Input from "@/components/formik/Input";
-import { profileDetailsSchema } from "@/formsValidation/validation";
+import { useEditProfileValidation } from "@/formsValidation/editProfileValidation";
 import { useSaveUserData } from "../hooks/saveUserData";
 import { useQuery } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosInstance";
 import Image from "next/image";
 import profileImageUI from "@/public/assets/profile/edit-profile.png";
+import { useTranslations } from "next-intl";
+import SubmitButton from "@/components/formik/SubmitButton";
 const ProfileDetails = () => {
+  const validationSchema = useEditProfileValidation();
+  const t = useTranslations("profile-details");
   const { data } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
@@ -25,31 +29,38 @@ const ProfileDetails = () => {
   return (
     <div className="container max-w-screen-lg mx-auto my-10">
       <h1 className="text-2xl font-bold my-4 text-center text-main-main mb-10">
-        Profile Details
+        {t("title")}
       </h1>
       <div className="flex gap-10">
         <div className="shadow-custom rounded-md my-5 w-full md:w-1/2 content-center p-5">
           <div className="content-center">
             <BaseForm
               initialValues={initialValues}
-              validationSchema={profileDetailsSchema}
+              validationSchema={validationSchema}
               onSubmit={onSubmit}
             >
               <div className="flex flex-col gap-7">
-                <Input name="username" placeholder="username" type="text" />
+                <Input
+                  name="username"
+                  placeholder={t("formLabels.username")}
+                  type="text"
+                />
                 <Input
                   name="email"
-                  placeholder="email"
+                  placeholder={t("formLabels.email")}
                   type="email"
                   disabled={true}
                 />
-                <Input name="phone" placeholder="phone" type="text" />
-                <button
-                  type="submit"
-                  className="btn btn-primary w-fit mx-auto capitalize"
-                >
-                  {loading ? "Loading..." : "save changes"}
-                </button>
+                <Input
+                  name="phone"
+                  placeholder={t("formLabels.phone")}
+                  type="text"
+                />
+                <SubmitButton
+                  loading={loading}
+                  text={t("submitButton")}
+                  position="center"
+                />
               </div>
             </BaseForm>
           </div>

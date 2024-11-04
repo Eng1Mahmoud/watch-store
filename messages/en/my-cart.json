@@ -1,0 +1,24 @@
+{
+    "myCart": {
+        "emptyCart": "Your cart is empty",
+        "goToShop": "Go to shop",
+        "checkout": {
+            "paymentMethod": {
+                "select": "Select Payment Method",
+                "cash": "Cash on Delivery",
+                "stripe": "Stripe"
+            },
+            "subtotal": "Subtotal",
+            "taxes": "Taxes",
+            "total-items": "Total Items",
+            "total-price": "Total Price",
+            "checkout": "Checkout",
+            "coupon":{
+                "title": "Have a coupon?",
+                "apply": "Apply",
+                "code": "Enter your coupon "
+            },
+            "checkout-btn": "Create Order"
+        }
+    }
+}

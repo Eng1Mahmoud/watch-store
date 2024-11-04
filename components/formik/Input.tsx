@@ -4,10 +4,18 @@ interface InputProps {
   placeholder: string;
   type: string;
   disabled?: boolean;
+  rows?: number;
   props?: any;
 }
 
-const Input = ({ name, placeholder, type, disabled, ...props }: InputProps) => {
+const Input = ({
+  name,
+  placeholder,
+  type,
+  disabled,
+  rows,
+  ...props
+}: InputProps) => {
   return (
     <div className="relative">
       <Field
@@ -22,7 +30,7 @@ const Input = ({ name, placeholder, type, disabled, ...props }: InputProps) => {
       <label
         htmlFor={name}
         className={`absolute text-sm duration-300 font-[400] capitalize
-          z-1 origin-[0] bg-white text-gray-500 px-1 top-3 ltr:left-3 rtl:right-3
+          z-1 origin-[0] bg-white text-gray-500 px-1 top-3 ltr:left-3 rtl:right-1
           peer-focus:-top-3 peer-focus:scale-75 peer-focus:text-main-main 
           peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:text-main-main
           peer-autofill:-top-3 peer-autofill:scale-75 peer-autofill:text-main-main

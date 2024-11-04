@@ -1,0 +1,17 @@
+{
+    "adminLayout": {
+       "title": "Dashboard",
+       "menu": {
+        "home": "Home",
+        "users": "Users",
+        "orders": "Orders",
+        "product": "Product",
+        "category": "Category",
+        "add":{
+            "add": "Add",
+            "product": "Product",
+            "category": "Category"
+        }
+       }
+    }
+}

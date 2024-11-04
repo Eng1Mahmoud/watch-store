@@ -1,0 +1,26 @@
+{
+    "my-account": {
+       "acount-actions": {
+         "change-password": {
+            "title": "Change Password",
+            "description": "You can change your password here"
+         },
+         "my-address": {
+            "title": "My Address",
+            "description": "You can manage your address here add new address or edit or delete"
+         },
+         "my-orders": {
+            "title": "My Orders",
+            "description": "You can manage your orders here view your orders or cancel or return"
+         },
+         "my-wishlist": {
+            "title": "My Wishlist",
+            "description": "You can manage your wishlist here view your wishlist or remove"
+         },
+         "my-profile": {
+            "title": "My Profile",
+            "description": "You can manage your profile here view your profile or edit"
+         }
+       }
+    }
+}

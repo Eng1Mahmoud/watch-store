@@ -5,18 +5,23 @@ import { getQueryClient } from "@/QueryProvider/QueryProvider";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
-export const columns = [
-  {
-    key: "name",
-    label: "Name",
-  },
-  {
-    key: "cover_url",
-    label: "Image",
-  },
-];
+import { useTranslations } from "next-intl";
+export const useColumns = () => {
+  const t = useTranslations("categories.tableLabels");
+  return [
+    {
+      key: "name",
+      label: t("name"),
+    },
+    {
+      key: "cover_url",
+      label: t("image"),
+    },
+  ];
+};
 
 export const useGetActions = () => {
+  const t = useTranslations("categories.tableLabels");
   const router = useRouter();
   const queryClient = getQueryClient();
 
@@ -44,7 +49,7 @@ export const useGetActions = () => {
 
   return [
     {
-      label: "Edit",
+      label: t("edit"),
       icon: CiEdit,
       labelColor: "text-main-main",
       onClick: (item: any) => {
@@ -52,7 +57,7 @@ export const useGetActions = () => {
       },
     },
     {
-      label: "Delete",
+      label: t("delete"),
       icon: MdDelete,
       labelColor: "text-error-main",
       onClick: (item: any) => {

@@ -13,7 +13,7 @@ const FormInputs = () => {
       viewport={{ once: true }}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pb-4">
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-8">
           <Input name="name" placeholder={t("formLabels.name")} type="text" />
           <Input
             name="email"
@@ -27,7 +27,11 @@ const FormInputs = () => {
           />
         </div>
         <div className="flex flex-col gap-3">
-          <TextArea name="message" placeholder={t("formLabels.message")} />
+          <TextArea
+            name="message"
+            placeholder={t("formLabels.message")}
+            rows={5}
+          />
         </div>
       </div>
       <motion.button

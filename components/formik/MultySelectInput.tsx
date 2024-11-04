@@ -1,6 +1,6 @@
 import { ErrorMessage, useField } from "formik";
 import React, { useState } from "react";
-
+import { useTranslations } from "next-intl";
 const MultiSelectInput = ({
   name,
   placeholder,
@@ -15,6 +15,7 @@ const MultiSelectInput = ({
   }>;
   disabled?: boolean;
 }) => {
+  const t = useTranslations("formik");
   const [field, meta, helpers] = useField(name);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -42,8 +43,8 @@ const MultiSelectInput = ({
           >
             <span className="truncate">
               {field.value && field.value.length > 0
-                ? `${field.value.length} selected`
-                : "Select options"}
+                ? `${field.value.length} ${t("multySelect.selected")}`
+                : t("multySelect.selectLabel")}
             </span>
             <svg
               className="h-5 w-5 text-gray-400"

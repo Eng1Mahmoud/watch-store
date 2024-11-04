@@ -1,0 +1,26 @@
+{
+    "editUser": {
+        "formLabels": {
+            "name": "Name",
+            "email": "Email",
+            "role": "Role",
+            "phone": "Phone",
+            "avatar": "Avatar Image",
+            "cover": "Cover Image"
+        },
+        "formValidation": {
+            "username": {
+                "required": "Name is required"
+            },
+            "email": {
+                "required": "Email is required",
+                "email": "Invalid email address"
+            },
+            "role": {
+                "required": "Role is required"
+            }
+           
+        },
+        "submitButton": "Update User"
+    }
+}

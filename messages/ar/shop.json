@@ -1,0 +1,26 @@
+{
+    "shop": {
+        "filters": {
+            "title": "الفلاتر",
+            "categories": {
+                "title": "الفئات",
+                "all": "الكل"
+            },
+            "price": {
+                "title": "السعر",
+                "from": "من",
+                "to": "إلى",
+                "apply": "تطبيق السعر"
+            },
+            "clear": "مسح الفلاتر",
+            "show-filters": "إظهار الفلاتر",
+            "hide-filters": "إخفاء الفلاتر"
+        },
+        "selected-filters": {
+            "category": "الفئة",
+            "min-price": "السعر الأدنى",
+            "max-price": "السعر الأعلى",
+            "search": "البحث"
+        }
+    }
+}

@@ -1,13 +1,16 @@
 "use client";
 import BaseForm from "@/components/formik/BaseForm";
-import { addAddressSchema } from "@/formsValidation/validation";
+import { useAddressValidation } from "@/formsValidation/addressValidation";
 import { useSaveAddresses } from "../hooks/SaveAddresses";
 import Input from "@/components/formik/Input";
+import { useTranslations } from "next-intl";
+import SubmitButton from "@/components/formik/SubmitButton";
 const AddAddressForm = () => {
+  const t = useTranslations("my-address");
+  const validationSchema = useAddressValidation();
   const initialValues = {
     country: "",
     city: "",
-    state: "",
     street: "",
     zipcode: "",
   };
@@ -16,21 +19,31 @@ const AddAddressForm = () => {
     <div className="shadow-custom p-4 rounded-md max-w-5xl mx-auto">
       <BaseForm
         initialValues={initialValues}
-        validationSchema={addAddressSchema}
+        validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
         <div className="flex flex-col gap-7">
-          <Input name="country" placeholder="Country" type="text" />
-          <Input name="city" placeholder="City" type="text" />
-          <Input name="state" placeholder="State" type="text" />
-          <Input name="street" placeholder="Street" type="text" />
-          <Input name="zipcode" placeholder="Zipcode" type="text" />
-          <button
-            type="submit"
-            className="btn btn-primary w-fit mx-auto capitalize"
-          >
-            {loading ? "Loading..." : "Add Address"}
-          </button>
+          <Input
+            name="country"
+            placeholder={t("formLabels.country")}
+            type="text"
+          />
+          <Input name="city" placeholder={t("formLabels.city")} type="text" />
+          <Input
+            name="street"
+            placeholder={t("formLabels.street")}
+            type="text"
+          />
+          <Input
+            name="zipcode"
+            placeholder={t("formLabels.zipcode")}
+            type="text"
+          />
+          <SubmitButton
+            loading={loading}
+            text={t("submitButton")}
+            position="center"
+          />
         </div>
       </BaseForm>
     </div>

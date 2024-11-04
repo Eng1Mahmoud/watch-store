@@ -1,0 +1,11 @@
+{
+    "categories": {
+        "search": "البحث في الفئات ...",
+        "tableLabels": {
+            "name": "الاسم",
+            "image": "الصورة",
+            "edit": "تعديل",
+            "delete": "حذف"
+        }
+    }
+}

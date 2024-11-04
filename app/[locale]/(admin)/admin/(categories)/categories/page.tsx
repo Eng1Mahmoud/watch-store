@@ -1,20 +1,20 @@
 "use client";
 import BaseTable from "@/components/tables/BaseTable";
-import { columns, useGetActions } from "./helper";
+import { useColumns, useGetActions } from "./helper";
 import { useState } from "react";
 import Search from "../../../ui/Search";
 import InfiniteScroll from "@/components/Infinity-scroll/InfinityScroll";
 import TableUI from "@/components/loading-ui/TableUI";
+import { useTranslations } from "next-intl";
 const Categories = () => {
+  const t = useTranslations("categories");
   const actions = useGetActions();
+  const columns = useColumns();
   const [searchTerm, setSearchTerm] = useState<string | undefined>("");
 
   return (
     <>
-      <Search
-        setSearchTerm={setSearchTerm}
-        placeholder="Search categories..."
-      />
+      <Search setSearchTerm={setSearchTerm} placeholder={t("search")} />
 
       <InfiniteScroll
         DisplayComponent={(props) => (

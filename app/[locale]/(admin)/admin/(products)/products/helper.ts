@@ -3,30 +3,37 @@ import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 import { getQueryClient } from "@/QueryProvider/QueryProvider";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
-export const columns = [
-  {
-    key: "name",
-    label: "Name",
-  },
-  {
-    key: "image_url",
-    label: "Image",
-  },
-  {
-    key: "price",
-    label: "Price",
-  },
-  {
-    key: "quantity",
-    label: "Quantity",
-  },
-  {
-    key: "categories",
-    label: "Category",
-  },
-];
+import { CiEdit } from "react-icons/ci";
+import { MdDelete } from "react-icons/md";
+import { useTranslations } from "next-intl";
+export const useColumns = () => {
+  const t = useTranslations("products.tableLabels");
+  return [
+    {
+      key: "name",
+      label: t("name"),
+    },
+    {
+      key: "image_url",
+      label: t("image"),
+    },
+    {
+      key: "price",
+      label: t("price"),
+    },
+    {
+      key: "quantity",
+      label: t("quantity"),
+    },
+    {
+      key: "categories",
+      label: t("category"),
+    },
+  ];
+};
 
 export const useGetActions = () => {
+  const t = useTranslations("products.tableLabels");
   const queryClient = getQueryClient();
   const deleteMutation = useMutation({
     mutationFn: async (userId: string) => {
@@ -48,13 +55,17 @@ export const useGetActions = () => {
   const router = useRouter();
   return [
     {
-      label: "Edit",
+      label: t("edit"),
+      icon: CiEdit,
+      labelColor: "text-main-main",
       onClick: (product: any) => {
         router.push(`/admin/edit-product/${product.id}`);
       },
     },
     {
-      label: "Delete",
+      label: t("delete"),
+      icon: MdDelete,
+      labelColor: "text-error-main",
       onClick: async (product: any) => {
         deleteMutation.mutate(product.id);
       },

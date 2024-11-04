@@ -1,0 +1,17 @@
+{
+    "addCategory": {
+        "formLabels": {
+            "name": "اسم الفئة",
+            "cover_url": "رابط صورة الغلاف"
+        },
+        "formValidation": {
+            "name": {
+                "required": "اسم الفئة مطلوب"
+            },
+            "cover_url": {
+                "required": "صورة الغلاف مطلوبة"
+            }
+        },
+        "submitButton": "إضافة فئة"
+    }
+}

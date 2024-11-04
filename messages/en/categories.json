@@ -1,0 +1,11 @@
+{
+    "categories": {
+        "search": "Search categories ...",
+        "tableLabels": {
+            "name": "Name",
+            "image": "Image",
+            "edit": "Edit",
+            "delete": "Delete"
+        }
+    }
+}

@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import {
   Bar,
   Doughnut,
@@ -35,6 +36,7 @@ ChartJS.register(
   RadialLinearScale,
 );
 const AdminDashboard = () => {
+  const t = useTranslations("adminStatistics");
   const usersData = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
@@ -83,7 +85,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-6">Admin Dashboard</h1>
+      <h1 className="text-2xl font-bold mb-6">{t("title")}</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <h2 className="text-xl font-semibold mb-2">Users</h2>

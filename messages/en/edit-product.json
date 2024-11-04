@@ -1,0 +1,36 @@
+{
+    "editProduct": {
+       "formLabels": {
+        "name": "Name",
+        "price": "Price",
+        "description": "Description",
+        "categories": "Categories",
+        "image": "Image",
+        "quantity": "Quantity"
+       },
+       "formValidation": {
+         "name":{
+            "required": "Name is required"
+         },
+         "price": {
+            "required": "Price is required",
+            "min": "Price must be at least 0"
+         },
+         "description": {
+            "required": "Description is required"
+         },
+         "categories": {
+            "required": "Category is required",
+            "min": "At least one category is required"
+         },
+         "image": {
+            "required": "Image is required"
+         },
+         "quantity": {
+            "required": "Quantity is required",
+            "min": "Quantity must be at least 1"
+         }
+       },
+       "submitButton": "Update Product"
+    }
+}

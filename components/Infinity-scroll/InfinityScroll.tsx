@@ -3,7 +3,7 @@ import React from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
 import InfiniteScroll from "react-infinite-scroll-component";
-
+import { useTranslations } from "next-intl";
 interface InfinityScrollProps {
   DisplayComponent: React.ComponentType<any>;
   endpoint: string;
@@ -21,6 +21,7 @@ const InfinityScrollComponent: React.FC<InfinityScrollProps> = ({
   itemsPerPage = 20,
   dataKey,
 }) => {
+  const t = useTranslations("infinityScroll");
   const { data, isLoading, hasNextPage, fetchNextPage } = useInfiniteQuery({
     queryKey: [dataKey, params],
     queryFn: async ({ pageParam = 1 }) => {
@@ -55,7 +56,7 @@ const InfinityScrollComponent: React.FC<InfinityScrollProps> = ({
       endMessage={
         items.length > 0 ? (
           <div className="text-center pt-10 text-main-main font-medium">
-            You have reached the end of the list
+            {t("end-data")}
           </div>
         ) : null
       }
@@ -63,7 +64,7 @@ const InfinityScrollComponent: React.FC<InfinityScrollProps> = ({
       <DisplayComponent data={items} />
       {items.length === 0 && !isLoading && (
         <div className="text-center pt-10 text-main-main font-medium">
-          No data found
+          {t("no-data")}
         </div>
       )}
     </InfiniteScroll>

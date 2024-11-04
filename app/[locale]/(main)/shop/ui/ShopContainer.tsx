@@ -3,17 +3,18 @@ import { useState } from "react";
 import FilterSidebar from "./filter/FilterSidebar";
 import SelectedFilterLabels from "./selected-filters/SelectedFilterLabels";
 import ProductContainer from "./products/ProductContainer";
-
+import { useTranslations } from "next-intl";
 const ShopContainer = () => {
   const [showFilter, setShowFilter] = useState(false);
+  const t = useTranslations("shop.filters");
   return (
     <div className="py-8">
       {/* show filter button */}
       <button
-        className="md:hidden mb-4 px-4 py-2 ml-4 bg-main-main text-white rounded"
+        className="md:hidden mb-0 px-4 py-2 mx-4 bg-main-main text-white rounded"
         onClick={() => setShowFilter(!showFilter)}
       >
-        {showFilter ? "Hide Filters" : "Show Filters"}
+        {showFilter ? t("hide-filters") : t("show-filters")}
       </button>
       {/** show selected filters labels */}
       <SelectedFilterLabels />
@@ -23,7 +24,7 @@ const ShopContainer = () => {
         >
           <FilterSidebar />
         </div>
-        <div className="w-full md:w-[75%]">
+        <div className="w-full md:w-[75%] px-2 md:px-8">
           {" "}
           <ProductContainer />
         </div>

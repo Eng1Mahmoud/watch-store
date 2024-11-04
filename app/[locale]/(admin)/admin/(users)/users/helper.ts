@@ -3,26 +3,34 @@ import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 import { getQueryClient } from "@/QueryProvider/QueryProvider";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
-export const columns = [
-  {
-    key: "username",
-    label: "Username",
-  },
-  {
-    key: "email",
-    label: "Email",
-  },
-  {
-    key: "phone",
-    label: "Phone",
-  },
-  {
-    key: "role",
-    label: "Role",
-  },
-];
+import { useTranslations } from "next-intl";
+import { MdDelete } from "react-icons/md";
+import { CiEdit } from "react-icons/ci";
+
+export const useColumns = () => {
+  const t = useTranslations("users.tableLabels");
+  return [
+    {
+      key: "username",
+      label: t("username"),
+    },
+    {
+      key: "email",
+      label: t("email"),
+    },
+    {
+      key: "phone",
+      label: t("phone"),
+    },
+    {
+      key: "role",
+      label: t("role"),
+    },
+  ];
+};
 
 export const useGetActions = () => {
+  const t = useTranslations("users.tableLabels");
   const queryClient = getQueryClient();
   const deleteMutation = useMutation({
     mutationFn: async (userId: string) => {
@@ -44,13 +52,17 @@ export const useGetActions = () => {
   const router = useRouter();
   return [
     {
-      label: "Edit",
+      label: t("edit"),
+      icon: CiEdit,
+      labelColor: "text-main-main",
       onClick: (user: any) => {
         router.push(`/admin/edit-user/${user.id}`);
       },
     },
     {
-      label: "Delete",
+      label: t("delete"),
+      icon: MdDelete,
+      labelColor: "text-error-main",
       onClick: async (user: any) => {
         deleteMutation.mutate(user.id);
       },

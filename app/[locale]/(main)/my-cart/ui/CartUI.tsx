@@ -4,8 +4,9 @@ import { useAppSelector } from "@/redux/hooks";
 import { getAllOrders } from "@/redux/features/cart";
 import CheckOut from "./Checkout";
 import { Link } from "@/i18n/routing";
-
+import { useTranslations } from "next-intl";
 const CartUI = () => {
+  const t = useTranslations("myCart");
   const orders = useAppSelector(getAllOrders);
   return (
     <div className="container max-w-screen-lg py-4 px-4">
@@ -14,10 +15,10 @@ const CartUI = () => {
           {orders.length === 0 ? (
             <div className="flex flex-col justify-center items-center h-full gap-4">
               <h1 className="text-lg font-semibold text-text-secondary">
-                No orders found
+                {t("emptyCart")}
               </h1>
               <Link href="/shop" className="btn btn-primary">
-                Go To Shop
+                {t("goToShop")}
               </Link>
             </div>
           ) : (

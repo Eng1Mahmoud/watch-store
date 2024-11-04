@@ -1,0 +1,23 @@
+{
+    "profile-details": {
+        "title": "Profile Details",
+    "formLabels": {
+      "username": "Username",
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "formValidation": {
+      "username": {
+        "required": "Username is required"
+      },
+      "email": {
+        "required": "Email is required",
+        "invalid": "Invalid email"
+      },
+      "phone": {
+        "required": "Phone is required"
+      }
+    },
+    "submitButton": "Save Changes"
+  }
+}

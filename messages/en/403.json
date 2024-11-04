@@ -1,0 +1,7 @@
+{   
+    "forbidden": {
+        "title": "Forbidden",
+        "description": "You are not allowed to access this page.",
+        "goBack": "Try to go back to home"
+    }
+}

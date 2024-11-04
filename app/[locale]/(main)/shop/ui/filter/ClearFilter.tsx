@@ -1,7 +1,9 @@
 "use client";
 import { useAppDispatch } from "@/redux/hooks";
 import { clearFilter } from "@/redux/features/filter";
+import { useTranslations } from "next-intl";
 const ClearFilter = () => {
+  const t = useTranslations("shop.filters");
   const dispatch = useAppDispatch();
   const handleClearFilter = () => {
     dispatch(clearFilter());
@@ -12,7 +14,7 @@ const ClearFilter = () => {
         className="btn btn-error-outline w-full "
         onClick={handleClearFilter}
       >
-        Clear Filter
+        {t("clear")}
       </button>
     </div>
   );

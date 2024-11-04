@@ -1,0 +1,17 @@
+{
+    "addCategory": {
+    "formLabels": {
+        "name": "Category Name",
+        "cover_url": "Category Image"
+    },
+    "formValidation": {
+        "name": {
+            "required": "Category Name is required"
+        },
+        "cover_url": {
+            "required": "Category Image is required"
+        }
+    },
+    "submitButton": "Add Category"
+  } 
+}

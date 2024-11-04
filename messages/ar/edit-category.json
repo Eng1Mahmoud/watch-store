@@ -1,0 +1,17 @@
+{
+    "editCategory": {
+        "formLabels": {
+            "name": "اسم الفئة",
+            "cover_url": "صورة الفئة"
+        },
+        "formValidation": {
+            "name": {
+                "required": "اسم الفئة مطلوب"
+            },
+            "cover_url": {
+                "required": "صورة الفئة مطلوبة"
+            }
+        },
+        "submitButton": "تحديث الفئة"
+    }
+}

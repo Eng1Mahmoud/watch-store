@@ -1,0 +1,14 @@
+{
+    "formik":{
+       "uploading": "Uploading...",
+       "uploadImage": "Click to select or drag and drop an image",
+       "errorUploading": "Error uploading image",
+       "loadingButton": {
+            "loading": "Loading..."
+          },
+        "multySelect": {
+            "selectLabel": "Select Options",
+            "selected": "selected"
+        }
+    }
+}
