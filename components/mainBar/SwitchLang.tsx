@@ -29,7 +29,7 @@ export default function SwitchLang() {
       </summary>
       <ul className="menu dropdown-content bg-text-third rounded-box z-[1] p-2 shadow">
         <li>
-          <Link href={`${currentPath}`} locale="en">
+          <Link href={`${currentPath}` as any} locale="en">
             <button className="flex items-center gap-2">
               <Image src={enFlagLang} alt="English" width={20} height={20} />
               English
@@ -37,7 +37,7 @@ export default function SwitchLang() {
           </Link>
         </li>
         <li>
-          <Link href={`${currentPath}`} locale="ar">
+          <Link href={`${currentPath}` as any} locale="ar">
             <button className="flex items-center gap-2">
               <Image src={arFlagLang} alt="Arabic" width={20} height={20} />
               عربي
