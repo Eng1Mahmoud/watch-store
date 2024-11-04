@@ -4,10 +4,18 @@ interface InputProps {
   placeholder: string;
   type: string;
   disabled?: boolean;
+  rows?: number;
   props?: any;
 }
 
-const Input = ({ name, placeholder, type, disabled, ...props }: InputProps) => {
+const Input = ({
+  name,
+  placeholder,
+  type,
+  disabled,
+  rows,
+  ...props
+}: InputProps) => {
   return (
     <div className="relative">
       <Field

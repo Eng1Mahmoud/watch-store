@@ -1,0 +1,14 @@
+{
+    "formik": {
+        "uploading": "جارٍ التحميل...",
+        "uploadImage": "انقر للتحديد أو اسحب وأفلت صورة",
+        "errorUploading": "خطأ في تحميل الصورة",
+        "loadingButton": {
+            "loading": "جارِ التحميل..."
+          },
+          "multySelect": {
+            "selectLabel": "حدد الخيارات",
+            "selected": "مختار"
+        }
+    }
+}

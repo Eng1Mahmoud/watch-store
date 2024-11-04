@@ -13,7 +13,7 @@ const SubmitButton = ({
   position,
   fullWidth,
 }: SubmitButtonProps) => {
-  const t = useTranslations("loadingButton");
+  const t = useTranslations("formik.loadingButton");
   return (
     <div className={`flex justify-${position} mt-5`}>
       <button

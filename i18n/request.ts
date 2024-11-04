@@ -28,12 +28,14 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ...(await import(`@/messages/${locale}/profile-details.json`)).default,
     ...(await import(`@/messages/${locale}/my-address.json`)).default,
     ...(await import(`@/messages/${locale}/change-password.json`)).default,
-    ...(await import(`@/messages/${locale}/loading-button.json`)).default,
     ...(await import(`@/messages/${locale}/admin-layout.json`)).default,
     ...(await import(`@/messages/${locale}/admin-statistics.json`)).default,
     ...(await import(`@/messages/${locale}/users.json`)).default,
     ...(await import(`@/messages/${locale}/products.json`)).default,
     ...(await import(`@/messages/${locale}/categories.json`)).default,
+    ...(await import(`@/messages/${locale}/add-products.json`)).default,
+    ...(await import(`@/messages/${locale}/formik.json`)).default,
+    ...(await import(`@/messages/${locale}/add-category.json`)).default,
   };
   return {
     locale,

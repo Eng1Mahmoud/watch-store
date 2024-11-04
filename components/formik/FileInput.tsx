@@ -4,9 +4,8 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { FiUpload } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
-
 import { toast } from "react-toastify";
-
+import { useTranslations } from "next-intl";
 interface FileInputProps {
   name: string;
   label?: string;
@@ -14,6 +13,7 @@ interface FileInputProps {
 }
 
 const FileInput: React.FC<FileInputProps> = ({ name, label, folder }) => {
+  const t = useTranslations("formik");
   const [uploading, setUploading] = useState(false);
   const [field, meta, helpers] = useField(name);
 
@@ -29,7 +29,7 @@ const FileInput: React.FC<FileInputProps> = ({ name, label, folder }) => {
         const { imageUrl } = await uploadImage(formData, folder);
         helpers.setValue(imageUrl);
       } catch (error) {
-        toast.error("Error uploading image");
+        toast.error(t("errorUploading"));
       } finally {
         setUploading(false);
       }
@@ -57,7 +57,7 @@ const FileInput: React.FC<FileInputProps> = ({ name, label, folder }) => {
           cursor-pointer bg-gray-50 hover:bg-gray-100 relative"
         >
           {uploading ? (
-            <p>Uploading...</p>
+            <p>{t("uploading")}</p>
           ) : field.value ? (
             <>
               <Image
@@ -73,7 +73,7 @@ const FileInput: React.FC<FileInputProps> = ({ name, label, folder }) => {
             <>
               <FiUpload className="w-12 h-12 text-gray-400" />
               <p className="mt-2 text-sm text-gray-500">
-                Click to select or drag and drop an image {label}
+                {t("uploadImage")} {label}
               </p>
             </>
           )}
