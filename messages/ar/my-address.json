@@ -1,0 +1,27 @@
+{
+    "my-address": {
+        "title": "عناويني",
+        "formLabels": {
+            "country": "الدولة",
+            "city": "المدينة",
+            "street": "الشارع",
+            "zipcode": "الرمز البريدي"
+        },
+        "formValidation": {
+            "country": {
+                "required": "الدولة مطلوبة"
+            },
+            "city": {
+                "required": "المدينة مطلوبة"
+            },
+            "street": {
+                "required": "الشارع مطلوب"
+            },
+            "zipcode": {
+                "required": "الرمز البريدي مطلوب"
+            }
+        },
+        "submitButton": "إضافة عنوان",
+        "noAddresses": "لا يوجد عناوين حاليا"
+    }
+}

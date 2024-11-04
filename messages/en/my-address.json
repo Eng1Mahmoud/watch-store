@@ -1,0 +1,28 @@
+{
+    "my-address": {
+        "title": "My Addresses",
+        "formLabels": {
+          "country": "Country",
+          "city": "City",
+          "street": "Street",
+          "zipcode": "Postal Code"
+        },
+        "formValidation": {
+          "country": {
+            "required": "Country is required"
+          },
+          "city": {
+            "required": "City is required"
+          },
+          "street": {
+            "required": "Street is required"
+          },
+          "zipcode": {
+            "required": "Postal Code is required"
+          }
+        },
+        "submitButton": "Add Address",
+        "noAddresses": "No addresses found"
+
+    }
+}

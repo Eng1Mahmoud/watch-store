@@ -1,0 +1,23 @@
+{
+    "profile-details": {
+        "title": "تفاصيل الملف الشخصي",
+        "formLabels": {
+            "username": "اسم المستخدم",
+            "email": "البريد الإلكتروني",
+            "phone": "رقم الهاتف"
+        },
+        "formValidation": {
+            "username": {
+                "required": "اسم المستخدم مطلوب"
+            },
+            "email": {
+                "required": "البريد الإلكتروني مطلوب",
+                "invalid": "البريد الإلكتروني غير صالح"
+            },
+            "phone": {
+                "required": "رقم الهاتف مطلوب"
+            }
+        },
+        "submitButton": "حفظ التغييرات"
+    }
+}

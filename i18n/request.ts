@@ -24,6 +24,11 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ...(await import(`@/messages/${locale}/infinityScroll.json`)).default,
     ...(await import(`@/messages/${locale}/wishlists.json`)).default,
     ...(await import(`@/messages/${locale}/my-cart.json`)).default,
+    ...(await import(`@/messages/${locale}/my-acount.json`)).default,
+    ...(await import(`@/messages/${locale}/profile-details.json`)).default,
+    ...(await import(`@/messages/${locale}/my-address.json`)).default,
+    ...(await import(`@/messages/${locale}/change-password.json`)).default,
+    ...(await import(`@/messages/${locale}/loading-button.json`)).default,
   };
   return {
     locale,

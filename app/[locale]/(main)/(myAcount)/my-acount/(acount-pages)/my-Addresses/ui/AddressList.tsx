@@ -1,8 +1,9 @@
 "use client";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
 import { useQuery } from "@tanstack/react-query";
-
+import { useTranslations } from "next-intl";
 const AddressList = () => {
+  const t = useTranslations("my-address");
   const { data } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
@@ -15,9 +16,6 @@ const AddressList = () => {
     <div>
       {userData?.addresses?.length > 0 ? (
         <>
-          <h2 className="text-xl font-semibold mb-4 text-main-main">
-            My Addresses
-          </h2>
           <div className="flex flex-col gap-4  py-4">
             {userData?.addresses?.map((address: any, index: number) => (
               <div key={address?.id} className="shadow-custom p-4 rounded-md">
@@ -39,8 +37,7 @@ const AddressList = () => {
         </>
       ) : (
         <div className="text-center text-lg font-semibold text-main-main">
-          <p>No addresses found yet</p>
-          <p>Add your first address</p>
+          <p>{t("noAddresses")}</p>
         </div>
       )}
     </div>
