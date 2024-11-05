@@ -2,7 +2,6 @@
 import Image from "next/image";
 import avatar from "@/public/assets/avatar.jpg";
 import AvatarMenu from "./AvatarMenu";
-import { useAppSelector } from "@/redux/hooks";
 import { useQuery } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
 
@@ -15,8 +14,7 @@ const AvatarUI = () => {
     },
   });
   const avatarUrl = data?.data?.userData?.avatar_url;
-  const isLoging = useAppSelector((state) => state.user.login);
-  return isLoging ? (
+  return (
     <div className="dropdown dropdown-end">
       <div
         tabIndex={0}
@@ -35,7 +33,7 @@ const AvatarUI = () => {
       </div>
       <AvatarMenu />
     </div>
-  ) : null;
+  );
 };
 
 export default AvatarUI;

@@ -12,7 +12,8 @@
         "faq": "FAQ",
         "login": "Login",
         "signup": "Signup",
-        "myAccount": "My Account"
+        "myAccount": "My Account",
+        "logout": "Logout"
     
     },
     "navCart": {

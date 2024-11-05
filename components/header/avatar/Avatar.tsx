@@ -1,17 +1,9 @@
-import { getUser } from "@/actions/getUser";
+"use client";
+import { useAppSelector } from "@/redux/hooks";
 import AvatarUI from "./ui/AvatarUI";
-import { QueryClient } from "@tanstack/react-query";
-import { getTokenServer } from "@/utils/getTokenServer";
-const Avatar = async () => {
-  const queryClient = new QueryClient();
-  const token = getTokenServer();
-  if (token) {
-    await queryClient.fetchQuery({
-      queryKey: ["user"],
-      queryFn: getUser,
-    });
-  }
-  return token ? <AvatarUI /> : null;
+const Avatar = () => {
+  const isLoging = useAppSelector((state) => state.user.login);
+  return isLoging ? <AvatarUI /> : null;
 };
 
 export default Avatar;

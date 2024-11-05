@@ -29,7 +29,7 @@ const CheckOut = () => {
   };
 
   return (
-    <div className="shadow-custom p-4 rounded-lg h-[400px]">
+    <div className="shadow-custom p-4 rounded-lg h-auto">
       <div className="flex flex-col gap-4 w-full">
         <select
           className="select select-bordered w-full "
