@@ -8,7 +8,7 @@ import {
   FiFolder,
   FiPlus,
 } from "react-icons/fi";
-
+import { MdDashboard } from "react-icons/md";
 interface MenuProps {
   open: boolean;
   onToggle: () => void;
@@ -52,14 +52,14 @@ const AddMenuItem = ({ open, onToggle }: MenuProps) => {
           </summary>
           <ul>
             <MenuItem
-              href="/admin/add-product"
+              href="/Dashboard/add-product"
               icon={<FiShoppingBag className="h-5 w-5 text-main-main" />}
               text={t("product")}
               open={open}
               onToggle={onToggle}
             />
             <MenuItem
-              href="/admin/add-category"
+              href="/Dashboard/add-category"
               icon={<FiFolder className="h-5 w-5 text-main-main" />}
               text={t("category")}
               open={open}
@@ -84,21 +84,30 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
   return (
     <ul className="menu p-4 w-full text-base-content">
       <MenuItem
-        href="/admin"
+        href="/"
         icon={<FiHome className="h-6 w-6 text-main-main" onClick={onToggle} />}
         text={t("home")}
         open={open}
         onToggle={onToggle}
       />
       <MenuItem
-        href="/admin/users"
+        href="/Dashboard"
+        icon={
+          <MdDashboard className="h-6 w-6 text-main-main" onClick={onToggle} />
+        }
+        text={t("dashboard")}
+        open={open}
+        onToggle={onToggle}
+      />
+      <MenuItem
+        href="/Dashboard/users"
         icon={<FiUsers className="h-6 w-6 text-main-main" onClick={onToggle} />}
         text={t("users")}
         open={open}
         onToggle={onToggle}
       />
       <MenuItem
-        href="/admin/products"
+        href="/Dashboard/products"
         icon={
           <FiShoppingBag
             className="h-6 w-6 text-main-main"
@@ -110,7 +119,7 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
         onToggle={onToggle}
       />
       <MenuItem
-        href="/admin/orders"
+        href="/Dashboard/orders"
         icon={
           <FiClipboard className="h-6 w-6 text-main-main" onClick={onToggle} />
         }
@@ -119,7 +128,7 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
         onToggle={onToggle}
       />
       <MenuItem
-        href="/admin/categories"
+        href="/Dashboard/categories"
         icon={
           <FiFolder className="h-5 w-5 text-main-main" onClick={onToggle} />
         }

@@ -1,7 +1,7 @@
 {
     "editUser": {
         "formLabels": {
-            "name": "Name",
+            "username": "Name",
             "email": "Email",
             "role": "Role",
             "phone": "Phone",

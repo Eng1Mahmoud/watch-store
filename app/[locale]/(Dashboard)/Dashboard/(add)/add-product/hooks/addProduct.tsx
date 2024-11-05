@@ -1,38 +1,34 @@
 import { toast } from "react-toastify";
 import { IProduct } from "@/types/types";
-import { useRouter } from "@/i18n/routing";
-import { axiosClientInstance } from "@/axios/axiosClientInstance";
 import { useMutation } from "@tanstack/react-query";
+import { axiosClientInstance } from "@/axios/axiosClientInstance";
+import { useRouter } from "@/i18n/routing";
 import { getQueryClient } from "@/QueryProvider/QueryProvider";
-export const useEditProduct = ({ id }: { id: string }) => {
+export const useAddProduct = () => {
   const router = useRouter();
   const queryClient = getQueryClient();
   const { mutate, isPending } = useMutation({
-    mutationFn: async (values: IProduct) => {
+    mutationFn: (values: IProduct) => {
       // add category type to the values object
       let finalValues = { ...values, category_type: "name" };
-      const response = await axiosClientInstance.patch(
-        `/products/${id}`,
-        finalValues,
-      );
-      return response.data;
+      return axiosClientInstance.post("/products", finalValues);
     },
-    onSuccess: (res) => {
-      if (res.success) {
-        toast.success(res.message);
-        router.push("/admin/products");
+    onSuccess: ({ data }) => {
+      if (data.success) {
+        toast.success(data.message);
+        router.push("/Dashboard/products");
         queryClient.invalidateQueries({ queryKey: ["products"] });
-        queryClient.invalidateQueries({ queryKey: ["productDetails", id] });
       } else {
-        toast.error(res.message);
+        toast.error(data.message);
       }
     },
-    onError: (error) => {
-      toast.error(error.message);
+    onError: (err: any) => {
+      toast.error(err.response?.data?.message);
     },
   });
   const onSubmit = async (values: IProduct) => {
     mutate(values);
   };
+
   return { onSubmit, loading: isPending };
 };

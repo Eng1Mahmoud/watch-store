@@ -34,7 +34,7 @@ export const usePrepareAccountConfig = () => {
 
           // Navigate based on role
           if (role === "admin") {
-            router.push("/admin");
+            router.push("/Dashboard");
           } else {
             router.push("/");
           }

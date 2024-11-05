@@ -53,7 +53,7 @@ export const useGetActions = () => {
       icon: CiEdit,
       labelColor: "text-main-main",
       onClick: (item: any) => {
-        router.push(`/admin/edit-category/${item.name}` as any);
+        router.push(`/Dashboard/edit-category/${item.name}` as any);
       },
     },
     {

@@ -17,6 +17,6 @@ export const routes: RouteConfig[] = [
   { path: "/my-orders", roles: ["user", "admin"] },
   { path: "/my-Wishlist", roles: ["user", "admin"] },
   { path: "/my-profile", roles: ["user", "admin"] },
-  { path: "/admin", roles: ["admin"] },
+  { path: "/Dashboard", roles: ["admin"] },
   { path: "/my-cart", roles: ["user", "admin"] },
 ];
