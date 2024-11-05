@@ -64,7 +64,11 @@ export default async function RootLayout({
               <MainBar />
               {children}
               <Suspense fallback={null}>
-                <ToastContainer position="top-right" autoClose={5000} />
+                <ToastContainer
+                  position="top-right"
+                  autoClose={5000}
+                  style={{ zIndex: 100000000000 }}
+                />
                 <ScrollToTop />
               </Suspense>
               <SessionExpired />

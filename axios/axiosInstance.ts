@@ -48,8 +48,10 @@ const responseInterceptor = (error: any) => {
       // Server-side: use Next.js redirect
       customRedirect("/login");
     } else {
-      // Client-side: use window.location
-      window.location.href = "/login";
+      // Client-side: get current language from pathname and redirect
+      const currentLang = window.location.pathname.split("/")[1];
+      console.log("currentLang>>>", currentLang);
+      window.location.href = `/${currentLang}/login`;
     }
   }
   return Promise.reject(error);

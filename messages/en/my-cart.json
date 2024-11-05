@@ -18,6 +18,7 @@
                 "apply": "Apply",
                 "code": "Enter your coupon "
             },
+            "not-select-payment-method": "Please select a payment method",
             "checkout-btn": "Create Order"
         }
     }
