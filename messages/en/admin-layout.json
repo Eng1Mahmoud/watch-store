@@ -2,7 +2,9 @@
     "adminLayout": {
        "title": "Dashboard",
        "menu": {
+
         "home": "Home",
+        "dashboard": "Dashboard",
         "users": "Users",
         "orders": "Orders",
         "product": "Products",

@@ -55,40 +55,40 @@ export const routing = defineRouting({
       en: "/reset-password/[token]",
       ar: "/اعادة-تعين-كلمة-المرور/[token]",
     },
-    "/admin": {
-      en: "/admin",
+    "/Dashboard": {
+      en: "/Dashboard",
       ar: "/لوحة-التحكم",
     },
-    "/admin/users": {
-      en: "/admin/users",
+    "/Dashboard/users": {
+      en: "/Dashboard/users",
       ar: "/مستخدمين/لوحة-التحكم",
     },
-    "/admin/edit-user/[id]": {
-      en: "/admin/edit-user/[id]",
+    "/Dashboard/edit-user/[id]": {
+      en: "/Dashboard/edit-user/[id]",
       ar: "/تعديل-مستخدم/لوحة-التحكم/[id]",
     },
-    "/admin/products": {
-      en: "/admin/products",
+    "/Dashboard/products": {
+      en: "/Dashboard/products",
       ar: "/منتجات/لوحة-التحكم",
     },
-    "/admin/edit-product/[id]": {
-      en: "/admin/edit-product/[id]",
+    "/Dashboard/edit-product/[id]": {
+      en: "/Dashboard/edit-product/[id]",
       ar: "/تعديل-منتج/لوحة-التحكم/[id]",
     },
-    "/admin/categories": {
-      en: "/admin/categories",
+    "/Dashboard/categories": {
+      en: "/Dashboard/categories",
       ar: "/فئات/لوحة-التحكم",
     },
-    "/admin/edit-category/[name]": {
-      en: "/admin/edit-category/[name]",
+    "/Dashboard/edit-category/[name]": {
+      en: "/Dashboard/edit-category/[name]",
       ar: "/تعديل-فئة/لوحة-التحكم/[name]",
     },
-    "/admin/add-product": {
-      en: "/admin/add-product",
+    "/Dashboard/add-product": {
+      en: "/Dashboard/add-product",
       ar: "/إضافة-منتج/لوحة-التحكم",
     },
-    "/admin/add-category": {
-      en: "/admin/add-category",
+    "/Dashboard/add-category": {
+      en: "/Dashboard/add-category",
       ar: "/إضافة-فئة/لوحة-التحكم",
     },
     "/my-account": {
@@ -134,7 +134,7 @@ export const routing = defineRouting({
   },
 });
 
-export const { Link, redirect, usePathname, useRouter } =
+export const { Link, redirect, usePathname, useRouter, getPathname } =
   createNavigation(routing);
 
 // create custom redirect function set locale to be in one place  get current locale

@@ -22,7 +22,7 @@ export const useEditCategory = ({
     onSuccess: (res) => {
       if (res.success) {
         toast.success(res.message);
-        router.push("/admin/categories");
+        router.push("/Dashboard/categories");
         queryClient.invalidateQueries({ queryKey: ["categories"] });
         queryClient.invalidateQueries({
           queryKey: ["categoryDetails", oldCategoryName],
