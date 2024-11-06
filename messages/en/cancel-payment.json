@@ -1,0 +1,10 @@
+{
+    "cancel-payment": {
+    "title": "Payment Cancelled",
+    "description": "Your payment process has been cancelled. If you changed your mind or experienced any issues, you can always try again.",
+    "buttons": {
+      "home": "Home",
+      "cart": "Your Cart"
+    }
+  }
+}

@@ -1,12 +1,14 @@
 "use client";
 import { usePathname } from "next/navigation";
 import { Link } from "@/i18n/routing";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import arFlagLang from "@/public/assets/lang-flags/ar-flag.png";
 import enFlagLang from "@/public/assets/lang-flags/us-flag.png";
 import Image from "next/image";
 
 export default function SwitchLang() {
+  const searchParams = useSearchParams();
+  const searchParamsString = searchParams.toString();
   const { locale } = useParams();
   const pathSegments = usePathname().split("/");
   const pathname = pathSegments.slice(2).join("/");
@@ -29,7 +31,13 @@ export default function SwitchLang() {
       </summary>
       <ul className="menu dropdown-content bg-text-third rounded-box z-[1] p-2 shadow">
         <li>
-          <Link href={`${currentPath}` as any} locale="en">
+          <Link
+            href={{
+              pathname: currentPath as any,
+              query: searchParamsString,
+            }}
+            locale="en"
+          >
             <button className="flex items-center gap-2">
               <Image src={enFlagLang} alt="English" width={20} height={20} />
               English
@@ -37,7 +45,13 @@ export default function SwitchLang() {
           </Link>
         </li>
         <li>
-          <Link href={`${currentPath}` as any} locale="ar">
+          <Link
+            href={{
+              pathname: currentPath as any,
+              query: searchParamsString,
+            }}
+            locale="ar"
+          >
             <button className="flex items-center gap-2">
               <Image src={arFlagLang} alt="Arabic" width={20} height={20} />
               عربي
