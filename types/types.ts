@@ -77,3 +77,17 @@ export interface IWishlist {
   created_at?: string;
   updated_at?: string;
 }
+
+// order item interface
+export interface IOrderItem {
+  product: IProduct;
+}
+
+// order interface
+export interface IOrder {
+  id: string;
+  created_at: string;
+  status: string;
+  price: number;
+  order_items: IOrderItem[];
+}

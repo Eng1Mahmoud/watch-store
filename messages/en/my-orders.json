@@ -1,0 +1,16 @@
+{
+    "myOrders": {
+        "title": "My Orders",
+        "orderId": "Order ID",
+        "placedOn": "Placed on",
+        "quantity": "Quantity",
+        "price": "Price",
+        "totalAmount": "Total Amount",
+        "status": {
+            "shipping": "Shipping",
+            "delivered": "Delivered",
+            "cancelled": "Cancelled",
+            "processing": "Processing"
+        }
+    }
+}
