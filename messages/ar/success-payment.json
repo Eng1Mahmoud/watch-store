@@ -1,0 +1,13 @@
+{
+    "success-payment": {
+      "orderConfirmation": "ملخص الطلب",
+      "orderDetails": "تفاصيل الطلب",
+      "status": "الحالة",
+      "totalAmount": "المبلغ الإجمالي",
+      "orderItems": "المنتجات المشتراة",
+      "quantity": "الكمية",
+      "price": "السعر",
+      "createdAt": "تاريخ الإنشاء",
+      "placedOn": "تم الطلب في"
+    }
+  }

@@ -40,6 +40,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ...(await import(`@/messages/${locale}/edit-category.json`)).default,
     ...(await import(`@/messages/${locale}/edit-product.json`)).default,
     ...(await import(`@/messages/${locale}/edit-user.json`)).default,
+    ...(await import(`@/messages/${locale}/cancel-payment.json`)).default,
+    ...(await import(`@/messages/${locale}/success-payment.json`)).default,
   };
   return {
     locale,

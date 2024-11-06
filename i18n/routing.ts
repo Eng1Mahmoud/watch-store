@@ -131,6 +131,14 @@ export const routing = defineRouting({
       en: "/faqs",
       ar: "/الأسئلة-الشائعة",
     },
+    "/cancel": {
+      en: "/cancel",
+      ar: "/إلغاء-الدفع",
+    },
+    "/success": {
+      en: "/success",
+      ar: "/نجاح-الدفع",
+    },
   },
 });
 

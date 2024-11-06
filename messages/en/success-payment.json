@@ -1,0 +1,13 @@
+{
+    "success-payment": {
+      "orderConfirmation": "Order Summary",
+      "orderDetails": "Order Details",
+      "status": "Status",
+      "totalAmount": "Total Amount",
+      "orderItems": "Purchased Products",
+      "quantity": "Quantity",
+      "price": "Price",
+      "createdAt": "Created At",
+      "placedOn": "Placed on"
+    }
+  }

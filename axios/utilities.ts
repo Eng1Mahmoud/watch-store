@@ -20,7 +20,6 @@ export const responseInterceptor = (error: any) => {
     } else {
       // Client-side: get current language from pathname and redirect
       const currentLang = window.location.pathname.split("/")[1];
-      console.log("currentLang>>>", currentLang);
       window.location.href = `/${currentLang}/login`;
     }
   }
