@@ -1,0 +1,16 @@
+{
+    "myOrders": {
+        "title": "طلباتي",
+        "orderId": "رقم الطلب",
+        "placedOn": "تاريخ الطلب",
+        "quantity": "الكمية",
+        "price": "السعر",
+        "totalAmount": "المبلغ الإجمالي",
+        "status": {
+            "shipping": "قيد الشحن",
+            "delivered": "تم التوصيل",
+            "cancelled": "ملغي",
+            "processing": "قيد المعالجة"
+        }
+    }
+}
