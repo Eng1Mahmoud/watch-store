@@ -65,9 +65,14 @@ export default async function RootLayout({
               {children}
               <Suspense fallback={null}>
                 <ToastContainer
-                  position="top-right"
+                  position={locale === "ar" ? "top-right" : "top-left"}
                   autoClose={5000}
-                  style={{ zIndex: 100000000000 }}
+                  style={{
+                    zIndex: 100000000000,
+
+                    left: "0px",
+                    right: "0px",
+                  }}
                 />
                 <ScrollToTop />
               </Suspense>

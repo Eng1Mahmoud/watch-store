@@ -21,7 +21,7 @@ const Header = () => {
           <div className="hidden md:flex-1 md:flex">
             <Search />
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 pr-2">
             <Wishlists />
             <Cart />
             <Avatar />
