@@ -71,19 +71,19 @@ export const Slider: React.FC = () => {
           </SwiperSlide>
         ))}
         {/** creat next and prev button position top center slide  */}
-        <div className="hidden md:flex absolute inset-y-1/2 transform -translate-y-1/2 left-5 right-5  justify-between items-center z-50">
+        <div className="hidden md:flex absolute inset-y-1/2 transform -translate-y-1/2 left-5 right-5 justify-between items-center z-50">
           <button
             onClick={handlePrev}
-            className="bg-white text-white p-2 rounded-full"
+            className="bg-white text-white p-2 rounded-full rtl:rotate-180"
           >
             <IoIosArrowBack className="text-[25px] text-zinc-400" />
           </button>
 
           <button
             onClick={handleNext}
-            className="bg-white text-white p-2 rounded-full"
+            className="bg-white text-white p-2 rounded-full rtl:rotate-180"
           >
-            <IoIosArrowForward className="text-[25px]  text-zinc-400" />
+            <IoIosArrowForward className="text-[25px] text-zinc-400" />
           </button>
         </div>
       </Swiper>
