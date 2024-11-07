@@ -8,7 +8,7 @@ export const Brands = async () => {
         {t("title")}
       </h2>
 
-      <div className="grid grid-cols-2  md:grid-cols-8  mt-10">
+      <div className="grid grid-cols-2  md:grid-cols-8 gap-3  mt-10">
         <BrandItems />
       </div>
     </div>
