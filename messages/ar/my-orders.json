@@ -11,6 +11,9 @@
             "delivered": "تم التوصيل",
             "cancelled": "ملغي",
             "processing": "قيد المعالجة"
-        }
+        },
+        "noOrders": " لا يوجد طلبات حاليا",
+        "shoping-now": "تسوق الآن"
+
     }
 }

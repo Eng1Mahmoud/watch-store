@@ -11,6 +11,8 @@
             "delivered": "Delivered",
             "cancelled": "Cancelled",
             "processing": "Processing"
-        }
+        },
+        "noOrders": "No orders yet",
+        "shoping-now": "Shop Now"
     }
 }
