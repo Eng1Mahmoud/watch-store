@@ -42,9 +42,9 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={locale === "ar" ? "rtl" : "ltr"}
-      className={`${locale === "ar" ? mainFont_ar.variable : mainFont_en.variable}`}
+      className={`${locale === "ar" ? mainFont_ar.variable : mainFont_en.variable} light`}
     >
-      <body suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true} className="dark:bg-dark-bg">
         {/* Google tag (gtag.js) */}
         <Script
           strategy="lazyOnload"

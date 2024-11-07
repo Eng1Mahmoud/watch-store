@@ -54,7 +54,7 @@ const FileInput: React.FC<FileInputProps> = ({ name, label, folder }) => {
         <label
           htmlFor={name}
           className="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg 
-          cursor-pointer bg-gray-50 hover:bg-gray-100 relative"
+          cursor-pointer bg-gray-50 dark:bg-dark-bg hover:bg-gray-100 dark:hover:bg-dark-bgSection relative"
         >
           {uploading ? (
             <p>{t("uploading")}</p>
@@ -71,8 +71,8 @@ const FileInput: React.FC<FileInputProps> = ({ name, label, folder }) => {
             </>
           ) : (
             <>
-              <FiUpload className="w-12 h-12 text-gray-400" />
-              <p className="mt-2 text-sm text-gray-500">
+              <FiUpload className="w-12 h-12 text-gray-400 dark:text-dark-text" />
+              <p className="mt-2 text-sm text-gray-500 dark:text-dark-text">
                 {t("uploadImage")} {label}
               </p>
             </>

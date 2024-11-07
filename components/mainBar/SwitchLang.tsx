@@ -20,16 +20,16 @@ export default function SwitchLang() {
         {locale === "en" ? (
           <>
             <Image src={enFlagLang} alt="English" width={20} height={20} />
-            <span className="ml-2">English</span>
+            <span className="ml-2 dark:text-dark-text">English</span>
           </>
         ) : (
           <>
             <Image src={arFlagLang} alt="Arabic" width={20} height={20} />
-            <span className="ml-2">عربي</span>
+            <span className="ml-2 dark:text-dark-text">عربي</span>
           </>
         )}
       </summary>
-      <ul className="menu dropdown-content bg-text-third rounded-box z-[1] p-2 shadow">
+      <ul className="menu dropdown-content bg-text-third dark:bg-dark-bgSection rounded-box z-[1] p-2 shadow">
         <li>
           <Link
             href={{
@@ -37,6 +37,7 @@ export default function SwitchLang() {
               query: searchParamsString,
             }}
             locale="en"
+            className="dark:text-dark-text"
           >
             <button className="flex items-center gap-2">
               <Image src={enFlagLang} alt="English" width={20} height={20} />
@@ -51,6 +52,7 @@ export default function SwitchLang() {
               query: searchParamsString,
             }}
             locale="ar"
+            className="dark:text-dark-text"
           >
             <button className="flex items-center gap-2">
               <Image src={arFlagLang} alt="Arabic" width={20} height={20} />

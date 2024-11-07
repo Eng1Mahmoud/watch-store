@@ -6,7 +6,7 @@ export const Testimonials = async () => {
   const t = await getTranslations("testimonials");
   return (
     <div className="mt-8" id="testimonials">
-      <h1 className="text-center text-[30px] font-bold text-main-main my-10 ">
+      <h1 className="text-center text-[30px] font-bold text-main-main my-10 dark:text-dark-text">
         {t("title")}
       </h1>
       <div className="bg-hero bg-cover bg-no-repeat py-20 ">

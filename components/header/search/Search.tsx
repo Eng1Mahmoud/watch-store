@@ -41,19 +41,13 @@ const Search = () => {
     setInputValue(searchTerm);
   }, [searchTerm]);
   return (
-    <div className="relative w-full group">
+    <div className="relative w-full group dark:bg-dark-bgSection dark:text-dark-text shadow-custom rounded-md">
       <motion.input
         type="text"
         placeholder={t("search")}
         className="input input-bordered w-full focus:outline-none rtl:pr-10 ltr:pl-10 text-main-main
-         placeholder-gray-400 focus:placeholder-main-main peer"
+         placeholder-gray-400  dark:bg-dark-bgSection dark:text-dark-text dark:placeholder-dark-text "
         initial={{ borderColor: "#e5e7eb" }}
-        whileFocus={{
-          scale: 1.005,
-          borderColor: "#406939",
-          boxShadow: "0 0 1px #406939",
-          borderBottomWidth: "2px",
-        }}
         transition={{ duration: 0.3 }}
         value={inputValue}
         onChange={handleInputChange}
@@ -65,14 +59,14 @@ const Search = () => {
       />
       <FaTimes
         className="absolute ltr:right-11 rtl:left-11 top-1/2 transform -translate-y-1/2 text-gray-400
-         group-focus-within:text-main-main transition-colors duration-300 cursor-pointer hidden peer-[&:not(:placeholder-shown)]:block"
+       transition-colors duration-300 cursor-pointer hidden peer-[&:not(:placeholder-shown)]:block"
         size={18}
         onClick={handleCancelSearch}
       />
       <SearchHistory />
       <FaSearch
         className="absolute ltr:left-3 rtl:right-3 top-1/2 transform -translate-y-1/2 text-gray-400
-         group-focus-within:text-main-main transition-colors duration-300 cursor-pointer"
+         transition-colors duration-300 cursor-pointer"
         size={18}
         onClick={handleSearch}
       />

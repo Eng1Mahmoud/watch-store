@@ -25,7 +25,8 @@ const config: Config = {
         hero: "url('/assets/about/bg-about.jpeg')",
       },
       boxShadow: {
-        custom: "0 0 3px 0px rgba(0, 0, 0, 0.3)",
+        custom: "0 0 5px 0px rgba(0, 0, 0, 0.3)",
+        dark: "0 0 3px 0px #6b7280",
       },
       colors: {
         main: {
@@ -40,6 +41,15 @@ const config: Config = {
         },
         error: {
           main: "#ff0000",
+        },
+        dark: {
+          bg: "#1f1f1f",
+          bgSection: "#2b303b",
+          text: "#ffffff",
+          sectionText: "rgb(107 114 128)",
+          textSecondary: "#e5e7eb",
+          border: "#374151",
+          shadow: "#000000",
         },
       },
     },

@@ -45,15 +45,22 @@ const Info = () => {
     >
       {info.map((item) => (
         <div key={item.id} className="flex gap-4">
-          <div className="text-main-main">{item.icon}</div>
+          <div className="text-main-main dark:text-dark-text">{item.icon}</div>
           <div>
-            <h3 className="text-lg font-bold text-main-main">{item.title}</h3>
+            <h3 className="text-lg font-bold text-main-main dark:text-dark-text">
+              {item.title}
+            </h3>
             {item.href ? (
-              <a href={item.href} className="text-sm text-gray-500">
+              <a
+                href={item.href}
+                className="text-sm text-gray-500 dark:text-dark-text"
+              >
                 {item.description}
               </a>
             ) : (
-              <p className="text-sm text-gray-500">{item.description}</p>
+              <p className="text-sm text-gray-500 dark:text-dark-text">
+                {item.description}
+              </p>
             )}
           </div>
         </div>

@@ -4,7 +4,7 @@ export const Brands = async () => {
   const t = await getTranslations("brand");
   return (
     <div className="container" id="brands">
-      <h2 className="text-center text-3xl font-bold mt-10 text-main-main">
+      <h2 className="text-center text-3xl font-bold mt-10 text-main-main dark:text-dark-text">
         {t("title")}
       </h2>
 
