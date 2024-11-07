@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "@/public/assets/logo.webp";
+import logo from "@/public/assets/logo.png";
 import { Link } from "@/i18n/routing";
 import { useFooterSections } from "./footerSections";
 import { useTranslations } from "next-intl";
@@ -13,7 +13,13 @@ const Footer = () => {
     <section className="bg-text-fourth dark:bg-dark-bgSection">
       <footer className="footer  p-10 ">
         <aside className="flex flex-col max-w-xs">
-          <Image src={logo} alt="logo" width={100} height={100} />
+          <Image
+            src={logo}
+            alt="logo"
+            width={100}
+            height={100}
+            className="scale-[1.6]"
+          />
           <div className="flex flex-col gap-2 font-main text-gray-700 dark:text-dark-text">
             <span className="font-bold text-main-main dark:text-dark-text text-xl">
               {t("store_name")}

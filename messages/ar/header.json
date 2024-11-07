@@ -1,5 +1,7 @@
 {
     "search": "بحث",
+    "noSearchHistory": "لا يوجد سجل بحث",
+    "clearHistory": "مسح السجل",
     "navLinks": {
         "home": "الرئيسية",
         "about": "من نحن",

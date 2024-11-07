@@ -58,14 +58,14 @@ const Search = () => {
         }}
       />
       <FaTimes
-        className="absolute ltr:right-11 rtl:left-11 top-1/2 transform -translate-y-1/2 text-gray-400
+        className="absolute ltr:right-11 rtl:left-11 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-dark-text
        transition-colors duration-300 cursor-pointer hidden peer-[&:not(:placeholder-shown)]:block"
         size={18}
         onClick={handleCancelSearch}
       />
       <SearchHistory />
       <FaSearch
-        className="absolute ltr:left-3 rtl:right-3 top-1/2 transform -translate-y-1/2 text-gray-400
+        className="absolute ltr:left-3 rtl:right-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-dark-text
          transition-colors duration-300 cursor-pointer"
         size={18}
         onClick={handleSearch}

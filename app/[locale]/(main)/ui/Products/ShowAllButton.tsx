@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 const ShowAllButton = async () => {
   const t = await getTranslations("products-home");
   return (
-    <div className="flex justify-center items-center mt-5">
+    <div className="flex justify-center items-center mt-12">
       <Link href="/shop" className="btn btn-primary  px-16">
         {t("showAll")}
       </Link>

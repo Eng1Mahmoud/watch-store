@@ -41,7 +41,7 @@ const PriceFilter: React.FC = () => {
 
   return (
     <div className="py-4">
-      <h1 className="text-lg pb-2">{t("price.title")}</h1>
+      <h1 className="text-lg pb-2 dark:text-dark-text">{t("price.title")}</h1>
       <div className="flex flex-col items-center mx-1 my-8">
         <Range
           values={localValues}
@@ -81,7 +81,7 @@ const PriceFilter: React.FC = () => {
                 {...restProps}
                 className="h-5 w-5 rounded bg-white flex justify-center items-center shadow-md"
               >
-                <div className="absolute -top-7  text-white font-bold text-sm bg-main-main px-1 py-0.5 rounded">
+                <div className="absolute -top-7  text-white dark:text-dark-text font-bold text-sm bg-main-main px-1 py-0.5 rounded">
                   {localValues[index].toFixed(0)}
                 </div>
                 <div
@@ -94,14 +94,14 @@ const PriceFilter: React.FC = () => {
           }}
         />
         <div className="flex justify-between items-center mt-4 gap-2">
-          <output className="text-sm">
+          <output className="text-sm dark:text-dark-text">
             {t("price.from")} : {localValues[0].toFixed(0)} - {t("price.to")} :{" "}
             {localValues[1].toFixed(0)}
           </output>
           <div className="lg:tooltip" data-tip={t("price.apply")}>
             <CiFilter
               onClick={applyPriceFilter}
-              className="text-main-main text-2xl cursor-pointer"
+              className="text-main-main dark:text-dark-text text-2xl cursor-pointer"
             />
           </div>
         </div>

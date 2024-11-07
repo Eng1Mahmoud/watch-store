@@ -7,6 +7,7 @@ import {
   clearSearchHistory,
 } from "@/redux/features/filter";
 import { useRouter, usePathname } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 const SearchHistory = () => {
   const pathname = usePathname();
   const router = useRouter();
@@ -14,6 +15,7 @@ const SearchHistory = () => {
     (state) => state.filter.filter.searchHistory,
   );
   const dispatch = useAppDispatch();
+  const t = useTranslations();
   // handle re search by clicking on items the search history
   const handleReSearch = (search: string) => {
     // check pathname if it is not /shop, redirect to /shop`
@@ -35,22 +37,27 @@ const SearchHistory = () => {
       <div
         tabIndex={0}
         role="button"
-        className="hover:bg-gray-100 p-1 rounded-full transition-colors"
+        className="hover:bg-gray-100 dark:hover:bg-dark-bg p-1 rounded-full transition-colors"
       >
-        <MdManageHistory className="text-gray-500 cursor-pointer" size={20} />
+        <MdManageHistory
+          className="text-gray-500 cursor-pointer dark:text-dark-text"
+          size={20}
+        />
       </div>
       <ul
         tabIndex={0}
-        className="dropdown-content bg-base-100 rounded-box z-[10] w-64 p-2 shadow-2xl border border-gray-200 my-2 max-h-[300px] overflow-y-auto flex flex-col"
+        className="dropdown-content bg-base-100 dark:bg-dark-bgSection rounded-box z-[10] w-64 p-2 shadow-2xl border border-gray-200 dark:border-dark-sectionText dark:shadow-dark   my-2 max-h-[300px] overflow-y-auto flex flex-col"
       >
         {searchHistory.length === 0 ? (
-          <li className="text-center text-gray-500 py-2">No search history</li>
+          <li className="text-center text-gray-500 dark:text-dark-text py-2">
+            {t("noSearchHistory")}
+          </li>
         ) : (
           <>
             {searchHistory.map((search: string) => (
               <li
                 key={search}
-                className="hover:bg-gray-100 rounded-md my-1 w-full"
+                className="hover:bg-gray-100 dark:hover:bg-dark-bg rounded-md my-1 w-full"
               >
                 <div className="flex justify-between items-center py-2 px-3">
                   <span
@@ -72,7 +79,7 @@ const SearchHistory = () => {
                 onClick={handleClearAll}
                 className="btn btn-error-outline text-center w-full"
               >
-                Clear History
+                {t("clearHistory")}
               </button>
             </li>
           </>
