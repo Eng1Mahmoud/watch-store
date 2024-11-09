@@ -20,7 +20,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item, index }) => {
       href={`/shop/` as any}
       key={item.id}
       onClick={handleCategory}
-      className="shadow-lg"
+      className="shadow-lg dark:bg-dark-bgSection dark:shadow-dark"
     >
       <motion.div
         className="relative overflow-hidden rounded-lg transition-all duration-100 cursor-pointer"
@@ -47,7 +47,9 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item, index }) => {
         </motion.div>
         {/* Add text for small screens */}
         <div className="sm:hidden">
-          <h3 className="text-center text-lg font-semibold">{item.name}</h3>
+          <h3 className="text-center text-lg font-semibold dark:text-dark-text ">
+            {item.name}
+          </h3>
         </div>
       </motion.div>
     </Link>
