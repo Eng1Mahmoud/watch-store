@@ -1,9 +1,12 @@
-import { faqItems } from "./faqItems";
-const page = () => {
+import { getTranslations } from "next-intl/server";
+import { FaqItems } from "./faqItems";
+const page = async () => {
+  const t = await getTranslations("faqs");
+  const faqItems = await FaqItems();
   return (
     <div className="container max-w-screen-lg py-10">
       <h1 className="text-xl font-bold font-main text-main-main text-center dark:text-dark-text pb-8">
-        Frequently Asked Questions
+        {t("title")}
       </h1>
       <div className="join join-vertical w-full">
         {faqItems.map((item, index) => (
