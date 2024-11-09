@@ -36,7 +36,7 @@ const AddressList = () => {
           </div>
         </>
       ) : (
-        <div className="text-center text-lg font-semibold text-main-main">
+        <div className="text-center text-lg font-semibold text-main-main dark:text-dark-text">
           <p>{t("noAddresses")}</p>
         </div>
       )}

@@ -12,7 +12,10 @@ const Wishlists = () => {
   return isLoging ? (
     <div className="indicator" onClick={navigateToWishlists}>
       <span className="badge badge-sm indicator-item"></span>
-      <MdFavoriteBorder size={35} className="text-main-main cursor-pointer" />
+      <MdFavoriteBorder
+        size={35}
+        className="text-main-main cursor-pointer dark:text-dark-text"
+      />
     </div>
   ) : null;
 };

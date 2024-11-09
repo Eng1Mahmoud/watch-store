@@ -30,7 +30,7 @@ a {
     @apply bg-main-main text-text-third dark:bg-dark-bgSection dark:text-dark-text border-0 hover:bg-main-hover hover:border-0;
   }
   .box-shadow {
-    @apply shadow-2xl p-5 rounded-lg border border-gray-200;
+    @apply shadow-2xl p-5 rounded-lg border border-gray-200 dark:border-dark-bgSection dark:shadow-dark;
   }
   .btn-error-outline {
     @apply bg-transparent border-[1px] border-error-main text-error-main hover:text-white hover:bg-error-main hover:border-error-main;

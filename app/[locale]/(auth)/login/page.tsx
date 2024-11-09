@@ -16,7 +16,7 @@ const Login = () => {
       onSubmit={onSubmit}
     >
       <div className="container max-w-[600px]   ">
-        <div className="box-shadow">
+        <div className="box-shadow ">
           <FormInputs />
           <SubmitButton
             loading={loading}

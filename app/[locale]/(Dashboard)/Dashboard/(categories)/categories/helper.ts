@@ -21,7 +21,7 @@ export const useColumns = () => {
 };
 
 export const useGetActions = () => {
-  const t = useTranslations("categories.tableLabels");
+  const t = useTranslations("categories-admin.tableLabels");
   const router = useRouter();
   const queryClient = getQueryClient();
 

@@ -14,7 +14,10 @@ const CartUI = () => {
         className="btn bg-transparent hover:bg-transparent border-none shadow-none btn-circle"
       >
         <div className="indicator">
-          <GiShoppingCart size={35} className="text-main-main cursor-pointer" />
+          <GiShoppingCart
+            size={35}
+            className="text-main-main cursor-pointer dark:text-dark-text"
+          />
           <span className="badge badge-sm indicator-item">
             {ordersLength >= 100 ? "99+" : ordersLength}
           </span>

@@ -17,7 +17,7 @@ const ResetPasswordForm = ({ token }: { token: string }) => {
     >
       <div className="container max-w-[600px] my-[100px]  ">
         <div className="box-shadow">
-          <h1 className="text-2xl font-bold text-center text-main-main mb-8">
+          <h1 className="text-2xl font-bold text-center text-main-main dark:text-dark-text mb-8">
             {t("title")}
           </h1>
           <div className="flex flex-col gap-5">

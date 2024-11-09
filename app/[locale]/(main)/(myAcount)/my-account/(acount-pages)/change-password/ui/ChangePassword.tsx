@@ -17,18 +17,18 @@ const ChangePassword = () => {
   const { onSubmit, loading } = useSavePassword();
   return (
     <div className="container max-w-screen-lg mx-auto my-10">
-      <h1 className="text-2xl font-bold my-4 text-center text-main-main mb-10">
+      <h1 className="text-2xl font-bold my-4 text-center text-main-main mb-10 dark:text-dark-text">
         {t("title")}
       </h1>
       <div className="flex  gap-10">
-        <div className="shadow-custom rounded-md my-5 w-full md:w-1/2 content-center p-5">
+        <div className="shadow-custom dark:shadow-dark rounded-md my-5 w-full md:w-1/2 content-center p-5">
           <div className="content-center">
             <BaseForm
               initialValues={initialValues}
               validationSchema={changePasswordSchema}
               onSubmit={onSubmit}
             >
-              <div className="flex flex-col gap-7">
+              <div className="flex flex-col gap-7 p-5">
                 <PasswordInput
                   name="old_password"
                   placeholder={t("formLabels.oldPassword")}

@@ -7,7 +7,7 @@ import InfiniteScroll from "@/components/Infinity-scroll/InfinityScroll";
 import TableUI from "@/components/loading-ui/TableUI";
 import { useTranslations } from "next-intl";
 const Categories = () => {
-  const t = useTranslations("categories");
+  const t = useTranslations("categories-admin");
   const actions = useGetActions();
   const columns = useColumns();
   const [searchTerm, setSearchTerm] = useState<string | undefined>("");

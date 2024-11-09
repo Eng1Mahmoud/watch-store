@@ -16,7 +16,7 @@ const AddAddressForm = () => {
   };
   const { onSubmit, loading } = useSaveAddresses();
   return (
-    <div className="shadow-custom p-4 rounded-md max-w-5xl mx-auto">
+    <div className="shadow-custom dark:shadow-dark p-4 rounded-md max-w-5xl mx-auto">
       <BaseForm
         initialValues={initialValues}
         validationSchema={validationSchema}
