@@ -11,7 +11,7 @@ export const routes: RouteConfig[] = [
   { path: "/verify-email", roles: ["guest"] },
   { path: "/reset-password", roles: ["guest"] },
   { path: "/forgot-password", roles: ["guest"] },
-  { path: "/my-acount", roles: ["user", "admin"] },
+  { path: "/my-account", roles: ["user", "admin"] },
   { path: "/change-password", roles: ["user", "admin"] },
   { path: "/my-Addresses", roles: ["user", "admin"] },
   { path: "/my-orders", roles: ["user", "admin"] },

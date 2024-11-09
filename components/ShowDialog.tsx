@@ -28,7 +28,7 @@ const ShowDialog = ({ Content, hiddenDialog }: LoadingScreenProps) => {
   return (
     <div className="blur">
       <dialog id="my_modal_1" className="modal backdrop-blur-md" ref={modalRef}>
-        <div className="modal-box">
+        <div className="modal-box dark:bg-dark-bgSection dark:text-dark-text">
           <Content />
         </div>
       </dialog>

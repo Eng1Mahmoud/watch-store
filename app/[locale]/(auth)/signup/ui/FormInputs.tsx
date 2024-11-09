@@ -6,7 +6,7 @@ const FormInputs = () => {
   const t = useTranslations("signUp");
   return (
     <>
-      <h1 className="text-2xl font-bold text-center text-main-main mb-8">
+      <h1 className="text-2xl font-bold text-center text-main-main mb-8  dark:text-dark-text">
         {t("title")}
       </h1>
       <div className="flex flex-col gap-5">
@@ -17,8 +17,11 @@ const FormInputs = () => {
         />
         <Input name="email" placeholder={t("formLabels.email")} type="email" />
         <PasswordInput name="password" placeholder={t("formLabels.password")} />
-        <div className="flex justify-start capitalize text-main-main">
-          <Link href="/login" className="text-main-main font-bold pl-1">
+        <div className="flex justify-start capitalize text-main-main  dark:text-dark-text">
+          <Link
+            href="/login"
+            className="text-main-main font-bold pl-1  dark:text-dark-text"
+          >
             {t("links.have_account")}
           </Link>
         </div>

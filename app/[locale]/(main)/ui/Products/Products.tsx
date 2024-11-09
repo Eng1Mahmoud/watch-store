@@ -12,7 +12,7 @@ const Products = async () => {
   });
   return (
     <div className="container py-10" id="products">
-      <h1 className="text-2xl font-extrabold text-center text-main-main pb-10">
+      <h1 className="text-2xl font-extrabold text-center text-main-main pb-10 dark:text-dark-text">
         {t("title")}
       </h1>
       <Slider />

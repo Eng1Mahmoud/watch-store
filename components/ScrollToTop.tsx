@@ -34,7 +34,7 @@ const ScrollToTop = () => {
 
   return (
     <div
-      className="fixed bottom-8 right-5 z-[1000000000000] cursor-pointer bg-main-main p-2 rounded-full translate-x-[150%] transition-transform duration-300"
+      className=" border-[1px] fixed bottom-8 right-5 z-[1000000000000] cursor-pointer bg-main-main dark:bg-dark-bgSection dark:shadow-dark dark:border-white  p-2 rounded-full translate-x-[150%] transition-transform duration-300"
       ref={scrollRef}
       onClick={handleClick}
     >

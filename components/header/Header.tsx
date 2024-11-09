@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "@/public/assets/logo.webp";
+import logo from "@/public/assets/logo.png";
 import { Link } from "@/i18n/routing";
 import Search from "./search/Search";
 import Cart from "./cart/Cart";
@@ -11,13 +11,19 @@ import Wishlists from "./Wishlists";
 const Header = () => {
   return (
     <div className="header container">
-      <div className="navbar bg-base-100 gap-5">
+      <div className="navbar bg-base-100 gap-5 dark:bg-dark-bg">
         <div className="flex-none">
           <Link href="/">
-            <Image width={100} height={100} alt="watch shop " src={logo} />
+            <Image
+              width={100}
+              height={100}
+              alt="watch shop "
+              src={logo}
+              className="scale-[1.6]"
+            />
           </Link>
         </div>
-        <div className="gap-2 flex-1 justify-end">
+        <div className="gap-2 flex-1 justify-end ">
           <div className="hidden md:flex-1 md:flex">
             <Search />
           </div>

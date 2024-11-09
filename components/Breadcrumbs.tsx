@@ -35,13 +35,19 @@ const Breadcrumbs = () => {
 
     if (isLastSegment) {
       return (
-        <li key={index} className="text-main-main capitalize">
+        <li
+          key={index}
+          className="text-main-main capitalize dark:text-dark-text"
+        >
           {segmentName}
         </li>
       );
     } else {
       return (
-        <li key={index} className="text-main-main capitalize">
+        <li
+          key={index}
+          className="text-main-main capitalize dark:text-dark-text"
+        >
           <Link href={`/${pathSegments.slice(0, index + 1).join("/")}` as any}>
             {segmentName}
           </Link>
@@ -50,9 +56,9 @@ const Breadcrumbs = () => {
     }
   });
   return (
-    <div className="breadcrumbs text-sm">
+    <div className="breadcrumbs text-sm dark:bg-dark-bgSection dark:shadow-dark px-3">
       <ul>
-        <li className="text-main-main">
+        <li className="text-main-main dark:text-dark-text">
           <Link href="/">{locale === "ar" ? "الرئيسية" : "Home"}</Link>
         </li>
         {breadcrumbs}

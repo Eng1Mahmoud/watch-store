@@ -17,14 +17,14 @@ export const OrderItem = ({ item }: { item: IOrderItem }) => {
           className="object-cover rounded-md"
         />
       </div>
-      <div className="ml-4 flex-1">
-        <h3 className="text-lg font-medium text-main-main">
+      <div className="ml-4 flex-1 dark:text-dark-text">
+        <h3 className="text-lg font-medium text-main-main dark:text-dark-text">
           {item.product.name}
         </h3>
-        <p className="text-text-secondary">
+        <p className="text-text-secondary dark:text-dark-text">
           {t("quantity")}: {item.product.quantity}
         </p>
-        <p className="text-text-secondary">
+        <p className="text-text-secondary dark:text-dark-text">
           {t("price")}: {formatCurrency(item.product.price, locale)}
         </p>
       </div>

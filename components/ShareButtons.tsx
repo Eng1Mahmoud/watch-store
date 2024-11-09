@@ -19,14 +19,14 @@ const ShareButtons: React.FC<ShareButtonsProps> = ({ title }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative p-2 bg-white rounded-full z-[1000]">
+    <div className="relative p-2 bg-white dark:bg-dark-bgSection rounded-full z-[1000]">
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 text-[18px] text-main-main"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <IoMdShare />
+        <IoMdShare className="dark:text-dark-text" />
       </motion.button>
       <AnimatePresence>
         {isOpen && (
@@ -34,7 +34,7 @@ const ShareButtons: React.FC<ShareButtonsProps> = ({ title }) => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-[-30px] mt-2 bg-white shadow-md rounded-md p-2 flex gap-2"
+            className="absolute top-full left-[-30px] mt-2 bg-white dark:bg-dark-bgSection shadow-md dark:shadow-dark rounded-md p-2 flex gap-2"
           >
             <ul className="flex flex-col gap-2">
               {[

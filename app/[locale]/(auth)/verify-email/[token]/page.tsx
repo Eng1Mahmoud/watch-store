@@ -1,4 +1,3 @@
-import React from "react";
 import ShowDialog from "@/components/ShowDialog";
 import LoadingScreenContent from "../ui/LoadingScreenContent";
 import { sendToken } from "./sendToken";
@@ -16,9 +15,10 @@ const page = async ({ params }: { params: { token: string } }) => {
     });
 
     const token = data?.data?.token;
+    console.log("token", token);
 
     return (
-      <div>
+      <div className="dark:bg-dark-bgSection dark:text-dark-text">
         <PreperAcount token={token} />
         <ShowDialog Content={LoadingScreenContent} hiddenDialog={false} />
       </div>

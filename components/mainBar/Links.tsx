@@ -5,7 +5,9 @@ export const Links = () => {
   const t = useTranslations();
   return (
     <div>
-      <Link href="/faqs">{t("navLinks.faq")}</Link>
+      <Link href="/faqs" className="dark:text-dark-text">
+        {t("navLinks.faq")}
+      </Link>
     </div>
   );
 };

@@ -44,11 +44,11 @@ export const routing = defineRouting({
       ar: "/انشاء-حساب",
     },
     "/verify-email/[token]": {
-      en: "/verify-email",
-      ar: "/تحقق-من-البريد-الإلكتروني",
+      en: "/verify-email/[token]",
+      ar: "/تحقق-من-البريد-الإلكتروني/[token]",
     },
-    "/forgot-Password": {
-      en: "/forgot-Password",
+    "/forgot-password": {
+      en: "/forgot-password",
       ar: "/نسيت-كلمة-المرور",
     },
     "/reset-password/[token]": {

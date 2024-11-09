@@ -11,7 +11,7 @@ const page = async () => {
   });
   return (
     <div className="container max-w-screen-lg  py-10">
-      <h2 className="text-2xl text-center mb-14 mt-10 text-main-main font-extrabold">
+      <h2 className="text-2xl text-center mb-14 mt-10 text-main-main font-extrabold dark:text-dark-text">
         {t("title")}
       </h2>
       <WishLists />

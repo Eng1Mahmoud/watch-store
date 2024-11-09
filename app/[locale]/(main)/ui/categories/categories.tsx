@@ -12,13 +12,13 @@ const Categories = async () => {
   });
   return (
     <div className="container py-10" id="categories">
-      <h2 className="text-2xl text-center my-10 text-main-main font-extrabold">
+      <h2 className="text-2xl text-center my-10 text-main-main font-extrabold dark:text-dark-text">
         {t("title")}
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <Items />
       </div>
-      <div className="flex justify-center mt-10">
+      <div className="flex justify-center mt-12">
         <Link className="btn btn-primary px-16" href="/categories">
           {t("seeAll")}
         </Link>

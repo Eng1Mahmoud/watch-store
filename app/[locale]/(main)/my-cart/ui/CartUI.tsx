@@ -11,13 +11,16 @@ const CartUI = () => {
   return (
     <div className="container max-w-screen-lg py-4 px-4">
       <div className="flex flex-col md:flex-row gap-4">
-        <div className="flex flex-col gap-4 w-full md:w-[70%] shadow-custom p-4 rounded-lg">
+        <div className="flex flex-col gap-4 w-full md:w-[70%] shadow-custom p-4 rounded-lg dark:bg-dark-bgSection">
           {orders.length === 0 ? (
             <div className="flex flex-col justify-center items-center h-full gap-4">
-              <h1 className="text-lg font-semibold text-text-secondary">
+              <h1 className="text-lg font-semibold text-text-secondary dark:text-dark-text">
                 {t("emptyCart")}
               </h1>
-              <Link href="/shop" className="btn btn-primary">
+              <Link
+                href="/shop"
+                className="btn btn-primary dark:bg-dark-text dark:text-dark-bgSection"
+              >
                 {t("goToShop")}
               </Link>
             </div>

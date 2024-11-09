@@ -22,7 +22,7 @@ const SendEmailForm = () => {
         >
           <div className="container max-w-[600px] h-screen content-center">
             <div className="box-shadow">
-              <h1 className="text-2xl font-bold text-center text-main-main mb-8">
+              <h1 className="text-2xl font-bold text-center text-main-main mb-8  dark:text-dark-text">
                 {t("title")}
               </h1>
               <div className="flex flex-col gap-5">

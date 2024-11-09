@@ -55,7 +55,7 @@ const InfinityScrollComponent: React.FC<InfinityScrollProps> = ({
       loader={<LoadingComponent count={itemsPerPage} />}
       endMessage={
         items.length > 0 ? (
-          <div className="text-center pt-10 text-main-main font-medium">
+          <div className="text-center pt-10 text-main-main font-medium dark:text-dark-text">
             {t("end-data")}
           </div>
         ) : null
@@ -63,7 +63,7 @@ const InfinityScrollComponent: React.FC<InfinityScrollProps> = ({
     >
       <DisplayComponent data={items} />
       {items.length === 0 && !isLoading && (
-        <div className="text-center pt-10 text-main-main font-medium">
+        <div className="text-center pt-10 text-main-main font-medium dark:text-dark-text">
           {t("no-data")}
         </div>
       )}

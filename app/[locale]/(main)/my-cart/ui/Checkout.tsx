@@ -29,10 +29,10 @@ const CheckOut = () => {
   };
 
   return (
-    <div className="shadow-custom p-4 rounded-lg h-auto">
+    <div className="shadow-custom p-4 rounded-lg h-auto dark:shadow-dark">
       <div className="flex flex-col gap-4 w-full">
         <select
-          className="select select-bordered w-full "
+          className="select select-bordered w-full dark:bg-dark-bgSection dark:text-dark-text"
           onChange={handlePaymentMethodChange}
           value={paymentMethod}
         >
@@ -45,38 +45,38 @@ const CheckOut = () => {
             </option>
           ))}
         </select>
-        <p className="text-ms ">
+        <p className="text-ms dark:text-dark-text ">
           {t("subtotal")}: {formatCurrency(totalPrice, locale)}
         </p>
-        <p className="text-ms ">
+        <p className="text-ms dark:text-dark-text ">
           {t("taxes")}: {formatCurrency(15, locale)}
         </p>
-        <p className="text-sm ">
+        <p className="text-sm dark:text-dark-text">
           {t("total-items")}: {orders.length}
         </p>
-        <p className="text-ms ">
+        <p className="text-ms dark:text-dark-text">
           {t("total-price")}: {formatCurrency(totalPrice + 15, locale)}
         </p>
         {/* coupon */}
-        <h3 className="text-lg font-bold text-main-main">
+        <h3 className="text-lg font-bold text-main-main dark:text-dark-text">
           {t("coupon.title")}
         </h3>
-        <div className="flex rounded-lg shadow-custom ">
+        <div className="flex rounded-lg shadow-custom dark:shadow-dark">
           {/*add coupon */}
           <input
             onChange={(e) => setCouponCode(e.target.value)}
             value={couponCode}
             type="text"
             placeholder={t("coupon.code")}
-            className="input focus:outline-none  ltr:rounded-tr-none ltr:rounded-br-none rtl:rounded-tl-none rtl:rounded-bl-none w-full "
+            className="input focus:outline-none  ltr:rounded-tr-none ltr:rounded-br-none rtl:rounded-tl-none rtl:rounded-bl-none w-full dark:text-dark-text dark:bg-dark-bgSection  "
           />
-          <button className="btn btn-primary ltr:rounded-tl-none ltr:rounded-bl-none rtl:rounded-tr-none rtl:rounded-br-none ">
+          <button className="btn btn-primary dark:bg-dark-text dark:text-dark-bgSection ltr:rounded-tl-none ltr:rounded-bl-none rtl:rounded-tr-none rtl:rounded-br-none ">
             {t("coupon.apply")}
           </button>
         </div>
       </div>
       <button
-        className="btn w-full mt-3 text-main-main shadow-sm font-extrabold"
+        className="btn btn-primary w-full mt-3 shadow-sm font-extrabold dark:shadow-dark "
         onClick={() => handleCheckout(orders, paymentMethod)}
       >
         {t("checkout-btn")}

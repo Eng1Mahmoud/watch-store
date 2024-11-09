@@ -1,14 +1,15 @@
 "use client";
+import SwithThem from "../SwithThem";
 import { Links } from "./Links";
 import SwitchLang from "./SwitchLang";
 const MainBar = () => {
   return (
     <div>
       <div className="container max-w-screen-xxl py-1 ">
-        <div className="flex justify-end items-center gap-1">
+        <div className="flex justify-end items-center gap-3">
           <Links />
-          <div className="bg-gray-500 divider-horizontal w-[2px] h-[25px] " />
           <SwitchLang />
+          <SwithThem />
         </div>
       </div>
       <div className="divider py-0 my-0 h-0"></div>

@@ -30,7 +30,7 @@ const NavLinks = () => {
                 e.preventDefault();
                 scrollToSection(link.sectionId);
               }}
-              className="font-main font-medium text-[15px] transition-all duration-300 hover:scale-110 hover:text-main-main px-3"
+              className="font-main font-medium text-[15px] transition-all duration-300 hover:scale-110 hover:text-main-main px-3 dark:text-dark-text"
             >
               {t(`navLinks.${link.label}`)}
             </button>

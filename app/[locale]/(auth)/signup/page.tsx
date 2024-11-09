@@ -11,7 +11,7 @@ const SignUp = () => {
   const validationSchema = useSignUpValidation();
   const { onSubmit, loading, success } = useSignUp();
   return (
-    <>
+    <div className="">
       {success ? (
         <SuccessSignUp />
       ) : (
@@ -20,8 +20,8 @@ const SignUp = () => {
           validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
-          <div className="container max-w-[600px] ">
-            <div className="box-shadow">
+          <div className="container max-w-[600px]">
+            <div className="box-shadow ">
               <FormInputs />
               <SubmitButton
                 loading={loading}
@@ -32,7 +32,7 @@ const SignUp = () => {
           </div>
         </BaseForm>
       )}
-    </>
+    </div>
   );
 };
 

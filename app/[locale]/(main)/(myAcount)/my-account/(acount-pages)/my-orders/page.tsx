@@ -12,7 +12,7 @@ const page = async () => {
 
   return (
     <div>
-      <h1 className="text-2xl text-center font-bold my-6 text-main-main">
+      <h1 className="text-2xl text-center font-bold my-6 text-main-main dark:text-dark-text">
         {t("title")}
       </h1>
       <MyOrders />

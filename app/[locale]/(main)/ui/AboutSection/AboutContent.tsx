@@ -10,8 +10,10 @@ export const AboutContent = () => {
       whileInView={{ x: 0 }}
       viewport={{ once: true }}
     >
-      <h1 className="text-2xl font-bold text-main-main">{t("title")}</h1>
-      <p className="text-text-secondary leading-[30px] pt-5">
+      <h1 className="text-2xl font-bold text-main-main dark:text-dark-text">
+        {t("title")}
+      </h1>
+      <p className="text-text-secondary dark:text-dark-text leading-[30px] pt-5">
         {t("description")}
       </p>
     </motion.div>

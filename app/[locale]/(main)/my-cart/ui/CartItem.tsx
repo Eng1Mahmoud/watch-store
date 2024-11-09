@@ -12,14 +12,14 @@ const CartItem = ({ order }: { order: ICart }) => {
   } = useCart();
   const { product, quantity } = order;
   return (
-    <div className="bg-white rounded-lg shadow-custom p-4 w-full relative">
+    <div className="bg-white dark:bg-dark-bg dark:shadow-dark rounded-lg shadow-custom p-4 w-full relative">
       <div
-        className="tooltip absolute top-1 ltr:right-1 rtl:left-1 z-[2000]"
+        className="tooltip absolute top-1 ltr:right-1 rtl:left-1 z-[2000] "
         data-tip="remove"
       >
         <button onClick={() => removeProductFromCart(product.id as string)}>
           <IoIosRemoveCircleOutline
-            className="text-2xl bg-text-fourth rounded-full p-1 text-red-500 font-bold "
+            className="text-2xl bg-text-fourth rounded-full p-1 text-red-500 font-bold dark:shadow-dark "
             size={30}
           />
         </button>
@@ -36,27 +36,31 @@ const CartItem = ({ order }: { order: ICart }) => {
         </div>
 
         {/* Product Details */}
-        <div className="rtl:text-right ltr:text-left mb-4 sm:mb-0 w-full px-3">
-          <h2 className="text-lg font-semibold mb-1">{product.name}</h2>
-          <p className="text-sm text-gray-600 mb-2">{product.description}</p>
-          <p className="text-lg font-bold text-main-main">
+        <div className="rtl:text-right ltr:text-left mb-4 sm:mb-0 w-full px-3 dark:text-dark-text">
+          <h2 className="text-lg font-semibold mb-1 dark:text-dark-text ">
+            {product.name}
+          </h2>
+          <p className="text-sm text-gray-600 mb-2 dark:text-dark-text">
+            {product.description}
+          </p>
+          <p className="text-lg font-bold text-main-main dark:text-dark-text">
             ${product.price * quantity}
           </p>
         </div>
         {/* Quantity Controls */}
         <div className="flex items-center justify-center sm:justify-end w-full sm:w-auto">
-          <div className="flex items-center bg-gray-100 rounded-full p-1">
+          <div className="flex items-center bg-gray-100 dark:bg-dark-bgSection rounded-full p-1">
             <button
-              className="text-main-main hover:bg-main-main hover:text-white transition-colors duration-200 rounded-full w-8 h-8 flex items-center justify-center"
+              className="text-main-main hover:bg-main-main hover:text-white dark:bg-dark-text dark:text-dark-bgSection transition-colors duration-200 rounded-full w-8 h-8 flex items-center justify-center"
               onClick={() => decrementProductQuantity(product?.id as string)}
             >
               <RiSubtractFill className="text-sm" />
             </button>
-            <span className="mx-3 text-lg font-semibold min-w-[30px] text-center">
+            <span className="mx-3 text-lg font-semibold min-w-[30px] text-center dark:text-dark-text">
               {quantity}
             </span>
             <button
-              className="text-main-main hover:bg-main-main hover:text-white transition-colors duration-200 rounded-full w-8 h-8 flex items-center justify-center"
+              className="text-main-main hover:bg-main-main hover:text-white dark:bg-dark-text dark:text-dark-bgSection  transition-colors duration-200 rounded-full w-8 h-8 flex items-center justify-center"
               onClick={() => incrementProductQuantity(product?.id as string)}
             >
               <FaPlus className="text-sm" />

@@ -28,37 +28,38 @@ export const Slider: React.FC = () => {
   };
 
   return (
-    <div className="py-2">
+    <div className="p-2">
       <Swiper
         modules={[Autoplay]}
         autoplay={{ delay: 2500, disableOnInteraction: true }}
-        spaceBetween={200}
+        spaceBetween={30}
         slidesPerView={1}
         loop={true}
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         breakpoints={{
-          // when window width is >= 640px
-
           640: {
             slidesPerView: 2,
-            spaceBetween: 20,
+            spaceBetween: 30,
           },
         }}
-        className="position-relative h-auto  w-full"
+        className="position-relative h-auto  m-[10px]"
       >
         {[1, 2, 3].map((slide) => (
-          <SwiperSlide key={slide}>
+          <SwiperSlide
+            key={slide}
+            className="bg-white dark:bg-dark-bgSection dark:shadow-dark p-5 rounded-lg shadow-xl h-[250px] flex flex-col border-2 dark:border-dark-sectionText"
+          >
             {" "}
             {/* Set a fixed height */}
-            <div className="bg-white p-5 rounded-lg shadow-xl h-[250px] flex flex-col">
+            <div>
               <div className="flex items-center justify-center flex-shrink-0">
                 <FaQuoteLeft className="text-[50px] text-main-main" />
               </div>
               <div className="flex flex-col flex-grow justify-center">
-                <h1 className="text-text-secondary text-2xl font-bold text-center pt-5">
+                <h1 className="text-text-secondary dark:text-dark-text text-2xl font-bold text-center pt-5">
                   {t(`${slide}.title`)}
                 </h1>
-                <p className="text-text-secondary text-center pt-5 overflow-y-auto">
+                <p className="text-text-secondary dark:text-dark-text text-center pt-5 overflow-y-auto">
                   {t(`${slide}.description`)}
                 </p>
               </div>
@@ -69,14 +70,16 @@ export const Slider: React.FC = () => {
         <div className=" hidden md:flex absolute inset-y-1/2 transform -translate-y-1/2 left-5 right-5  justify-between items-center z-50">
           <button
             onClick={handlePrev}
-            className="bg-white text-white p-2 rounded-full"
+            className="border-2 bg-white text-white p-2 rounded-full dark:bg-dark-bgSection
+             dark:text-dark-text dark:shadow-dark dark:border-dark-sectionText rtl:rotate-180"
           >
             <IoIosArrowBack className="text-[25px] text-zinc-400" />
           </button>
 
           <button
             onClick={handleNext}
-            className="bg-white text-white p-2 rounded-full"
+            className="border-2 bg-white text-white p-2 rounded-full dark:bg-dark-bgSection
+             dark:text-dark-text dark:shadow-dark dark:border-dark-sectionText rtl:rotate-180"
           >
             <IoIosArrowForward className="text-[25px]  text-zinc-400" />
           </button>

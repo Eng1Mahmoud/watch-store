@@ -16,8 +16,14 @@ const SwapLockPassword = ({ setType }: SwapLockPasswordProps) => {
       <label className="swap swap-rotate">
         {/* This hidden checkbox controls the state */}
         <input type="checkbox" onChange={handleToggle} />
-        <CiLock className="swap-off fill-current" size={25} />
-        <FaEye className="swap-on fill-current" size={25} />
+        <CiLock
+          className="swap-off fill-current dark:fill-dark-text"
+          size={25}
+        />
+        <FaEye
+          className="swap-on fill-current dark:fill-dark-text "
+          size={25}
+        />
       </label>
     </div>
   );

@@ -74,16 +74,16 @@ export const Slider: React.FC = () => {
         <div className="hidden md:flex absolute inset-y-1/2 transform -translate-y-1/2 left-5 right-5 justify-between items-center z-50">
           <button
             onClick={handlePrev}
-            className="bg-white text-white p-2 rounded-full rtl:rotate-180"
+            className="bg-white text-white p-2 rounded-full rtl:rotate-180 dark:bg-dark-bgSection dark:text-dark-text"
           >
-            <IoIosArrowBack className="text-[25px] text-zinc-400" />
+            <IoIosArrowBack className="text-[25px] text-zinc-400 dark:text-dark-text" />
           </button>
 
           <button
             onClick={handleNext}
-            className="bg-white text-white p-2 rounded-full rtl:rotate-180"
+            className="bg-white text-white p-2 rounded-full rtl:rotate-180 dark:bg-dark-bgSection dark:text-dark-text"
           >
-            <IoIosArrowForward className="text-[25px] text-zinc-400" />
+            <IoIosArrowForward className="text-[25px] text-zinc-400 dark:text-dark-text" />
           </button>
         </div>
       </Swiper>

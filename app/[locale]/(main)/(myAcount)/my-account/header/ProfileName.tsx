@@ -13,7 +13,9 @@ const ProfileName = () => {
   const username = data?.data?.userData?.username;
   return (
     <div className="mt-[120px] pb-4">
-      <h1 className="text-2xl font-bold text-center">{username}</h1>
+      <h1 className="text-2xl font-bold text-center dark:text-dark-text">
+        {username}{" "}
+      </h1>
     </div>
   );
 };
