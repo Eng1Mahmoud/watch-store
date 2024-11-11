@@ -20,7 +20,7 @@ export const useEditProduct = ({ id }: { id: string }) => {
     onSuccess: (res) => {
       if (res.success) {
         toast.success(res.message);
-        router.push("/Dashboard/products");
+        router.push("/dashboard/products");
         queryClient.invalidateQueries({ queryKey: ["products"] });
         queryClient.invalidateQueries({ queryKey: ["productDetails", id] });
       } else {

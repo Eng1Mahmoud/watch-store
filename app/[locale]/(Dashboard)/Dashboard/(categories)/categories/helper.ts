@@ -7,7 +7,7 @@ import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 import { useTranslations } from "next-intl";
 export const useColumns = () => {
-  const t = useTranslations("categories.tableLabels");
+  const t = useTranslations("categories-admin.tableLabels");
   return [
     {
       key: "name",
@@ -51,9 +51,9 @@ export const useGetActions = () => {
     {
       label: t("edit"),
       icon: CiEdit,
-      labelColor: "text-main-main",
+      labelColor: "text-main-main dark:text-dark-textAction",
       onClick: (item: any) => {
-        router.push(`/Dashboard/edit-category/${item.name}` as any);
+        router.push(`/dashboard/edit-category/${item.name}` as any);
       },
     },
     {

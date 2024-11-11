@@ -57,9 +57,9 @@ export const useGetActions = () => {
     {
       label: t("edit"),
       icon: CiEdit,
-      labelColor: "text-main-main",
+      labelColor: "text-main-main dark:text-dark-textAction",
       onClick: (product: any) => {
-        router.push(`/Dashboard/edit-product/${product.id}` as any);
+        router.push(`/dashboard/edit-product/${product.id}` as any);
       },
     },
     {

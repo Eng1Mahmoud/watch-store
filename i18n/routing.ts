@@ -55,40 +55,40 @@ export const routing = defineRouting({
       en: "/reset-password/[token]",
       ar: "/اعادة-تعين-كلمة-المرور/[token]",
     },
-    "/Dashboard": {
-      en: "/Dashboard",
+    "/dashboard": {
+      en: "/dashboard",
       ar: "/لوحة-التحكم",
     },
-    "/Dashboard/users": {
-      en: "/Dashboard/users",
+    "/dashboard/users": {
+      en: "/dashboard/users",
       ar: "/مستخدمين/لوحة-التحكم",
     },
-    "/Dashboard/edit-user/[id]": {
-      en: "/Dashboard/edit-user/[id]",
+    "/dashboard/edit-user/[id]": {
+      en: "/dashboard/edit-user/[id]",
       ar: "/تعديل-مستخدم/لوحة-التحكم/[id]",
     },
-    "/Dashboard/products": {
-      en: "/Dashboard/products",
+    "/dashboard/products": {
+      en: "/dashboard/products",
       ar: "/منتجات/لوحة-التحكم",
     },
-    "/Dashboard/edit-product/[id]": {
-      en: "/Dashboard/edit-product/[id]",
+    "/dashboard/edit-product/[id]": {
+      en: "/dashboard/edit-product/[id]",
       ar: "/تعديل-منتج/لوحة-التحكم/[id]",
     },
-    "/Dashboard/categories": {
-      en: "/Dashboard/categories",
+    "/dashboard/categories": {
+      en: "/dashboard/categories",
       ar: "/فئات/لوحة-التحكم",
     },
-    "/Dashboard/edit-category/[name]": {
-      en: "/Dashboard/edit-category/[name]",
+    "/dashboard/edit-category/[name]": {
+      en: "/dashboard/edit-category/[name]",
       ar: "/تعديل-فئة/لوحة-التحكم/[name]",
     },
-    "/Dashboard/add-product": {
-      en: "/Dashboard/add-product",
+    "/dashboard/add-product": {
+      en: "/dashboard/add-product",
       ar: "/إضافة-منتج/لوحة-التحكم",
     },
-    "/Dashboard/add-category": {
-      en: "/Dashboard/add-category",
+    "/dashboard/add-category": {
+      en: "/dashboard/add-category",
       ar: "/إضافة-فئة/لوحة-التحكم",
     },
     "/my-account": {

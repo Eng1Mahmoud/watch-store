@@ -18,7 +18,7 @@ const DrawerToggle: React.FC<DrawerToggleProps> = ({ children }) => {
     setOpen(!open);
   };
   return (
-    <div className="drawer lg:drawer-open ">
+    <div className="drawer lg:drawer-open dark:text-dark-text ">
       <input
         id="my-drawer"
         type="checkbox"
@@ -26,19 +26,19 @@ const DrawerToggle: React.FC<DrawerToggleProps> = ({ children }) => {
         checked={open}
         onChange={handleDrawerToggle}
       />
-      <div className="drawer-content flex flex-col ">
+      <div className="drawer-content flex flex-col  ">
         {/* Navbar */}
-        <div className="navbar bg-base-100 shadow-md">
+        <div className="navbar bg-base-100 shadow-md dark:bg-dark-bgSection">
           <div className="flex-none">
             <label
               htmlFor="my-drawer"
               className="btn btn-square btn-ghost drawer-button lg:hidden"
             >
-              <FiMenu className="h-6 w-6" />
+              <FiMenu className="h-6 w-6 dark:text-dark-text" />
             </label>
           </div>
           <div className="flex-1">
-            <a className="btn btn-ghost normal-case text-xl text-main-main">
+            <a className="btn btn-ghost normal-case text-xl text-main-main dark:text-dark-text">
               {t("title")}
             </a>
           </div>
@@ -51,28 +51,30 @@ const DrawerToggle: React.FC<DrawerToggleProps> = ({ children }) => {
           {children}
         </main>
       </div>
-      <div className="drawer-side h-auto min-h-screen shadow-custom z-[1000000]">
+      <div className="drawer-side h-auto min-h-screen shadow-custom z-[1000000] ">
         <label htmlFor="my-drawer" className="drawer-overlay"></label>
         <aside
-          className={`bg-white h-full  ${open ? "w-64" : "w-20"}`}
+          className={`bg-white h-full  ${open ? "w-64" : "w-20"} dark:bg-dark-bgSection dark:shadow-dark p-[1px]`}
           style={{
             transition: "width .3s ease-in-out",
           }}
         >
-          <div className="flex justify-end p-2 border-b-2 border-gray-200">
-            <button
-              onClick={handleDrawerToggle}
-              className="btn btn-square btn-ghost"
-            >
-              {open ? (
-                <FiChevronLeft className="h-6 w-6 text-main-main" />
-              ) : (
-                <FiChevronRight className="h-6 w-6 text-main-main" />
-              )}
-            </button>
+          <div className="dark:shadow-dark h-full">
+            <div className="flex justify-end p-2 border-b-2 border-gray-200 dark:border-dark-border dark:bg-dark-bgSection">
+              <button
+                onClick={handleDrawerToggle}
+                className="btn btn-square btn-ghost"
+              >
+                {open ? (
+                  <FiChevronLeft className="h-6 w-6 text-main-main dark:text-dark-text" />
+                ) : (
+                  <FiChevronRight className="h-6 w-6 text-main-main dark:text-dark-text" />
+                )}
+              </button>
+            </div>
+            {/* Pass open state and onToggle function to Menu component */}
+            <Menu open={open} onToggle={handleDrawerToggle} />
           </div>
-          {/* Pass open state and onToggle function to Menu component */}
-          <Menu open={open} onToggle={handleDrawerToggle} />
         </aside>
       </div>
     </div>
