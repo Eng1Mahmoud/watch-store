@@ -17,7 +17,7 @@ export const useAddCategory = () => {
         queryClient.invalidateQueries({ queryKey: ["categories"] }); // revalidate categories in table
         queryClient.invalidateQueries({ queryKey: ["categories-home"] }); // revalidate categories in home
         queryClient.invalidateQueries({ queryKey: ["categories-selectBox"] }); // revalidate categories for select box
-        router.push("/Dashboard/categories"); // redirect to categories page
+        router.push("/dashboard/categories"); // redirect to categories page
       } else {
         toast.error(data.message);
       }

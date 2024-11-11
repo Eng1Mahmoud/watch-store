@@ -15,7 +15,7 @@ export const useEditUser = ({ id }: { id: string | undefined }) => {
     onSuccess: (res) => {
       if (res.success) {
         toast.success(res.message);
-        router.push("/Dashboard/users");
+        router.push("/dashboard/users");
         queryClient.invalidateQueries({ queryKey: ["users"] }); // refetch users
         queryClient.invalidateQueries({ queryKey: ["userDetails", id] }); // refetch user details
       } else {

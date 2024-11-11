@@ -16,7 +16,7 @@ export const useAddProduct = () => {
     onSuccess: ({ data }) => {
       if (data.success) {
         toast.success(data.message);
-        router.push("/Dashboard/products");
+        router.push("/dashboard/products");
         queryClient.invalidateQueries({ queryKey: ["products"] });
       } else {
         toast.error(data.message);

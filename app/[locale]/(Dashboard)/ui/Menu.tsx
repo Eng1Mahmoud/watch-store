@@ -52,14 +52,14 @@ const AddMenuItem = ({ open, onToggle }: MenuProps) => {
           </summary>
           <ul>
             <MenuItem
-              href="/Dashboard/add-product"
+              href="/dashboard/add-product"
               icon={<FiShoppingBag className="h-5 w-5 text-main-main" />}
               text={t("product")}
               open={open}
               onToggle={onToggle}
             />
             <MenuItem
-              href="/Dashboard/add-category"
+              href="/dashboard/add-category"
               icon={<FiFolder className="h-5 w-5 text-main-main" />}
               text={t("category")}
               open={open}
@@ -91,7 +91,7 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
         onToggle={onToggle}
       />
       <MenuItem
-        href="/Dashboard"
+        href="/dashboard"
         icon={
           <MdDashboard className="h-6 w-6 text-main-main" onClick={onToggle} />
         }
@@ -100,14 +100,14 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
         onToggle={onToggle}
       />
       <MenuItem
-        href="/Dashboard/users"
+        href="/dashboard/users"
         icon={<FiUsers className="h-6 w-6 text-main-main" onClick={onToggle} />}
         text={t("users")}
         open={open}
         onToggle={onToggle}
       />
       <MenuItem
-        href="/Dashboard/products"
+        href="/dashboard/products"
         icon={
           <FiShoppingBag
             className="h-6 w-6 text-main-main"
@@ -119,7 +119,7 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
         onToggle={onToggle}
       />
       <MenuItem
-        href="/Dashboard/orders"
+        href="/dashboard/orders"
         icon={
           <FiClipboard className="h-6 w-6 text-main-main" onClick={onToggle} />
         }
@@ -128,7 +128,7 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
         onToggle={onToggle}
       />
       <MenuItem
-        href="/Dashboard/categories"
+        href="/dashboard/categories"
         icon={
           <FiFolder className="h-5 w-5 text-main-main" onClick={onToggle} />
         }

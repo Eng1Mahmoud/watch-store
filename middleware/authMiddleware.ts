@@ -11,8 +11,9 @@ export async function authMiddleware(
   const token = request.cookies.get("token")?.value;
   const currentLang = pathname.split("/")[1];
   const currentPath = pathname.split("/")[2]
-    ? `/${pathname.split("/")[2]}`
+    ? `/${decodeURIComponent(pathname.split("/")[2])}`
     : "/";
+  console.log("currentPath", currentPath);
 
   let userRole: Role = "guest"; // Default role is guest
 
