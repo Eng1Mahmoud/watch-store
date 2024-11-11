@@ -1,0 +1,12 @@
+{
+    "toast-cart": {
+      "login_required": "Please login to add product to cart",
+      "product_exists": "Product already in cart",
+      "invalid_product": "Invalid product",
+      "add_success": "Product added to cart",
+      "add_error": "Error adding product to cart"
+    },
+    "toast-auth": {
+       "section_expired": "Session expired, please login again"
+    }
+  }

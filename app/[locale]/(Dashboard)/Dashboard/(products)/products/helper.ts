@@ -1,5 +1,4 @@
 import { useRouter } from "@/i18n/routing";
-import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 import { getQueryClient } from "@/QueryProvider/QueryProvider";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
@@ -42,14 +41,8 @@ export const useGetActions = () => {
     },
     onSuccess: (data: any) => {
       if (data.success) {
-        toast.success("Product deleted successfully");
         queryClient.invalidateQueries({ queryKey: ["products"] });
-      } else {
-        toast.error(data.message);
       }
-    },
-    onError: (error: any) => {
-      toast.error(error.response.data.message);
     },
   });
   const router = useRouter();

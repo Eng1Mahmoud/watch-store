@@ -6,7 +6,10 @@ import { useAppDispatch } from "@/redux/hooks";
 import { useRouter } from "@/i18n/routing";
 import { useLogout } from "@/utils/logout";
 import { useAppSelector } from "@/redux/hooks";
+import { useTranslations } from "next-intl";
+
 export const useTokenExpiration = () => {
+  const t = useTranslations("toast-auth");
   const { login } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -32,7 +35,7 @@ export const useTokenExpiration = () => {
 
       if (decodedToken?.exp <= currentTime) {
         logout();
-        toast.error("Your session has expired", {
+        toast.error(t("section_expired"), {
           toastId: "session-expired",
         });
       } else {

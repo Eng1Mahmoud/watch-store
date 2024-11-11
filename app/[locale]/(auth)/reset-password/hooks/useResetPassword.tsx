@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import { useRouter } from "@/i18n/routing";
 import { useMutation } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
@@ -14,14 +13,8 @@ export const useResetPassword = (token: string) => {
     },
     onSuccess: ({ data }) => {
       if (data.success) {
-        toast.success(data.message);
         router.push("/login");
-      } else {
-        toast.error(data.message[0]);
       }
-    },
-    onError: (error: any) => {
-      toast.error(error.response.data.message[0]);
     },
   });
 

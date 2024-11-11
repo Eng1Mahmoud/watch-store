@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import { IProduct } from "@/types/types";
 import { useRouter } from "@/i18n/routing";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
@@ -19,16 +18,10 @@ export const useEditProduct = ({ id }: { id: string }) => {
     },
     onSuccess: (res) => {
       if (res.success) {
-        toast.success(res.message);
         router.push("/dashboard/products");
         queryClient.invalidateQueries({ queryKey: ["products"] });
         queryClient.invalidateQueries({ queryKey: ["productDetails", id] });
-      } else {
-        toast.error(res.message);
       }
-    },
-    onError: (error) => {
-      toast.error(error.message);
     },
   });
   const onSubmit = async (values: IProduct) => {

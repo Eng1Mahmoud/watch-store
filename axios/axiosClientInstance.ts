@@ -1,6 +1,11 @@
 import axios from "axios";
 import { getTokenClient } from "@/utils/getTokenClient";
-import { baseConfig, setContentType, responseInterceptor } from "./utilities";
+import {
+  baseConfig,
+  setContentType,
+  responseInterceptorSuccess,
+  responseInterceptorError,
+} from "./utilities";
 
 const axiosClientInstance = axios.create(baseConfig);
 
@@ -13,8 +18,8 @@ axiosClientInstance.interceptors.request.use((config) => {
 });
 
 axiosClientInstance.interceptors.response.use(
-  (response) => response,
-  responseInterceptor,
+  responseInterceptorSuccess,
+  responseInterceptorError,
 );
 
 export { axiosClientInstance };

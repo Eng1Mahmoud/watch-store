@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import { ICategory } from "@/types/types";
 import { useRouter } from "@/i18n/routing";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
@@ -21,18 +20,12 @@ export const useEditCategory = ({
     },
     onSuccess: (res) => {
       if (res.success) {
-        toast.success(res.message);
         router.push("/dashboard/categories");
         queryClient.invalidateQueries({ queryKey: ["categories"] });
         queryClient.invalidateQueries({
           queryKey: ["categoryDetails", oldCategoryName],
         });
-      } else {
-        toast.error(res.message);
       }
-    },
-    onError: (error) => {
-      toast.error(error.message);
     },
   });
   const onSubmit = async (values: ICategory) => {

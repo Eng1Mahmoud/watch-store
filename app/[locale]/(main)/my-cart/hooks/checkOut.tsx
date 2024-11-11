@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
-import { toast } from "react-toastify";
 import { clearCart } from "@/redux/features/cart";
 import { useAppDispatch } from "@/redux/hooks";
 import { useTranslations } from "next-intl";
+import { toast } from "react-toastify";
 export const useCheckout = () => {
   const t = useTranslations("myCart.checkout");
   const dispatch = useAppDispatch();
@@ -13,14 +13,8 @@ export const useCheckout = () => {
       axiosClientInstance.post("/payments/cash-delivery", data),
     onSuccess: ({ data }) => {
       if (data.success) {
-        toast.success(data.message);
         dispatch(clearCart()); // clear the cart
-      } else {
-        toast.error(data.message);
       }
-    },
-    onError: (error: any) => {
-      toast.error(error.response.data.message);
     },
   });
 
@@ -31,12 +25,7 @@ export const useCheckout = () => {
     onSuccess: ({ data }) => {
       if (data.success) {
         window.location.href = data.data.session_url;
-      } else {
-        toast.error(data.message);
       }
-    },
-    onError: (error: any) => {
-      toast.error(error.response.data.message);
     },
   });
 

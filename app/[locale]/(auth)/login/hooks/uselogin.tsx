@@ -1,6 +1,5 @@
 import { usePrepareAccountConfig } from "@/utils/prepareAccountConfig";
 import { useMutation } from "@tanstack/react-query";
-import { toast } from "react-toastify";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
 
 interface LoginFormValues {
@@ -18,18 +17,11 @@ export const useLogin = () => {
       const {
         data: { token },
         success,
-        message,
       } = data;
 
       if (success) {
-        toast.success(message);
         prepareAccountConfig(token); // Use the prepareAccountConfig function
-      } else {
-        toast.error(message);
       }
-    },
-    onError: (error: any) => {
-      toast.error(error.response.data.message);
     },
   });
 

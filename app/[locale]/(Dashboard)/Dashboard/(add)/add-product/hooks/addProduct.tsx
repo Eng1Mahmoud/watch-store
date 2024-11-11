@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import { IProduct } from "@/types/types";
 import { useMutation } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
@@ -15,15 +14,9 @@ export const useAddProduct = () => {
     },
     onSuccess: ({ data }) => {
       if (data.success) {
-        toast.success(data.message);
         router.push("/dashboard/products");
         queryClient.invalidateQueries({ queryKey: ["products"] });
-      } else {
-        toast.error(data.message);
       }
-    },
-    onError: (err: any) => {
-      toast.error(err.response?.data?.message);
     },
   });
   const onSubmit = async (values: IProduct) => {

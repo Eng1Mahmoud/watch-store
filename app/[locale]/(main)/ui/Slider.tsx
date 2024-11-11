@@ -8,14 +8,15 @@ import type { Swiper as SwiperType } from "swiper";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 // Import Swiper styles
-
-import slid1 from "@/public/assets/slider/slide1.webp";
-import slid2 from "@/public/assets/slider/slide2.webp";
-
+import slide1 from "@/public/assets/slider/slide1.webp";
+import slide2 from "@/public/assets/slider/slide2.webp";
+import slide3 from "@/public/assets/slider/slide3.webp";
+import slide4 from "@/public/assets/slider/slide4.webp";
+import slide5 from "@/public/assets/slider/slide5.jpeg";
 import Image from "next/image";
 import { Autoplay, Pagination } from "swiper/modules";
 
-const images = [slid1, slid2, slid1, slid2];
+const images = [slide1, slide2, slide3, slide4, slide5];
 export const Slider: React.FC = () => {
   const swiperRef = React.useRef<SwiperType | null>(null);
 
@@ -41,7 +42,7 @@ export const Slider: React.FC = () => {
             return (
               '<span class="' +
               className +
-              '" style="background-color: red; width: 30px; height: 5px; display: inline-block; border-radius: 2px;"></span>'
+              '" style="background-color: #406939; width: 30px; height: 5px; display: inline-block; border-radius: 2px;"></span>'
             );
           },
         }}

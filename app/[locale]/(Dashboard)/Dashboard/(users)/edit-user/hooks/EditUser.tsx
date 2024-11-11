@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import { IUser } from "@/types/types";
 import { useRouter } from "@/i18n/routing";
 import { useMutation } from "@tanstack/react-query";
@@ -14,16 +13,10 @@ export const useEditUser = ({ id }: { id: string | undefined }) => {
     },
     onSuccess: (res) => {
       if (res.success) {
-        toast.success(res.message);
         router.push("/dashboard/users");
         queryClient.invalidateQueries({ queryKey: ["users"] }); // refetch users
         queryClient.invalidateQueries({ queryKey: ["userDetails", id] }); // refetch user details
-      } else {
-        toast.error(res.message);
       }
-    },
-    onError: (error) => {
-      toast.error(error.message);
     },
   });
   const onSubmit = async (values: IUser) => {

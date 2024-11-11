@@ -10,8 +10,10 @@ import {
 } from "@/redux/features/cart";
 import { ICart, IProduct } from "@/types/types";
 import { toast } from "react-toastify";
+import { useTranslations } from "next-intl";
 
 export const useCart = () => {
+  const t = useTranslations("toast-cart");
   const dispatch = useAppDispatch();
   const cart = useAppSelector(getAllOrders); // get the cart
   const user = useAppSelector((state) => state.user.login); // check if user is logged in
@@ -35,7 +37,7 @@ export const useCart = () => {
   const addProductToCart = (product: IProduct) => {
     // first check if user is logged in
     if (!user) {
-      toast.error("Please login to add product to cart");
+      toast.error(t("login_required"));
       return;
     }
 
@@ -51,18 +53,18 @@ export const useCart = () => {
           (item) => item.product.id === product.id,
         );
         if (productInCart) {
-          toast.error("Product already in cart");
+          toast.error(t("product_exists"));
           return;
         }
       } else {
-        toast.error("Invalid product");
+        toast.error(t("invalid_product"));
         return;
       }
 
       dispatch(addToCart(cartItem));
-      toast.success("Product added to cart");
+      toast.success(t("add_success"));
     } catch (error) {
-      toast.error("Error adding product to cart");
+      toast.error(t("add_error"));
     }
   };
 
