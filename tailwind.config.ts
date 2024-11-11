@@ -47,6 +47,7 @@ const config: Config = {
           bgSection: "#2b303b",
           text: "#ffffff",
           sectionText: "rgb(107 114 128)",
+          textAction: "#06b6d4",
           textSecondary: "#e5e7eb",
           border: "#374151",
           shadow: "#000000",

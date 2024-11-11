@@ -36,7 +36,7 @@ a {
     @apply bg-transparent border-[1px] border-error-main text-error-main hover:text-white hover:bg-error-main hover:border-error-main;
   }
   .checkbox-main {
-    @apply accent-main-main w-5 h-5 rounded-sm;
+    @apply accent-main-main dark:accent-dark-textAction w-5 h-5 rounded-sm;
   }
 }
 

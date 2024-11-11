@@ -4,13 +4,13 @@ const BaseTable: React.FC<ITableProps> = ({ data, columns, actions }) => {
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+        <thead className="bg-gray-50 dark:bg-dark-bgSection">
           <tr>
             {columns.map((column) => (
               <th
                 key={column.key}
                 scope="col"
-                className={`text-center font-medium ${column.labelColor ? column.labelColor : "text-gray-500"} capitalize w-fit whitespace-nowrap`}
+                className={`text-center font-medium ${column.labelColor ? column.labelColor : "text-gray-500"} capitalize w-fit whitespace-nowrap dark:text-dark-text`}
               >
                 {column.label}
               </th>
@@ -38,7 +38,7 @@ const BaseTable: React.FC<ITableProps> = ({ data, columns, actions }) => {
               {columns.map((column) => (
                 <td
                   key={column.key}
-                  className="px-6 text-center py-4 whitespace-nowrap"
+                  className="px-6 text-center py-4 whitespace-nowrap dark:text-dark-text dark:bg-dark-bgSection"
                 >
                   {column.key === "cover_url" || column.key === "image_url" ? (
                     <div className="flex justify-center">
@@ -68,7 +68,7 @@ const BaseTable: React.FC<ITableProps> = ({ data, columns, actions }) => {
                 actions.map((action, actionIndex) => (
                   <td
                     key={actionIndex}
-                    className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center"
+                    className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center dark:text-dark-text dark:bg-dark-bgSection"
                   >
                     <button
                       onClick={() => action.onClick(item)}

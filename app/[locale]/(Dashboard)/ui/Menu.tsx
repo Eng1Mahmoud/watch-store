@@ -29,7 +29,7 @@ const MenuItem = ({
   <li>
     <Link
       href={href as any}
-      className={`flex items-center p-2 ${open ? "justify-start" : "justify-center"}`}
+      className={`flex items-center p-2 ${open ? "justify-start" : "justify-center"} dark:text-dark-text`}
       onClick={() => {
         onToggle();
       }}
@@ -47,20 +47,27 @@ const AddMenuItem = ({ open, onToggle }: MenuProps) => {
       {open ? (
         <details>
           <summary className="flex items-center p-2 justify-start">
-            <FiPlus className="h-6 w-6 text-main-main" onClick={onToggle} />
+            <FiPlus
+              className="h-6 w-6 text-main-main dark:text-dark-text"
+              onClick={onToggle}
+            />
             <span className="ml-3">{t("add")}</span>
           </summary>
           <ul>
             <MenuItem
               href="/dashboard/add-product"
-              icon={<FiShoppingBag className="h-5 w-5 text-main-main" />}
+              icon={
+                <FiShoppingBag className="h-5 w-5 text-main-main dark:text-dark-text" />
+              }
               text={t("product")}
               open={open}
               onToggle={onToggle}
             />
             <MenuItem
               href="/dashboard/add-category"
-              icon={<FiFolder className="h-5 w-5 text-main-main" />}
+              icon={
+                <FiFolder className="h-5 w-5 text-main-main dark:text-dark-text" />
+              }
               text={t("category")}
               open={open}
               onToggle={onToggle}
@@ -72,7 +79,7 @@ const AddMenuItem = ({ open, onToggle }: MenuProps) => {
           onClick={onToggle}
           className="flex items-center p-2 justify-center w-full"
         >
-          <FiPlus className="h-6 w-6 text-main-main" />
+          <FiPlus className="h-6 w-6 text-main-main dark:text-dark-text" />
         </button>
       )}
     </li>
@@ -82,10 +89,15 @@ const AddMenuItem = ({ open, onToggle }: MenuProps) => {
 const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
   const t = useTranslations("adminLayout.menu");
   return (
-    <ul className="menu p-4 w-full text-base-content">
+    <ul className="menu p-4 w-full text-base-content dark:bg-dark-bgSection dark:text-dark-text ">
       <MenuItem
         href="/"
-        icon={<FiHome className="h-6 w-6 text-main-main" onClick={onToggle} />}
+        icon={
+          <FiHome
+            className="h-6 w-6 text-main-main dark:text-dark-text"
+            onClick={onToggle}
+          />
+        }
         text={t("home")}
         open={open}
         onToggle={onToggle}
@@ -93,7 +105,10 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
       <MenuItem
         href="/dashboard"
         icon={
-          <MdDashboard className="h-6 w-6 text-main-main" onClick={onToggle} />
+          <MdDashboard
+            className="h-6 w-6 text-main-main dark:text-dark-text"
+            onClick={onToggle}
+          />
         }
         text={t("dashboard")}
         open={open}
@@ -101,7 +116,12 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
       />
       <MenuItem
         href="/dashboard/users"
-        icon={<FiUsers className="h-6 w-6 text-main-main" onClick={onToggle} />}
+        icon={
+          <FiUsers
+            className="h-6 w-6 text-main-main dark:text-dark-text"
+            onClick={onToggle}
+          />
+        }
         text={t("users")}
         open={open}
         onToggle={onToggle}
@@ -110,7 +130,7 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
         href="/dashboard/products"
         icon={
           <FiShoppingBag
-            className="h-6 w-6 text-main-main"
+            className="h-6 w-6 text-main-main dark:text-dark-text"
             onClick={onToggle}
           />
         }
@@ -121,7 +141,10 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
       <MenuItem
         href="/dashboard/orders"
         icon={
-          <FiClipboard className="h-6 w-6 text-main-main" onClick={onToggle} />
+          <FiClipboard
+            className="h-6 w-6 text-main-main dark:text-dark-text"
+            onClick={onToggle}
+          />
         }
         text={t("orders")}
         open={open}
@@ -130,7 +153,10 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
       <MenuItem
         href="/dashboard/categories"
         icon={
-          <FiFolder className="h-5 w-5 text-main-main" onClick={onToggle} />
+          <FiFolder
+            className="h-5 w-5 text-main-main dark:text-dark-text"
+            onClick={onToggle}
+          />
         }
         text={t("category")}
         open={open}

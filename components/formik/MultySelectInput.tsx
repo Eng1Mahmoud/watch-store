@@ -30,15 +30,15 @@ const MultiSelectInput = ({
   };
 
   return (
-    <div className="relative w-full max-w-xl z-[1000]">
+    <div className="relative w-full max-w-xl z-[1000] dark:text-dark-text ">
       <div className="form-control">
         <label className="label">
-          <span className="label-text">{placeholder}</span>
+          <span className="label-text dark:text-dark-text">{placeholder}</span>
         </label>
-        <div className="dropdown w-full">
+        <div className="dropdown w-full dark:bg-dark-bgSection rounded-box">
           <div
             tabIndex={0}
-            className="input input-bordered flex items-center justify-between cursor-pointer"
+            className="input input-bordered flex items-center justify-between cursor-pointer dark:bg-dark-bgSection dark:text-dark-text "
             onClick={handleToggle}
           >
             <span className="truncate">
@@ -61,21 +61,23 @@ const MultiSelectInput = ({
           {isOpen && (
             <ul
               tabIndex={0}
-              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-full max-h-60 overflow-auto"
+              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-full max-h-60 overflow-auto  dark:bg-dark-bgSection"
             >
               {options.map((option) => (
                 <li
                   key={option.value}
                   onClick={() => handleOptionClick(option.value)}
                 >
-                  <label className="label cursor-pointer justify-start">
+                  <label className="label cursor-pointer justify-start dark:text-dark-text">
                     <input
                       type="checkbox"
                       checked={field.value?.includes(option.value)}
-                      className="checkbox-main mr-2"
+                      className="checkbox-main  mr-2  dark:text-dark-text"
                       readOnly
                     />
-                    <span className="label-text">{option.label}</span>
+                    <span className="label-text dark:text-dark-text">
+                      {option.label}
+                    </span>
                   </label>
                 </li>
               ))}

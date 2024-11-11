@@ -54,7 +54,7 @@ export const useGetActions = () => {
     {
       label: t("edit"),
       icon: CiEdit,
-      labelColor: "text-main-main",
+      labelColor: "text-main-main dark:text-dark-textAction",
       onClick: (user: any) => {
         router.push(`/dashboard/edit-user/${user.id}` as any);
       },
@@ -62,7 +62,7 @@ export const useGetActions = () => {
     {
       label: t("delete"),
       icon: MdDelete,
-      labelColor: "text-error-main",
+      labelColor: "text-error-main ",
       onClick: async (user: any) => {
         deleteMutation.mutate(user.id);
       },

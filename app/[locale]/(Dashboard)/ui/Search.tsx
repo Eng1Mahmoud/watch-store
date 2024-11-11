@@ -20,11 +20,11 @@ const Search = ({ setSearchTerm, placeholder }: SearchProps) => {
   };
 
   return (
-    <div className="mb-4 shadow-md">
+    <div className="mb-4 shadow-md dark:shadow-dark rounded-md  my-3">
       <input
         type="text"
         placeholder={placeholder}
-        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none dark:border-dark-border dark:bg-dark-bgSection dark:text-dark-text focus:shadow-custom dark:focus:shadow-dark  "
         onChange={handleInputChange}
       />
     </div>
