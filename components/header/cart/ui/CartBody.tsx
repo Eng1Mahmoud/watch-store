@@ -12,17 +12,20 @@ const CartBody = () => {
   return (
     <div
       tabIndex={0}
-      className="card card-compact dropdown-content bg-base-100 mt-3 w-52 shadow-custom z-[10000000000000]"
+      className="card card-compact dropdown-content bg-base-100 mt-3 w-52 shadow-custom z-[10000000000000] dark:bg-dark-bgSection"
     >
-      <div className="card-body">
-        <span className="text-lg font-bold">
+      <div className="card-body ">
+        <span className="text-lg font-bold text-main-main dark:text-dark-text">
           {t("items")}: {ordersLength}
         </span>
-        <span className="text-info">
+        <span className="text-main-main dark:text-dark-textAction">
           {t("subtotal")}: {formatCurrency(totalPrice, locale)}
         </span>
         <div className="card-actions">
-          <Link href="/my-cart" className="btn btn-primary btn-block">
+          <Link
+            href="/my-cart"
+            className="btn btn-primary btn-block dark:shadow-dark"
+          >
             {t("viewCart")}
           </Link>
         </div>
