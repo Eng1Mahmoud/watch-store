@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
 import { useMutation } from "@tanstack/react-query";
 interface SavePasswordData {
@@ -14,16 +13,6 @@ export const useSavePassword = () => {
         values,
       );
       return response.data;
-    },
-    onSuccess: (data: any) => {
-      if (data.success) {
-        toast.success(data.message);
-      } else {
-        toast.error(data.message);
-      }
-    },
-    onError: (error: any) => {
-      toast.error(error.response.data.message);
     },
   });
   const onSubmit = async (values: SavePasswordData) => {

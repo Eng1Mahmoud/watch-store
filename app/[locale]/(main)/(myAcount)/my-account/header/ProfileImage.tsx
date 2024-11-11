@@ -5,7 +5,6 @@ import { MdPhotoCamera } from "react-icons/md";
 import { uploadImage } from "@/actions/uploadImages";
 import { saveAvatarIntoserver } from "./actions/saveAvatarIntoserver";
 import { useState } from "react";
-import { toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
 import { useMutation } from "@tanstack/react-query";
@@ -28,16 +27,14 @@ const ProfileImage = () => {
     },
     onSuccess: ({ data }) => {
       if (data.success) {
-        toast.success("Avatar updated successfully");
         setLoading(false);
         queryClient.invalidateQueries({ queryKey: ["user"] }); // invalidate the user query
       } else {
-        toast.error(data.message);
         setLoading(false);
       }
     },
-    onError: (error: any) => {
-      toast.error(error.message);
+    onError: () => {
+      setLoading(false);
     },
   });
   const avatar = data?.data?.userData?.avatar_url;

@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
 import { ICategory } from "@/types/types";
 import { useRouter } from "@/i18n/routing";
@@ -13,17 +12,11 @@ export const useAddCategory = () => {
     },
     onSuccess: ({ data }) => {
       if (data.success) {
-        toast.success(data.message);
         queryClient.invalidateQueries({ queryKey: ["categories"] }); // revalidate categories in table
         queryClient.invalidateQueries({ queryKey: ["categories-home"] }); // revalidate categories in home
         queryClient.invalidateQueries({ queryKey: ["categories-selectBox"] }); // revalidate categories for select box
         router.push("/dashboard/categories"); // redirect to categories page
-      } else {
-        toast.error(data.message);
       }
-    },
-    onError: (err: any) => {
-      toast.error(err.response?.data?.message);
     },
   });
   const onSubmit = async (values: ICategory) => {

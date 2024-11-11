@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
 import { getQueryClient } from "@/QueryProvider/QueryProvider";
@@ -19,14 +18,8 @@ export const useSaveUserData = () => {
     },
     onSuccess: (data) => {
       if (data.success) {
-        toast.success(data.message);
         queryClient.invalidateQueries({ queryKey: ["user"] });
-      } else {
-        toast.error(data.message);
       }
-    },
-    onError: (error: any) => {
-      toast.error(error.message);
     },
   });
   const onSubmit = async (values: SaveInfoData) => {

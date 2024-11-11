@@ -1,7 +1,6 @@
 import { useRouter } from "@/i18n/routing";
 import { useMutation } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
-import { toast } from "react-toastify";
 import { getQueryClient } from "@/QueryProvider/QueryProvider";
 // add product to cart
 export const useProductCardActions = () => {
@@ -23,16 +22,10 @@ export const useProductWishlistActions = () => {
       }),
     onSuccess: ({ data }) => {
       if (data.success) {
-        toast.success("Product added to wishlist");
         queryClient.invalidateQueries({ queryKey: ["products"] }); // invalidate products
         queryClient.invalidateQueries({ queryKey: ["wishlists"] }); // invalidate wishlists
         queryClient.invalidateQueries({ queryKey: ["productDetails"] }); // invalidate product details
-      } else {
-        toast.error("Product already in wishlist");
       }
-    },
-    onError: (error: any) => {
-      toast.error(error.response.data.message);
     },
   });
   // remove product from wishlist
@@ -41,16 +34,10 @@ export const useProductWishlistActions = () => {
       axiosClientInstance.delete(`/wishlists/current/${product_id}`),
     onSuccess: ({ data }) => {
       if (data.success) {
-        toast.success(data.message);
         queryClient.invalidateQueries({ queryKey: ["products"] }); // invalidate products
         queryClient.invalidateQueries({ queryKey: ["wishlists"] }); // invalidate wishlists
         queryClient.invalidateQueries({ queryKey: ["productDetails"] }); // invalidate product details
-      } else {
-        toast.error(data.message);
       }
-    },
-    onError: (error: any) => {
-      toast.error(error.response.data.message);
     },
   });
   const addProductToWishlist = (product_id: string | undefined) => {

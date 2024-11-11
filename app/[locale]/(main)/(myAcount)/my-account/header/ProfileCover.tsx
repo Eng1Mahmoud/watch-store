@@ -3,7 +3,6 @@ import { uploadImage } from "@/actions/uploadImages";
 import React, { useState } from "react";
 import { MdPhotoCamera } from "react-icons/md";
 import { saveCoverToServer } from "./actions/saveCoverToServer";
-import { toast } from "react-toastify";
 import Image from "next/image";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
@@ -28,16 +27,13 @@ export const ProfileCover = () => {
     },
     onSuccess: ({ data }) => {
       if (data.success) {
-        toast.success("Cover updated successfully");
         setLoading(false);
         queryClient.invalidateQueries({ queryKey: ["user"] }); // invalidate user query to get new cover
       } else {
-        toast.error("Failed to update cover");
         setLoading(false);
       }
     },
-    onError: (error: any) => {
-      toast.error(error?.response?.data?.message);
+    onError: () => {
       setLoading(false);
     },
   });

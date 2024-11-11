@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 import { axiosClientInstance } from "@/axios/axiosClientInstance";
 export const useSignUp = () => {
@@ -11,16 +10,6 @@ export const useSignUp = () => {
     mutationFn: async (values: SignUpFormValues) => {
       const response = await axiosClientInstance.post("/auth/signup", values);
       return response.data;
-    },
-    onSuccess: (response) => {
-      if (response.success) {
-        toast.success(response.message);
-      } else {
-        toast.error(response.message[1]);
-      }
-    },
-    onError: (error) => {
-      toast.error(error.message);
     },
   });
   const onSubmit = async (values: SignUpFormValues) => {
