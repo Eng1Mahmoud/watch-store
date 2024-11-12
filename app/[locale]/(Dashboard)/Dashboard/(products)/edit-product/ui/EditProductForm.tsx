@@ -12,8 +12,21 @@ import { useGetCategoriesSelectBox } from "@/hooks/getCategoriesSelectBox";
 import TextArea from "@/components/formik/TextArea";
 import { useTranslations } from "next-intl";
 import SubmitButton from "@/components/formik/SubmitButton";
+import { langs } from "@/utils/translationLang";
+import TranslationFields from "@/components/formik/TranslationFields";
 const EditcategoryForm = ({ id }: { id: string }) => {
   const t = useTranslations("editProduct");
+  // translation fields
+  const translationFields = [
+    {
+      name: "name",
+      label: t("formLabels.nameTranslation"),
+    },
+    {
+      name: "description",
+      label: t("formLabels.descriptionTranslation"),
+    },
+  ];
   const { categories } = useGetCategoriesSelectBox();
   const validationSchema = useEditProductValidation();
   const { onSubmit, loading } = useEditProduct({ id });
@@ -32,6 +45,22 @@ const EditcategoryForm = ({ id }: { id: string }) => {
     quantity: product?.quantity || "",
     categories: product?.categories || [],
     image_url: product?.image_url || "",
+    translations: {
+      name: langs.reduce(
+        (acc, lang) => ({
+          ...acc,
+          [lang.value]: product?.translations?.name[lang.value] || "",
+        }),
+        {},
+      ),
+      description: langs.reduce(
+        (acc, lang) => ({
+          ...acc,
+          [lang.value]: product?.translations?.description[lang.value] || "",
+        }),
+        {},
+      ),
+    },
   };
   return (
     <BaseForm
@@ -40,7 +69,7 @@ const EditcategoryForm = ({ id }: { id: string }) => {
       onSubmit={onSubmit}
     >
       <div className="container  space-y-6 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2  gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-4">
           <div className="flex flex-col gap-5">
             <Input name="name" placeholder={t("formLabels.name")} type="text" />
             <TextArea
@@ -66,8 +95,12 @@ const EditcategoryForm = ({ id }: { id: string }) => {
               }))}
             />
           </div>
-          <div>
+          <div className="flex flex-col gap-5">
             <FileInput name="image_url" folder="products" />
+            <TranslationFields
+              fieldName="translations"
+              fields={translationFields}
+            />
           </div>
         </div>
         <SubmitButton

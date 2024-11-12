@@ -6,7 +6,9 @@
         "description": "Description",
         "categories": "Categories",
         "image": "Image",
-        "quantity": "Quantity"
+        "quantity": "Quantity",
+        "nameTranslation": "Translation Name for",
+        "descriptionTranslation": "Translation Description for"
        },
        "formValidation": {
          "name":{
@@ -29,6 +31,16 @@
          "quantity": {
             "required": "Quantity is required",
             "min": "Quantity must be at least 1"
+         },
+         "translations": {
+            "name": {
+                "enRequired": "Translation Name for English is required",
+                "arRequired": "Translation Name for Arabic is required"
+            },
+            "description": {
+                "enRequired": "Translation Description for English is required",
+                "arRequired": "Translation Description for Arabic is required"
+            }
          }
        },
        "submitButton": "Add Product"

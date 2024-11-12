@@ -1,0 +1,9 @@
+{
+    "translationFields":{
+        "translation": "Translation",
+        "languages": {
+          "en": "English",
+          "ar": "Arabic"
+        }
+    }
+}

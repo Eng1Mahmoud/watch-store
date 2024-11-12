@@ -2,7 +2,8 @@
     "editCategory": {
         "formLabels": {
             "name": "اسم الفئة",
-            "cover_url": "صورة الفئة"
+            "cover_url": "صورة الفئة",
+            "nameTranslation": "ترجمة الاسم ل"
         },
         "formValidation": {
             "name": {
@@ -10,6 +11,12 @@
             },
             "cover_url": {
                 "required": "صورة الفئة مطلوبة"
+            },
+            "translations": {
+                "name": {
+                    "enRequired": "اسم الفئة للإنجليزية مطلوب",
+                    "arRequired": "اسم الفئة للعربية مطلوب"
+                }
             }
         },
         "submitButton": "تحديث الفئة"

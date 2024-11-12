@@ -61,7 +61,7 @@ const MultiSelectInput = ({
           {isOpen && (
             <ul
               tabIndex={0}
-              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-full max-h-60 overflow-auto  dark:bg-dark-bgSection"
+              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-full h-auto overflow-auto  dark:bg-dark-bgSection"
             >
               {options.map((option) => (
                 <li

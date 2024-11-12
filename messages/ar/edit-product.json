@@ -6,7 +6,9 @@
         "description": "الوصف",
         "categories": "الفئات",
         "image": "الصورة",
-        "quantity": "الكمية"
+        "quantity": "الكمية",
+        "nameTranslation": "ترجمة الاسم ل",
+        "descriptionTranslation": "ترجمة الوصف ل"
        },
        "formValidation": {
          "name":{
@@ -29,6 +31,16 @@
          "quantity": {
             "required": "الكمية مطلوبة",
             "min": "يجب أن تكون الكمية 1 على الأقل"
+         },
+         "translations": {
+            "name": {
+                "enRequired": "ترجمة الاسم للإنجليزية مطلوبة",
+                "arRequired": "ترجمة الاسم للعربية مطلوبة"
+            },
+            "description": {
+                "enRequired": "ترجمة الوصف للإنجليزية مطلوبة",
+                "arRequired": "ترجمة الوصف للعربية مطلوبة"
+            }
          }
        },
        "submitButton": "تحديث المنتج"

@@ -22,6 +22,24 @@ export const useAddProductValidation = () => {
       .number()
       .required(t("formValidation.quantity.required"))
       .min(1, t("formValidation.quantity.min")),
+    translations: yup.object({
+      name: yup.object().shape({
+        en: yup
+          .string()
+          .required(t("formValidation.translations.name.enRequired")),
+        ar: yup
+          .string()
+          .required(t("formValidation.translations.description.arRequired")),
+      }),
+      description: yup.object().shape({
+        en: yup
+          .string()
+          .required(t("formValidation.translations.description.enRequired")),
+        ar: yup
+          .string()
+          .required(t("formValidation.translations.description.arRequired")),
+      }),
+    }),
   });
   return validationSchema;
 };

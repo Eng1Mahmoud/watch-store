@@ -2,7 +2,8 @@
     "addCategory": {
         "formLabels": {
             "name": "اسم الفئة",
-            "cover_url": "رابط صورة الغلاف"
+            "cover_url": "رابط صورة الغلاف", 
+            "nameTranslation": " ترجمة الاسم  ل"
         },
         "formValidation": {
             "name": {
@@ -10,8 +11,15 @@
             },
             "cover_url": {
                 "required": "صورة الغلاف مطلوبة"
+            },
+            "translations": {
+                "name": {
+                    "enRequired": "الترجمة الإنجليزية مطلوبة",
+                    "arRequired": "الترجمة العربية مطلوبة"
+                }
             }
         },
         "submitButton": "إضافة فئة"
+      
     }
 }

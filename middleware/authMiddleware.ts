@@ -13,8 +13,6 @@ export async function authMiddleware(
   const currentPath = pathname.split("/")[2]
     ? `/${decodeURIComponent(pathname.split("/")[2])}`
     : "/";
-  console.log("currentPath", currentPath);
-
   let userRole: Role = "guest"; // Default role is guest
 
   // Decode the token to extract user role if available

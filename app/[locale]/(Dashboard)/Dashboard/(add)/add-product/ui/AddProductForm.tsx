@@ -10,6 +10,8 @@ import { useGetCategoriesSelectBox } from "@/hooks/getCategoriesSelectBox";
 import TextArea from "@/components/formik/TextArea";
 import { useTranslations } from "next-intl";
 import SubmitButton from "@/components/formik/SubmitButton";
+import { langs } from "@/utils/translationLang";
+import TranslationFields from "@/components/formik/TranslationFields";
 const initialValues: IProduct = {
   name: "",
   price: 0,
@@ -17,6 +19,13 @@ const initialValues: IProduct = {
   categories: [],
   image_url: "",
   quantity: 0,
+  translations: {
+    name: langs.reduce((acc, lang) => ({ ...acc, [lang.value]: "" }), {}),
+    description: langs.reduce(
+      (acc, lang) => ({ ...acc, [lang.value]: "" }),
+      {},
+    ),
+  },
 };
 
 const AddProductForm = () => {
@@ -28,6 +37,16 @@ const AddProductForm = () => {
     label: category.name,
     value: category.name,
   }));
+  const translationFields = [
+    {
+      name: "name",
+      label: t("formLabels.nameTranslation"),
+    },
+    {
+      name: "description",
+      label: t("formLabels.descriptionTranslation"),
+    },
+  ];
   return (
     <BaseForm
       initialValues={initialValues}
@@ -58,8 +77,12 @@ const AddProductForm = () => {
               options={categoriesArray}
             />
           </div>
-          <div>
+          <div className="flex flex-col gap-4">
             <FileInput name="image_url" folder="products" />
+            <TranslationFields
+              fieldName="translations"
+              fields={translationFields}
+            />
           </div>
         </div>
         <SubmitButton

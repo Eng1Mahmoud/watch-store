@@ -2,7 +2,8 @@
     "editCategory": {
         "formLabels": {
             "name": "Category Name",
-            "cover_url": "Category Image"
+            "cover_url": "Category Image",
+            "nameTranslation": "Translation Name for"
         },
         "formValidation": {
             "name": {
@@ -10,8 +11,15 @@
             },
             "cover_url": {
                 "required": "Category Image is required"
+            },
+            "translations": {
+                "name": {
+                    "enRequired": "Translation Name for English is required",
+                    "arRequired": "Translation Name for Arabic is required"
+                }
             }
         },
+      
         "submitButton": "Update Category"
     }
 }

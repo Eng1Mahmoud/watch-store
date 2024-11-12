@@ -4,6 +4,11 @@ export interface ICategory {
   id?: string;
   name: string;
   cover_url: string;
+  translations?: {
+    name: {
+      [key: string]: string;
+    };
+  };
 }
 
 // product interface
@@ -16,6 +21,14 @@ export interface IProduct {
   image_url: string;
   quantity: number;
   is_wishlisted?: boolean;
+  translations?: {
+    name: {
+      [key: string]: string;
+    };
+    description: {
+      [key: string]: string;
+    };
+  };
 }
 
 // user interface

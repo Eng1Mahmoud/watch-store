@@ -1,17 +1,27 @@
 {
-    "addCategory": {
+  "addCategory": {
     "formLabels": {
-        "name": "Category Name",
-        "cover_url": "Category Image"
+      "name": "Category Name",
+      "cover_url": "Category Image",
+      "nameTranslation": "Translation Name for"
+     
     },
     "formValidation": {
+      "name": {
+        "required": "Category Name is required"
+      },
+      "cover_url": {
+        "required": "Category Image is required"
+      },
+      "translations": {
         "name": {
-            "required": "Category Name is required"
-        },
-        "cover_url": {
-            "required": "Category Image is required"
+          "enRequired": "English translation is required",
+          "arRequired": "Arabic translation is required"
         }
+      }
     },
     "submitButton": "Add Category"
-  } 
+
+   
+  }
 }
