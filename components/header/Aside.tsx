@@ -6,7 +6,6 @@ import { Link } from "@/i18n/routing";
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { scrollToSection } from "@/utils/scrollToSection";
 const Aside = () => {
   const t = useTranslations();
   const router = useRouter();
@@ -21,12 +20,17 @@ const Aside = () => {
     if (drawerCheckboxRef.current) {
       drawerCheckboxRef.current.checked = false;
     }
-    // Update URL without reload
-    router.push(href, { scroll: false });
-    // Scroll to section
-    setTimeout(() => {
-      scrollToSection(sectionId);
-    }, 100); // Small delay to ensure drawer closes first
+    if (sectionId) {
+      // If we're not on the home page, first navigate to home
+      if (window.location.pathname !== "/") {
+        router.push(`/#${sectionId}` as any);
+        /*   scrollToSection(link.sectionId); */
+        return;
+      }
+    } else {
+      // If no sectionId, just navigate to href
+      router.push(href as any);
+    }
   };
 
   return (
@@ -35,7 +39,9 @@ const Aside = () => {
         htmlFor="my-drawer-4"
         className="md:hidden text-[30px] font-extrabold cursor-pointer dark:text-dark-text"
       >
-        <CiMenuFries />
+        <div className="p-2 shadow-custom dark:shadow-dark rounded-lg text-main-main dark:text-dark-text">
+          <CiMenuFries className="font-bolder" />
+        </div>
       </label>
 
       <div className="drawer drawer-end z-[1000000000000000]">
@@ -60,7 +66,9 @@ const Aside = () => {
                   aria-label="close drawer"
                   className="text-[30px] cursor-pointer dark:text-dark-text"
                 >
-                  <IoClose />
+                  <div className="p-2 shadow-custom dark:shadow-dark rounded-lg text-main-main dark:text-dark-text">
+                    <IoClose className="font-bolder" />
+                  </div>
                 </label>
               </div>
 
@@ -68,7 +76,7 @@ const Aside = () => {
                 {navLinks.map((link) => (
                   <li key={link.id} className="mb-2 ">
                     <Link
-                      href={link.href}
+                      href={link.href as any}
                       className="font-main text-[16px] px-4 py-2 hover:bg-base-300 rounded-lg transition-all duration-300 hover:scale-110
                        hover:text-main-main dark:text-dark-text dark:hover:bg-dark-bgSection  "
                       onClick={(e) => handleClick(e, link.href, link.label)}

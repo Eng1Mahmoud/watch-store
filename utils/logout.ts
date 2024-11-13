@@ -5,7 +5,11 @@ import { useCart } from "./cart";
 import { useFilter } from "./filters";
 import { useCallback } from "react";
 import { useRouter } from "@/i18n/routing";
+import { getQueryClient } from "@/QueryProvider/QueryProvider";
 export const useLogout = () => {
+  const queryClient = getQueryClient();
+  // invalidate all queries after new login to get data for new user
+  queryClient.invalidateQueries();
   const userId = useAppSelector((state) => state.user.id);
   const { saveCartToLocalStorage } = useCart();
   const { saveFilterToLocalStorage } = useFilter();

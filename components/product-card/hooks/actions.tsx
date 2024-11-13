@@ -24,6 +24,7 @@ export const useProductWishlistActions = () => {
       if (data.success) {
         queryClient.invalidateQueries({ queryKey: ["products"] }); // invalidate products
         queryClient.invalidateQueries({ queryKey: ["wishlists"] }); // invalidate wishlists
+        queryClient.invalidateQueries({ queryKey: ["wishlist-number"] }); // invalidate wishlists number
         queryClient.invalidateQueries({ queryKey: ["productDetails"] }); // invalidate product details
       }
     },
@@ -36,6 +37,7 @@ export const useProductWishlistActions = () => {
       if (data.success) {
         queryClient.invalidateQueries({ queryKey: ["products"] }); // invalidate products
         queryClient.invalidateQueries({ queryKey: ["wishlists"] }); // invalidate wishlists
+        queryClient.invalidateQueries({ queryKey: ["wishlist-number"] }); // invalidate wishlists number
         queryClient.invalidateQueries({ queryKey: ["productDetails"] }); // invalidate product details
       }
     },
