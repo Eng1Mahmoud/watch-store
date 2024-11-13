@@ -48,9 +48,13 @@ a {
 }
 
 @media (prefers-color-scheme: dark) {
-   html,body,.dark{
-     background: white; 
-     color: black; 
-   } 
-  
+  html, body {
+    background: white;
+    color: black;
   }
+  /* Additional styling if needed for elements with the dark class */
+  .dark {
+    background-color: white !important;
+    color: black !important;
+  }
+}
