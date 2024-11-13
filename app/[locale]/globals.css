@@ -48,7 +48,7 @@ a {
 }
 
 @media (prefers-color-scheme: dark) {
-   *{
+   html,body{
      background: white; 
      color: black; 
    } 
