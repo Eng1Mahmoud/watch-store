@@ -52,9 +52,5 @@ a {
     background: white;
     color: black;
   }
-  /* Additional styling if needed for elements with the dark class */
-    div {
-    background-color: white !important;
-    color: black !important;
-  }
+  
 }
