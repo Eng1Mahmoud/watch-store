@@ -38,7 +38,7 @@ const ProductCard = ({
       </figure>
       <div className="card-body p-3 ">
         <h2 className="card-title dark:text-dark-text">{product.name}</h2>
-        <p className="text-sm text-gray-500 dark:text-dark-text text-ellipsis line-clamp-2 overflow-hidden">
+        <p className="text-sm text-gray-500 dark:text-dark-text text-ellipsis line-clamp-1 overflow-hidden">
           {product.description}
         </p>
         <p className="text-sm text-gray-500 dark:text-dark-text text-ellipsis line-clamp-2 overflow-hidden font-bold">

@@ -7,13 +7,15 @@ import { Gallery } from "./ui/Gallery/Gallery";
 import Testimonials from "./ui/testimonials/Testimonials";
 import Categories from "./ui/categories/categories";
 import Products from "./ui/Products/Products";
+import TopSalesProducts from "./ui/TopSales/TopSalesProducts";
 const page = () => {
   return (
     <div>
       <Slider />
+      <About />
       <Categories />
       <Products />
-      <About />
+      <TopSalesProducts />
       <Brands />
       <Gallery />
       <Testimonials />
