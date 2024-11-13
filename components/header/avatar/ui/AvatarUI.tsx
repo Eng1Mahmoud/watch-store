@@ -21,7 +21,7 @@ const AvatarUI = () => {
         role="button"
         className="btn btn-ghost btn-circle avatar"
       >
-        <div className="rounded-full w-12 h-12 overflow-hidden">
+        <div className="rounded-full w-12 h-12 overflow-hidden shadow-custom dark:shadow-dark border-[3px] border-green-400 p-1">
           <Image
             alt="avatar"
             src={avatarUrl || avatar}

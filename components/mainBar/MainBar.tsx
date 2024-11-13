@@ -1,5 +1,5 @@
 "use client";
-import SwithThem from "../SwithThem";
+import SwithThem from "./SwithThem";
 import { Links } from "./Links";
 import SwitchLang from "./SwitchLang";
 const MainBar = () => {
