@@ -53,7 +53,7 @@ a {
     color: black;
   }
   /* Additional styling if needed for elements with the dark class */
-  .dark, dev, input, label {
+  .dark,  input, label {
     background-color: white !important;
     color: black !important;
   }
