@@ -22,7 +22,7 @@ const ProductCard = ({
   return (
     <div className="card bg-base-100  w-full  boder border-gray-200 border-[1px] dark:border-dark-sectionText dark:shadow-dark dark:bg-dark-bgSection">
       <div className="absolute top-1 right-1">
-        <ShareButtons title={product.name} />
+        <ShareButtons title={product.name} productId={product?.id || ""} />
       </div>
       <figure
         className="h-32 cursor-pointer"
@@ -38,10 +38,10 @@ const ProductCard = ({
       </figure>
       <div className="card-body p-3 ">
         <h2 className="card-title dark:text-dark-text">{product.name}</h2>
-        <p className="text-sm text-gray-500 dark:text-dark-text text-ellipsis line-clamp-2 overflow-hidden">
+        <p className="text-sm text-gray-500 dark:text-dark-text text-ellipsis line-clamp-1 overflow-hidden">
           {product.description}
         </p>
-        <p className="text-sm text-gray-500 dark:text-dark-text text-ellipsis line-clamp-2 overflow-hidden font-bold">
+        <p className="text-sm text-gray-500 dark:text-dark-text text-ellipsis line-clamp-1 overflow-hidden font-bold">
           ${product.price}
         </p>
         <div className="card-actions ">

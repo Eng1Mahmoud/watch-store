@@ -1,0 +1,12 @@
+{
+    "product-details": {
+        "related-products": {
+            "title": "Similar Products"
+        },
+        "addToCart": "Add to cart",
+        "buyNow": "Buy Now",
+        "remaining": "Remaining",
+        "securePayment": "Safe and Secure payments. 100% Authentic products",
+        "shareTitle": "Check out this product! {productName}"
+    }
+}

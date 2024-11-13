@@ -119,6 +119,10 @@ export const routing = defineRouting({
       en: "/shop",
       ar: "/المتجر",
     },
+    "/shop/[id]": {
+      en: "/product-details/[id]",
+      ar: "/تفاصيل-المنتج/[id]",
+    },
     "/wishlists": {
       en: "/wishlists",
       ar: "/قائمة-الرغبات",

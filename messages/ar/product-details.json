@@ -1,0 +1,12 @@
+{
+    "product-details": {
+        "related-products": {
+            "title": "منتجات مشابهة"
+        },
+        "addToCart": "أضف إلى السلة",
+        "buyNow": "اشتري الآن",
+        "remaining": "متبقي",
+        "securePayment": "مدفوعات آمنة ومضمونة. منتجات أصلية 100%",
+        "shareTitle": "تحقق من هذا المنتج! {productName}"
+    }
+}

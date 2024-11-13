@@ -17,6 +17,7 @@ const nextConfig = {
       protocol: 'https',
       hostname: 'cover_url.com',
     },
+   
   ],
 },
     eslint: {

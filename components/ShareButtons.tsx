@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FacebookShareButton,
@@ -12,14 +13,16 @@ import { IoMdShare } from "react-icons/io";
 
 interface ShareButtonsProps {
   title: string;
+  productId: string;
 }
 
-const ShareButtons: React.FC<ShareButtonsProps> = ({ title }) => {
-  const url = "https://online-watch-store.vercel.app/";
+const ShareButtons: React.FC<ShareButtonsProps> = ({ title, productId }) => {
+  const { locale } = useParams();
+  const url = `https://online-watch-store.vercel.app/${locale}/shop/${productId}`;
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative p-2 bg-white dark:bg-dark-bgSection rounded-full z-[1000]">
+    <div className="relative p-2 bg-white dark:bg-dark-bgSection dark:shadow-dark rounded-full z-[1000]">
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 text-[18px] text-main-main"
