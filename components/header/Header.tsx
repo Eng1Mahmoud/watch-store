@@ -7,7 +7,7 @@ import NavLinks from "./NavLinks";
 import Avatar from "./avatar/Avatar";
 import Aside from "./Aside";
 import AuthLinks from "./AuthLinks";
-import Wishlists from "./Wishlists";
+import WishList from "./wish-list/WishList";
 const Header = () => {
   return (
     <div className="header container">
@@ -28,7 +28,7 @@ const Header = () => {
             <Search />
           </div>
           <div className="flex items-center gap-3 pr-2">
-            <Wishlists />
+            <WishList />
             <Cart />
             <Avatar />
             <AuthLinks />

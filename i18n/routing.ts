@@ -7,34 +7,6 @@ export const routing = defineRouting({
   defaultLocale: "en",
   pathnames: {
     "/": "/",
-    "/#about": {
-      en: "/#about",
-      ar: "/#من-نحن",
-    },
-    "/#categories": {
-      en: "/#categories",
-      ar: "/#الفئات",
-    },
-    "/#products": {
-      en: "/#products",
-      ar: "/#المنتجات",
-    },
-    "/#brands": {
-      en: "/#brands",
-      ar: "/#العلامات-التجارية",
-    },
-    "/#gallery": {
-      en: "/#gallery",
-      ar: "/#معرض-الصور",
-    },
-    "/#testimonials": {
-      en: "/#testimonials",
-      ar: "/#آراء-العملاء",
-    },
-    "/#contact": {
-      en: "/#contact",
-      ar: "/#تواصل-معنا",
-    },
     "/login": {
       en: "/login",
       ar: "/تسجيل-الدخول",
