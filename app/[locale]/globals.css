@@ -46,3 +46,10 @@ a {
 /*custom utilities styles*/
 @layer utilities {
 }
+
+@media (prefers-color-scheme: dark) {
+   *{
+     background: white; 
+     color: black; 
+   } 
+  }
