@@ -6,8 +6,11 @@ html,
 body {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  color-scheme: light
 }
-
+*{
+  color-scheme: light
+} 
 h1,
 h2,
 h3,
