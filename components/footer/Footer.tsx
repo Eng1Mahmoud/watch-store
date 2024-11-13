@@ -34,7 +34,9 @@ const Footer = () => {
         </aside>
         {footerSections.map((section) => (
           <nav key={section.title}>
-            <h6 className="dark:text-dark-text">{section.title}</h6>
+            <h6 className="dark:text-dark-text text-main-main font-bold">
+              {section.title}
+            </h6>
             <ul className="flex flex-col gap-2 ">
               {section.links.map((link) => (
                 <li key={link.href}>
@@ -61,7 +63,12 @@ const Footer = () => {
           {/* Updated font size */}
           <p className="text-sm dark:text-dark-text">
             {t("developed_by")}{" "}
-            <span className="font-semibold dark:text-dark-text">Dhruv</span>
+            <a
+              className="font-semibold dark:text-dark-text"
+              href={"/https://www.linkedin.com/in/mahmoud-mohamed-abdel-aal/"}
+            >
+              Mahmoud Mohamed
+            </a>
           </p>{" "}
           {/* Updated font size */}
         </div>

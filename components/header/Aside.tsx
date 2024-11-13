@@ -10,27 +10,13 @@ const Aside = () => {
   const t = useTranslations();
   const router = useRouter();
   const drawerCheckboxRef = useRef<HTMLInputElement>(null);
-  const handleClick = (
-    e: React.MouseEvent,
-    href: string,
-    sectionId: string,
-  ) => {
+  const handleClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
     // Close drawer
     if (drawerCheckboxRef.current) {
       drawerCheckboxRef.current.checked = false;
     }
-    if (sectionId) {
-      // If we're not on the home page, first navigate to home
-      if (window.location.pathname !== "/") {
-        router.push(`/#${sectionId}` as any);
-        /*   scrollToSection(link.sectionId); */
-        return;
-      }
-    } else {
-      // If no sectionId, just navigate to href
-      router.push(href as any);
-    }
+    router.push(href as any);
   };
 
   return (
@@ -79,7 +65,7 @@ const Aside = () => {
                       href={link.href as any}
                       className="font-main text-[16px] px-4 py-2 hover:bg-base-300 rounded-lg transition-all duration-300 hover:scale-110
                        hover:text-main-main dark:text-dark-text dark:hover:bg-dark-bgSection  "
-                      onClick={(e) => handleClick(e, link.href, link.label)}
+                      onClick={(e) => handleClick(e, link.href)}
                     >
                       {t(`navLinks.${link.label}`)}
                     </Link>
