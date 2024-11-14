@@ -85,38 +85,56 @@ const AdminDashboard = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-6">{t("title")}</h1>
+      <h1 className="text-2xl font-bold mb-6 text-main-main dark:text-dark-text">
+        {t("title")}
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <h2 className="text-xl font-semibold mb-2">Users</h2>
+          <h2 className="text-xl font-semibold mb-2 text-main-main dark:text-dark-text">
+            Users
+          </h2>
           <Bar data={usersData} />
         </div>
         <div>
-          <h2 className="text-xl font-semibold mb-2">Products</h2>
+          <h2 className="text-xl font-semibold mb-2 text-main-main dark:text-dark-text">
+            Products
+          </h2>
           <Doughnut data={productsData} />
         </div>
         <div>
-          <h2 className="text-xl font-semibold mb-2">Orders</h2>
+          <h2 className="text-xl font-semibold mb-2 text-main-main dark:text-dark-text">
+            Orders
+          </h2>
           <Pie data={ordersData} />
         </div>
         <div>
-          <h2 className="text-xl font-semibold mb-2">Orders</h2>
+          <h2 className="text-xl font-semibold mb-2 text-main-main dark:text-dark-text">
+            Orders
+          </h2>
           <Line data={ordersData} />
         </div>
         <div>
-          <h2 className="text-xl font-semibold mb-2">Orders</h2>
+          <h2 className="text-xl font-semibold mb-2 text-main-main dark:text-dark-text">
+            Orders
+          </h2>
           <Bubble data={ordersData} />
         </div>
         <div>
-          <h2 className="text-xl font-semibold mb-2">Orders</h2>
+          <h2 className="text-xl font-semibold mb-2 text-main-main dark:text-dark-text">
+            Orders
+          </h2>
           <PolarArea data={ordersData} />
         </div>
         <div>
-          <h2 className="text-xl font-semibold mb-2">Orders</h2>
+          <h2 className="text-xl font-semibold mb-2 text-main-main dark:text-dark-text">
+            Orders
+          </h2>
           <Scatter data={ordersData} />
         </div>
         <div>
-          <h2 className="text-xl font-semibold mb-2">Orders</h2>
+          <h2 className="text-xl font-semibold mb-2 text-main-main dark:text-dark-text">
+            Orders
+          </h2>
           <Radar data={ordersData} />
         </div>
       </div>

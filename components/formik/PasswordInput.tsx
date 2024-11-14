@@ -19,7 +19,7 @@ const PasswordInput = ({ name, placeholder, disabled }: InputProps) => {
           name={name}
           type={type}
           disabled={disabled}
-          className="input input-bordered w-full pt-3 pb-2 px-3 peer ltr:pr-10 rtl:pl-10 dark:bg-dark-bg dark:border-dark-border dark:text-dark-text dark:shadow-dark"
+          className="input input-bordered w-full pt-3 pb-2 px-3  bg-white shadow-input peer ltr:pr-10 rtl:pl-10 dark:bg-dark-bg dark:border-dark-border dark:text-dark-text dark:shadow-dark"
           placeholder=" "
         />
         <div className="absolute inset-y-0 ltr:right-0 rtl:left-7 flex items-center pr-3">

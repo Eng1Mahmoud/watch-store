@@ -37,7 +37,7 @@ const SearchHistory = () => {
       <div
         tabIndex={0}
         role="button"
-        className="hover:bg-gray-100 dark:hover:bg-dark-bg p-1 rounded-full transition-colors"
+        className="hover:bg-gray-100  dark:hover:bg-dark-bg p-1 rounded-full transition-colors"
       >
         <MdManageHistory
           className="text-gray-500 cursor-pointer dark:text-dark-text"
@@ -46,7 +46,7 @@ const SearchHistory = () => {
       </div>
       <ul
         tabIndex={0}
-        className="dropdown-content bg-base-100 dark:bg-dark-bgSection rounded-box z-[10] w-64 p-2 shadow-2xl border border-gray-200 dark:border-dark-sectionText dark:shadow-dark   my-2 max-h-[300px] overflow-y-auto flex flex-col"
+        className="dropdown-content  bg-white dark:bg-dark-bgSection rounded-box z-[10] w-64 p-2 shadow-2xl border border-gray-200 dark:border-dark-sectionText dark:shadow-dark   my-2 max-h-[300px] overflow-y-auto flex flex-col"
       >
         {searchHistory.length === 0 ? (
           <li className="text-center text-gray-500 dark:text-dark-text py-2">

@@ -28,7 +28,7 @@ const DrawerToggle: React.FC<DrawerToggleProps> = ({ children }) => {
       />
       <div className="drawer-content flex flex-col  ">
         {/* Navbar */}
-        <div className="navbar bg-base-100 shadow-md dark:bg-dark-bgSection">
+        <div className="navbar bg-base-100 shadow-md bg-white dark:bg-dark-bgSection">
           <div className="flex-none">
             <label
               htmlFor="my-drawer"
@@ -54,13 +54,13 @@ const DrawerToggle: React.FC<DrawerToggleProps> = ({ children }) => {
       <div className="drawer-side h-auto min-h-screen shadow-custom z-[1000000] ">
         <label htmlFor="my-drawer" className="drawer-overlay"></label>
         <aside
-          className={`bg-white h-full  ${open ? "w-64" : "w-20"} dark:bg-dark-bgSection dark:shadow-dark p-[1px]`}
+          className={`bg-white h-full  ${open ? "w-64" : "w-20"} bg-white dark:bg-dark-bgSection dark:shadow-dark p-[1px]`}
           style={{
             transition: "width .3s ease-in-out",
           }}
         >
           <div className="dark:shadow-dark h-full">
-            <div className="flex justify-end p-2 border-b-2 border-gray-200 dark:border-dark-border dark:bg-dark-bgSection">
+            <div className="flex justify-end p-2 border-b-2 border-gray-200 dark:border-dark-border bg-white dark:bg-dark-bgSection">
               <button
                 onClick={handleDrawerToggle}
                 className="btn btn-square btn-ghost"

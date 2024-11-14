@@ -53,7 +53,7 @@ const ProfileImage = () => {
 
   return (
     <>
-      <div className="w-[200px] h-[200px] rounded-full absolute top-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 border-4 border-white">
+      <div className="w-[200px] h-[200px] rounded-full absolute top-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 border-4 border-white shadow-custom dark:shadow-dark">
         <Image
           src={avatar || defaultAvatar}
           alt="Profile Picture"
@@ -73,7 +73,7 @@ const ProfileImage = () => {
             />
             <label
               htmlFor="profile-image"
-              className="flex items-center justify-center bg-white rounded-full p-2 cursor-pointer"
+              className="flex items-center justify-center bg-white rounded-full p-2 cursor-pointer shadow-custom dark:shadow-dark"
             >
               <MdPhotoCamera size={20} className="text-main-main" />
             </label>

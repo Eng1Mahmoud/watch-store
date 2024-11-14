@@ -51,7 +51,7 @@ export const ProfileCover = () => {
     }
   };
   return (
-    <div className="h-[200px] w-full bg-slate-600 relative flex justify-center items-center rounded-tr-xl rounded-tl-xl overflow-hidden">
+    <div className="h-[200px] w-full shadow-input dark:shadow-dark bg-slate-600 relative flex justify-center items-center rounded-tr-xl rounded-tl-xl overflow-hidden">
       {cover_url && (
         <Image
           src={cover_url}

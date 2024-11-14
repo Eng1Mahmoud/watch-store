@@ -23,7 +23,12 @@ const Input = ({
         name={name}
         type={type}
         disabled={disabled}
-        className="input input-bordered w-full pt-3 pb-2 px-3 peer dark:bg-dark-bg dark:border-dark-border dark:text-dark-text dark:shadow-dark dark:disabled:text-dark-text"
+        className="input input-bordered  w-full 
+        pt-3 pb-2 px-3 peer shadow-input 
+         bg-white  dark:bg-dark-bg dark:border-dark-border
+          dark:text-dark-text dark:shadow-dark dark:disabled:text-dark-text read-only:bg-white read-only:text-black 
+       
+        "
         placeholder=" "
         {...props}
       />
@@ -34,7 +39,7 @@ const Input = ({
           peer-focus:-top-3 peer-focus:scale-75 peer-focus:text-main-main dark:peer-focus:text-dark-text
           peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:scale-75 peer-[:not(:placeholder-shown)]:text-main-main dark:peer-[:not(:placeholder-shown)]:text-dark-text
           peer-autofill:-top-3 peer-autofill:scale-75 peer-autofill:text-main-main dark:peer-autofill:text-dark-text
-          peer-read-only:-top-3 peer-read-only:bg-transparent peer-read-only:scale-75 dark:peer-read-only:bg-dark-bg 
+          peer-read-only:-top-3 peer-read-only:bg-transparent peer-read-only:scale-75 peer-read-only:bg-white  dark:peer-read-only:bg-dark-bg 
         `}
       >
         {placeholder}

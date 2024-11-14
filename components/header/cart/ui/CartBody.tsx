@@ -12,7 +12,7 @@ const CartBody = () => {
   return (
     <div
       tabIndex={0}
-      className="card card-compact dropdown-content bg-base-100 mt-3 w-52 shadow-custom z-[10000000000000] dark:bg-dark-bgSection"
+      className="card card-compact dropdown-content bg-base-100 mt-3 w-52 shadow-custom z-[10000000000000] bg-white dark:bg-dark-bgSection"
     >
       <div className="card-body ">
         <span className="text-lg font-bold text-main-main dark:text-dark-text">

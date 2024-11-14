@@ -20,7 +20,10 @@ const ProductCard = ({
   const { addProductToWishlist, removeProductFromWishlist } =
     useProductWishlistActions();
   return (
-    <div className="card bg-base-100  w-full  boder border-gray-200 border-[1px] dark:border-dark-sectionText dark:shadow-dark dark:bg-dark-bgSection">
+    <div
+      className="card bg-base-100  w-full  boder border-gray-200 border-[1px] dark:border-dark-sectionText dark:shadow-dark bg-white
+     dark:bg-dark-bgSection"
+    >
       <div className="absolute top-1 right-1">
         <ShareButtons title={product.name} />
       </div>
@@ -37,7 +40,9 @@ const ProductCard = ({
         />
       </figure>
       <div className="card-body p-3 ">
-        <h2 className="card-title dark:text-dark-text">{product.name}</h2>
+        <h2 className="card-title text-main-main dark:text-dark-text">
+          {product.name}
+        </h2>
         <p className="text-sm text-gray-500 dark:text-dark-text text-ellipsis line-clamp-2 overflow-hidden">
           {product.description}
         </p>

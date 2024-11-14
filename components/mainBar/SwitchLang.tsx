@@ -15,21 +15,29 @@ export default function SwitchLang() {
   const currentPath = pathname ? `/${pathname}` : "/";
 
   return (
-    <details className="dropdown z-[10000]">
-      <summary className="btn bg-transparent hover:bg-transparent m-1 bg-text-third border border-gray-500">
+    <div className="dropdown z-[10000]">
+      <div
+        tabIndex={0}
+        role="button"
+        className="btn bg-transparent hover:bg-transparent m-1 bg-text-third shadow-input dark:shadow-dark"
+      >
         {locale === "en" ? (
-          <>
+          <div className="flex items-center gap-2">
             <Image src={enFlagLang} alt="English" width={20} height={20} />
-            <span className="ml-2 dark:text-dark-text">English</span>
-          </>
+            <span className=" text-main-main dark:text-dark-text">English</span>
+          </div>
         ) : (
-          <>
-            <Image src={arFlagLang} alt="Arabic" width={20} height={20} />
-            <span className="ml-2 dark:text-dark-text">عربي</span>
-          </>
+          <div className="flex items-center gap-2">
+            <Image src={arFlagLang} alt="Arabic" width={20} height={30} />
+            <span className="text-main-main dark:text-dark-text">عربي</span>
+          </div>
         )}
-      </summary>
-      <ul className="menu dropdown-content bg-text-third dark:bg-dark-bgSection rounded-box z-[1] p-2 shadow">
+      </div>
+      <ul
+        tabIndex={0}
+        className="dropdown-content bg-text-third dark:bg-dark-bgSection rounded-box z-[1] p-2
+         shadow-input w-full dark:shadow-dark"
+      >
         <li>
           <Link
             href={{
@@ -37,9 +45,9 @@ export default function SwitchLang() {
               query: searchParamsString,
             }}
             locale="en"
-            className="dark:text-dark-text"
+            className="text-main-main dark:text-dark-text "
           >
-            <button className="flex items-center gap-2">
+            <button className="flex items-center gap-2 w-full">
               <Image src={enFlagLang} alt="English" width={20} height={20} />
               English
             </button>
@@ -52,15 +60,15 @@ export default function SwitchLang() {
               query: searchParamsString,
             }}
             locale="ar"
-            className="dark:text-dark-text"
+            className="text-main-main dark:text-dark-text"
           >
             <button className="flex items-center gap-2">
-              <Image src={arFlagLang} alt="Arabic" width={20} height={20} />
+              <Image src={arFlagLang} alt="Arabic" width={20} height={30} />
               عربي
             </button>
           </Link>
         </li>
       </ul>
-    </details>
+    </div>
   );
 }
