@@ -44,7 +44,7 @@ const Aside = () => {
             className="drawer-overlay"
           ></label>
 
-          <div className="bg-base-200 text-base-content min-h-full w-[300px] overflow-y-auto dark:bg-dark-bgSection">
+          <div className="bg-base-200 text-base-content min-h-full w-[300px] overflow-y-auto bg-white dark:bg-dark-bgSection">
             <div className="py-4">
               <div className="flex rtl:justify-end ltr:justify-start mb-4 mx-4">
                 <label
