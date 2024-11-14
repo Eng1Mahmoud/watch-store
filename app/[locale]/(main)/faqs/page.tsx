@@ -12,7 +12,7 @@ const page = async () => {
         {faqItems.map((item, index) => (
           <div
             key={index}
-            className="collapse collapse-plus join-item border-base-300 border dark:bg-dark-bgSection"
+            className="collapse collapse-plus join-item border-x-emerald-600  border dark:border-y-teal-700 dark:bg-dark-bgSection"
           >
             <input
               type="radio"

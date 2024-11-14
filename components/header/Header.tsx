@@ -11,7 +11,7 @@ import WishList from "./wish-list/WishList";
 const Header = () => {
   return (
     <div className="header container">
-      <div className="navbar bg-base-100 gap-5 dark:bg-dark-bg">
+      <div className="navbar bg-base-100 gap-5  bg-white dark:bg-dark-bg">
         <div className="flex-none">
           <Link href="/">
             <Image

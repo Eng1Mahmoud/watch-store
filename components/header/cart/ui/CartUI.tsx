@@ -18,7 +18,7 @@ const CartUI = () => {
             size={35}
             className="text-main-main cursor-pointer dark:text-dark-text"
           />
-          <span className="badge badge-sm indicator-item">
+          <span className="badge badge-lg indicator-item border-none text-text-third dark:text-dark-text bg-main-main dark:bg-dark-bgSection p-2 shadow-input dark:shadow-dark">
             {ordersLength >= 100 ? "99+" : ordersLength}
           </span>
         </div>

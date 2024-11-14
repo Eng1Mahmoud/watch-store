@@ -14,7 +14,7 @@ const TextArea = ({ name, placeholder, disabled, rows }: InputProps) => {
         id={name}
         name={name}
         disabled={disabled}
-        className="textarea textarea-bordered textarea-lg w-full  pt-5 pb-2 px-3 peer dark:bg-dark-bg dark:border-dark-border dark:text-dark-text dark:shadow-dark"
+        className="textarea textarea-bordered textarea-lg w-full  pt-5 pb-2 px-3  bg-white shadow-input peer dark:bg-dark-bg dark:border-dark-border dark:text-dark-text dark:shadow-dark"
         placeholder=" "
         rows={rows || 5}
       />

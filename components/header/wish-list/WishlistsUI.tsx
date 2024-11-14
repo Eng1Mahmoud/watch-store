@@ -11,7 +11,7 @@ const WishlistsUI = () => {
   };
   return (
     <div className="indicator" onClick={navigateToWishlists}>
-      <span className="badge badge-sm indicator-item">
+      <span className="badge badge-lg indicator-item border-none text-text-third dark:text-dark-text bg-main-main dark:bg-dark-bgSection p-2 shadow-input dark:shadow-dark">
         {wishlistsNumber > 99 ? "99+" : wishlistsNumber}
       </span>
       <MdFavoriteBorder

@@ -55,7 +55,7 @@ const Footer = () => {
         {/* Updated styles for background color, text color, and padding */}
         <div className="text-center flex flex-col gap-2">
           <p className="text-sm dark:text-dark-text">
-            <span className="font-semibold dark:text-dark-text">
+            <span className="font-semibold text-main-main dark:text-dark-text">
               &copy; {new Date().getFullYear()}{" "}
             </span>
             {t("copyright")}
@@ -64,7 +64,7 @@ const Footer = () => {
           <p className="text-sm dark:text-dark-text">
             {t("developed_by")}{" "}
             <a
-              className="font-semibold dark:text-dark-text"
+              className="font-semibold text-main-main dark:text-dark-text"
               href={"/https://www.linkedin.com/in/mahmoud-mohamed-abdel-aal/"}
             >
               Mahmoud Mohamed

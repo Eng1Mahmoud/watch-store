@@ -9,8 +9,10 @@ export const ContactUs = async () => {
       <h1 className="text-3xl font-bold text-main-main text-center my-10 dark:text-dark-text">
         {t("title")}
       </h1>
-      <ContactUsForm />
-      <ContactUsInfo />
+      <div className="">
+        <ContactUsForm />
+        <ContactUsInfo />
+      </div>
     </div>
   );
 };

@@ -19,7 +19,7 @@ const CategoriesSelectBox = () => {
     <div>
       <h1 className="text-lg pb-2 dark:text-dark-text">{t("title")}</h1>
       <select
-        className="select select-bordered w-full dark:bg-dark-bgSection dark:text-dark-text dark:border-dark-sectionText"
+        className="select select-bordered w-full bg-white dark:bg-dark-bgSection dark:text-dark-text dark:border-dark-sectionText"
         value={category}
         onChange={handleCategoryChange}
       >

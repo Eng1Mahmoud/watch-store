@@ -35,10 +35,10 @@ const MultiSelectInput = ({
         <label className="label">
           <span className="label-text dark:text-dark-text">{placeholder}</span>
         </label>
-        <div className="dropdown w-full dark:bg-dark-bgSection rounded-box">
+        <div className="dropdown w-full bg-white dark:bg-dark-bgSection rounded-box">
           <div
             tabIndex={0}
-            className="input input-bordered flex items-center justify-between cursor-pointer dark:bg-dark-bgSection dark:text-dark-text "
+            className="input input-bordered flex items-center justify-between cursor-pointer bg-white dark:bg-dark-bgSection dark:text-dark-text "
             onClick={handleToggle}
           >
             <span className="truncate">
@@ -61,21 +61,22 @@ const MultiSelectInput = ({
           {isOpen && (
             <ul
               tabIndex={0}
-              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-full max-h-60 overflow-auto  dark:bg-dark-bgSection"
+              className="dropdown-content menu p-2 shadow rounded-box w-full max-h-60 overflow-auto  bg-white dark:bg-dark-bgSection"
             >
               {options.map((option) => (
                 <li
                   key={option.value}
                   onClick={() => handleOptionClick(option.value)}
+                  className=""
                 >
                   <label className="label cursor-pointer justify-start dark:text-dark-text">
                     <input
                       type="checkbox"
                       checked={field.value?.includes(option.value)}
-                      className="checkbox-main  mr-2  dark:text-dark-text"
+                      className="checkbox-main checkbox-accent  mr-2  dark:text-dark-text "
                       readOnly
                     />
-                    <span className="label-text dark:text-dark-text">
+                    <span className="label-text text-main-main dark:text-dark-text">
                       {option.label}
                     </span>
                   </label>

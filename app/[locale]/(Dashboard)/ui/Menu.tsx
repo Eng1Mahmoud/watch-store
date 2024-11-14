@@ -29,7 +29,7 @@ const MenuItem = ({
   <li>
     <Link
       href={href as any}
-      className={`flex items-center p-2 ${open ? "justify-start" : "justify-center"} dark:text-dark-text`}
+      className={`flex items-center p-2 ${open ? "justify-start" : "justify-center"} text-main-main dark:text-dark-text`}
       onClick={() => {
         onToggle();
       }}
@@ -51,7 +51,9 @@ const AddMenuItem = ({ open, onToggle }: MenuProps) => {
               className="h-6 w-6 text-main-main dark:text-dark-text"
               onClick={onToggle}
             />
-            <span className="ml-3">{t("add")}</span>
+            <span className="ml-3 text-main-main dark:text-dark-text">
+              {t("add")}
+            </span>
           </summary>
           <ul>
             <MenuItem

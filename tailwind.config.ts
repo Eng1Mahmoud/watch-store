@@ -26,6 +26,7 @@ const config: Config = {
       },
       boxShadow: {
         custom: "0 0 5px 0px rgba(0, 0, 0, 0.3)",
+        input: "0 0 5px 0px #4e7d4e45",
         dark: "0 0 7px 0px #6b7280",
       },
       colors: {

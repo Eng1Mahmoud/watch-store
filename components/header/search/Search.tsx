@@ -46,7 +46,7 @@ const Search = () => {
         type="text"
         placeholder={t("search")}
         className="input input-bordered w-full focus:outline-none rtl:pr-10 ltr:pl-10 text-main-main
-         placeholder-gray-400  dark:bg-dark-bgSection dark:text-dark-text dark:placeholder-dark-text "
+         placeholder-gray-400 bg-white dark:bg-dark-bgSection dark:text-dark-text dark:placeholder-dark-text "
         initial={{ borderColor: "#e5e7eb" }}
         transition={{ duration: 0.3 }}
         value={inputValue}

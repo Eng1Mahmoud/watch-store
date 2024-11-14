@@ -24,7 +24,7 @@ const Search = ({ setSearchTerm, placeholder }: SearchProps) => {
       <input
         type="text"
         placeholder={placeholder}
-        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none dark:border-dark-border dark:bg-dark-bgSection dark:text-dark-text focus:shadow-custom dark:focus:shadow-dark  "
+        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none dark:border-dark-border bg-white dark:bg-dark-bgSection dark:text-dark-text focus:shadow-custom dark:focus:shadow-dark  "
         onChange={handleInputChange}
       />
     </div>

@@ -78,10 +78,10 @@ export const ActionList = async () => {
             <div className="flex gap-2">
               <div className="mr-2">{action.icon}</div>
               <div className="pt-0">
-                <h3 className="font-semibold pt-0 dark:text-dark-text">
+                <h3 className="font-semibold pt-0 text-main-main dark:text-dark-text">
                   {action.title}
                 </h3>
-                <p className="text-gray-500 dark:text-dark-text">
+                <p className="text-gray-500 dark:text-dark-text font-main text-sm pt-3">
                   {action.description}
                 </p>
               </div>
