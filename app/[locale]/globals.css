@@ -6,11 +6,8 @@ html,
 body {
   scroll-behavior: smooth;
   overflow-x: hidden;
-  color-scheme: light
 }
-*{
-  color-scheme: light
-} 
+
 h1,
 h2,
 h3,
@@ -45,12 +42,4 @@ a {
 
 /*custom utilities styles*/
 @layer utilities {
-}
-
-@media (prefers-color-scheme: dark) {
-  html, body {
-    background: white;
-    color: black;
-  }
-  
 }
