@@ -4,7 +4,6 @@ import { FiMenu, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import Menu from "./Menu";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { useTranslations } from "next-intl";
-
 interface DrawerToggleProps {
   children: React.ReactNode;
 }
@@ -37,14 +36,14 @@ const DrawerToggle: React.FC<DrawerToggleProps> = ({ children }) => {
               <FiMenu className="h-6 w-6 dark:text-dark-text" />
             </label>
           </div>
-          <div className="flex-1 bg-white">
+          <div className="flex-1 ">
             <a className="btn btn-ghost normal-case text-xl text-main-main dark:text-dark-text">
               {t("title")}
             </a>
           </div>
         </div>
         {/* Page content */}
-        <main className="flex-grow p-4 bg-white">
+        <main className="flex-grow p-4 ">
           <div className="container px-3 md:px-12 by-5">
             <Breadcrumbs />
           </div>

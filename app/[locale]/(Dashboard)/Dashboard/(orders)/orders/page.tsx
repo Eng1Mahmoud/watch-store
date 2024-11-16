@@ -17,7 +17,7 @@ const Products = () => {
             dataKey="orders"
           />
         )}
-        endpoint={"/orders/current"}
+        endpoint={"/orders"}
         itemsPerPage={20}
         dataKey="orders"
         LoadingComponent={TableUI}

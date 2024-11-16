@@ -4,6 +4,7 @@ import { IOrderItem } from "@/types/types";
 import { formatCurrency } from "@/utils/numberFormat";
 import { useLocale } from "next-intl";
 export const OrderItem = ({ item }: { item: IOrderItem }) => {
+  console.log(item);
   const t = useTranslations("myOrders");
   const locale = useLocale();
 
