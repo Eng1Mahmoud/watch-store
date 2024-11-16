@@ -28,7 +28,7 @@ const DrawerToggle: React.FC<DrawerToggleProps> = ({ children }) => {
       />
       <div className="drawer-content flex flex-col  ">
         {/* Navbar */}
-        <div className="navbar bg-base-100 shadow-md bg-white dark:bg-dark-bgSection">
+        <div className="navbar  shadow-md bg-white dark:bg-dark-bgSection">
           <div className="flex-none">
             <label
               htmlFor="my-drawer"
@@ -37,14 +37,14 @@ const DrawerToggle: React.FC<DrawerToggleProps> = ({ children }) => {
               <FiMenu className="h-6 w-6 dark:text-dark-text" />
             </label>
           </div>
-          <div className="flex-1">
+          <div className="flex-1 bg-white">
             <a className="btn btn-ghost normal-case text-xl text-main-main dark:text-dark-text">
               {t("title")}
             </a>
           </div>
         </div>
         {/* Page content */}
-        <main className="flex-grow p-4">
+        <main className="flex-grow p-4 bg-white">
           <div className="container px-3 md:px-12 by-5">
             <Breadcrumbs />
           </div>
