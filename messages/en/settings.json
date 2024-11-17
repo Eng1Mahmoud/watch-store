@@ -1,0 +1,12 @@
+{
+    "settings":{
+      "formLabels":{
+        "taxs":"Taxes"
+      },
+      "formValidation":{
+        "taxs":{
+            "required":"Taxes is required"
+        }
+      }
+    }
+}

@@ -52,15 +52,3 @@ const OrderUI = ({ id }: { id: string }) => {
 };
 
 export default OrderUI;
-/* "use client";
-import { useQuery } from "@tanstack/react-query";
-import { axiosClientInstance } from "@/axios/axiosClientInstance";
-export const OrderUI = ({ id }: { id: string }) => {
-  const { data, isLoading } = useQuery({
-    queryKey: ["user-order-details", id],
-    queryFn: () => axiosClientInstance.get(`/orders/current/${id}`),
-  });
-  console.log(data);
-  return <div>{isLoading ? "loading..." : <div>data</div>}</div>;
-};
- */

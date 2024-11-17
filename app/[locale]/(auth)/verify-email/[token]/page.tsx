@@ -15,8 +15,6 @@ const page = async ({ params }: { params: { token: string } }) => {
     });
 
     const token = data?.data?.token;
-    console.log("token", token);
-
     return (
       <div className="dark:bg-dark-bgSection dark:text-dark-text">
         <PreperAcount token={token} />

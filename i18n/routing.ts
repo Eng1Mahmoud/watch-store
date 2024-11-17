@@ -71,6 +71,10 @@ export const routing = defineRouting({
       en: "/dashboard/orders/[id]",
       ar: "/الطلبات/لوحة-التحكم/[id]",
     },
+    "/dashboard/settings": {
+      en: "/dashboard/settings",
+      ar: "/الاعدادات/لوحة-التحكم",
+    },
     "/my-account": {
       en: "/my-account",
       ar: "/حسابي",

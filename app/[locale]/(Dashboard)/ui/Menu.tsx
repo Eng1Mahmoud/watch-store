@@ -8,6 +8,7 @@ import {
   FiFolder,
   FiPlus,
 } from "react-icons/fi";
+import { CiSettings } from "react-icons/ci";
 import { MdDashboard } from "react-icons/md";
 interface MenuProps {
   open: boolean;
@@ -165,6 +166,15 @@ const Menu: React.FC<MenuProps> = ({ open, onToggle }) => {
         onToggle={onToggle}
       />
       <AddMenuItem open={open} onToggle={onToggle} />
+      <MenuItem
+        href="/dashboard/settings"
+        icon={
+          <CiSettings className="h-6 w-6 text-main-main dark:text-dark-text" />
+        }
+        text={t("settings")}
+        open={open}
+        onToggle={onToggle}
+      />
     </ul>
   );
 };

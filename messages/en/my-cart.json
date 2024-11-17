@@ -9,16 +9,19 @@
                 "stripe": "Stripe"
             },
             "subtotal": "Subtotal",
-            "taxes": "Taxes",
+            "taxes": "Taxs",
             "total-items": "Total Items",
             "total-price": "Total Price",
             "checkout": "Checkout",
+            "free-shipping": "Free Shipping  %100  🎉",
             "coupon":{
                 "title": "Have a coupon?",
                 "apply": "Apply",
                 "code": "Enter your coupon "
             },
             "not-select-payment-method": "Please select a payment method",
+            "no-items-in-cart": "No items in cart",
+            "no-address": "Please add an address to continue",
             "checkout-btn": "Create Order"
         }
     }

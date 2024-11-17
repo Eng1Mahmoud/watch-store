@@ -1,0 +1,12 @@
+{
+    "settings":{
+      "formLabels":{
+        "taxs":"رسوم الخدمة"
+      },
+      "formValidation":{
+        "taxs":{
+            "required":"رسوم الخدمة مطلوب"
+        }
+      }
+    }
+}
