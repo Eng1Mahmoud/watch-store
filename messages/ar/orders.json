@@ -1,0 +1,12 @@
+{
+    "orders":{
+        "tableLabels":{
+            "createdAt":" التاريخ",
+            "status":"الحالة",
+             "client":"العميل",
+             "open":"افتح",
+             "cancel":"إلغاء"
+             
+        }
+    }
+}

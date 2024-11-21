@@ -1,9 +1,27 @@
 import Image from "next/image";
 import { ITableProps } from "@/types/types";
+import { formatDate } from "@/utils/numberFormat";
+import { useLocale } from "next-intl";
+import { imageKeys } from "@/utils/imageKeys"; // get image keys from utils to check if the column is an image
 const BaseTable: React.FC<ITableProps> = ({ data, columns, actions }) => {
+  const loacle = useLocale();
+  const getNestedValue = (obj: any, path: string) => {
+    // get nested value from object
+    const value = path
+      .split(/[[\].]+/)
+      .filter(Boolean)
+      .reduce((acc, key) => acc?.[key], obj);
+
+    // Check if the value is a date (for the key `created_at` or others)
+    if (path === "created_at" && value) {
+      return formatDate(value, loacle);
+    }
+
+    return value || "__"; // Default fallback
+  };
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200">
+    <div className="overflow-x-auto p-1 ">
+      <table className="min-w-full divide-y divide-gray-200 shadow-custom dark:shadow-dark ">
         <thead className="bg-gray-50 dark:bg-dark-bgSection">
           <tr>
             {columns.map((column) => (
@@ -40,10 +58,10 @@ const BaseTable: React.FC<ITableProps> = ({ data, columns, actions }) => {
                   key={column.key}
                   className="px-6 text-center py-4 whitespace-nowrap dark:text-dark-text dark:bg-dark-bgSection"
                 >
-                  {column.key === "cover_url" || column.key === "image_url" ? (
+                  {imageKeys.includes(column.key) ? (
                     <div className="flex justify-center">
                       <Image
-                        src={item[column.key]}
+                        src={getNestedValue(item, column.key)}
                         alt={item.name}
                         width={50}
                         height={50}
@@ -55,12 +73,14 @@ const BaseTable: React.FC<ITableProps> = ({ data, columns, actions }) => {
                       {item[column.key].map((value: any, index: number) => (
                         <span key={index} className="mr-1">
                           {value}
-                          {index < item[column.key].length - 1 && " - "}
+                          {index <
+                            getNestedValue(item, column.key).length - 1 &&
+                            " - "}
                         </span>
                       ))}
                     </div>
                   ) : (
-                    item[column.key] || "__"
+                    getNestedValue(item, column.key)
                   )}
                 </td>
               ))}

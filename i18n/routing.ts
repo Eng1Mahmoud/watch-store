@@ -63,6 +63,18 @@ export const routing = defineRouting({
       en: "/dashboard/add-category",
       ar: "/إضافة-فئة/لوحة-التحكم",
     },
+    "/dashboard/orders": {
+      en: "/dashboard/orders",
+      ar: "/الاوردرات/لوحة-التحكم",
+    },
+    "/dashboard/orders/[id]": {
+      en: "/dashboard/orders/[id]",
+      ar: "/الطلبات/لوحة-التحكم/[id]",
+    },
+    "/dashboard/settings": {
+      en: "/dashboard/settings",
+      ar: "/الاعدادات/لوحة-التحكم",
+    },
     "/my-account": {
       en: "/my-account",
       ar: "/حسابي",
@@ -70,6 +82,10 @@ export const routing = defineRouting({
     "/my-account/my-orders": {
       en: "/my-account/my-orders",
       ar: "/طلباتي/حسابي",
+    },
+    "/my-account/my-orders/[id]": {
+      en: "/my-account/my-orders/[id]",
+      ar: "/طلباتي/حسابي/[id]",
     },
     "/my-account/change-password": {
       en: "/my-account/change-password",

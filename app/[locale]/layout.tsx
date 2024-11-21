@@ -42,7 +42,7 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={locale === "ar" ? "rtl" : "ltr"}
-      className={`${locale === "ar" ? mainFont_ar.variable : mainFont_en.variable} light`}
+      className={`${locale === "ar" ? mainFont_ar.variable : mainFont_en.variable} light bg-white`}
     >
       <body
         suppressHydrationWarning={true}

@@ -1,0 +1,11 @@
+{
+    "orders":{
+        "tableLabels":{
+            "createdAt":"created at ",
+            "status":"status",
+             "client":"client",
+             "open":"open",
+             "cancel":"cancel"
+        }
+    }
+}

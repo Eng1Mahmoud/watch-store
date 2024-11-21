@@ -1,0 +1,9 @@
+{
+    "orderStatus":{
+      "shipping":"Shipping",
+      "cash_delivery":"Cash Delivery",
+      "preparing":"Preparing",
+      "finished":"Finished",
+      "canceled":"Canceled"
+    }
+}

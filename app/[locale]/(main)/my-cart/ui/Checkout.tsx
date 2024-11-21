@@ -14,7 +14,6 @@ const CheckOut = () => {
   const [couponCode, setCouponCode] = useState("");
   const orders = useAppSelector(getAllOrders);
   const totalPrice = useAppSelector(getTotalPrice);
-
   // payment methods
   const paymentMethods = [
     { label: t("paymentMethod.cash"), value: "cash" },
@@ -32,7 +31,7 @@ const CheckOut = () => {
     <div className="shadow-custom p-4 rounded-lg h-auto dark:shadow-dark">
       <div className="flex flex-col gap-4 w-full">
         <select
-          className="select select-bordered w-full dark:bg-dark-bgSection dark:text-dark-text"
+          className="select select-bordered w-full bg-white shadow-input dark:bg-dark-bgSection dark:text-dark-text"
           onChange={handlePaymentMethodChange}
           value={paymentMethod}
         >
@@ -57,6 +56,7 @@ const CheckOut = () => {
         <p className="text-ms dark:text-dark-text">
           {t("total-price")}: {formatCurrency(totalPrice + 15, locale)}
         </p>
+        <p className="text-ms dark:text-dark-text">{t("free-shipping")}</p>
         {/* coupon */}
         <h3 className="text-lg font-bold text-main-main dark:text-dark-text">
           {t("coupon.title")}
@@ -68,7 +68,7 @@ const CheckOut = () => {
             value={couponCode}
             type="text"
             placeholder={t("coupon.code")}
-            className="input focus:outline-none  ltr:rounded-tr-none ltr:rounded-br-none rtl:rounded-tl-none rtl:rounded-bl-none w-full dark:text-dark-text dark:bg-dark-bgSection  "
+            className="input focus:outline-none  ltr:rounded-tr-none ltr:rounded-br-none rtl:rounded-tl-none rtl:rounded-bl-none w-full bg-white dark:text-dark-text dark:bg-dark-bgSection  "
           />
           <button className="btn btn-primary dark:bg-dark-text dark:text-dark-bgSection ltr:rounded-tl-none ltr:rounded-bl-none rtl:rounded-tr-none rtl:rounded-br-none ">
             {t("coupon.apply")}

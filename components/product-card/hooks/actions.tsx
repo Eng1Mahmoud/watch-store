@@ -17,9 +17,7 @@ export const useProductWishlistActions = () => {
   // add product to wishlist
   const addWishlistMutation = useMutation({
     mutationFn: (product_id: string | undefined) =>
-      axiosClientInstance.post(`/wishlists/current`, {
-        product_id,
-      }),
+      axiosClientInstance.post(`/wishlists/current/${product_id}`),
     onSuccess: ({ data }) => {
       if (data.success) {
         queryClient.invalidateQueries({ queryKey: ["products"] }); // invalidate products

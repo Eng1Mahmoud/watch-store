@@ -1,0 +1,9 @@
+{
+    "orderStatus":{
+        "shipping":"تم الدفع",
+        "cash_delivery":"الدفع عند التسليم",
+        "preparing":"جاري التجهيز",
+        "finished":"منجز",
+        "canceled":"ملغي"
+    }
+}
