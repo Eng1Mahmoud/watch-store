@@ -74,7 +74,7 @@ Follow these steps to set up and run the application locally:
    ```
 ## 🔗 Live Demo
 
-Experience the app live: [Weather App Demo](https://online-watch-store.vercel.app/en)
+Experience the app live: [Watch Store App Demo](https://online-watch-store.vercel.app/en)
 
 ## 🤝 Contributing
 
