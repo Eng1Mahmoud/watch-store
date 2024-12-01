@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { twMerge } from "tailwind-merge";
 import { ITableProps } from "@/types/types";
 import { formatDate } from "@/utils/numberFormat";
 import { useLocale } from "next-intl";
@@ -28,7 +29,9 @@ const BaseTable: React.FC<ITableProps> = ({ data, columns, actions }) => {
               <th
                 key={column.key}
                 scope="col"
-                className={`text-center font-medium ${column.labelColor ? column.labelColor : "text-gray-500"} capitalize w-fit whitespace-nowrap dark:text-dark-text`}
+                className={twMerge(
+                  `text-center font-medium "text-gray-500"} capitalize w-fit whitespace-nowrap dark:text-dark-text ${column.className}`,
+                )}
               >
                 {column.label}
               </th>
@@ -38,10 +41,14 @@ const BaseTable: React.FC<ITableProps> = ({ data, columns, actions }) => {
                 <th
                   key={actionIndex}
                   scope="col"
-                  className={`text-center font-medium ${action.labelColor ? action.labelColor : "text-gray-500"} capitalize w-fit whitespace-nowrap`}
+                  className={twMerge(
+                    `text-center font-medium "text-gray-500" capitalize w-fit whitespace-nowrap ${action.className}`,
+                  )}
                 >
                   <button
-                    className={`btn bg-transparent hover:bg-transparent border-none shadow-none ${action.labelColor}`}
+                    className={twMerge(
+                      `btn bg-transparent hover:bg-transparent border-none shadow-none ${action.className}`,
+                    )}
                   >
                     {action.icon && <action.icon className="text-lg" />}
                     {action.label}
@@ -91,8 +98,13 @@ const BaseTable: React.FC<ITableProps> = ({ data, columns, actions }) => {
                     className="px-6 py-4 whitespace-nowrap text-sm font-medium text-center dark:text-dark-text dark:bg-dark-bgSection"
                   >
                     <button
-                      onClick={() => action.onClick(item)}
-                      className={`btn bg-transparent hover:bg-transparent border-none shadow-none ${action.labelColor}`}
+                      onClick={() => {
+                        console.log(item);
+                        action.onClick(item);
+                      }}
+                      className={twMerge(
+                        `btn bg-transparent hover:bg-transparent border-none shadow-none ${action.className}`,
+                      )}
                     >
                       {action.icon && <action.icon className="text-lg" />}
                       {action.label}

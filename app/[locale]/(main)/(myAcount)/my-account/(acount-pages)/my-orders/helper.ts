@@ -13,7 +13,8 @@ export const useColumns = () => {
       label: t("createdAt"),
     },
     {
-      key: "status",
+      key: "shipment_status",
+      className: "text-main-main dark:text-dark-textAction",
       label: t("status"),
     },
     {

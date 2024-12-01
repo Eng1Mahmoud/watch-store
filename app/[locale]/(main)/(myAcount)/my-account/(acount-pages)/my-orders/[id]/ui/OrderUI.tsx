@@ -36,13 +36,27 @@ const OrderUI = ({ id }: { id: string }) => {
             <OrderItem key={index} item={item} />
           ))}
         </div>
-        <div className="mt-4 pt-4 border-t border-gray-200">
+        <div className="mt-4 pt-4 border-t border-gray-200 flex flex-col gap-4">
           <div className="flex justify-between items-center">
             <span className="font-medium text-main-main dark:text-dark-text">
               {t("totalAmount")}:
             </span>
             <span className="text-lg font-bold text-main-main dark:text-dark-text">
               {formatCurrency(order.price, locale)}
+            </span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="font-medium text-main-main dark:text-dark-text">
+              {t("isPaid.title")}:
+            </span>
+            <span
+              className={`text-lg font-bold ${
+                order.is_paid
+                  ? "text-main-main dark:text-dark-textAction"
+                  : "text-warning"
+              }`}
+            >
+              {order.is_paid ? t("isPaid.yes") : t("isPaid.no")}
             </span>
           </div>
         </div>

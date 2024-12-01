@@ -54,14 +54,14 @@ export interface IFilter {
 export interface IColumn {
   key: string;
   label: string;
-  labelColor?: string;
+  className?: string;
 }
 
 export interface IAction {
   label: string;
   onClick: (item: any) => void;
   icon?: IconType;
-  labelColor?: string;
+  className?: string;
 }
 export interface ITableProps {
   data: any[]; // Adjusted to accept flat data directly

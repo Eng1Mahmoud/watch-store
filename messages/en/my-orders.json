@@ -12,6 +12,11 @@
             "cancelled": "Cancelled",
             "processing": "Processing"
         },
+        "isPaid": {
+            "title": "Payment Method",
+            "yes": "Paid",
+            "no": "On Delivery"
+        },
         "noOrders": "No orders yet",
         "shoping-now": "Shop Now"
     }

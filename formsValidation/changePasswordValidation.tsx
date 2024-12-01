@@ -10,8 +10,8 @@ export const useChangePasswordValidation = () => {
       .min(8)
       .max(20)
       .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,20}$/,
-        t("newPassword.invalid"),
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/,
+        t("password.invalid"),
       ),
   });
   return validationSchema;
